@@ -548,4 +548,71 @@ document.addEventListener('DOMContentLoaded', () => {
 			$('.joe_action__item.menu').hide();
 		}
 	}
+
+	/* 动态页面 */
+	{
+		if ($('#joe_dynamic-form').length) {
+			let isSubmit = false;
+			$('#joe_dynamic-form').on('submit', function (e) {
+				e.preventDefault();
+				const action = $('#joe_dynamic-form').attr('action') + '?time=' + +new Date();
+				const type = $('#joe_dynamic-form').attr('data-type');
+				const text = $("#joe_dynamic-form textarea[name='text']").val();
+				const _ = $("#joe_dynamic-form input[name='_']").val();
+				if (type === 'text' && text.trim() === '') return Qmsg.info('你还没说点什么呢！');
+				if (isSubmit) return;
+				isSubmit = true;
+				$('#joe_dynamic-form .form-foot button').html('发送中...');
+				$.ajax({
+					url: action,
+					type: 'POST',
+					data: { text, _ },
+					dataType: 'text',
+					success(res) {
+						let arr = [],
+							str = '';
+						arr = $(res).contents();
+						Array.from(arr).forEach(_ => {
+							if (_.parentNode.className === 'container') str = _;
+						});
+						if (!/Joe/.test(res)) {
+							Qmsg.warning(str.textContent.trim() || '');
+							isSubmit = false;
+							$('#joe_dynamic-form .form-foot button').html('发表评论');
+						} else {
+							window.location.reload();
+						}
+					},
+					error() {
+						isSubmit = false;
+						$('#joe_dynamic-form .form-foot button').html('发表评论');
+						Qmsg.warning('发送失败！请刷新重试！');
+					}
+				});
+			});
+		}
+	}
+	
+	/* 动态点赞 */
+	{
+		$('.support').on('click', function () {
+			$.ajax({
+				url: `/?action=support`,
+				type: 'POST',
+				data: {
+					coid: $(this).data('coid')
+				},
+				dataType: 'json',
+				success: res => {
+					if (res.success) {
+						Qmsg.success('谢谢点赞哦~');
+						$(this).parent().removeClass('fa-heart-o').addClass('fa-heart');
+						$(this).text('(' + res.count + ')' + '已赞');
+					} else {
+						Qmsg.warning('您已赞过啦~');
+					}
+				}
+			});
+		});
+	}
 });

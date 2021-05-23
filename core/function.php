@@ -369,3 +369,58 @@ function _GetCatalog()
 	}
 	echo $index;
 }
+
+/* 动态点赞 */
+function _getSupport($coid)
+{
+	$db = Typecho_Db::get();
+	$prefix = $db->getPrefix();
+	if (!array_key_exists('support', $db->fetchRow($db->select()->from('table.comments')))) {
+		$db->query('ALTER TABLE `' . $prefix . 'comments` ADD `support` INT(10) DEFAULT 0;');
+		return [
+			'icon' => 'fa-heart-o',
+			'count' => 0,
+			'text' => '点赞'
+		];
+	}
+	$row = $db->fetchRow($db->select('support')->from('table.comments')->where('coid = ?', $coid));
+	$support = Typecho_Cookie::get('extend_comments_support');
+	if (empty($support)) {
+		$support = array();
+	} else {
+		$support = explode(',', $support);
+	}
+	if (!in_array($coid, $support)) {
+		return [
+			'icon' => 'fa-heart-o',
+			'count' => $row['support'],
+			'text' => '点赞'
+		];
+	} else {
+		return [
+			'icon' => 'fa-heart',
+			'count' => $row['support'],
+			'text' => '已赞'
+		];
+	}
+}
+function _addSupport($coid)
+{
+	$db = Typecho_Db::get();
+	$row = $db->fetchRow($db->select('support')->from('table.comments')->where('coid = ?', $coid));
+	$support = Typecho_Cookie::get('extend_comments_support');
+	if (empty($support)) {
+		$support = array();
+	} else {
+		$support = explode(',', $support);
+	}
+	if (!in_array($coid, $support)) {
+		$db->query($db->update('table.comments')->rows(array('support' => (int)$row['support'] + 1))->where('coid = ?', $coid));
+		array_push($support, $coid);
+		$support = implode(',', $support);
+		Typecho_Cookie::set('extend_comments_support', $support);
+		return $row['support'] + 1;
+	} else {
+		return false;
+	}
+}

@@ -85,6 +85,18 @@ function themeInit($self)
     if ($self->is('single')) {
         $self->content = _CreateCatalog($self->content);
     }
+
+    /* 动态点赞 */
+    if ($self->request->isPost() && $self->request->is('action=support')) {
+        $res = _addSupport($self->request->get('coid'));
+        $json = [
+            'success' => $res ? true : false,
+            'count' => $res
+        ];
+        ob_clean();
+        echo json_encode($json);
+        exit();
+    }
 }
 
 /* 增加自定义字段 */
