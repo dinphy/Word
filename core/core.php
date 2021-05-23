@@ -96,7 +96,8 @@ function themeFields($layout)
             'default' => '默认模式',
             'single' => '大图模式',
             'multiple' => '三图模式',
-            'none' => '无图模式'
+            'none' => '无图模式',
+            'chat' => '闲谈模式'
         ),
         'default',
         '文章显示方式',

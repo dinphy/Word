@@ -64,7 +64,12 @@ function _getPost($self)
             "agree" => number_format($item->agree),
             "permalink" => $item->permalink,
             "lazyload" => _getLazyload(false),
-            "type" => "normal"
+            "type" => "normal",
+            "cid" => $item->cid,
+            "date" => date('Y年m月d日 H:i:s A', $item->created),
+            "name" => $item->author->screenName,
+            "authorlink" => $item->author->permalink,
+            "avatar" => _getAvatarByMail($item->author->mail, false)
         );
     };
     $self->response->throwJson(array("data" => $result));
