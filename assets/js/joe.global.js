@@ -615,4 +615,22 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 	}
+
+	/* 宽屏阅读 */
+	{
+		let asideWidth = $('.joe_aside').width();
+		if (asideWidth) {
+			$('.joe_stretch').addClass('active');
+			$('.joe_aside').css('width', asideWidth);
+		}
+		$('.joe_stretch .contain').on('click', function () {
+			if ($('.joe_aside').width() === 0) {
+				$('.joe_aside').css('width', asideWidth);
+				$('.joe_aside').css('overflow', '');
+			} else {
+				$('.joe_aside').css('width', 0);
+				$('.joe_aside').css('overflow', 'hidden');
+			}
+		});
+	}
 });

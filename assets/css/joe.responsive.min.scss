@@ -302,6 +302,11 @@ html {
 			&_aside {
 				display: none;
 			}
+			&_stretch {
+				.contain {
+					display: none;
+				}
+			}
 			&_video {
 				&__player {
 					&-play {

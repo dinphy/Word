@@ -31,6 +31,14 @@
                 <span class="text" id="Joe_Article_Views"><?php _getViews($this); ?> 阅读</span>
                 <span class="line">/</span>
                 <span class="text" id="Joe_Baidu_Record">正在检测是否收录...</span>
+                <div class="joe_stretch">
+                    <div class="contain">
+                        <span class="line">/</span>
+                        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19922">
+                            <path d="M1004.16 661.12V184.32H19.84v476.16h448v123.52H245.12v40.32h533.76v-39.68H556.8v-123.52zM83.84 248.32h856.32v348.8H83.84z" p-id="19923"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

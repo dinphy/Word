@@ -205,6 +205,31 @@
 	}
 }
 
+.joe_stretch {
+	display: none;
+	.contain {
+		svg {
+			width: 22px;
+			height: 22px;
+			fill: var(--minor);
+			cursor: pointer;
+			transition: fill 0.35s;
+		}
+		&:hover {
+			animation-play-state: paused;
+			svg {
+				fill: var(--theme);
+			}
+			&::before {
+				border-color: var(--theme);
+			}
+		}
+	}
+	&.active {
+		display: block;
+	}
+}
+
 .joe_dropdown {
 	position: relative;
 	&__link {
