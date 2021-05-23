@@ -102,7 +102,6 @@ export default class JoeAction {
 		el.toggleClass('active');
 		$('body').toggleClass('fullscreen');
 		$('.cm-container').toggleClass('fullscreen');
-		$('.cm-preview').width(0);
 	}
 	handlePublish() {
 		$('#btn-submit').click();

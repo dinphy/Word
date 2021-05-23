@@ -17,7 +17,6 @@ class Joe extends JoeAction {
 		this._isPasting = false;
 		this.init_ViewPort();
 		this.init_Editor();
-		this.init_Preview();
 		this.init_Tools();
 		this.init_Insert();
 		this.init_AutoSave();
@@ -131,53 +130,6 @@ class Joe extends JoeAction {
 		$('.cm-mainer').prepend(cm.dom);
 		$('#text')[0].form && $('#text')[0].form.addEventListener('submit', () => $('#text').val(cm.state.doc.toString()));
 		this.cm = cm;
-	}
-
-	/* 已测 √ */
-	init_Preview() {
-		const move = (nowClientX, nowWidth, clientX) => {
-			let moveX = nowClientX - clientX;
-			let moveWidth = nowWidth + moveX;
-			if (moveWidth <= 0) moveWidth = 0;
-			if (moveWidth >= $('.cm-mainer').outerWidth() - 16) moveWidth = $('.cm-mainer').outerWidth() - 16;
-			$('.cm-preview').width(moveWidth);
-		};
-		$('.cm-resize').on({
-			mousedown: e => {
-				e.preventDefault();
-				e.stopPropagation();
-				const nowWidth = $('.cm-preview').outerWidth();
-				const nowClientX = e.clientX;
-				$('.cm-preview').addClass('move');
-				document.onmousemove = _e => {
-					if (window.requestAnimationFrame) requestAnimationFrame(() => move(nowClientX, nowWidth, _e.clientX));
-					else move(nowClientX, nowWidth, _e.clientX);
-				};
-				document.onmouseup = () => {
-					document.onmousemove = null;
-					document.onmouseup = null;
-					$('.cm-preview').removeClass('move');
-				};
-				return false;
-			},
-			touchstart: e => {
-				e.preventDefault();
-				e.stopPropagation();
-				const nowWidth = $('.cm-preview').outerWidth();
-				const nowClientX = e.originalEvent.targetTouches[0].clientX;
-				$('.cm-preview').addClass('move');
-				document.ontouchmove = _e => {
-					if (window.requestAnimationFrame) requestAnimationFrame(() => move(nowClientX, nowWidth, _e.targetTouches[0].clientX));
-					else move(nowClientX, nowWidth, _e.targetTouches[0].clientX);
-				};
-				document.ontouchend = () => {
-					document.ontouchmove = null;
-					document.ontouchend = null;
-					$('.cm-preview').removeClass('move');
-				};
-				return false;
-			}
-		});
 	}
 
 	/* 已测 √ */
@@ -348,6 +300,8 @@ class Joe extends JoeAction {
 							break;
 						case 'preview':
 							el.toggleClass('active');
+							$('.cm-wrap').toggleClass('preview');
+							$('.cm-preview').toggle();
 							if (el.hasClass('active')) window.JoeConfig.canPreview = true;
 							else window.JoeConfig.canPreview = false;
 							createPreviewHtml(this.cm.state.doc.toString());
