@@ -186,6 +186,11 @@
                     <?php endif; ?>
                 <?php endwhile; ?>
             </nav>
+
+            <div class="joe_header__below-posttitle">
+                <?php if ($this->is('post')) : ?><?php $this->title(); ?><?php endif; ?>
+            </div>
+
             <div class="joe_header__below-sign">
                 <?php if ($this->user->hasLogin()) : ?>
                     <div class="joe_dropdown" trigger="click">

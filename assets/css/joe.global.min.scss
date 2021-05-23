@@ -562,6 +562,24 @@
 				}
 			}
 		}
+		&-posttitle {
+			display: none;
+			color: var(--minor);
+			line-height: 40px;
+			font-size: 16px;
+		}
+		&.active {
+			.joe_header {
+				&__below {
+					&-class {
+						display: none;
+					}
+					&-posttitle {
+						display: block;
+					}
+				}
+			}
+		}
 		&-sign {
 			margin-left: auto;
 			.joe_dropdown {

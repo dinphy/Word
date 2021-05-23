@@ -633,4 +633,27 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	}
+
+	/* 滚动时导航栏显示隐藏，文章页为标题 */
+	{
+		let previousTop = 0;
+		$(window).scroll(function () {
+			let currentTop = $(window).scrollTop();
+			if (currentTop < previousTop) {
+				$('.joe_header').css({
+					top: '0px',
+					transition: '0.6s'
+				});
+				if ($('.joe_post').length > 0) {
+					$('.joe_header__below').removeClass('active');
+				}
+			} else {
+				$('.joe_header').css('top', '-60px');
+				if ($('.joe_post').length > 0) {
+					$('.joe_header__below').addClass('active');
+				}
+			}
+			previousTop = currentTop;
+		});
+	}
 });
