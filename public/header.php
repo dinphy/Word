@@ -93,7 +93,7 @@
                     <?php endforeach; ?>
                     <div class="joe_dropdown" trigger="hover" placement="60px" style="margin-right: 15px;">
                         <div class="joe_dropdown__link">
-                            <a href="#" rel="nofollow">更多</a>
+                            <a href="javascript:void(0);" rel="nofollow">更多</a>
                             <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
                                 <path d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z" p-id="3535" fill="var(--main)"></path>
                             </svg>
@@ -122,7 +122,7 @@
                 <?php if (sizeof($custom) > 0) : ?>
                     <div class="joe_dropdown" trigger="hover" placement="60px">
                         <div class="joe_dropdown__link">
-                            <a href="#" rel="nofollow">推荐</a>
+                            <a href="javascript:void(0);" rel="nofollow">推荐</a>
                             <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
                                 <path d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z" fill="var(--main)" />
                             </svg>
@@ -334,7 +334,7 @@
             </li>
             <!-- 栏目 -->
             <li>
-                <a class="link panel" href="#" rel="nofollow">
+                <a class="link panel" href="javascript:void(0);" rel="nofollow">
                     <span>栏目</span>
                     <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
                         <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
@@ -372,7 +372,7 @@
             </li>
             <!-- 页面 -->
             <li>
-                <a class="link panel" href="#" rel="nofollow">
+                <a class="link panel" href="javascript:void(0);" rel="nofollow">
                     <span>页面</span>
                     <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
                         <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
@@ -389,7 +389,7 @@
             <!-- 推荐 -->
             <?php if (sizeof($custom) > 0) : ?>
                 <li>
-                    <a class="link panel" href="#" rel="nofollow">
+                    <a class="link panel" href="javascript:void(0);" rel="nofollow">
                         <span>推荐</span>
                         <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
                             <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
