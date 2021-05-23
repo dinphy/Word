@@ -7,6 +7,18 @@ html {
 		}
 	}
 
+	@media (max-width: 1570px) {
+		.joe {
+			&_action {
+				&_item {
+					&.menu {
+						display: none !important;
+					}
+				}
+			}
+		}
+	}
+
 	@media (max-width: 1400px) {
 		.joe {
 			&_vplayer {

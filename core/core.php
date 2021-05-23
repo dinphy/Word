@@ -80,6 +80,11 @@ function themeInit($self)
             $self->setThemeFile("library/sitemap.php");
         }
     }
+
+    /* 目录树 */
+    if ($self->is('single')) {
+        $self->content = _CreateCatalog($self->content);
+    }
 }
 
 /* 增加自定义字段 */

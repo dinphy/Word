@@ -535,4 +535,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			$('.joe_motto').html(motto);
 		}
 	}
+
+	/* 目录树 */
+	{
+		if (!Joe.IS_MOBILE && $('.joe_detail').length && $('.joe_menu .tree').length) {
+			$('.joe_action_item.menu').show();
+			$('.joe_action_item.menu').on('click', function () {
+				$('.joe_menu .tree').slideToggle();
+			});
+			$('.joe_menu .tree').css('top', $('.joe_header').height() + 15);
+		} else {
+			$('.joe_action__item.menu').hide();
+		}
+	}
 });

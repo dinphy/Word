@@ -998,4 +998,14 @@ function themeConfig($form)
     );
     $JEditor->setAttribute('class', 'joe_content joe_post');
     $form->addInput($JEditor->multiMode());
+
+    $JDirectoryStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'JDirectoryStatus',
+        array('off' => '关闭（默认）', 'on' => '开启'),
+        'off',
+        '是否开启文章页和自定义页目录树（仅限PC并且分辨率大于1570像素才会显示）',
+        '介绍：开启后，文章页面和自定义页面将显示目录树（小屏幕上不会显示）'
+    );
+    $JDirectoryStatus->setAttribute('class', 'joe_content joe_post');
+    $form->addInput($JDirectoryStatus->multiMode());
 } ?>

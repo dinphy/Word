@@ -1,3 +1,74 @@
+.joe_adaption {
+	position: relative;
+}
+
+.joe_menu {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -20px;
+	transform: translateX(-100%);
+	.tree {
+		display: none;
+		position: sticky;
+		padding: 15px;
+		background: var(--background);
+		border-radius: var(--radius-wrap);
+		box-shadow: var(--box_shadow);
+		.title {
+			font-weight: 700;
+			color: var(--main);
+			margin-bottom: 15px;
+			font-size: 15px;
+			line-height: 20px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid var(--classC);
+		}
+		.contain {
+			transition: top 0.5s;
+			max-width: 100px;
+			max-height: 330px;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+			ul {
+				li {
+					ul {
+						padding-left: 1em;
+						ul {
+							padding-left: 1em;
+						}
+					}
+					a {
+						user-select: none;
+						cursor: pointer;
+						padding-left: 5px;
+						display: block;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						color: var(--main);
+						line-height: 32px;
+						&:hover {
+							color: var(--theme);
+						}
+					}
+				}
+			}
+			.toc-marker {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				path {
+					transition: all 0.35s;
+				}
+			}
+		}
+	}
+}
+
 .joe_dropdown {
 	position: relative;
 	&__link {
@@ -3130,6 +3201,12 @@
 			&.active {
 				visibility: visible;
 				transform: scale(1);
+			}
+		}
+		&.menu {
+			display: none;
+			svg {
+				margin: 8px;
 			}
 		}
 		&.mode {
