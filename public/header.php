@@ -378,12 +378,32 @@
                         <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
                     </svg>
                 </a>
-                <ul class="slides panel-body">
-                    <?php foreach ($pages->stack as $item) : ?>
-                        <li>
-                            <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                        </li>
-                    <?php endforeach; ?>
+                <ul class="slides panel-body panel-box">
+                    <li>
+                        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                        <?php if (count($pages->stack) <= $this->options->JNavMaxNum) : ?>
+                            <?php foreach ($pages->stack as $item) : ?>
+                                <a class="link <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <?php foreach (array_slice($pages->stack, 0, $this->options->JNavMaxNum) as $item) : ?>
+                                <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
+                            <?php endforeach; ?>
+                            <div class="link panel <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>">
+                                <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="javascript: viod(0);">更多</a>
+                                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
+                                    <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                                </svg>
+                            </div>
+                            <ul class="slides panel-body">
+                                <?php foreach (array_slice($pages->stack, $this->options->JNavMaxNum) as $item) : ?>
+                                    <li>
+                                        <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </li>
                 </ul>
             </li>
             <!-- 推荐 -->
