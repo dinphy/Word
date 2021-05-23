@@ -656,4 +656,29 @@ document.addEventListener('DOMContentLoaded', () => {
 			previousTop = currentTop;
 		});
 	}
+
+	/* 登录 */
+	{
+		$(".joe_header__below-sign button[type='button']").on('click', function (e) {
+			if ($(".joe_header__below-sign input[name='name']").val().trim() === '') {
+				return Qmsg.warning('请输入用户名！');
+			}
+			if ($(".joe_header__below-sign input[name='password']").val().trim() === '') {
+				return Qmsg.warning('请输入密码！');
+			}
+			$(this).html('登录中...').attr('disabled', true);
+			$('.joe_header__below-sign form').submit();
+		});
+
+		$("#loginForm button[type='button']").on('click', function (e) {
+			if ($("#loginForm input[name='name']").val().trim() === '') {
+				return Qmsg.warning('请输入昵称');
+			}
+			if ($("#loginForm input[name='password']").val().trim() === '') {
+				return Qmsg.warning('请输入密码');
+			}
+			$(this).html('登录中...').attr('disabled', true);
+			$('#loginForm').submit();
+		});
+	}
 });
