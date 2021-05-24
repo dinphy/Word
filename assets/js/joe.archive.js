@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		let likeArr = localStorage.getItem(encryption('agree')) ? JSON.parse(decrypt(localStorage.getItem(encryption('agree')))) : [];
 		likeArr.forEach(item => {
 			$('.like-' + item)
+				.addClass('active')
 				.find('.like-status')
 				.html('已赞');
 		});

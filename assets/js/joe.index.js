@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+	const encryption = str => window.btoa(unescape(encodeURIComponent(str)));
+	const decrypt = str => decodeURIComponent(escape(window.atob(str)));
+
 	/* 激活轮播图功能 */
 	{
 		if ($('.joe_index__banner .swiper-container').length !== 0) {
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 初始化首页列表功能 */
 	{
+		let likeArr = localStorage.getItem(encryption('agree')) ? JSON.parse(decrypt(localStorage.getItem(encryption('agree')))) : [];
 		const getListMode = _ => {
 			if (_.mode === 'default') {
 				return `
@@ -119,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				return `
                     <li class="joe_list__item wow chat">
                         <div class="information">
-                            <img class="avatar" src="${_.avatar}" alt="">
+                            <img class="avatar" src="${_.avatar}" alt="头像">
                             <div class="desc">
                                 <div class="author"><a href="${_.authorlink}" target="_blank" rel="noopener noreferrer">${_.name}</a></div>
                                 <div class="time">${_.date}</div>
@@ -136,9 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <div class="meta-right">
                                 <div class="like">
-                                    <a class="like like-${_.cid}" data-cid="${_.cid}" href="javascript:void (0)">
+                                    <a class="like like-handle ${likeArr.includes(_.cid) ? 'active' : ''}" data-cid="${_.cid}" href="javascript:void (0)">
                                         <i class="fa fa-heart"></i>
-                                        (<span class="like-num">${_.agree}</span>)<span class="like-status">点赞</span>
+                                        (<span class="like-num">${_.agree}</span>)<span class="like-status">${likeArr.includes(_.cid) ? '已赞' : '点赞'}</span>
                                     </a>
                                 </div>
                             </div>
@@ -223,6 +227,36 @@ document.addEventListener('DOMContentLoaded', () => {
 			const queryElement = `.joe_index__list .joe_list .joe_list__item:nth-child(${length})`;
 			const offset = $(queryElement).offset().top - $('.joe_header').height();
 			window.scrollTo({ top: offset - 15, behavior: 'smooth' });
+		});
+
+		/* 激活文章列表点赞功能 */
+		$('.joe_list').on('click', '.like-handle', function () {
+			const cid = $(this).attr('data-cid');
+			likeArr = localStorage.getItem(encryption('agree')) ? JSON.parse(decrypt(localStorage.getItem(encryption('agree')))) : [];
+			let flag = likeArr.includes(cid);
+			$.ajax({
+				url: Joe.BASE_API,
+				type: 'POST',
+				dataType: 'json',
+				data: { routeType: 'handle_agree', cid, type: flag ? 'disagree' : 'agree' },
+				success: res => {
+					if (res.code !== 1) return;
+					$(this).find('.like-num').html(res.data.agree);
+					if (flag) {
+						const index = likeArr.findIndex(_ => _ === cid);
+						likeArr.splice(index, 1);
+						$(this).removeClass('active');
+						$(this).find('.like-status').html('点赞');
+					} else {
+						likeArr.push(cid);
+						$(this).addClass('active');
+						$(this).find('.like-status').html('已赞');
+					}
+					const name = encryption('agree');
+					const val = encryption(JSON.stringify(likeArr));
+					localStorage.setItem(name, val);
+				}
+			});
 		});
 	}
 

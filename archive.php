@@ -5,7 +5,7 @@
     <?php $this->need('public/include.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.archive.min.css'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js?v=20210524'); ?>"></script>
 </head>
 
 <body>
