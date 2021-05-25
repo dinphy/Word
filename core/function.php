@@ -2,7 +2,7 @@
 /* 获取主题当前版本号 */
 function _getVersion()
 {
-	return "7.1.2";
+	return "7.1.4";
 };
 
 /* 判断是否是手机 */
@@ -162,18 +162,17 @@ function _getAvatarByMail($mail, $type = true)
 	$md5MailLower = md5($mailLower);
 	$qqMail = str_replace('@qq.com', '', $mailLower);
 	if (strstr($mailLower, "qq.com") && is_numeric($qqMail) && strlen($qqMail) < 11 && strlen($qqMail) > 4) {
-		if($type) {
+		if ($type) {
 			echo 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $qqMail . '&s=100';
-		}else {
+		} else {
 			return 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $qqMail . '&s=100';
 		}
 	} else {
-		if($type) {
+		if ($type) {
 			echo $gravatarsUrl . $md5MailLower . '?d=mm';
-		}else {
+		} else {
 			return $gravatarsUrl . $md5MailLower . '?d=mm';
 		}
-		
 	}
 };
 
