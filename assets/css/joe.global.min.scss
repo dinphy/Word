@@ -95,7 +95,7 @@
 			}
 			.form-foot {
 				display: flex;
-				justify-content: space-between;
+				justify-content: flex-end;
 				margin-top: 15px;
 				button[type='submit'] {
 					color: var(--background);
