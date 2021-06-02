@@ -2,10 +2,11 @@ import { EditorView, keymap, highlightActiveLine } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
 import { bracketMatching } from '@codemirror/matchbrackets';
 import { closeBrackets, closeBracketsKeymap } from '@codemirror/closebrackets';
-import { defaultKeymap, defaultTabBinding } from '@codemirror/commands';
+import { defaultKeymap, indentLess, indentMore } from '@codemirror/commands';
 import { history, historyKeymap } from '@codemirror/history';
-import { classHighlightStyle } from '@codemirror/highlight';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
+import { languages } from '@codemirror/language-data';
+import theme from './_theme';
 import tools from './_tools';
 import JoeAction from './_actions';
 import createPreviewHtml from './_create';
@@ -13,7 +14,18 @@ import createPreviewHtml from './_create';
 class Joe extends JoeAction {
 	constructor() {
 		super();
-		this.plugins = [classHighlightStyle, history(), bracketMatching(), closeBrackets(), highlightActiveLine()];
+		this.plugins = [theme(), history(), bracketMatching(), closeBrackets(), highlightActiveLine()];
+		this.keymaps = [
+			{
+				key: 'Tab',
+				run: ({ state, dispatch }) => {
+					if (state.selection.ranges.some(r => !r.empty)) return indentMore({ state, dispatch });
+					dispatch(state.update(state.replaceSelection('  '), { scrollIntoView: true }));
+					return true;
+				},
+				shift: indentLess
+			}
+		];
 		this._isPasting = false;
 		this.init_ViewPort();
 		this.init_Editor();
@@ -51,15 +63,16 @@ class Joe extends JoeAction {
 				extensions: [
 					...this.plugins,
 					markdown({
-						base: markdownLanguage
+						base: markdownLanguage,
+						codeLanguages: languages
 					}),
-					keymap.of([defaultTabBinding, ...closeBracketsKeymap, ...defaultKeymap, ...historyKeymap]),
+					keymap.of([...this.keymaps, ...closeBracketsKeymap, ...defaultKeymap, ...historyKeymap]),
 					EditorView.updateListener.of(update => {
 						if (!update.docChanged) return;
 						if (_temp !== update.state.doc.toString()) {
 							_temp = update.state.doc.toString();
 							clearTimeout(_debounce);
-							_debounce = setTimeout(createPreviewHtml.bind(null, update.state.doc.toString()), 150);
+							_debounce = setTimeout(createPreviewHtml.bind(null, update.state.doc.toString()), 200);
 						}
 					}),
 					EditorView.domEventHandlers({
@@ -131,8 +144,7 @@ class Joe extends JoeAction {
 							}
 						}
 					})
-				],
-				tabSize: 4
+				]
 			})
 		});
 		$('.cm-mainer').prepend(cm.dom);
