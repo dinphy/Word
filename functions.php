@@ -759,9 +759,9 @@ function themeConfig($form)
         'Joe的博客 || https://78.al || https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
         '友情链接（非必填）',
         '介绍：用于填写友情链接 <br />
-         注意：您需要先增加友联链接页面（新增独立页面-右侧模板选择友联），该项才会生效 <br />
+         注意：您需要先增加友链链接页面（新增独立页面-右侧模板选择友链），该项才会生效 <br />
          格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />
-         其他：一行一个，一行代表一个友联'
+         其他：一行一个，一行代表一个友链'
     );
     $JFriends->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JFriends);
@@ -1008,4 +1008,54 @@ function themeConfig($form)
     );
     $JDirectoryStatus->setAttribute('class', 'joe_content joe_post');
     $form->addInput($JDirectoryStatus->multiMode());
+    
+    $JPrismTheme = new Typecho_Widget_Helper_Form_Element_Select(
+        'JPrismTheme',
+        array(
+            '//cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.min.css' => 'prism（默认）',
+            '//cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-dark.min.css' => 'prism-dark',
+            '//cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.min.css' => 'prism-okaidia',
+            '//cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-solarizedlight.min.css' => 'prism-solarizedlight',
+            '//cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-tomorrow.min.css' => 'prism-tomorrow',
+            '//cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-twilight.min.css' => 'prism-twilight',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-a11y-dark.min.css' => 'prism-a11y-dark',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-atom-dark.min.css' => 'prism-atom-dark',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-base16-ateliersulphurpool.light.min.css' => 'prism-base16-ateliersulphurpool.light',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-cb.min.css' => 'prism-cb',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-coldark-cold.min.css' => 'prism-coldark-cold',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-coldark-dark.min.css' => 'prism-coldark-dark',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-darcula.min.css' => 'prism-darcula',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-dracula.min.css' => 'prism-dracula',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-duotone-dark.min.css' => 'prism-duotone-dark',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-duotone-earth.min.css' => 'prism-duotone-earth',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-duotone-forest.min.css' => 'prism-duotone-forest',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-duotone-light.min.css' => 'prism-duotone-light',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-duotone-sea.min.css' => 'prism-duotone-sea',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-duotone-space.min.css' => 'prism-duotone-space',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-ghcolors.min.css' => 'prism-ghcolors',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-gruvbox-dark.min.css' => 'prism-gruvbox-dark',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-hopscotch.min.css' => 'prism-hopscotch',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-lucario.min.css' => 'prism-lucario',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-material-dark.min.css' => 'prism-material-dark',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-material-light.min.css' => 'prism-material-light',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-material-oceanic.min.css' => 'prism-material-oceanic',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-night-owl.min.css' => 'prism-night-owl',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-nord.min.css' => 'prism-nord',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-pojoaque.min.css' => 'prism-pojoaque',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-shades-of-purple.min.css' => 'prism-shades-of-purple',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-synthwave84.min.css' => 'prism-synthwave84',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-vs.min.css' => 'prism-vs',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-vsc-dark-plus.min.css' => 'prism-vsc-dark-plus',
+            '//cdn.jsdelivr.net/npm/prism-themes@1.7.0/themes/prism-xonokai.min.css' => 'prism-xonokai',
+            '//cdn.jsdelivr.net/npm/prism-theme-one-light-dark@1.0.4/prism-onelight.min.css' => 'prism-onelight',
+            '//cdn.jsdelivr.net/npm/prism-theme-one-light-dark@1.0.4/prism-onedark.min.css' => 'prism-onedark',
+            '//cdn.jsdelivr.net/npm/prism-theme-one-dark@1.0.0/prism-onedark.min.css' => 'prism-onedark2',
+        ),
+        'on',
+        '选择一款您喜欢的代码高亮样式',
+        '介绍：用于修改代码块的高亮风格 <br>
+         其他：如果您有其他样式，可通过源代码修改此项，引入您的自定义样式链接'
+    );
+    $JPrismTheme->setAttribute('class', 'joe_content joe_post');
+    $form->addInput($JPrismTheme->multiMode());
 } ?>
