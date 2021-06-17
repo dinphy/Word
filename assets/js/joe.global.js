@@ -40,13 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		$(document).on('click', function () {
 			$('.joe_header__above-search .result').removeClass('active');
 		});
-		const handle = () => {
-			if ($('.joe_header__above-search .result').hasClass('active')) $('.joe_header__above-search .result').removeClass('active');
-		};
-		$(document).on('scroll', () => {
-			if (window.requestAnimationFrame) window.requestAnimationFrame(handle);
-			else handle();
-		});
 	}
 
 	/* 激活全局下拉框功能 */
@@ -74,11 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 激活全局返回顶部功能 */
 	{
+		let _debounce = null;
 		const handleScroll = () => ((document.documentElement.scrollTop || document.body.scrollTop) > 300 ? $('.joe_action_item.scroll').addClass('active') : $('.joe_action_item.scroll').removeClass('active'));
 		handleScroll();
 		$(document).on('scroll', () => {
-			if (window.requestAnimationFrame) window.requestAnimationFrame(handleScroll);
-			else handleScroll();
+			clearTimeout(_debounce);
+			_debounce = setTimeout(handleScroll, 80);
 		});
 		$('.joe_action_item.scroll').on('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 	}
@@ -187,11 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	/* 设置侧边栏最后一个元素的高度 */
-	{
-		$('.joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
-	}
-
 	/* 侧边栏舔狗日记 */
 	{
 		if ($('.joe_aside__item.flatterer').length) {
@@ -221,24 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			});
 		}
-	}
-
-	/* 计算页面滚动多少 */
-	{
-		const calcProgress = () => {
-			let scrollTop = $(window).scrollTop();
-			let documentHeight = $(document).height();
-			let windowHeight = $(window).height();
-			let progress = parseInt((scrollTop / (documentHeight - windowHeight)) * 100);
-			if (progress <= 0) progress = 0;
-			if (progress >= 100) progress = 100;
-			$('.joe_header__below-progress').css('width', progress + '%');
-		};
-		calcProgress();
-		$(document).on('scroll', () => {
-			if (window.requestAnimationFrame) window.requestAnimationFrame(calcProgress);
-			else calcProgress();
-		});
 	}
 
 	/* 评论框点击切换画图模式和文本模式 */
@@ -551,6 +522,37 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	/* 头部滚动 */
+	{
+		if (!window.Joe.IS_MOBILE) {
+			let flag = true;
+			const handleHeader = diffY => {
+				if (window.pageYOffset >= $('.joe_header').height() && diffY <= 0) {
+					if (flag) return;
+					$('.joe_header').addClass('active');
+					$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() - 60 + 15);
+					flag = true;
+				} else {
+					if (!flag) return;
+					$('.joe_header').removeClass('active');
+					$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
+					flag = false;
+				}
+			};
+			let Y = window.pageYOffset;
+			handleHeader(Y);
+			let _last = Date.now();
+			document.addEventListener('scroll', () => {
+				let _now = Date.now();
+				if (_now - _last > 15) {
+					handleHeader(Y - window.pageYOffset);
+					Y = window.pageYOffset;
+				}
+				_last = _now;
+			});
+		}
+	}
+
 	/* 目录树 */
 	{
 		if (!Joe.IS_MOBILE && $('.joe_detail').length && $('.joe_menu .tree').length) {
@@ -607,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 	}
-	
+
 	/* 动态点赞 */
 	{
 		$('.support').on('click', function () {
@@ -646,29 +648,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				$('.joe_aside').css('width', 0);
 				$('.joe_aside').css('overflow', 'hidden');
 			}
-		});
-	}
-
-	/* 滚动时导航栏显示隐藏，文章页为标题 */
-	{
-		let previousTop = 0;
-		$(window).scroll(function () {
-			let currentTop = $(window).scrollTop();
-			if (currentTop < previousTop) {
-				$('.joe_header').css({
-					top: '0px',
-					transition: '0.6s'
-				});
-				if ($('.joe_post').length > 0) {
-					$('.joe_header__below').removeClass('active');
-				}
-			} else {
-				$('.joe_header').css('top', '-60px');
-				if ($('.joe_post').length > 0) {
-					$('.joe_header__below').addClass('active');
-				}
-			}
-			previousTop = currentTop;
 		});
 	}
 

@@ -1,4 +1,4 @@
-<header class="joe_header">
+<header class="joe_header <?php echo $this->is('post') ? 'current' : '' ?>">
 
     <div class="joe_header__above">
         <div class="joe_container">
@@ -160,6 +160,9 @@
 
     <div class="joe_header__below">
         <div class="joe_container">
+            <?php if ($this->is('post')) :  ?>
+                <div class="joe_header__below-title"><?php $this->title() ?></div>
+            <?php endif; ?>
             <nav class="joe_header__below-class">
                 <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
                 <?php while ($category->next()) : ?>
@@ -186,10 +189,6 @@
                     <?php endif; ?>
                 <?php endwhile; ?>
             </nav>
-
-            <div class="joe_header__below-posttitle">
-                <?php if ($this->is('post')) : ?><?php $this->title(); ?><?php endif; ?>
-            </div>
 
             <div class="joe_header__below-sign">
                 <div class="joe_dropdown" trigger="click" placement="40px">
@@ -239,7 +238,6 @@
                 </div>
             </div>
         </div>
-        <div class="joe_header__below-progress"></div>
     </div>
 
     <div class="joe_header__searchout">
