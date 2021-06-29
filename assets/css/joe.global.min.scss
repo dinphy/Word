@@ -1807,12 +1807,19 @@
 					.author {
 						margin-bottom: 5px;
 						a {
-							color: var(--theme);
+							color: var(--main);
+							font-weight: 600;
 						}
 					}
 					.time {
 						font-size: 12px;
 						color: var(--minor);
+						.link {
+							color: var(--minor);
+							&:hover {
+								color: var(--theme);
+							}
+						}
 					}
 				}
 			}
@@ -1840,7 +1847,7 @@
 					}
 				}
 				.title {
-					color: var(--theme);
+					color: #eb7350;
 					&:hover {
 						opacity: 0.85;
 					}

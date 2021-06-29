@@ -66,7 +66,6 @@ function _getPost($self)
             "lazyload" => _getLazyload(false),
             "type" => "normal",
             "cid" => $item->cid,
-            "date" => date('Y年m月d日 H:i:s A', $item->created),
             "name" => $item->author->screenName,
             "authorlink" => $item->author->permalink,
             "avatar" => _getAvatarByMail($item->author->mail, false)
