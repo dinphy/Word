@@ -293,7 +293,6 @@
 		&.current {
 			.joe_header__below-title {
 				display: block;
-				
 			}
 			.joe_header__below-class {
 				display: none;
@@ -1631,7 +1630,7 @@
 					&:hover {
 						color: var(--routine);
 					}
-					&.active{
+					&.active {
 						color: var(--theme);
 					}
 				}
@@ -3433,6 +3432,7 @@
 		}
 		a {
 			color: var(--minor);
+			margin: 0 5px;
 			transition: all 0.35s;
 			&:hover {
 				color: var(--theme);

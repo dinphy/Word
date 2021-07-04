@@ -753,11 +753,23 @@ function themeConfig($form)
     $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Notice);
 
+    $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JFriendsIndex',
+        NULL,
+        '青山小站 || https://blog.yanqingshan.com/ || https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
+        '首页链接（非必填）',
+        '介绍：用于填写首页友情链接 <br />
+         格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />
+         其他：一行一个，一行代表一个友链'
+    );
+    $JFriendsIndex->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JFriendsIndex);
+    
     $JFriends = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriends',
         NULL,
         'Joe的博客 || https://78.al || https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
-        '友情链接（非必填）',
+        '内页链接（非必填）',
         '介绍：用于填写友情链接 <br />
          注意：您需要先增加友链链接页面（新增独立页面-右侧模板选择友链），该项才会生效 <br />
          格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />

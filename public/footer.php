@@ -1,4 +1,37 @@
 <footer class="joe_footer">
+    <div class="joe_container link">
+        <?php if ($this->is('index')) : ?>
+            <div class="item">
+                <strong>友情链接：</strong>
+                <?php
+                $friends = [];
+                $friends_text = $this->options->JFriendsIndex;
+                if ($friends_text) {
+                    $friends_arr = explode("\r\n", $friends_text);
+                    if (count($friends_arr) > 0) {
+                        for ($i = 0; $i < count($friends_arr); $i++) {
+                            $name = explode("||", $friends_arr[$i])[0];
+                            $url = explode("||", $friends_arr[$i])[1];
+                            $avatar = explode("||", $friends_arr[$i])[2];
+                            $desc = explode("||", $friends_arr[$i])[3];
+                            $friends[] = array("name" => trim($name), "url" => trim($url), "avatar" => trim($avatar), "desc" => trim($desc));
+                        };
+                    }
+                }
+                ?>
+                <?php if (sizeof($friends) > 0) : ?>
+                    <?php foreach ($friends as $item) : ?>
+                        <a class="contain" href="<?php echo $item['url']; ?>" target="_blank" rel="noopener noreferrer">
+                            <span class="title"><?php echo $item['name']; ?></span>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <a class="contain" href="<?php $this->options->siteUrl(); ?>links.html" target="_blank" rel="noopener noreferrer">
+                    <span class="title"> 更多&nbsp;&gt;</span>
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
     <div class="joe_container">
         <div class="item">
             <?php $this->options->JFooter_Left() ?>
