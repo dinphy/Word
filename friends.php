@@ -34,6 +34,7 @@
                     <?php $this->need('public/article.php'); ?>
 
                     <?php
+                    echo '<span class="joe_mtitle"><span class="joe_mtitle__text">首页友链</span></span>';
                     $friends_index = [];
                     $friends_index_color = [
                         '#F8D800',
@@ -106,7 +107,7 @@
                     <?php endif; ?>
 
                     <?php
-                    echo "内页友链";
+                    echo '<span class="joe_mtitle"><span class="joe_mtitle__text">内页友链</span></span>';
                     $friends = [];
                     $friends_color = [
                         '#F8D800',
