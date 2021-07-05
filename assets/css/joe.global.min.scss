@@ -3486,24 +3486,24 @@
 .joe_action {
 	position: fixed;
 	bottom: 90px;
-	right: 30px;
+	right: 15px;
 	z-index: 333;
 	&_item {
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
+		width: 35px;
+		height: 35px;
 		background: var(--background);
 		border-radius: 50%;
 		cursor: pointer;
-		margin-top: 15px;
+		margin-top: 10px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 20px rgba(0, 0, 0, 0.2);
 		svg {
 			position: absolute;
-			width: 25px;
-			height: 25px;
+			width: 20px;
+			height: 20px;
 			fill: var(--theme);
 		}
 		&.scroll {
