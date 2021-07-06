@@ -26,6 +26,32 @@
                 <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
                     <?php $this->need('public/batten.php'); ?>
                     <div class="joe_detail__leaving">
+                        <ul class="joe_detail__leaving-ranking">
+                            <?php
+                            $period = time() - 2592000 * 365;
+                            $counts = Typecho_Db::get()->fetchAll(
+                                Typecho_Db::get()
+                                    ->select('COUNT(author) AS cnt', 'author', 'max(url) url', 'max(authorId) authorId', 'max(mail) mail')
+                                    ->from('table.comments')
+                                    ->where('created > ?', $period)
+                                    ->where('status = ?', 'approved')
+                                    ->where('type = ?', 'comment')
+                                    ->group('author')
+                                    ->order('cnt', Typecho_Db::SORT_DESC)
+                            );
+                            foreach ($counts as $count) {
+                                echo '
+                                        <li class="item">
+                                            <div class="user">
+                                                <img src="' . _getAvatarByMail($count['mail'], false) . '">
+                                                <a target="_blank" href=' . $count[' url'] . '>' . $count['author'] . '</a>
+                                                <span> ' . $count['cnt'] . ' 评论 </span>
+                                            </div>
+                                        </li>
+                                    ';
+                            }
+                            ?>
+                        </ul>
                         <?php $this->comments()->to($comments); ?>
                         <?php if ($comments->have()) : ?>
                             <ul class="joe_detail__leaving-list">

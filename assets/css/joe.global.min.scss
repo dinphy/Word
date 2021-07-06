@@ -3359,6 +3359,46 @@
 			user-select: none;
 			color: var(--minor);
 		}
+		&-ranking {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: 10px;
+			padding: 10px;
+			.item {
+				height: 180px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-color: var(--background);
+				box-shadow: var(--box-shadow);
+				border-radius: 8px;
+				border: 1px solid var(--classA);
+				.user {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					color: var(--minor);
+					img {
+						border-radius: 50%;
+						width: 80px;
+						height: 80px;
+					}
+					a {
+						padding: 15px;
+						color: var(--minor);
+						font-weight: 600;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+						&:hover {
+							color: var(--theme);
+						}
+					}
+				}
+			}
+		}
 		&-list {
 			position: relative;
 			height: 500px;

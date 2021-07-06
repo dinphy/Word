@@ -153,7 +153,6 @@ function _endCountTime($precision = 3)
 	echo $timeTotal < 1 ? $timeTotal * 1000 . 'ms' : $timeTotal . 's';
 }
 
-
 /* 通过邮箱生成头像地址 */
 function _getAvatarByMail($mail, $type = true)
 {
