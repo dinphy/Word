@@ -3361,19 +3361,19 @@
 		}
 		&-ranking {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
 			gap: 10px;
-			padding: 10px;
+			margin-bottom: 15px;
 			.item {
-				height: 180px;
+				height: 125px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
 				background-color: var(--background);
 				box-shadow: var(--box-shadow);
-				border-radius: 8px;
-				border: 1px solid var(--classA);
+				border-radius: 6px;
+				border: 1px solid var(--classB);
 				.user {
 					display: flex;
 					flex-direction: column;
@@ -3381,17 +3381,22 @@
 					justify-content: center;
 					color: var(--minor);
 					img {
+						width: 65px;
+						height: 65px;
 						border-radius: 50%;
-						width: 80px;
-						height: 80px;
+						overflow: hidden;
+						margin-bottom: 6px;
+						object-fit: cover;
+						transition: transform 0.75s;
+						background: var(--background);
+						padding: 5px;
+						&:hover {
+							transform: rotate(360deg);
+						}
 					}
 					a {
-						padding: 15px;
 						color: var(--minor);
 						font-weight: 600;
-						text-overflow: ellipsis;
-						overflow: hidden;
-						white-space: nowrap;
 						&:hover {
 							color: var(--theme);
 						}

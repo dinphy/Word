@@ -965,7 +965,63 @@ function themeConfig($form)
     $JCommentMailPassword->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JCommentMailPassword->multiMode());
 
+    $JReader_Ranking = new Typecho_Widget_Helper_Form_Element_Select(
+        'JReader_Ranking',
+        array('off' => '关闭（默认）', 'on' => '开启'),
+        'off',
+        '是否开启留言读者排行，开启后将在留言页面呈现',
+        '介绍：显示评论相关用户'
+    );
+    $JReader_Ranking->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JReader_Ranking);
 
+    $JReader_Ranking_Time = new Typecho_Widget_Helper_Form_Element_Select(
+        'JReader_Ranking_Time',
+        array(
+            '180' => '最近180天（默认）',
+            '30' => '最近30天',
+            '60' => '最近60天',
+            '90' => '最近90天',
+            '120' => '最近120天',
+            '150' => '最近150天',
+            '360' => '最近360天'
+        ),
+        '180',
+        '留言读者排行时间显示范围（默认为 180 天）'
+    );
+    $JReader_Ranking_Time->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JReader_Ranking_Time->multiMode());
+
+    $JReader_Ranking_Mail = new Typecho_Widget_Helper_Form_Element_Text(
+        'JReader_Ranking_Mail',
+        NULL,
+        NULL,
+        '读者排行，排除不上榜的邮箱',
+        '例如：2027821710@qq.com'
+    );
+    $JReader_Ranking_Mail->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JReader_Ranking_Mail->multiMode());
+
+    $JReader_Ranking_Limit = new Typecho_Widget_Helper_Form_Element_Select(
+        'JReader_Ranking_Limit',
+        array(
+            '30' => '最近 30 个（默认）',
+            '10' => '最近 10 个',
+            '20' => '最近 20 个',
+            '40' => '最近 40 个',
+            '50' => '最近 50 个',
+            '100' => '最近 100 个',
+            '200' => '最近 200 个',
+            '300' => '最近 300 个',
+            '400' => '最近 400 个',
+            '500' => '最近 500 个'
+        ),
+        '30',
+        '最近读者个数显示（默认为 30 个）'
+    );
+    $JReader_Ranking_Limit->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JReader_Ranking_Limit->multiMode());
+    
     $JBaiduToken = new Typecho_Widget_Helper_Form_Element_Text(
         'JBaiduToken',
         NULL,
