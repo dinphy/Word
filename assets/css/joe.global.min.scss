@@ -3397,6 +3397,11 @@
 					a {
 						color: var(--minor);
 						font-weight: 600;
+						width: 90px;
+						text-align: center;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
 						&:hover {
 							color: var(--theme);
 						}
