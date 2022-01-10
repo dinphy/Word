@@ -82,6 +82,7 @@
             </a>
             <nav class="joe_header__above-nav">
                 <a class="item <?php echo $this->is('index') ? 'active' : '' ?>" href="<?php $this->options->siteUrl(); ?>" title="首页">首页</a>
+                <a class="item ernav <?php echo $this->is('category') ? 'active' : '' ?>" href="javascript:void(0);" title="分类">分类</a>
                 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                 <?php if (count($pages->stack) <= $this->options->JNavMaxNum) : ?>
                     <?php foreach ($pages->stack as $item) : ?>
