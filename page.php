@@ -10,12 +10,13 @@
     <?php endif; ?>
     <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typecho-joe-next@6.2.4/plugin/prism/prism.min.js"></script>
-    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.0'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
 </head>
 
 <body>
     <div id="Joe">
         <?php $this->need('public/header.php'); ?>
+        <?php $this->need('public/banner.php'); ?>
         <div class="joe_container">
             <div class="joe_main">
                 <section class="joe_adaption">
@@ -26,7 +27,6 @@
                         </div>
                     <?php endif; ?>
                     <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
-                        <?php $this->need('public/batten.php'); ?>
                         <?php $this->need('public/article.php'); ?>
                         <?php $this->need('public/handle.php'); ?>
                         <?php $this->need('public/copyright.php'); ?>

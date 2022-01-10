@@ -4,7 +4,7 @@
 <head>
     <?php $this->need('public/include.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.archive.min.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.archive.min.css?v=7.3.6'); ?>">
     <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js?v=20210524'); ?>"></script>
 </head>
 
@@ -19,11 +19,11 @@
                             <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5zM16 8L2 22M17.5 15H9" />
                         </svg>
                         <div class="joe_archive__title-title">
-                            <span>搜索到</span>
+                            <span>找到</span>
                             <span class="muted"><?php echo $this->getTotal(); ?></span>
                             <span>篇与</span>
-                            <span class="muted ellipsis"><?php echo $this->_keywords; ?></span>
-                            <span>的结果</span>
+                            <span class="muted ellipsis"><?php echo $this->keywords; ?></span>
+                            <span>相关</span>
                         </div>
                     </div>
 
@@ -113,7 +113,7 @@
                                         <div class="information">
                                             <img class="avatar" src="<?php _getAvatarByMail($this->author->mail) ?>" alt="<?php $this->author(); ?>" alt="">
                                             <div class="desc">
-                                                <div class="author"><a href="<?php $this->author->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->author(); ?></a></div>
+                                                <div class="author"><a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->title(); ?></a></div>
                                                 <div class="time"><?php $this->dateWord(); ?> 来自
                                                     <?php if (sizeof($this->categories) > 0) : ?>
                                                         <?php foreach (array_slice($this->categories, 0, 5) as $key => $item) : ?>
@@ -123,21 +123,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="content">
-                                            <div class="abstract"><a class="title" href="<?php $this->permalink() ?>" target="_blank" rel="noopener noreferrer">#<?php $this->title() ?>#</a> <?php _getAbstract($this) ?></div>
-                                        </div>
+                                        <a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer">
+                                            <div class="content">
+                                                <div class="abstract"><?php _getAbstract($this) ?></div>
+                                            </div>
+                                        </a>
                                         <div class="meta">
                                             <div class="meta-left">
-                                                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-                                                    <path d="M163.2 255.786667c0-15.914667 12.885333-28.8 28.8-28.8H384a156.8 156.8 0 0 1 156.8 156.8v448a28.8 28.8 0 1 1-57.6 0c0-37.12-30.08-67.2-67.2-67.2H192a28.8 28.8 0 0 1-28.8-28.8V255.786667z m320 470.784V383.786667A99.2 99.2 0 0 0 384 284.586667H220.8v422.4H416c24.746667 0 47.786667 7.168 67.2 19.626666z" fill="#8a8a8a"></path>
-                                                    <path d="M483.2 383.786667A156.8 156.8 0 0 1 640 226.986667h192c15.914667 0 28.8 12.885333 28.8 28.8v480a28.8 28.8 0 0 1-28.8 28.8h-224c-37.12 0-67.2 30.08-67.2 67.2a28.8 28.8 0 1 1-57.6 0v-448z m57.6 342.784c19.413333-12.373333 42.453333-19.626667 67.2-19.626667h195.2v-422.4H640a99.2 99.2 0 0 0-99.2 99.242667v342.784z" fill="#8a8a8a"></path>
-                                                    <path d="M282.197333 425.173333a25.6 25.6 0 0 1 25.6-25.6h88.448a25.6 25.6 0 0 1 0 51.2H307.797333a25.6 25.6 0 0 1-25.6-25.6zM282.197333 575.530667a25.6 25.6 0 0 1 25.6-25.6h88.448a25.6 25.6 0 1 1 0 51.2H307.797333a25.6 25.6 0 0 1-25.6-25.6zM611.285333 425.173333a25.6 25.6 0 0 1 25.6-25.6H725.333333a25.6 25.6 0 0 1 0 51.2h-88.448a25.6 25.6 0 0 1-25.6-25.6zM611.285333 575.530667a25.6 25.6 0 0 1 25.6-25.6H725.333333a25.6 25.6 0 0 1 0 51.2h-88.448a25.6 25.6 0 0 1-25.6-25.6z" fill="#8a8a8a"></path>
-                                                </svg>
-                                                浏览 <?php _getViews($this) ?> 次
+                                                <ul class="items">
+                                                    <li><?php _getViews($this) ?> 阅读</li>
+                                                    <li><?php $this->commentsNum('%d'); ?> 评论</li>
+                                                </ul>
                                             </div>
                                             <div class="meta-right">
                                                 <a class="like like-<?php echo $this->cid; ?>" data-cid="<?php echo $this->cid; ?>" href="javascript:void (0)">
-                                                    <i class="fa fa-heart"></i>
+                                                    <i class="fa fa-thumbs-up"></i>
                                                     (<span class="like-num"><?php _getAgree($this) ?></span>)<span class="like-status">点赞</span>
                                                 </a>
                                             </div>

@@ -21,10 +21,10 @@
 <body>
     <div id="Joe">
         <?php $this->need('public/header.php'); ?>
+        <?php $this->need('public/banner.php'); ?>
         <div class="joe_container">
             <div class="joe_main">
                 <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
-                    <?php $this->need('public/batten.php'); ?>
                     <div class="joe_detail__leaving">
                         <?php if ($this->options->JReader_Ranking === 'on') : ?>
                             <ul class="joe_detail__leaving-ranking">

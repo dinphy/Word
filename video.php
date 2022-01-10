@@ -52,7 +52,7 @@
                     <ul class="joe_video__pagination"></ul>
                 <?php endif; ?>
             </div>
-            <?php $this->need('public/aside.php'); ?>
+            <!--<?php $this->need('public/aside.php'); ?>-->
         </div>
         <?php $this->need('public/footer.php'); ?>
     </div>

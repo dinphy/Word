@@ -1,12 +1,11 @@
 /* 首页样式 */
 .joe_index {
-	border-radius: var(--radius-wrap);
-	padding: 0 15px;
-	background: var(--background);
-	box-shadow: var(--box-shadow);
 	&__banner {
-		padding-top: 15px;
 		display: flex;
+		padding: 15px;
+		background: var(--background);
+		box-shadow: var(--box-shadow);
+		border-radius: var(--radius-wrap);
 		&-recommend {
 			width: 270px;
 			margin-left: 15px;
@@ -82,7 +81,11 @@
 		}
 	}
 	&__hot {
-		padding-top: 15px;
+		padding: 15px;
+		margin: 15px 0;
+		background: var(--background);
+		box-shadow: var(--box-shadow);
+		border-radius: var(--radius-wrap);
 		&-list {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
@@ -143,7 +146,10 @@
 		}
 	}
 	&__ad {
-		padding-top: 15px;
+		padding: 15px;
+		background: var(--background);
+		box-shadow: var(--box-shadow);
+		border-radius: var(--radius-wrap);
 		&-link {
 			display: block;
 			position: relative;
@@ -175,6 +181,11 @@
 		display: flex;
 		align-items: center;
 		border-bottom: 1px solid var(--classC);
+		padding: 0 15px;
+		background: var(--background);
+		box-shadow: var(--box-shadow);
+		border-top-left-radius: var(--radius-wrap);
+		border-top-right-radius: var(--radius-wrap);
 		&-title {
 			position: relative;
 			display: flex;

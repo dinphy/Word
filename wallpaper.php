@@ -32,7 +32,7 @@
                 <div class="joe_wallpaper__list"></div>
                 <ul class="joe_wallpaper__pagination"></ul>
             </div>
-            <?php $this->need('public/aside.php'); ?>
+            <!--<?php $this->need('public/aside.php'); ?>-->
         </div>
         <?php $this->need('public/footer.php'); ?>
     </div>

@@ -125,27 +125,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="information">
                             <img class="avatar" src="${_.avatar}" alt="头像">
                             <div class="desc">
-                                <div class="author"><a href="${_.authorlink}" target="_blank" rel="noopener noreferrer">${_.name}</a></div>
+                                <div class="author"><a href="${_.permalink}" target="_blank" rel="noopener noreferrer">${_.title}</a></div>
                                 <div class="time">${_.created} 来自 <a class="link" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a></div>
                             </div>
                         </div>
-                        <div class="content">
-                            <div class="abstract">
-                                <a class="title" href="${_.permalink}" target="_blank" rel="noopener noreferrer">#${_.title}#</a>
-                                ${_.abstract}
+                        <a href="${_.permalink}" target="_blank" rel="noopener noreferrer">
+                            <div class="content">
+                                <div class="abstract">
+                                    ${_.abstract}
+                                </div>
                             </div>
-                        </div>
+                        </a>
                         <div class="meta">
                             <div class="meta-left">
-                                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-                                    <path d="M511.587429 273.946817C276.42224 273.946817 155.951652 511.587429 155.951652 511.587429s90.765512 237.640612 356.460919 237.640613c240.116035 0 356.460919-236.815471 356.460918-236.815471S750.878324 273.946817 511.587429 273.946817z m0.825142 386.991136c-85.814666 0-148.525383-65.18614-148.525383-148.525382s61.885576-148.525383 148.525383-148.525383 148.525383 65.18614 148.525382 148.525383-62.710717 148.525383-148.525382 148.525382z m0-238.465753c-49.508461 0-89.11523 41.257051-89.11523 89.115229 0 47.858179 39.606769 89.11523 89.11523 89.11523 49.508461 0 89.11523-41.257051 89.115229-89.11523 0-47.033038-39.606769-89.11523-89.115229-89.115229z" fill="#999999"></path>
-                                </svg>
-                                浏览 ${_.views} 次
+                                <ul class="items">
+                                    <li>${_.views} 阅读</li>
+                                    <li>${_.commentsNum} 评论</li>
+                                </ul>
                             </div>
                             <div class="meta-right">
                                 <div class="like">
                                     <a class="like like-handle ${likeArr.includes(_.cid) ? 'active' : ''}" data-cid="${_.cid}" href="javascript:void (0)">
-                                        <i class="fa fa-heart"></i>
+                                        <i class="fa fa-thumbs-up"></i>
                                         (<span class="like-num">${_.agree}</span>)<span class="like-status">${likeArr.includes(_.cid) ? '已赞' : '点赞'}</span>
                                     </a>
                                 </div>

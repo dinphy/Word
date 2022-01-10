@@ -24,6 +24,7 @@
 <body>
     <div id="Joe">
         <?php $this->need('public/header.php'); ?>
+        <?php $this->need('public/banner.php'); ?>
         <div class="joe_container">
             <div class="joe_main">
                 <?php $this->comments()->to($comments); ?>
@@ -83,12 +84,15 @@
                         }
                     ?>
                         <li id="li-<?php $comments->theId(); ?>">
+                            <div class="tail"></div>
+                            <div class="head-light"></div>
+                            <div class="head"></div>
                             <div class="comment-parent">
                                 <div class="title">
                                     <img class="avatar" src="<?php _getAvatarByMail($comments->mail); ?>" alt="">
                                     <div class="desc">
-                                        <div class="author"><?php $comments->author(); ?></div>
-                                        <div class="time"><?php $comments->date('Y年m月d日 H:i:s A'); ?></div>
+                                        <div class="time"><?php $comments->date('Y年m月d日 A'); ?></div>
+                                        <div class="author"><?php $comments->author(); ?><span>说：</span></div>
                                     </div>
                                 </div>
                                 <div class="content">

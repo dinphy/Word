@@ -16,8 +16,8 @@
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/5.4.5/css/swiper.min.css" />
 	<script src="https://cdn.bootcdn.net/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
-	<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.index.min.css'); ?>">
-	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js'); ?>"></script>
+	<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.index.min.css?v=7.3.6'); ?>">
+	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js?v=7.3.6.2'); ?>"></script>
 </head>
 
 <body>
@@ -124,10 +124,10 @@
 
 					<div class="joe_index__title">
 						<ul class="joe_index__title-title">
-							<li class="item" data-type="created">最新文章</li>
+							<li class="item" data-type="created">最新发表</li>
 							<li class="item" data-type="views">热门文章</li>
 							<li class="item" data-type="commentsNum">评论最多</li>
-							<li class="item" data-type="agree">点赞最多</li>
+							<li class="item" data-type="agree">大家喜欢</li>
 							<li class="line"></li>
 						</ul>
 						<?php
