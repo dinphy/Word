@@ -17,9 +17,9 @@
     <?php if ($this->options->JPrismTheme) : ?>
         <link rel="stylesheet" href="<?php $this->options->JPrismTheme() ?>">
     <?php else : ?>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.min.css">
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
     <?php endif; ?>
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typecho-joe-next@6.2.4/plugin/prism/prism.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.0'); ?>"></script>
 </head>

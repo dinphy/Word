@@ -14,7 +14,7 @@
 
 <head>
     <?php $this->need('public/include.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/draggabilly@2.3.0/dist/draggabilly.pkgd.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/draggabilly/3.0.0/draggabilly.pkgd.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.leaving.min.js'); ?>"></script>
 </head>
 
