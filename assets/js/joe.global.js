@@ -2,33 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 初始化昼夜模式 */
 	{
 		var currdate = new Date();
-		//夜间时间设置为19:00 -- 07:00
 		if (currdate.getHours() > 19 || currdate.getHours() < 7) {
+			$('html').attr('data-night', 'night');
 			localStorage.setItem('data-night', 'night');
 		} else {
+			$('html').removeAttr('data-night');
 			localStorage.removeItem('data-night');
 		}
-		if (localStorage.getItem('data-night')) {
-			$('.joe_action_item.mode .icon-1').addClass('active');
-			$('.joe_action_item.mode .icon-2').removeClass('active');
-		} else {
-			$('html').removeAttr('data-night');
-			$('.joe_action_item.mode .icon-1').removeClass('active');
-			$('.joe_action_item.mode .icon-2').addClass('active');
-		}
-		$('.joe_action_item.mode').on('click', () => {
-			if (localStorage.getItem('data-night')) {
-				$('.joe_action_item.mode .icon-1').removeClass('active');
-				$('.joe_action_item.mode .icon-2').addClass('active');
-				$('html').removeAttr('data-night');
-				localStorage.removeItem('data-night');
-			} else {
-				$('.joe_action_item.mode .icon-1').addClass('active');
-				$('.joe_action_item.mode .icon-2').removeClass('active');
-				$('html').attr('data-night', 'night');
-				localStorage.setItem('data-night', 'night');
-			}
-		});
 	}
 
 	/* 动态背景 */

@@ -3683,17 +3683,6 @@
 				margin: 8px;
 			}
 		}
-		&.mode {
-			svg {
-				transform: scale(0);
-				opacity: 0;
-				transition: transform 0.85s, opacity 0.85s;
-				&.active {
-					transform: scale(1);
-					opacity: 1;
-				}
-			}
-		}
 	}
 }
 
