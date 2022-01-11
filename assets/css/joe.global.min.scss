@@ -2097,6 +2097,7 @@
 .joe_mtitle {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 15px;
 	&__text {
 		position: relative;
 		color: var(--minor);
