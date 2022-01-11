@@ -29,7 +29,6 @@
                     <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
                         <?php $this->need('public/article.php'); ?>
                         <?php $this->need('public/handle.php'); ?>
-                        <?php $this->need('public/copyright.php'); ?>
                     </div>
                     <?php $this->need('public/comment.php'); ?>
                 </section>

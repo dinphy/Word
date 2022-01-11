@@ -35,7 +35,6 @@
                     <?php $this->need('public/article.php'); ?>
 
                     <?php
-                    echo '<h3 class="joe_mtitle"><span class="joe_mtitle__text">首页友链</span></h3></br>';
                     $friends_index = [];
                     $friends_index_color = [
                         '#F8D800',
@@ -92,6 +91,7 @@
                     }
                     ?>
                     <?php if (sizeof($friends_index) > 0) : ?>
+                        <h3 class="joe_mtitle"><span class="joe_mtitle__text">首页友链</span></h3>
                         <ul class="joe_detail__friends">
                             <?php foreach ($friends_index as $iitem) : ?>
                                 <li class="joe_detail__friends-item">
@@ -108,7 +108,6 @@
                     <?php endif; ?>
 
                     <?php
-                    echo '<h3 class="joe_mtitle"><span class="joe_mtitle__text">内页友链</span></h3></br>';
                     $friends = [];
                     $friends_color = [
                         '#F8D800',
@@ -165,6 +164,7 @@
                     }
                     ?>
                     <?php if (sizeof($friends) > 0) : ?>
+                        <h3 class="joe_mtitle"><span class="joe_mtitle__text">内页友链</span></h3>
                         <ul class="joe_detail__friends">
                             <?php foreach ($friends as $item) : ?>
                                 <li class="joe_detail__friends-item">
@@ -181,11 +181,9 @@
                     <?php endif; ?>
 
                     <?php $this->need('public/handle.php'); ?>
-                    <?php $this->need('public/copyright.php'); ?>
                 </div>
                 <?php $this->need('public/comment.php'); ?>
             </div>
-            <?php $this->need('public/aside.php'); ?>
         </div>
         <?php $this->need('public/footer.php'); ?>
     </div>

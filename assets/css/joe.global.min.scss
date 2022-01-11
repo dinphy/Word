@@ -244,7 +244,7 @@
 					margin-bottom: 15px;
 					padding: 10px 15px;
 					width: fit-content;
-					background-color: var(--classD);
+					background-color: var(--classC);
 					transition: opacity 0.35s;
 					border-radius: calc(var(--radius-wrap) / 2);
 					color: var(--routine);
@@ -256,7 +256,7 @@
 						content: '';
 						width: 0;
 						height: 0;
-						border-bottom: 6px solid var(--classD);
+						border-bottom: 6px solid var(--classC);
 						border-left: 6px solid transparent;
 						border-right: 6px solid transparent;
 						position: absolute;
