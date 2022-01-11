@@ -1,13 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 	/* 初始化昼夜模式 */
 	{
-		var currdate = new Date();
-		//夜间时间设置为19:00 -- 07:00
-		if (currdate.getHours() > 19 || currdate.getHours() < 7) {
-			localStorage.setItem('data-night', 'night');
-		} else {
-			localStorage.removeItem('data-night');
-		}
 		if (localStorage.getItem('data-night')) {
 			$('.joe_action_item.mode .icon-1').addClass('active');
 			$('.joe_action_item.mode .icon-2').removeClass('active');
@@ -663,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!$('.joe_post').length) {
 			$('.joe_header__below').hide();
 		}
-		$('.ernav').mouseenter(function (e) {
+		$('.ernav').on('mouseenter', function (e) {
 			$('.joe_header__below').slideToggle();
 		});
 	}
