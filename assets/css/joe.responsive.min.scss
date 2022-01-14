@@ -302,11 +302,6 @@ html {
 			&_aside {
 				display: none;
 			}
-			&_stretch {
-				.contain {
-					display: none;
-				}
-			}
 			&_video {
 				&__player {
 					&-play {
@@ -596,6 +591,7 @@ html {
 				}
 				&__title {
 					font-size: 18px;
+					text-align: center;
 				}
 				&__count {
 					&-information {
@@ -611,15 +607,14 @@ html {
 							}
 							.item {
 								justify-content: center;
-								span:nth-child(2),
-								span:nth-child(3) {
+								span:nth-child(8),
+								span:nth-child(9),
+								span:nth-child(10),
+								span:nth-child(11) {
 									display: none;
 								}
 							}
 						}
-					}
-					&-created {
-						display: none;
 					}
 					&::after {
 						display: none;

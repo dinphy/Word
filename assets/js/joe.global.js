@@ -635,20 +635,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 宽屏阅读 */
 	{
-		let asideWidth = $('.joe_aside').width();
-		if (asideWidth) {
-			$('.joe_stretch').addClass('active');
-			$('.joe_aside').css('width', asideWidth);
+		if ($('.joe_aside').length) {
+			let isTrue = true;
+			$('.stretch .icon1').addClass('active');
+			$('.stretch .icon2').removeClass('active');
+			$('.stretch').on('click', function () {
+				if (isTrue) {
+					$('.joe_aside').hide();
+					$('.stretch .icon1').removeClass('active');
+					$('.stretch .icon2').addClass('active');
+					$('.joe_detail__article').css('font-size','16px')
+					$('.joe_detail__article p').css('line-height','30px')
+					isTrue = false;
+				} else {
+					$('.joe_aside').show();
+					$('.stretch .icon1').addClass('active');
+					$('.stretch .icon2').removeClass('active');
+					$('.joe_detail__article').css('font-size','15px')
+					$('.joe_detail__article p').css('line-height','26px')
+					isTrue = true;
+				}
+			});
 		}
-		$('.joe_stretch .contain').on('click', function () {
-			if ($('.joe_aside').width() === 0) {
-				$('.joe_aside').css('width', asideWidth);
-				$('.joe_aside').css('overflow', '');
-			} else {
-				$('.joe_aside').css('width', 0);
-				$('.joe_aside').css('overflow', 'hidden');
-			}
-		});
 	}
 
 	/* 二级菜单 */

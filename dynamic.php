@@ -84,14 +84,12 @@
                         }
                     ?>
                         <li id="li-<?php $comments->theId(); ?>">
-                            <div class="tail"></div>
-                            <div class="head-light"></div>
-                            <div class="head"></div>
+                                <div class="tail"></div>
+                                <div class="head-light"></div>
+                                <div class="head"></div>
                             <div class="comment-parent">
                                 <div class="title">
-                                    <img class="avatar" src="<?php _getAvatarByMail($comments->mail); ?>" alt="">
                                     <div class="desc">
-                                        <div class="time"><?php $comments->date('Y年m月d日 A'); ?></div>
                                         <div class="author"><?php $comments->author(); ?><span>说：</span></div>
                                     </div>
                                 </div>
@@ -100,7 +98,7 @@
                                 </div>
                                 <div class="foot">
                                     <div class="count">
-                                        <?php _getAgentOS($comments->agent); ?> · <?php _getAgentBrowser($comments->agent); ?>
+                                        <div class="time"><?php $comments->dateWord(); ?></div>
                                     </div>
                                     <div class="action">
                                         <div class="item">
@@ -118,7 +116,6 @@
                     <?php } ?>
                 </div>
             </div>
-            <?php $this->need('public/aside.php'); ?>
         </div>
         <?php $this->need('public/footer.php'); ?>
     </div>

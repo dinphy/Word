@@ -5,7 +5,7 @@
     <?php $this->need('public/include.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.archive.min.css?v=7.3.6'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js?v=20210524'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js?v=7.3.6'); ?>"></script>
 </head>
 
 <body>
@@ -48,10 +48,10 @@
                                             <a class="abstract" href="<?php $this->permalink() ?>" title="文章摘要" target="_blank" rel="noopener noreferrer"><?php _getAbstract($this) ?></a>
                                             <div class="meta">
                                                 <ul class="items">
-                                                    <li><?php $this->date('Y年m月d日'); ?></li>
-                                                    <li><?php _getViews($this) ?> 阅读</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评论</li>
-                                                    <li><?php _getAgree($this) ?> 点赞</li>
+                                                    <li><?php $this->dateWord(); ?></li>
+                                                    <li><?php _getViews($this) ?> 阅</li>
+                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
+                                                    <li><?php _getAgree($this) ?> 赞</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -65,10 +65,10 @@
                                             </a>
                                             <div class="meta">
                                                 <ul class="items">
-                                                    <li><?php $this->date('Y年m月d日'); ?></li>
-                                                    <li><?php _getViews($this) ?> 阅读</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评论</li>
-                                                    <li><?php _getAgree($this) ?> 点赞</li>
+                                                    <li><?php $this->dateWord(); ?></li>
+                                                    <li><?php _getViews($this) ?> 阅</li>
+                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
+                                                    <li><?php _getAgree($this) ?> 赞</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -101,10 +101,10 @@
                                         </a>
                                         <div class="meta">
                                             <ul class="items">
-                                                <li><?php $this->date('Y年m月d日'); ?></li>
-                                                <li><?php _getViews($this) ?> 阅读</li>
-                                                <li><?php $this->commentsNum('%d'); ?> 评论</li>
-                                                <li><?php _getAgree($this) ?> 点赞</li>
+                                                <li><?php $this->dateWord(); ?></li>
+                                                <li><?php _getViews($this) ?> 阅</li>
+                                                <li><?php $this->commentsNum('%d'); ?> 评</li>
+                                                <li><?php _getAgree($this) ?> 赞</li>
                                             </ul>
                                         </div>
                                     </li>
@@ -114,13 +114,7 @@
                                             <img class="avatar" src="<?php _getAvatarByMail($this->author->mail) ?>" alt="<?php $this->author(); ?>" alt="">
                                             <div class="desc">
                                                 <div class="author"><a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->title(); ?></a></div>
-                                                <div class="time"><?php $this->dateWord(); ?> 来自
-                                                    <?php if (sizeof($this->categories) > 0) : ?>
-                                                        <?php foreach (array_slice($this->categories, 0, 5) as $key => $item) : ?>
-                                                            <a class="link" target="_blank" rel="noopener noreferrer" href="<?php echo $item['permalink']; ?>"><?php echo $item['name']; ?></a>
-                                                        <?php endforeach; ?>
-                                                    <?php endif; ?>
-                                                </div>
+                                                <div class="time"><?php $this->dateWord(); ?></div>
                                             </div>
                                         </div>
                                         <a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer">
@@ -131,14 +125,21 @@
                                         <div class="meta">
                                             <div class="meta-left">
                                                 <ul class="items">
-                                                    <li><?php _getViews($this) ?> 阅读</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评论</li>
+                                                    <li><?php _getViews($this) ?> 阅</li>    
+                                                    <li>
+                                                        <?php if (sizeof($this->categories) > 0) : ?>
+                                                            <?php foreach (array_slice($this->categories, 0, 5) as $key => $item) : ?>
+                                                                <a class="link" target="_blank" rel="noopener noreferrer" href="<?php echo $item['permalink']; ?>"><?php echo $item['name']; ?></a>
+                                                            <?php endforeach; ?>
+                                                        <?php endif; ?>
+                                                    </li>
+                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
                                                 </ul>
                                             </div>
                                             <div class="meta-right">
                                                 <a class="like like-<?php echo $this->cid; ?>" data-cid="<?php echo $this->cid; ?>" href="javascript:void (0)">
                                                     <i class="fa fa-thumbs-up"></i>
-                                                    (<span class="like-num"><?php _getAgree($this) ?></span>)<span class="like-status">点赞</span>
+                                                    (<span class="like-num"><?php _getAgree($this) ?></span>)<span class="like-status">赞</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -153,10 +154,10 @@
                                             <a class="abstract" href="<?php $this->permalink() ?>" title="文章摘要" target="_blank" rel="noopener noreferrer"><?php _getAbstract($this) ?></a>
                                             <div class="meta">
                                                 <ul class="items">
-                                                    <li><?php $this->date('Y年m月d日'); ?></li>
-                                                    <li><?php _getViews($this) ?> 阅读</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评论</li>
-                                                    <li><?php _getAgree($this) ?> 点赞</li>
+                                                    <li><?php $this->dateWord(); ?></li>
+                                                    <li><?php _getViews($this) ?> 阅</li>
+                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
+                                                    <li><?php _getAgree($this) ?> 赞</li>
                                                 </ul>
                                             </div>
                                         </div>

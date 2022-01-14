@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}).init();
 	}
 
-	/* 激活文章列表点赞功能 */
+	/* 激活文章列表赞功能 */
 	{
 		let likeArr = localStorage.getItem(encryption('agree')) ? JSON.parse(decrypt(localStorage.getItem(encryption('agree')))) : [];
 		likeArr.forEach(item => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						const index = likeArr.findIndex(_ => _ === cid);
 						likeArr.splice(index, 1);
 						$(this).removeClass('active');
-						$(this).find('.like-status').html('点赞');
+						$(this).find('.like-status').html('赞');
 					} else {
 						likeArr.push(cid);
 						$(this).addClass('active');
