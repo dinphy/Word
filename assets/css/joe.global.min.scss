@@ -2414,9 +2414,6 @@
 .joe_tabs {
 	width: 100%;
 	overflow: hidden;
-	background: var(--background);
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-	border: 1px solid var(--classC);
 	border-radius: var(--radius-inner);
 	line-height: 26px;
 	&__head {
@@ -2424,10 +2421,9 @@
 		overflow-x: auto;
 		overflow-y: hidden;
 		display: flex;
-		background: var(--classD);
 		&-item {
 			position: relative;
-			padding: 0 15px;
+			padding-left: 30px;
 			line-height: 40px;
 			height: 40px;
 			color: var(--minor);
@@ -2435,12 +2431,18 @@
 			transition: color 0.5s;
 			white-space: nowrap;
 			font-size: 14px;
+			&:first-child {
+				padding-left: 15px;
+				&::after {
+					left: 15px;
+				}
+			}
 			&::after {
 				content: '';
 				position: absolute;
 				background: var(--theme);
 				bottom: 0;
-				left: 15px;
+				left: 30px;
 				right: 15px;
 				height: 2px;
 				opacity: 0;
@@ -2532,13 +2534,11 @@
 	&__item {
 		margin-bottom: 10px;
 		color: var(--routine);
-		border: 1px solid var(--classC);
 		&-head {
 			display: flex;
 			align-items: center;
-			background: var(--classD);
-			padding: 10px 12px;
-			padding-right: 8px;
+			border-bottom: 1px dashed var(--seat);
+			margin-bottom: 10px;
 			cursor: pointer;
 			overflow: hidden;
 			user-select: none;
@@ -2560,6 +2560,9 @@
 				padding: 12px;
 				*:last-child {
 					margin-bottom: 0 !important;
+				}
+				li {
+					list-style-type: disc;
 				}
 			}
 		}
@@ -2763,7 +2766,7 @@
 					.stretch {
 						svg {
 							position: absolute;
-							top: 8px;
+							top: 10px;
 							width: 20px;
 							height: 20px;
 							fill: var(--minor);
@@ -2831,7 +2834,7 @@
 			color: var(--main);
 			font-size: 18px;
 			line-height: 24px;
-			margin-bottom: 18px;
+			margin: 15px 0;
 			position: relative;
 		}
 		h1 {
@@ -3022,7 +3025,7 @@
 		ol,
 		ul {
 			margin-bottom: 18px;
-			padding-left: 36px;
+			padding-left: 15px;
 			li {
 				line-height: 26px;
 			}
