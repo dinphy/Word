@@ -422,3 +422,29 @@ function _addSupport($coid)
 		return false;
 	}
 }
+/* 时间格式化：几小时前、几天前 */
+function _dateFormat($time)
+{
+	$t = time() - $time;
+	$h = date("H:i", $time);
+	if ($t < 1) {
+		return '刚刚';
+	}
+	if ($t > 0 && $t < 172800 && (date('z', $time) + 1 == date('z', time()) || date('z', $time) + 1 == date('L') + 365 + date('z', time()))) {
+		return '昨天 ' . $h;
+	}
+	$f = array(
+		'31536000' => '年',
+		'2592000' => '个月',
+		'604800' => '周',
+		'86400' => '天',
+		'3600' => '小时',
+		'60' => '分钟',
+		'1' => '秒'
+	);
+	foreach ($f as $k => $v) {
+		if (0 != $c = floor($t / (int)$k)) {
+			return $c . $v . '前';
+		}
+	}
+}

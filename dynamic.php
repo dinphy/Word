@@ -84,9 +84,9 @@
                         }
                     ?>
                         <li id="li-<?php $comments->theId(); ?>">
-                                <div class="tail"></div>
-                                <div class="head-light"></div>
-                                <div class="head"></div>
+                            <div class="tail"></div>
+                            <div class="head-light"></div>
+                            <div class="head"></div>
                             <div class="comment-parent">
                                 <div class="title">
                                     <div class="desc">

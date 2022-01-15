@@ -125,7 +125,7 @@
                                         <div class="meta">
                                             <div class="meta-left">
                                                 <ul class="items">
-                                                    <li><?php _getViews($this) ?> 阅</li>    
+                                                    <li><?php _getViews($this) ?> 阅</li>
                                                     <li>
                                                         <?php if (sizeof($this->categories) > 0) : ?>
                                                             <?php foreach (array_slice($this->categories, 0, 5) as $key => $item) : ?>

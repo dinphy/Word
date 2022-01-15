@@ -3,16 +3,6 @@
     <div class="joe_detail__count-information">
         <div class="meta">
             <div class="item">
-                <span class="text">
-                    <?php if (sizeof($this->categories) > 0) : ?>
-                        <?php if (sizeof($this->categories) > 0) : ?>
-                            <?php foreach (array_slice($this->categories, 0, 5) as $key => $item) : ?>
-                                <a href="<?php echo $item['permalink']; ?>" class="item item-<?php echo $key ?>" title="<?php echo $item['name']; ?>"><?php echo $item['name']; ?></a>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </span>
-                <span class="line">•</span>
                 <span class="text"><?php $this->date('Y-m-d'); ?></span>
                 <span class="line">•</span>
                 <span class="text" id="Joe_Article_Views"><?php _getViews($this); ?> 阅</span>
