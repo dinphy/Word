@@ -33,7 +33,6 @@
                     <?php $this->need('public/comment.php'); ?>
                 </section>
             </div>
-            <?php $this->need('public/aside.php'); ?>
         </div>
         <?php $this->need('public/footer.php'); ?>
     </div>

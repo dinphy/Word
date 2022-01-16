@@ -90,7 +90,7 @@
                             <div class="comment-parent">
                                 <div class="title">
                                     <div class="desc">
-                                        <div class="author"><?php $comments->author(); ?><span>说：</span></div>
+                                        <div class="author"><?php $comments->author(); ?><i>说：</i></div>
                                     </div>
                                 </div>
                                 <div class="content">

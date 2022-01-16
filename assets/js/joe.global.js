@@ -644,14 +644,14 @@ document.addEventListener('DOMContentLoaded', () => {
 					$('.joe_aside').hide();
 					$('.stretch .icon1').removeClass('active');
 					$('.stretch .icon2').addClass('active');
-					$('.joe_detail__article').css('font-size','16px')
-					$('.joe_detail__article p').css('line-height','30px')
+					$('.joe_detail__article').css('font-size','18px')
+					$('.joe_detail__article p').css('line-height','2rem')
 					isTrue = false;
 				} else {
 					$('.joe_aside').show();
 					$('.stretch .icon1').addClass('active');
 					$('.stretch .icon2').removeClass('active');
-					$('.joe_detail__article').css('font-size','15px')
+					$('.joe_detail__article').css('font-size','16px')
 					$('.joe_detail__article p').css('line-height','26px')
 					isTrue = true;
 				}

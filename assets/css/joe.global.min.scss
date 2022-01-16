@@ -204,6 +204,7 @@
 			}
 			.comment-parent {
 				margin-left: 35px;
+				font-size: 1rem;
 				padding-bottom: 10px;
 				border-bottom: 1px dashed var(--minor);
 				.title {
@@ -224,10 +225,9 @@
 							a {
 								color: var(--theme);
 							}
-							span {
+							i {
 								margin-left: 5px;
 								color: var(--minor);
-								font-size: 16px;
 								font-weight: 600;
 							}
 						}
@@ -245,7 +245,7 @@
 					transition: opacity 0.35s;
 					border-radius: calc(var(--radius-wrap) / 2);
 					color: var(--routine);
-					line-height: 24px;
+					line-height: 28px;
 					&:hover {
 						opacity: 0.85;
 					}
@@ -1656,7 +1656,8 @@
 				text-overflow: ellipsis;
 				color: var(--minor);
 				word-break: break-word;
-				line-height: 22px;
+				font-size: 15px;
+				line-height: 1.5rem;
 				max-height: 44px;
 				opacity: 0.85;
 			}
@@ -1910,10 +1911,11 @@
 				}
 			}
 			.content {
+				font-size: 15px;
 				margin-bottom: 15px;
 				transition: opacity 0.35s;
 				border-radius: calc(var(--radius-wrap) / 2);
-				line-height: 24px;
+				line-height: 1.5rem;
 				.abstract {
 					display: -webkit-box;
 					-webkit-line-clamp: 2;
@@ -2819,7 +2821,7 @@
 	}
 	&__article {
 		padding-top: 15px;
-		font-size: 15px;
+		font-size: 16px;
 		text-align: justify;
 		word-break: break-word;
 		color: var(--routine);
@@ -2920,7 +2922,7 @@
 		}
 		p {
 			line-height: 26px;
-			margin-bottom: 18px;
+			margin-bottom: 10px;
 		}
 		blockquote {
 			line-height: 26px;

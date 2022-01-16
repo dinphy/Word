@@ -553,7 +553,7 @@ html {
 						}
 						.abstract {
 							display: -webkit-box;
-							font-size: 13px;
+							font-size: 14px;
 						}
 					}
 				}
@@ -623,21 +623,21 @@ html {
 						padding: 10px;
 						.title {
 							margin-bottom: 5px;
-							font-size: 14px;
+							font-size: 15px;
 							.icon {
 								margin-right: 5px;
 							}
 						}
 						.content {
-							font-size: 13px;
+							font-size: 14px;
 							padding-left: 0;
 						}
 					}
 				}
 				&__article {
-					font-size: 14px;
+					font-size: 15px;
 					pre[class*='language-'] {
-						font-size: 13px;
+						font-size: 14px;
 					}
 					&-video {
 						.play {
@@ -659,7 +659,7 @@ html {
 					&-list {
 						height: 300px;
 						.item {
-							font-size: 12px;
+							font-size: 13px;
 							width: 160px;
 							min-height: unset;
 							.user {
@@ -686,7 +686,7 @@ html {
 				&__copyright {
 					.content {
 						.item {
-							font-size: 13px;
+							font-size: 14px;
 							.icon {
 								width: 16px;
 								height: 16px;
@@ -703,7 +703,7 @@ html {
 								height: 80px;
 							}
 							h6 {
-								font-size: 12px;
+								font-size: 13px;
 							}
 						}
 					}
@@ -735,7 +735,7 @@ html {
 								margin-bottom: 8px;
 							}
 							dd {
-								font-size: 12px;
+								font-size: 13px;
 								margin-bottom: 5px;
 								line-height: 20px;
 								max-height: 40px;
