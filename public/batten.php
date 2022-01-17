@@ -1,14 +1,15 @@
-<h1 class="joe_detail__title"><?php $this->title() ?></h1>
+<h1 class="joe_detail__title"><?php $this->title() ?>
+</h1>
 <div class="joe_detail__count">
     <div class="joe_detail__count-information">
         <div class="meta">
             <div class="item">
                 <span class="text"><?php $this->date('Y-m-d'); ?></span>
-                <span class="line">•</span>
+                <span class="line"></span>
                 <span class="text" id="Joe_Article_Views"><?php _getViews($this); ?> 阅</span>
-                <span class="line">•</span>
+                <span class="line"></span>
                 <span class="text"><?php $this->commentsNum('%d'); ?> 评</span>
-                <span class="line">•</span>
+                <span class="line"></span>
                 <span class="text">
                     <div class="stretch" title="宽屏阅读">
                         <svg class="icon1" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M957.6 541.6H831.7v126.3h-63.2V541.6H642v-63.7h126.5V351h63.2v126.9h125.9v63.7zM581.5 766.3h-82L440.8 609H201.4l-55.3 157.4h-82l219-574.9h79.4l219 574.8zM417.8 544L331 305c-2.7-7.7-5.7-21-8.9-40.1h-1.9c-2.7 17.3-5.8 30.7-9.3 40.1l-86.1 239h193z"></path></svg>

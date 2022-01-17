@@ -111,9 +111,11 @@
                                 <?php elseif ($this->fields->mode === "chat") : ?>
                                     <li class="joe_list__item wow chat">
                                         <div class="information">
-                                            <img class="avatar" src="<?php _getAvatarByMail($this->author->mail) ?>" alt="<?php $this->author(); ?>" alt="">
+                                            <a href="<?php $this->author->permalink(); ?>" target="_blank" rel="noopener noreferrer">
+                                                <img class="avatar" src="<?php _getAvatarByMail($this->author->mail) ?>" alt="<?php $this->author(); ?>" alt="">
+                                            </a>
                                             <div class="desc">
-                                                <div class="author"><a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->title(); ?></a></div>
+                                                <div class="title"><a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->title(); ?></a></div>
                                                 <div class="time"><?php $this->dateWord(); ?></div>
                                             </div>
                                         </div>
@@ -126,20 +128,13 @@
                                             <div class="meta-left">
                                                 <ul class="items">
                                                     <li><?php _getViews($this) ?> 阅</li>
-                                                    <li>
-                                                        <?php if (sizeof($this->categories) > 0) : ?>
-                                                            <?php foreach (array_slice($this->categories, 0, 5) as $key => $item) : ?>
-                                                                <a class="link" target="_blank" rel="noopener noreferrer" href="<?php echo $item['permalink']; ?>"><?php echo $item['name']; ?></a>
-                                                            <?php endforeach; ?>
-                                                        <?php endif; ?>
-                                                    </li>
                                                     <li><?php $this->commentsNum('%d'); ?> 评</li>
                                                 </ul>
                                             </div>
                                             <div class="meta-right">
                                                 <a class="like like-<?php echo $this->cid; ?>" data-cid="<?php echo $this->cid; ?>" href="javascript:void (0)">
                                                     <i class="fa fa-thumbs-up"></i>
-                                                    (<span class="like-num"><?php _getAgree($this) ?></span>)<span class="like-status">赞</span>
+                                                    <span class="like-num"><?php _getAgree($this) ?></span> <span class="like-status">赞</span>
                                                 </a>
                                             </div>
                                         </div>

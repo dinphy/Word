@@ -123,9 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				return `
                     <li class="joe_list__item wow chat">
                         <div class="information">
-                            <img class="avatar" src="${_.avatar}" alt="头像">
+                            <a href="${_.authorlink}" target="_blank" rel="noopener noreferrer">
+                                <img class="avatar" src="${_.avatar}" alt="头像">
+                            </a>
                             <div class="desc">
-                                <div class="author"><a href="${_.permalink}" target="_blank" rel="noopener noreferrer">${_.title}</a></div>
+                                <div class="title"><a href="${_.permalink}" target="_blank" rel="noopener noreferrer">${_.title}</a></div>
                                 <div class="time">${_.created}</div>
                             </div>
                         </div>
@@ -139,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="meta">
                             <div class="meta-left">
                                 <ul class="items">
-                                    <li>${_.views} 阅</li>
                                     <li><a class="link" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a></li>
+                                    <li>${_.views} 阅</li>
                                     <li>${_.commentsNum} 评</li>
                                 </ul>
                             </div>
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="like">
                                     <a class="like like-handle ${likeArr.includes(_.cid) ? 'active' : ''}" data-cid="${_.cid}" href="javascript:void (0)">
                                         <i class="fa fa-thumbs-up"></i>
-                                        (<span class="like-num">${_.agree}</span>)<span class="like-status">${likeArr.includes(_.cid) ? '已赞' : '赞'}</span>
+                                        <span class="like-num">${_.agree}</span> <span class="like-status">${likeArr.includes(_.cid) ? '已赞' : '赞'}</span>
                                     </a>
                                 </div>
                             </div>
