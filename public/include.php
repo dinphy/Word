@@ -18,7 +18,7 @@
 <?php endif; ?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.mode.min.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.normalize.min.css?v=7.3.6'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.6.40'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.6.43'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.6.6'); ?>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.css">
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />

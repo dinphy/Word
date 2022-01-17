@@ -1924,7 +1924,7 @@
 				transition: opacity 0.35s;
 				border-radius: calc(var(--radius-wrap) / 2);
 				line-height: 1.8rem;
-				background: var(--classD);
+				background: var(--classC);
 				color: var(--seat);
 				&::before {
 					content: "";
@@ -3224,12 +3224,11 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				width: 42px;
-				height: 42px;
+				width: 32px;
+				height: 32px;
 				border-radius: 50%;
-				background: #f56c6c;
 				cursor: pointer;
-				margin-bottom: 8px;
+				margin-bottom: 5px;
 				&.active {
 					animation: box_shadow 1s;
 					box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
@@ -3238,6 +3237,7 @@
 					position: absolute;
 					width: 28px;
 					height: 28px;
+					fill: #f56c6c;
 					transform: scale(0);
 					opacity: 0;
 					transition: transform 0.85s, opacity 0.85s;
