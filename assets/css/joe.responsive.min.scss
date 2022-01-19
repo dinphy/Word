@@ -607,8 +607,8 @@ html {
 							}
 							.item {
 								justify-content: center;
-								span:nth-child(6),
-								span:nth-child(7) {
+								span:nth-child(4),
+								span:nth-child(5) {
 									display: none;
 								}
 							}
@@ -800,16 +800,7 @@ html {
 				}
 			}
 			&_comment {
-				position: relative;
-				&__title {
-					font-size: 18px;
-					line-height: 32px;
-					text-align: left;
-				}
 				&__respond-type {
-					position: absolute;
-					top: 15px;
-					right: 15px;
 					.item:first-child {
 						border-bottom-left-radius: var(--radius-inner);
 					}

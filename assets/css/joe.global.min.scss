@@ -37,6 +37,10 @@
 
 .joe_adaption {
 	position: relative;
+	background: var(--background);
+    border-radius: var(--radius-wrap);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
 }
 
 .joe_menu {
@@ -2670,10 +2674,6 @@
 }
 
 .joe_detail {
-	background: var(--background);
-	border-radius: var(--radius-wrap);
-	padding: 15px;
-	box-shadow: var(--box-shadow);
 	margin-bottom: 15px;
 	&__category {
 		display: flex;
@@ -3261,10 +3261,11 @@
 		}
 	}
 	&__operate {
-		margin-bottom: 15px;
+		padding-bottom: 15px;
 		color: var(--routine);
 		display: flex;
 		align-items: center;
+		border-bottom: 1px solid var(--classC);
 		&-tags {
 			flex-shrink: 0;
 			flex: 1;
@@ -3340,7 +3341,6 @@
 	&__copyright {
 		display: none;
 		padding-top: 15px;
-		border-top: 1px solid var(--classC);
 		.content {
 			background: var(--classD);
 			padding: 15px;
@@ -3614,7 +3614,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	padding-top: 15px;
+	padding: 15px 0;
 	li {
 		margin-left: 5px;
 		&.active a {
@@ -3707,17 +3707,28 @@
 .joe_comment {
 	background: var(--background);
 	border-radius: var(--radius-wrap);
-	box-shadow: var(--box-shadow);
-	padding: 15px;
 	&__title {
+		position: relative;
 		font-weight: 500;
-		text-align: center;
-		font-size: 24px;
 		color: var(--main);
 		text-shadow: var(--text-shadow);
 		border-bottom: 1px solid var(--classC);
 		margin-bottom: 15px;
-		padding-bottom: 15px;
+		padding-bottom: 10px;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -1.5px;
+			left: 0;
+			width: 2rem;
+			height: 2px;
+			border-radius: 1.5px;
+			background: var(--theme);
+			transition: 0.5s;
+		}
+		&:hover::after {
+			width: 3rem;
+		}
 	}
 	&__close {
 		display: flex;
@@ -3738,7 +3749,7 @@
 				background: var(--classD);
 				padding: 0 15px;
 				height: 32px;
-				color: var(--main);
+				color: var(--routine);
 				border: none;
 				transition: color 0.35s, background 0.35s;
 				&:first-child {
@@ -3748,8 +3759,8 @@
 					border-top-right-radius: var(--radius-inner);
 				}
 				&.active {
-					color: #fff;
-					background: var(--theme);
+					color: var(--main);
+					background: var(--classB);
 				}
 			}
 		}
@@ -3911,8 +3922,8 @@
 						height: 32px;
 						padding: 0 15px;
 						border: none;
-						background: var(--theme);
-						color: #fff;
+						background: var(--classB);
+						color: var(--main);
 						font-size: 14px;
 						&:hover {
 							animation: 5s ease-in-out 0s infinite normal none running shaked;
