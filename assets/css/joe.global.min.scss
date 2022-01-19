@@ -1924,13 +1924,13 @@
 				transition: opacity 0.35s;
 				border-radius: calc(var(--radius-wrap) / 2);
 				line-height: 1.8rem;
-				background: var(--classC);
+				background: var(--classD);
 				color: var(--seat);
 				&::before {
 					content: "";
 					width: 0;
 					height: 0;
-					border-bottom: 6px solid var(--classC);
+					border-bottom: 6px solid var(--classD);
 					border-left: 6px solid transparent;
 					border-right: 6px solid transparent;
 					position: absolute;
@@ -3213,12 +3213,23 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 15px;
 		.agree {
-			text-align: center;
-			font-size: 12px;
-			color: var(--minor);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 10px 0;
 			user-select: none;
+			.text {
+				margin-left: -30px;
+				font-size: 12px;
+				background-color: var(--classC);
+				color: #009DAE;
+				padding-right: 15px;
+				padding-left: 35px;
+				height: 28px;
+				line-height: 28px;
+				border-radius: 13px;
+			}
 			.icon {
 				position: relative;
 				display: flex;
@@ -3228,7 +3239,7 @@
 				height: 32px;
 				border-radius: 50%;
 				cursor: pointer;
-				margin-bottom: 5px;
+				background: var(--background);
 				&.active {
 					animation: box_shadow 1s;
 					box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
@@ -3237,7 +3248,7 @@
 					position: absolute;
 					width: 28px;
 					height: 28px;
-					fill: #f56c6c;
+					fill: #009DAE;
 					transform: scale(0);
 					opacity: 0;
 					transition: transform 0.85s, opacity 0.85s;
@@ -3315,9 +3326,8 @@
 				}
 			}
 		}
-		&-share {
+		&-copyright {
 			position: relative;
-			margin-left: 15px;
 			svg {
 				cursor: pointer;
 				transition: transform 0.35s;
@@ -3325,34 +3335,10 @@
 					transform: rotate(360deg) scale(1.25);
 				}
 			}
-			.reach {
-				position: absolute;
-				z-index: 10;
-				top: 34px;
-				left: -1px;
-				display: flex;
-				flex-direction: column;
-				visibility: hidden;
-				opacity: 0;
-				transform: translateY(25px);
-				transition: visibility 0.25s, transform 0.25s, opacity 0.25s;
-				a {
-					margin-bottom: 5px;
-					&:last-child {
-						margin-bottom: 0;
-					}
-				}
-			}
-			&.active {
-				.reach {
-					opacity: 1;
-					transform: translateY(0);
-					visibility: visible;
-				}
-			}
 		}
 	}
 	&__copyright {
+		display: none;
 		padding-top: 15px;
 		border-top: 1px solid var(--classC);
 		.content {

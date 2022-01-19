@@ -189,14 +189,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	/* 分享 */
+	/* 版权信息 */
 	{
-		if ($('.joe_detail__operate-share').length) {
-			$('.joe_detail__operate-share > svg').on('click', e => {
+		if ($('.joe_detail__operate-copyright').length) {
+			$('.joe_detail__operate-copyright > svg').on('mouseleave', e => {
 				e.stopPropagation();
-				$('.joe_detail__operate-share').toggleClass('active');
+				$('.joe_detail__copyright').slideUp();
+			}).on('mouseenter', e => {
+				e.stopPropagation();
+				$('.joe_detail__copyright').slideDown();
 			});
-			$(document).on('click', () => $('.joe_detail__operate-share').removeClass('active'));
 		}
 	}
 });

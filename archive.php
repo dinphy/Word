@@ -49,9 +49,7 @@
                                             <div class="meta">
                                                 <ul class="items">
                                                     <li><?php $this->dateWord(); ?></li>
-                                                    <li><?php _getViews($this) ?> 阅</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
-                                                    <li><?php _getAgree($this) ?> 赞</li>
+                                                    <li><?php _getViews($this) ?> 阅读</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -66,9 +64,7 @@
                                             <div class="meta">
                                                 <ul class="items">
                                                     <li><?php $this->dateWord(); ?></li>
-                                                    <li><?php _getViews($this) ?> 阅</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
-                                                    <li><?php _getAgree($this) ?> 赞</li>
+                                                    <li><?php _getViews($this) ?> 阅读</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -102,9 +98,7 @@
                                         <div class="meta">
                                             <ul class="items">
                                                 <li><?php $this->dateWord(); ?></li>
-                                                <li><?php _getViews($this) ?> 阅</li>
-                                                <li><?php $this->commentsNum('%d'); ?> 评</li>
-                                                <li><?php _getAgree($this) ?> 赞</li>
+                                                <li><?php _getViews($this) ?> 阅读</li>
                                             </ul>
                                         </div>
                                     </li>
@@ -127,8 +121,8 @@
                                         <div class="meta">
                                             <div class="meta-left">
                                                 <ul class="items">
-                                                    <li><?php _getViews($this) ?> 阅</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
+                                                    <li><?php _getViews($this) ?> 阅读</li>
+                                                    <li><?php $this->commentsNum('%d'); ?> 评论</li>
                                                 </ul>
                                             </div>
                                             <div class="meta-right">
@@ -150,9 +144,7 @@
                                             <div class="meta">
                                                 <ul class="items">
                                                     <li><?php $this->dateWord(); ?></li>
-                                                    <li><?php _getViews($this) ?> 阅</li>
-                                                    <li><?php $this->commentsNum('%d'); ?> 评</li>
-                                                    <li><?php _getAgree($this) ?> 赞</li>
+                                                    <li><?php _getViews($this) ?> 阅读</li>
                                                 </ul>
                                             </div>
                                         </div>

@@ -11,7 +11,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typecho-joe-next@6.2.4/plugin/prism/prism.min.js"></script>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.post.min.css'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.6.2'); ?>"></script>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                     <?php endif; ?>
                     <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
                         <?php $this->need('public/batten.php'); ?>
-                        <?php if ($this->options->JOverdue && $this->options->JOverdue !== 'off' && floor((time() - ($this->modified)) / 86400) > $this->options->JOverdue) : ?>
+                        <!-- <?php if ($this->options->JOverdue && $this->options->JOverdue !== 'off' && floor((time() - ($this->modified)) / 86400) > $this->options->JOverdue) : ?>
                             <div class="joe_detail__overdue">
                                 <div class="joe_detail__overdue-wrapper">
                                     <div class="title">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php endif; ?>
+                        <?php endif; ?> -->
                         <?php $this->need('public/article.php'); ?>
                         <?php $this->need('public/handle.php'); ?>
                         <?php $this->need('public/operate.php'); ?>
