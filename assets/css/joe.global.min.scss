@@ -3222,8 +3222,8 @@
 			.text {
 				margin-left: -30px;
 				font-size: 12px;
-				background-color: var(--classC);
-				color: #009DAE;
+				background-color: var(--classD);
+				color: #f56c6c;
 				padding-right: 15px;
 				padding-left: 35px;
 				height: 28px;
@@ -3239,16 +3239,13 @@
 				height: 32px;
 				border-radius: 50%;
 				cursor: pointer;
-				background: var(--background);
+				background: #f56c6c;
 				&.active {
 					animation: box_shadow 1s;
 					box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
 				}
 				svg {
 					position: absolute;
-					width: 28px;
-					height: 28px;
-					fill: #009DAE;
 					transform: scale(0);
 					opacity: 0;
 					transition: transform 0.85s, opacity 0.85s;

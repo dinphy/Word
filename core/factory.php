@@ -195,8 +195,11 @@ class editor
             #custom-field .typecho-list-table tbody input[type="text"] {
                 width: 100%;
             }
-            #j-wmd-expand {position: relative;}
-            
+
+            #j-wmd-expand {
+                position: relative;
+            }
+
             #j-wmd-expand .dropdown {
                 position: absolute;
                 display: none;
@@ -206,6 +209,7 @@ class editor
                 background: #F6F6F3;
                 border: 1px solid #D9D9D6;
             }
+
             #j-wmd-expand .dropdown:before {
                 content: "";
                 position: absolute;
@@ -218,17 +222,20 @@ class editor
                 border-right: 7px solid transparent;
                 border-bottom: 7px solid #D9D9D6;
             }
+
             #j-wmd-expand .dropdown .content .item {
                 line-height: 1.5;
                 cursor: pointer;
                 padding: 5px;
             }
+
             #j-wmd-expand .dropdown .content svg {
                 width: 18px;
                 height: 18px;
                 fill: #888888;
                 vertical-align: middle;
             }
+
             #j-wmd-expand .dropdown .content .item:hover {
                 background: #E9E9E6;
             }
@@ -269,17 +276,10 @@ class editor
                             </div>
                         </div>
                 </li>`)
-                var flag = false;
                 $("#j-wmd-expand").on("click", function() {
-                    if(flag){
-                        $(".dropdown").hide();
-                        flag=false
-                    }else{
-                        $(".dropdown").show();
-                        flag=true
-                    }
+                    $('.dropdown').toggle();
                 })
-                
+
                 $("#j-wmd-tab").on("click", function() {
                     insertAtCursor('{tabs}\n{tabs-pane label="标签一"}\n 标签一内容\n{/tabs-pane}\n{tabs-pane label="标签二"}\n 标签二内容\n{/tabs-pane}\n{/tabs}\n');
                 })

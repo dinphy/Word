@@ -3,6 +3,7 @@
 	&__banner {
 		display: flex;
 		padding: 15px;
+		margin-bottom: 15px;
 		background: var(--background);
 		box-shadow: var(--box-shadow);
 		border-radius: var(--radius-wrap);
@@ -182,7 +183,6 @@
 		align-items: center;
 		border-bottom: 1px solid var(--classC);
 		padding: 0 15px;
-		margin-top: 15px;
 		background: var(--background);
 		box-shadow: var(--box-shadow);
 		border-top-left-radius: var(--radius-wrap);

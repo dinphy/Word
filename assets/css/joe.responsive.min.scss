@@ -896,4 +896,19 @@ html {
 			}
 		}
 	}
+	@media (max-width: 576px) {
+		.joe {
+			&_container {
+				padding: 0 5px;
+			}
+			&_bread {
+				padding-top: 15px;
+			}
+			&_list {
+				&__item {
+					margin-bottom: 5px;
+				}
+			}
+		}
+	}
 }

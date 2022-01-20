@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!$('.joe_post').length) {
 			$('.joe_header__below').hide();
 		}
-		$('.ernav').on('mouseenter', function (e) {
+		$('.subnav').on('click', function () {
 			$('.joe_header__below').slideToggle();
 		});
 	}
