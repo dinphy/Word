@@ -898,6 +898,16 @@ html {
 	}
 	@media (max-width: 576px) {
 		.joe {
+			&_header {
+				&__above {
+					&-searchicon {
+						margin-right: 10px;
+					}
+					&-slideicon {
+						margin-left: 10px;
+					}
+				}
+			}
 			&_container {
 				padding: 0 5px;
 			}
