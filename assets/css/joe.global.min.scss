@@ -2722,10 +2722,11 @@
 		}
 	}
 	&__title {
-		font-size: 22px;
+		font-size: 20px;
 		color: var(--main);
+		text-align: center;
 		text-shadow: var(--text-shadow);
-		margin: 5px 0 10px;
+		margin: 15px 0;
 		word-break: break-word;
 	}
 	&__count {
@@ -2795,9 +2796,10 @@
 					.stretch {
 						svg {
 							position: absolute;
-							top: 9px;
-							width: 20px;
-							height: 20px;
+							top: 10px;
+							right: 0;
+							width: 16px;
+							height: 16px;
 							fill: var(--minor);
 							cursor: pointer;
 							transform: scale(0);
@@ -2815,6 +2817,7 @@
 		&-created {
 			position: absolute;
 			right: 0;
+			top: -55px;
 		}
 	}
 	&__overdue {
@@ -2948,8 +2951,8 @@
 			margin-bottom: 18px;
 		}
 		p {
-			line-height: 26px;
-			margin-bottom: 10px;
+			line-height: 1.8rem;
+			margin-bottom: 1rem;
 		}
 		blockquote {
 			line-height: 26px;
