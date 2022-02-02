@@ -273,6 +273,7 @@ function themeConfig($form)
         'JCursorEffects',
         array(
             'off' => '关闭（默认）',
+            'cursor0.js' => '效果0',
             'cursor1.js' => '效果1',
             'cursor2.js' => '效果2',
             'cursor3.js' => '效果3',

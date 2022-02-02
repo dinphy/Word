@@ -50,7 +50,10 @@
 <div class="joe_action">
     <?php if ($this->options->JDirectoryStatus === 'on') : ?>
         <div class="joe_action_item menu">
-            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M63.537 64.384v897.485H956.62V64.384H63.537z m832.637 831.255H128.025V127.99h768.149v767.649z" p-id="13446"></path><path d="M256.05 319.996h64.012V381H256.05zM384.075 319.996H768.15V381H384.075zM255.199 482.721h64.012v61.004h-64.012zM256.05 639.965h64.012v63.919H256.05zM384.075 482.197h385.021v61.004H384.075zM384.427 639.349h381.822v64.535H384.427z"></path></svg>
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25">
+                <path d="M63.537 64.384v897.485H956.62V64.384H63.537z m832.637 831.255H128.025V127.99h768.149v767.649z" p-id="13446"></path>
+                <path d="M256.05 319.996h64.012V381H256.05zM384.075 319.996H768.15V381H384.075zM255.199 482.721h64.012v61.004h-64.012zM256.05 639.965h64.012v63.919H256.05zM384.075 482.197h385.021v61.004H384.075zM384.427 639.349h381.822v64.535H384.427z"></path>
+            </svg>
         </div>
     <?php endif; ?>
     <div class="joe_action_item mode">
@@ -68,6 +71,68 @@
         </svg>
     </div>
 </div>
+
+<style>
+    .mouse-cursor {
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        border-radius: 50%;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        visibility: hidden
+    }
+
+    .cursor-inner {
+        margin-left: -3px;
+        margin-top: -3px;
+        width: 6px;
+        height: 6px;
+        z-index: 10000001;
+        background: #ffa9a4;
+        -webkit-transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
+        transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out
+    }
+
+    .cursor-inner.cursor-hover {
+        margin-left: -18px;
+        margin-top: -18px;
+        width: 36px;
+        height: 36px;
+        background: #ffa9a4;
+        opacity: .3
+    }
+
+    .cursor-outer {
+        margin-left: -15px;
+        margin-top: -15px;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #ffa9a4;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 10000000;
+        opacity: .5;
+        -webkit-transition: all .08s ease-out;
+        transition: all .08s ease-out
+    }
+
+    .cursor-outer.cursor-hover {
+        opacity: 0
+    }
+
+    .main-wrapper[data-magic-cursor=hide] .mouse-cursor {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        z-index: -1111
+    }
+</style>
+
+<div class="mouse-cursor cursor-outer"></div>
+<div class="mouse-cursor cursor-inner"></div>
 
 <script>
     <?php
