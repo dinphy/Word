@@ -131,8 +131,10 @@
     }
 </style>
 
-<div class="mouse-cursor cursor-outer"></div>
-<div class="mouse-cursor cursor-inner"></div>
+<?php if (!_isMobile()) : ?>
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+<?php endif; ?>
 
 <script>
     <?php
