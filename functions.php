@@ -679,6 +679,17 @@ function themeConfig($form)
     $JShare_QQ_Image->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JShare_QQ_Image);
 
+    $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JIndex_Top_Image',
+        NULL,
+        NULL,
+        '首页顶部壁纸(非必填)',
+        '介绍：用于修改首页顶部背景壁纸 <br />
+        格式：图片地址，例如：https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg'
+    );
+    $JIndex_Top_Image->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Top_Image);
+
     $JIndex_Carousel = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JIndex_Carousel',
         NULL,
