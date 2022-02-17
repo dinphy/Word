@@ -15,9 +15,9 @@
 <head>
     <?php $this->need('public/include.php'); ?>
     <!-- 动态页面需要用到的CSS及JS -->
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typecho-joe-next@6.2.4/plugin/prism/prism.min.js"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('library/css/prism-tomorrow.min.css'); ?>">
+    <script src="<?php $this->options->themeUrl('library/js/clipboard.min.js'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('library/js/prism.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
 </head>
 
