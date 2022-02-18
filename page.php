@@ -6,10 +6,10 @@
     <?php if ($this->options->JPrismTheme) : ?>
         <link rel="stylesheet" href="<?php $this->options->JPrismTheme() ?>">
     <?php else : ?>
-        <link rel="stylesheet" href="<?php $this->options->themeUrl('library/css/prism.min.css'); ?>">
+        <link rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css">
     <?php endif; ?>
-    <script src="<?php $this->options->themeUrl('library/js/clipboard.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('library/js/prism.min.js'); ?>"></script>
+    <script src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js"></script>
+    <script src="https://lib.baomitu.com/prism/1.26.0/prism.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
 </head>
 

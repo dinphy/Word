@@ -14,10 +14,13 @@
 
 <head>
     <?php $this->need('public/include.php'); ?>
-    <!-- 动态页面需要用到的CSS及JS -->
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('library/css/prism-tomorrow.min.css'); ?>">
-    <script src="<?php $this->options->themeUrl('library/js/clipboard.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('library/js/prism.min.js'); ?>"></script>
+    <?php if ($this->options->JPrismTheme) : ?>
+        <link rel="stylesheet" href="<?php $this->options->JPrismTheme() ?>">
+    <?php else : ?>
+        <link rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css">
+    <?php endif; ?>
+    <script src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js"></script>
+    <script src="https://lib.baomitu.com/prism/1.26.0/prism.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
 </head>
 

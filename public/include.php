@@ -20,23 +20,23 @@
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.normalize.min.css?v=7.3.6'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.7'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('library/css/qmsg.css'); ?>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-<link rel="stylesheet" href="<?php $this->options->themeUrl('library/css/animate.min.css'); ?>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="<?php $this->options->themeUrl('library/js/joe.scroll.js'); ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="<?php $this->options->themeUrl('library/js/joe.sketchpad.js'); ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script src="<?php $this->options->themeUrl('library/js/joe.extend.min.js'); ?>"></script>
-<script src="<?php $this->options->themeUrl('library/js/qmsg.js'); ?>"></script>
+<link rel="stylesheet" href="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.css">
+<link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+<link rel="stylesheet" href="https://lib.baomitu.com/animate.css/3.7.2/animate.min.css" />
+<link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://lib.baomitu.com/aplayer/1.10.1/APlayer.min.css" />
+<script src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/plugin/scroll/joe.scroll.js"></script>
+<script src="https://lib.baomitu.com/lazysizes/5.3.2/lazysizes.min.js"></script>
+<script src="https://lib.baomitu.com/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/plugin/sketchpad/joe.sketchpad.js"></script>
+<script src="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/assets/js/joe.extend.min.js"></script>
+<script src="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.js"></script>
+<script src="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/plugin/smooth/joe.smooth.js" async></script>
 <?php if ($this->options->JAside_3DTag === 'on') : ?>
-	<script src="<?php $this->options->themeUrl('library/js/3dtag.min.js'); ?>"></script>
+	<script src="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.2.3/plugin/3dtag/3dtag.min.js"></script>
 <?php endif; ?>
-<script src="<?php $this->options->themeUrl('library/js/joe.smooth.js'); ?>" async></script>
 <?php if ($this->options->JCursorEffects && $this->options->JCursorEffects !== 'off') : ?>
 	<script src="<?php $this->options->themeUrl('assets/cursor/' . $this->options->JCursorEffects); ?>" async></script>
 <?php endif; ?>

@@ -14,7 +14,7 @@
 
 <head>
     <?php $this->need('public/include.php'); ?>
-    <script src="<?php $this->options->themeUrl('library/js/draggabilly.pkgd.min.js'); ?>"></script>
+    <script src="https://lib.baomitu.com/draggabilly/3.0.0/draggabilly.pkgd.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.leaving.min.js'); ?>"></script>
 </head>
 

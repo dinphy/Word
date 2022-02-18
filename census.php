@@ -15,7 +15,7 @@
 <head>
     <?php $this->need('public/include.php'); ?>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.census.min.css'); ?>">
-    <script src="<?php $this->options->themeUrl('library/js/echarts.min.js'); ?>"></script>
+    <script src="https://lib.baomitu.com/echarts/5.3.0/echarts.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.census.min.js'); ?>"></script>
 </head>
 
@@ -61,7 +61,7 @@
                         <div class="list">
                             <div class="count">
                                 <h6>页面数</h6>
-                                <p><?php echo number_format($item->publishedPagesNum + $item->publishedPostsNum); ?></p>
+                                <p><?php echo number_format($item->publishedPagesNum); ?></p>
                             </div>
                             <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
                                 <path d="M653.824 32.256l264.96 264.704c20.48 20.48 32.256 48.384 32.256 77.568v539.648c0 60.672-49.152 109.824-109.824 109.824H182.784c-60.672 0-109.824-49.152-109.824-109.824V109.824C73.216 49.152 122.368 0 182.784 0h393.472c29.184 0 57.088 11.52 77.568 32.256zm-32 71.168v225.792H847.36L621.824 103.424zm-60.672-30.208H182.784c-20.224 0-36.608 16.384-36.608 36.608v804.608c0 20.224 16.384 36.608 36.608 36.608H840.96c20.224 0 36.608-16.384 36.608-36.608v-524.8 12.544h-256c-40.448 0-73.216-32.768-73.216-73.216v-256h12.8zm0 0" />
