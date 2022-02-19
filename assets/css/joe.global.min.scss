@@ -39,7 +39,6 @@
 	position: relative;
 	background: var(--background);
     border-radius: var(--radius-wrap);
-    padding: 15px;
     box-shadow: var(--box-shadow);
 }
 
@@ -2674,7 +2673,7 @@
 }
 
 .joe_detail {
-	margin-bottom: 15px;
+	padding: 15px;
 	&__category {
 		display: flex;
 		align-items: center;
@@ -3707,6 +3706,7 @@
 .joe_comment {
 	background: var(--background);
 	border-radius: var(--radius-wrap);
+	padding: 15px;
 	&__title {
 		position: relative;
 		font-weight: 500;
