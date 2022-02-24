@@ -658,7 +658,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 	}
-
 	/* 二级菜单 */
 	{
 		if (!$('.joe_post').length) {

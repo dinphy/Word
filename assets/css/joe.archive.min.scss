@@ -35,6 +35,9 @@
 		flex-direction: column;
 		padding: 50px 0;
 		color: var(--routine);
+		background: var(--background);
+		border-bottom-left-radius: var(--radius-wrap);
+		border-bottom-right-radius: var(--radius-wrap);
 		&-icon {
 			margin-bottom: 30px;
 			fill: var(--routine);
