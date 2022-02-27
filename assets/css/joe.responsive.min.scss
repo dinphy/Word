@@ -490,6 +490,9 @@ html {
 						}
 					}
 					.meta {
+						._last {
+							display: block !important;
+						}
 						.last {
 							display: none !important;
 						}

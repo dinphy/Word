@@ -1688,11 +1688,9 @@
 				align-items: center;
 				li {
 					&::after {
-						content: '·';
+						content: '•';
 						color: var(--seat);
-						font-size: 1rem;
-						font-weight: 700;
-						padding: 0 5px;
+						padding: 0 10px;
 					}
 					&:last-child::after {
 						display: none;
@@ -1725,12 +1723,22 @@
 					}
 				}
 			}
+			._last {
+				margin-left: auto;
+				display: flex;
+				align-items: center;
+				.icon {
+					margin-right: 3px;
+					fill: var(--routine);
+				}
+			}
 			.last {
 				margin-left: auto;
 				display: flex;
 				align-items: center;
 				.icon {
 					margin-right: 3px;
+					fill: var(--routine);
 				}
 				.link {
 					color: var(--minor);

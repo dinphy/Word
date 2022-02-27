@@ -17,7 +17,7 @@
 	<script src="https://lib.baomitu.com/Swiper/5.4.5/js/swiper.min.js"></script>
 	<script src="https://lib.baomitu.com/wow/1.1.2/wow.min.js"></script>
 	<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.index.min.css?v=7.3.7'); ?>">
-	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js?v=7.3.7'); ?>"></script>
+	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js?v=7.3.7.2'); ?>"></script>
 </head>
 
 <body>

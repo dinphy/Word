@@ -18,8 +18,8 @@
 <?php endif; ?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.mode.min.css?v=7.3.7'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.normalize.min.css?v=7.3.6'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7.2'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.7'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7.6'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.7.1'); ?>">
 <link rel="stylesheet" href="https://js-cdn.bcrjl.com/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.css">
 <link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 <link rel="stylesheet" href="https://lib.baomitu.com/animate.css/3.7.2/animate.min.css" />
