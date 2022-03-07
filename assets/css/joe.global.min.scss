@@ -38,8 +38,8 @@
 .joe_adaption {
 	position: relative;
 	background: var(--background);
-    border-radius: var(--radius-wrap);
-    box-shadow: var(--box-shadow);
+	border-radius: var(--radius-wrap);
+	box-shadow: var(--box-shadow);
 }
 
 .joe_menu {
@@ -110,11 +110,10 @@
 }
 
 .joe_dynamic {
+	margin-top: -3rem;
 	.respond {
-		background: var(--background);
-		margin-bottom: 20px;
-		box-shadow: var(--box-shadow);
-		border-radius: var(--radius-wrap);
+		border-top-left-radius: var(--radius-wrap);
+		border-top-right-radius: var(--radius-wrap);
 		padding: 15px;
 		.title {
 			color: var(--routine);
@@ -137,6 +136,8 @@
 				display: flex;
 				justify-content: flex-end;
 				margin-top: 15px;
+				border-bottom: 1px dashed var(--minor);
+				padding-bottom: 1rem;
 				button[type='submit'] {
 					color: var(--background);
 					background: var(--theme);
@@ -1938,7 +1939,7 @@
 				background: var(--classD);
 				color: var(--seat);
 				&::before {
-					content: "";
+					content: '';
 					width: 0;
 					height: 0;
 					border-bottom: 6px solid var(--classD);
@@ -2682,6 +2683,7 @@
 
 .joe_detail {
 	padding: 15px;
+	margin-top: -3rem;
 	&__category {
 		display: flex;
 		align-items: center;

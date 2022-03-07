@@ -644,15 +644,15 @@ document.addEventListener('DOMContentLoaded', () => {
 					$('.joe_aside').hide();
 					$('.stretch .icon1').removeClass('active');
 					$('.stretch .icon2').addClass('active');
-					$('.joe_detail__article').css('font-size','18px')
-					$('.joe_detail__article p').css('line-height','2rem')
+					$('.joe_detail__article').css('font-size', '18px');
+					$('.joe_detail__article p').css('line-height', '2rem');
 					isTrue = false;
 				} else {
 					$('.joe_aside').show();
 					$('.stretch .icon1').addClass('active');
 					$('.stretch .icon2').removeClass('active');
-					$('.joe_detail__article').css('font-size','16px')
-					$('.joe_detail__article p').css('line-height','26px')
+					$('.joe_detail__article').css('font-size', '16px');
+					$('.joe_detail__article p').css('line-height', '26px');
 					isTrue = true;
 				}
 			});
@@ -660,7 +660,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 	/* 二级菜单 */
 	{
-		if (!$('.joe_post').length) {
+		if ($('.joe_post').length) {
+			$('.joe_detail').css('margin-top', '0');
+		} else {
 			$('.joe_header__below').hide();
 		}
 		$('.subnav').on('click', function () {
