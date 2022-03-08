@@ -3504,6 +3504,7 @@
 				border: 1px solid var(--classB);
 				.user {
 					display: flex;
+					position: relative;
 					flex-direction: column;
 					align-items: center;
 					justify-content: center;
@@ -3532,6 +3533,39 @@
 						overflow: hidden;
 						&:hover {
 							color: var(--theme);
+						}
+					}
+					i {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 65px;
+						color: #222f3e;
+						background-color: #ffffff99;
+						border-radius: 5px;
+						font-weight: 700;
+						font-style: normal;
+						line-height: 1;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						opacity: 0;
+						transition: all 0.15s linear;
+					}
+					span {
+						display: -webkit-box;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						-webkit-line-clamp: 1;
+						-webkit-box-orient: vertical;
+						flex-shrink: 1;
+						font-size: 14px;
+						font-weight: 700;
+					}
+					&:hover {
+						i {
+							opacity: 1;
 						}
 					}
 				}

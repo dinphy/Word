@@ -49,10 +49,12 @@
                                         echo '
                                         <li class="item">
                                             <div class="user">
-                                                <img src="' . _getAvatarByMail($count['mail'], false) . '">
-                                                <a target="_blank" href=' . $count['url'] . '>' . $count['author'] . '</a>
-                                                <span> ' . $count['cnt'] . ' 评论 </span>
-                                            </div>
+                                                <a target="_blank" href=' . $count['url'] . '>
+                                                    <i> +' . $count['cnt'] . '</i>
+                                                    <img src="' . _getAvatarByMail($count['mail'], false) . '">
+                                                    <span>' . $count['author'] . '</span>
+                                                </a>
+                                            </div> 
                                         </li>
                                     ';
                                     }
