@@ -130,15 +130,18 @@
 				background: var(--classD);
 				color: var(--routine);
 				font-size: 14px;
+				border-top-left-radius: calc(var(--radius-wrap) / 2);
+				border-top-right-radius: calc(var(--radius-wrap) / 2);
 			}
 			.form-foot {
 				display: flex;
 				justify-content: flex-end;
-				.pencilbox {
+				.tool {
 					flex: 1;
 					display: flex;
 					align-items: center;
 					background: var(--classC);
+					border-bottom-left-radius: calc(var(--radius-wrap) / 2);
 					span {
 						width: 35px;
 						height: 30px;
@@ -162,6 +165,7 @@
 					height: 32px;
 					padding: 0 15px;
 					transition: opacity 0.35s;
+					border-bottom-right-radius: calc(var(--radius-wrap) / 2);
 					&:hover {
 						opacity: 0.85;
 					}

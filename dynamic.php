@@ -37,9 +37,9 @@
                             <div class="respond" id="<?php $this->respondId(); ?>">
                                 <div class="title">有什么新鲜事想告诉大家？</div>
                                 <form method="post" id="joe_dynamic-form" action="<?php $this->commentUrl() ?>" data-type="text">
-                                    <textarea name="text" class="OwO-textarea" id="textarea" autocomplete="off" rows="3" placeholder="发表您的新鲜事儿..."></textarea>
+                                    <textarea name="text" class="OwO-textarea" id="textarea" autocomplete="off" rows="3" placeholder="随便说说吧..."></textarea>
                                     <div class="form-foot">
-                                        <div class="pencilbox">
+                                        <div class="tool">
                                             <span title="图片" onclick="document.getElementById('textarea').value+='![图片描述](图片地址)' ">
                                                 <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                                                     <path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z"></path>
