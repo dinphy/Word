@@ -608,6 +608,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			});
 		}
+		$('.joe_dynamic .content img').each(function () {
+			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Joe" href="${$(this).attr('src')}"></span>`));
+		});
 	}
 
 	/* 动态点赞 */
