@@ -121,9 +121,8 @@
 		}
 		form {
 			textarea {
-				border-radius: calc(var(--radius-wrap) / 2);
 				width: 100%;
-				height: 110px;
+				height: 90px;
 				vertical-align: middle;
 				resize: none;
 				padding: 15px;
@@ -135,17 +134,34 @@
 			.form-foot {
 				display: flex;
 				justify-content: flex-end;
-				margin-top: 15px;
-				border-bottom: 1px dashed var(--minor);
-				padding-bottom: 1rem;
+				.pencilbox {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					background: var(--classC);
+					span {
+						width: 35px;
+						height: 30px;
+						display: flex;
+						fill: var(--routine);
+						transition: background-color 0.1s;
+						justify-content: center;
+						align-items: center;
+						&:hover {
+							cursor: pointer;
+							color: var(--classC);
+							background-color: var(--classD);
+						}
+					}
+				}
 				button[type='submit'] {
 					color: var(--background);
+					fill: var(--background);
 					background: var(--theme);
 					border: none;
 					height: 32px;
 					padding: 0 15px;
 					transition: opacity 0.35s;
-					border-radius: 3px;
 					&:hover {
 						opacity: 0.85;
 					}
@@ -263,6 +279,13 @@
 						position: absolute;
 						left: 15px;
 						bottom: 100%;
+					}
+					a {
+						color: var(--theme);
+					}
+					img {
+						height: 150px;
+						object-fit: fill;
 					}
 				}
 				.foot {

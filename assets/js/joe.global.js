@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				if (type === 'text' && text.trim() === '') return Qmsg.info('你还没说点什么呢！');
 				if (isSubmit) return;
 				isSubmit = true;
-				$('#joe_dynamic-form .form-foot button').html('发送中...');
+				$('#joe_dynamic-form .form-foot button').html('发布中...');
 				$.ajax({
 					url: action,
 					type: 'POST',
@@ -595,15 +595,15 @@ document.addEventListener('DOMContentLoaded', () => {
 						if (!/Joe/.test(res)) {
 							Qmsg.warning(str.textContent.trim() || '');
 							isSubmit = false;
-							$('#joe_dynamic-form .form-foot button').html('发表评论');
+							$('#joe_dynamic-form .form-foot button').html('发布');
 						} else {
 							window.location.reload();
 						}
 					},
 					error() {
 						isSubmit = false;
-						$('#joe_dynamic-form .form-foot button').html('发表评论');
-						Qmsg.warning('发送失败！请刷新重试！');
+						$('#joe_dynamic-form .form-foot button').html('发布');
+						Qmsg.warning('发布失败，请刷新重试！');
 					}
 				});
 			});
