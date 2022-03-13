@@ -181,12 +181,12 @@
 	&__title {
 		display: flex;
 		align-items: center;
-		border-bottom: 1px solid var(--classC);
-		padding: 0 15px;
 		background: var(--background);
 		box-shadow: var(--box-shadow);
-		border-top-left-radius: var(--radius-wrap);
-		border-top-right-radius: var(--radius-wrap);
+		border-radius: var(--radius-wrap);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		margin-bottom: 15px;
 		&-title {
 			position: relative;
 			display: flex;

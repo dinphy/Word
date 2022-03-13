@@ -16,14 +16,14 @@
 	<link rel="stylesheet" href="https://lib.baomitu.com/Swiper/5.4.5/css/swiper.min.css">
 	<script src="https://lib.baomitu.com/Swiper/5.4.5/js/swiper.min.js"></script>
 	<script src="https://lib.baomitu.com/wow/1.1.2/wow.min.js"></script>
-	<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.index.min.css?v=7.3.7'); ?>">
+	<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.index.min.css?v=7.3.7.4'); ?>">
 	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js?v=7.3.7.2'); ?>"></script>
 </head>
 
 <body>
 	<div id="Joe">
-		<?php $this->need('public/banner.php'); ?>
 		<?php $this->need('public/header.php'); ?>
+		<?php $this->need('public/banner.php'); ?>
 		<div class="joe_container">
 			<div class="joe_main">
 				<div class="joe_index">

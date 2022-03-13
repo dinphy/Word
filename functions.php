@@ -77,6 +77,19 @@ function themeConfig($form)
     $JCommentStatus->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JCommentStatus->multiMode());
 
+    $JNavStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'JNavStatus',
+        array(
+            'on' => '开启（默认）',
+            'off' => '关闭'
+        ),
+        '3',
+        '导航分类合并',
+        '介绍：用于设置导航分类合并或展开'
+    );
+    $JNavStatus->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JNavStatus->multiMode());
+
     $JNavMaxNum = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavMaxNum',
         array(

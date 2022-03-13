@@ -524,33 +524,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 头部滚动 */
 	{
-		if (!window.Joe.IS_MOBILE) {
-			let flag = true;
-			const handleHeader = diffY => {
-				if (window.pageYOffset >= $('.joe_header').height() && diffY <= 0) {
-					if (flag) return;
-					$('.joe_header').addClass('active');
-					$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() - 60 + 15);
-					flag = true;
+		let flag = true;
+		const handleHeader = diffY => {
+			if (window.pageYOffset >= $('.joe_header').height() && diffY <= 0) {
+				if (flag) return;
+				$('.joe_header').addClass('active');
+				$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
+				flag = true;
+			} else {
+				if (!flag) return;
+				$('.joe_header').removeClass('active');
+				$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height());
+				flag = false;
+			}
+		};
+		let Y = window.pageYOffset;
+		handleHeader(Y);
+		let _last = Date.now();
+		document.addEventListener('scroll', () => {
+			let _now = Date.now();
+			if (_now - _last > 15) {
+				handleHeader(Y - window.pageYOffset);
+				Y = window.pageYOffset;
+				if (Y >= $('.joe_header').height()) {
+					$('.joe_header').css({ background: 'var(--new-background)', 'box-shadow': '0 2px 10px 0 rgba(0, 0, 0, 0.1)' });
+					$('.joe_header__above-nav .item,.joe_header__above-sign .joe_dropdown__link,.joe_header__above-nav .joe_dropdown__link a').css('color', 'var(--main)');
+					$('.joe_header__above-slideicon,.joe_header__above-searchicon,.joe_header__above-sign .joe_dropdown__link .icon').css('fill','var(--main)');
 				} else {
-					if (!flag) return;
-					$('.joe_header').removeClass('active');
-					$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
-					flag = false;
+					$('.joe_header').css({ background: 'none', 'box-shadow': 'none' });
+					$('.joe_header__above-nav .item,.joe_header__above-sign .joe_dropdown__link,.joe_header__above-nav .joe_dropdown__link a').css('color', '#fff');
+					$('.joe_header__above-nav .joe_dropdown__menu a').css('color', 'var(--main)');
+					$('.joe_header__above-slideicon,.joe_header__above-searchicon,.joe_header__above-sign .joe_dropdown__link .icon').css('fill','#fff');
 				}
-			};
-			let Y = window.pageYOffset;
-			handleHeader(Y);
-			let _last = Date.now();
-			document.addEventListener('scroll', () => {
-				let _now = Date.now();
-				if (_now - _last > 15) {
-					handleHeader(Y - window.pageYOffset);
-					Y = window.pageYOffset;
-				}
-				_last = _now;
-			});
-		}
+			}
+			_last = _now;
+		});
 	}
 
 	/* 目录树 */
@@ -662,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	/* 二级菜单 */
-	{
+	/* {
 		if ($('.joe_post').length) {
 			$('.joe_detail').css('margin-top', '0');
 		} else {
@@ -671,19 +679,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		$('.subnav').on('click', function () {
 			$('.joe_header__below').slideToggle();
 		});
-	}
+	} */
 
 	/* 登录 */
 	{
-		$(".joe_header__below-sign button[type='button']").on('click', function (e) {
-			if ($(".joe_header__below-sign input[name='name']").val().trim() === '') {
+		$(".joe_header__above-sign button[type='button']").on('click', function (e) {
+			if ($(".joe_header__above-sign input[name='name']").val().trim() === '') {
+				$(".joe_header__above-sign input[name='name']").focus();
 				return Qmsg.warning('请输入昵称');
 			}
-			if ($(".joe_header__below-sign input[name='password']").val().trim() === '') {
+			if ($(".joe_header__above-sign input[name='password']").val().trim() === '') {
+				$(".joe_header__above-sign input[name='password']").focus();
 				return Qmsg.warning('请输入密码');
 			}
 			$(this).html('登录中...').attr('disabled', true);
-			$('.joe_header__below-sign form').submit();
+			$('.joe_header__above-sign form').submit();
 		});
 
 		$("#loginForm button[type='button']").on('click', function (e) {

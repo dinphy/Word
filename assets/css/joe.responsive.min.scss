@@ -363,6 +363,7 @@ html {
 				&__above {
 					&-logo {
 						padding-right: 0;
+						margin: auto;
 						&::after {
 							display: none;
 						}
@@ -418,6 +419,7 @@ html {
 					.joe_container {
 						justify-content: space-between;
 					}
+					&-sign,
 					&-nav {
 						display: none;
 					}
@@ -428,11 +430,11 @@ html {
 							max-height: 45px;
 						}
 					}
-					&-searchicon {
-						margin-left: 0;
-					}
 					&-slideicon {
 						display: block;
+					}
+					&-searchicon {
+						margin-left: 0;
 					}
 				}
 				&__below {
@@ -924,6 +926,10 @@ html {
 				&__item {
 					margin-bottom: 5px;
 				}
+			}
+			&_index__title {
+				margin-top: -10px;
+				margin-bottom: 5px;
 			}
 		}
 	}

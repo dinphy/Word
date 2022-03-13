@@ -2,8 +2,8 @@
 
     <div class="joe_header__above">
         <div class="joe_container">
-            <svg class="joe_header__above-slideicon" viewBox="0 0 1152 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                <path d="M76.032 872a59.968 59.968 0 1 0 0 120h999.936a59.968 59.968 0 1 0 0-120H76.032zm16-420.032a59.968 59.968 0 1 0 0 120h599.936a59.968 59.968 0 1 0 0-119.936H92.032zM76.032 32a59.968 59.968 0 1 0 0 120h999.936a60.032 60.032 0 0 0 0-120H76.032z" />
+            <svg class="joe_header__above-slideicon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M608 704a32 32 0 1 1 0 64h-512a32 32 0 1 1 0-64h512z m0-256a32 32 0 0 1 0 64h-512a32 32 0 0 1 0-64h512z m320-256a32 32 0 1 1 0 64h-832a32 32 0 0 1 0-64h832z"></path>
             </svg>
             <a title="<?php $this->options->title(); ?>" class="joe_header__above-logo" href="<?php $this->options->siteUrl(); ?>">
                 <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo() ?>" alt="<?php $this->options->title(); ?>" />
@@ -82,7 +82,58 @@
             </a>
             <nav class="joe_header__above-nav">
                 <a class="item <?php echo $this->is('index') ? 'active' : '' ?>" href="<?php $this->options->siteUrl(); ?>" title="首页">首页</a>
-                <a class="item subnav <?php echo $this->is('category') ? 'active' : '' ?>" href="javascript:void(0);" title="分类">分类</a>
+                <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
+                <?php if ($this->options->JNavStatus == 'on') : ?>
+                    <?php while ($category->next()) : ?>
+                        <?php if ($category->levels === 0) : ?>
+                            <?php $children = $category->getAllChildren($category->mid); ?>
+                            <?php if (empty($children)) : ?>
+                                <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                            <?php else : ?>
+                                <div class="joe_dropdown" trigger="hover" placement="60px">
+                                    <div class="joe_dropdown__link">
+                                        <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                                    </div>
+                                    <nav class="joe_dropdown__menu">
+                                        <?php foreach ($children as $mid) : ?>
+                                            <?php $child = $category->getCategory($mid); ?>
+                                            <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
+                                        <?php endforeach; ?>
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+                <?php else : ?>
+                    <div class="joe_dropdown" trigger="hover" placement="60px" style="margin-right: 15px;">
+                        <div class="joe_dropdown__link">
+                            <a href="javascript:void(0);" rel="nofollow">分类</a>
+                        </div>
+                        <nav class="joe_dropdown__menu">
+                            <?php while ($category->next()) : ?>
+                                <?php if ($category->levels === 0) : ?>
+                                    <?php $children = $category->getAllChildren($category->mid); ?>
+                                    <?php if (empty($children)) : ?>
+                                        <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                                    <?php else : ?>
+                                        <div class="joe_dropdown" trigger="hover" placement="60px">
+                                            <div class="joe_dropdown__link">
+                                                <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                                            </div>
+                                            <nav class="joe_dropdown__menu-sub">
+                                                <?php foreach ($children as $mid) : ?>
+                                                    <?php $child = $category->getCategory($mid); ?>
+                                                    <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
+                                                <?php endforeach; ?>
+                                            </nav>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php endwhile; ?>
+                        </nav>
+                    </div>
+                <?php endif; ?>
+
                 <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
                 <?php if (count($pages->stack) <= $this->options->JNavMaxNum) : ?>
                     <?php foreach ($pages->stack as $item) : ?>
@@ -94,10 +145,7 @@
                     <?php endforeach; ?>
                     <div class="joe_dropdown" trigger="hover" placement="60px" style="margin-right: 15px;">
                         <div class="joe_dropdown__link">
-                            <a href="javascript:void(0);" rel="nofollow">更多</a>
-                            <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-                                <path d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z" p-id="3535" fill="var(--main)"></path>
-                            </svg>
+                            <a href="javascript:void(0);" rel="nofollow">其他</a>
                         </div>
                         <nav class="joe_dropdown__menu">
                             <?php foreach (array_slice($pages->stack, $this->options->JNavMaxNum) as $item) : ?>
@@ -136,7 +184,7 @@
                     </div>
                 <?php endif; ?>
             </nav>
-            <form class="joe_header__above-search" method="post" action="<?php $this->options->siteUrl(); ?>">
+            <!-- <form class="joe_header__above-search" method="post" action="<?php $this->options->siteUrl(); ?>">
                 <input maxlength="16" autocomplete="off" placeholder="请输入关键字..." name="s" value="<?php echo $this->is('search') ? $this->archiveTitle(' &raquo; ', '', '') : '' ?>" class="input" type="text" />
                 <button type="submit" class="submit">Search</button>
                 <span class="icon"></span>
@@ -152,44 +200,57 @@
                         <?php $index++; ?>
                     <?php endwhile; ?>
                 </nav>
-            </form>
-            <svg class="joe_header__above-searchicon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                <path d="M1008.19 932.031L771.72 695.56a431.153 431.153 0 1 0-76.158 76.158l236.408 236.472a53.758 53.758 0 0 0 76.158 0 53.758 53.758 0 0 0 0-76.158zM107.807 431.185a323.637 323.637 0 0 1 323.316-323.381 323.7 323.7 0 0 1 323.381 323.38 323.637 323.637 0 0 1-323.38 323.317 323.637 323.637 0 0 1-323.317-323.316z" />
-            </svg>
+            </form> -->
+            <div class="joe_header__above-right">
+                <div class="joe_header__above-sign">
+                    <div class="joe_dropdown" trigger="click" placement="52px">
+                        <?php if ($this->user->hasLogin()) : ?>
+                            <div class="joe_dropdown__link">
+                                <span><?php $this->user->screenName(); ?></span>
+                            </div>
+                            <nav class="joe_dropdown__menu list">
+                                <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl(); ?>">进入后台</a>
+                                <?php if ($this->user->group == 'administrator' || $this->user->group == 'editor' || $this->user->group == 'contributor') : ?>
+                                    <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl("write-post.php"); ?>">撰写文章</a>
+                                <?php endif; ?>
+                                <?php if ($this->user->group == 'administrator' || $this->user->group == 'editor') : ?>
+                                    <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl("manage-comments.php"); ?>">管理评论</a>
+                                <?php endif; ?>
+                                <a rel="noopener nofollow" href="<?php $this->options->logoutUrl(); ?>">退出登录</a>
+                            </nav>
+                        <?php else : ?>
+                            <div class="joe_dropdown__link">
+                                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M604.501333 542.037333A242.346667 242.346667 0 1 0 238.933333 332.572444a240.867556 240.867556 0 0 0 123.335111 209.464889 372.280889 372.280889 0 0 1 242.232889 0zM291.271111 332.572444a192.170667 192.170667 0 0 1 384.227556 0 192.170667 192.170667 0 0 1-384.227556 0zM604.501333 542.037333a244.622222 244.622222 0 0 1-242.232889 0A366.705778 366.705778 0 0 0 113.777778 887.466667h52.337778a318.008889 318.008889 0 0 1 560.128-201.386667L762.311111 647.736889a371.143111 371.143111 0 0 0-157.809778-105.699556z"></path>
+                                    <path d="M604.501333 542.037333a372.280889 372.280889 0 0 0-242.232889 0 244.622222 244.622222 0 0 0 242.232889 0zM670.72 932.977778L516.664889 775.736889l38.570667-35.384889 115.712 115.598222 201.045333-217.770666L910.222222 673.905778 670.72 932.977778z"></path>
+                                </svg>
+                            </div>
+                            <form class="joe_dropdown__menu form" method="post" name="login" action="<?php $this->options->loginAction() ?>">
+                                <input type="hidden" name="referer" value="<?php $this->options->siteUrl(); ?>">
+                                <div class="item">
+                                    <input class="username" placeholder="Nickname" type="text" maxlength="16" name="name" autocomplete="off" />
+                                </div>
+                                <div class="item">
+                                    <input class="password" placeholder="Password" type="password" maxlength="16" name="password" autocomplete="off" />
+                                </div>
+                                <button type="button">登 录</button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <svg class="joe_header__above-searchicon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M937.798221 769.855766 714.895525 546.869159c23.821545-45.681412 37.589107-97.495498 37.589107-152.564721 0-182.559872-148.560524-331.078441-331.079464-331.078441-182.623317 0-331.098907 148.517545-331.098907 331.078441 0 182.559872 148.47559 331.078441 331.098907 331.078441 60.575634 0 117.27089-16.647145 166.206416-45.221948L807.552831 900.100132c17.938558 17.939581 41.551348 26.867928 65.12423 26.867928s47.182602-8.928347 65.123206-26.867928c17.396205-17.396205 27.033703-40.550555 27.033703-65.164139C964.831924 810.321386 955.194426 787.16806 937.798221 769.855766M133.027248 394.304438c0-158.989037 129.34795-288.358477 288.378943-288.358477 158.948105 0 288.3595 129.36944 288.3595 288.358477 0 99.206466-50.437739 186.899714-126.950344 238.795665-1.044796 0.416486-1.876744 1.252527-2.877537 1.835811-45.515636 30.03813-99.999528 47.727001-158.530596 47.727001C262.375198 682.662915 133.027248 553.336454 133.027248 394.304438M907.594315 869.896226c-19.273972 19.191084-50.562583 19.191084-69.836555 0L623.6995 655.797034c26.157753-20.274766 49.186236-44.305065 68.292386-71.421656l215.601406 215.683271c9.344832 9.262968 14.518668 21.694091 14.518668 34.877345S916.939147 860.551394 907.594315 869.896226"></path>
+                    <path d="M215.169059 387.79007c0 0 42.156122-211.011878 234.186693-224.946238C449.355753 162.843832 185.944458 131.555222 215.169059 387.79007"></path>
+                </svg>
+            </div>
         </div>
     </div>
 
-    <div class="joe_header__below">
+    <!-- <div class="joe_header__below">
         <div class="joe_container">
             <?php if ($this->is('post')) :  ?>
                 <div class="joe_header__below-title"><?php $this->title() ?></div>
             <?php endif; ?>
-            <nav class="joe_header__below-class">
-                <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-                <?php while ($category->next()) : ?>
-                    <?php if ($category->levels === 0) : ?>
-                        <?php $children = $category->getAllChildren($category->mid); ?>
-                        <?php if (empty($children)) : ?>
-                            <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
-                        <?php else : ?>
-                            <div class="joe_dropdown" trigger="hover" placement="40px">
-                                <div class="joe_dropdown__link">
-                                    <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
-                                    <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
-                                        <path d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z" fill="var(--minor)" />
-                                    </svg>
-                                </div>
-                                <nav class="joe_dropdown__menu">
-                                    <?php foreach ($children as $mid) : ?>
-                                        <?php $child = $category->getCategory($mid); ?>
-                                        <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
-                                    <?php endforeach; ?>
-                                </nav>
-                            </div>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                <?php endwhile; ?>
-            </nav>
 
             <div class="joe_header__below-sign">
                 <div class="joe_dropdown" trigger="click" placement="40px">
@@ -239,7 +300,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="joe_header__searchout">
         <div class="joe_container">

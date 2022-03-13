@@ -4,6 +4,8 @@
     &__bread {
         display: flex;
         align-items: center;
+        border-bottom: 1px solid var(--classC);
+        padding-bottom: 10px;
         .line {
             color: var(--seat);
             padding: 0 8px;
