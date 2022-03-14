@@ -1,4 +1,4 @@
-<header class="joe_header <?php echo $this->is('post') ? 'current' : '' ?>">
+<header class="joe_header">
 
     <div class="joe_header__above">
         <div class="joe_container">
@@ -184,29 +184,15 @@
                     </div>
                 <?php endif; ?>
             </nav>
-            <!-- <form class="joe_header__above-search" method="post" action="<?php $this->options->siteUrl(); ?>">
-                <input maxlength="16" autocomplete="off" placeholder="请输入关键字..." name="s" value="<?php echo $this->is('search') ? $this->archiveTitle(' &raquo; ', '', '') : '' ?>" class="input" type="text" />
-                <button type="submit" class="submit">Search</button>
-                <span class="icon"></span>
-                <nav class="result">
-                    <?php $this->widget('Widget_Contents_Hot@Search', 'pageSize=5')->to($item); ?>
-                    <?php $index = 1; ?>
-                    <?php while ($item->next()) : ?>
-                        <a href="<?php $item->permalink(); ?>" title="<?php $item->title(); ?>" class="item">
-                            <span class="sort"><?php echo $index; ?></span>
-                            <span class="text"><?php $item->title(); ?></span>
-                            <span class="views"><?php echo number_format($item->views); ?> 阅读</span>
-                        </a>
-                        <?php $index++; ?>
-                    <?php endwhile; ?>
-                </nav>
-            </form> -->
             <div class="joe_header__above-right">
                 <div class="joe_header__above-sign">
                     <div class="joe_dropdown" trigger="click" placement="52px">
                         <?php if ($this->user->hasLogin()) : ?>
                             <div class="joe_dropdown__link">
-                                <span><?php $this->user->screenName(); ?></span>
+                                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M604.501333 542.037333A242.346667 242.346667 0 1 0 238.933333 332.572444a240.867556 240.867556 0 0 0 123.335111 209.464889 372.280889 372.280889 0 0 1 242.232889 0zM291.271111 332.572444a192.170667 192.170667 0 0 1 384.227556 0 192.170667 192.170667 0 0 1-384.227556 0zM604.501333 542.037333a244.622222 244.622222 0 0 1-242.232889 0A366.705778 366.705778 0 0 0 113.777778 887.466667h52.337778a318.008889 318.008889 0 0 1 560.128-201.386667L762.311111 647.736889a371.143111 371.143111 0 0 0-157.809778-105.699556z"></path>
+                                    <path d="M604.501333 542.037333a372.280889 372.280889 0 0 0-242.232889 0 244.622222 244.622222 0 0 0 242.232889 0zM670.72 932.977778L516.664889 775.736889l38.570667-35.384889 115.712 115.598222 201.045333-217.770666L910.222222 673.905778 670.72 932.977778z"></path>
+                                </svg>
                             </div>
                             <nav class="joe_dropdown__menu list">
                                 <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl(); ?>">进入后台</a>
@@ -221,8 +207,7 @@
                         <?php else : ?>
                             <div class="joe_dropdown__link">
                                 <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M604.501333 542.037333A242.346667 242.346667 0 1 0 238.933333 332.572444a240.867556 240.867556 0 0 0 123.335111 209.464889 372.280889 372.280889 0 0 1 242.232889 0zM291.271111 332.572444a192.170667 192.170667 0 0 1 384.227556 0 192.170667 192.170667 0 0 1-384.227556 0zM604.501333 542.037333a244.622222 244.622222 0 0 1-242.232889 0A366.705778 366.705778 0 0 0 113.777778 887.466667h52.337778a318.008889 318.008889 0 0 1 560.128-201.386667L762.311111 647.736889a371.143111 371.143111 0 0 0-157.809778-105.699556z"></path>
-                                    <path d="M604.501333 542.037333a372.280889 372.280889 0 0 0-242.232889 0 244.622222 244.622222 0 0 0 242.232889 0zM670.72 932.977778L516.664889 775.736889l38.570667-35.384889 115.712 115.598222 201.045333-217.770666L910.222222 673.905778 670.72 932.977778z"></path>
+                                    <path d="M640 542.72c76.8-44.8 128-128 128-217.6 0-140.8-115.2-256-256-256s-256 108.8-256 249.6c0 96 51.2 172.8 128 217.6-166.4 51.2-281.6 204.8-288 384 0 25.6 12.8 38.4 32 38.4s32-12.8 32-32c6.4-192 160-345.6 352-345.6s345.6 153.6 352 345.6c0 19.2 12.8 32 32 32s32-12.8 32-32c-6.4-179.2-121.6-332.8-288-384z m-320-224c0-108.8 83.2-192 192-192s192 83.2 192 192-83.2 192-192 192-192-83.2-192-192z"></path>
                                 </svg>
                             </div>
                             <form class="joe_dropdown__menu form" method="post" name="login" action="<?php $this->options->loginAction() ?>">
@@ -246,68 +231,24 @@
         </div>
     </div>
 
-    <!-- <div class="joe_header__below">
-        <div class="joe_container">
-            <?php if ($this->is('post')) :  ?>
-                <div class="joe_header__below-title"><?php $this->title() ?></div>
-            <?php endif; ?>
-
-            <div class="joe_header__below-sign">
-                <div class="joe_dropdown" trigger="click" placement="40px">
-                    <?php if ($this->user->hasLogin()) : ?>
-                        <div class="joe_dropdown__link">
-                            <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
-                                <path d="M231.594 610.125C135.087 687.619 71.378 804.28 64.59 935.994c-.373 7.25 3.89 23.307 30.113 23.307s33.512-16.06 33.948-23.301c6.861-114.025 63.513-214.622 148.5-280.346 3.626-2.804 16.543-17.618 3.24-39.449-13.702-22.483-40.863-12.453-48.798-6.08zm280.112-98.44v63.96c204.109 0 370.994 159.345 383.06 360.421.432 7.219 8.649 23.347 32.44 23.347s31.991-16.117 31.62-23.342c-12.14-236.422-207.676-424.386-447.12-424.386z" />
-                                <path d="M319.824 319.804c0-105.974 85.909-191.883 191.882-191.883s191.883 85.91 191.883 191.883c0 26.57-5.405 51.88-15.171 74.887-5.526 14.809-2.082 31.921 20.398 38.345 23.876 6.822 36.732-8.472 41.44-20.583 11.167-28.729 17.294-59.973 17.294-92.65 0-141.297-114.545-255.842-255.843-255.842S255.863 178.506 255.863 319.804s114.545 255.843 255.843 255.843v-63.961c-105.973-.001-191.882-85.909-191.882-191.882z" />
-                                <path d="M512 255.843s21.49-5.723 21.49-31.306S512 191.882 512 191.882c-70.65 0-127.921 57.273-127.921 127.922 0 3.322.126 6.615.375 9.875.264 3.454 14.94 18.116 37.044 14.425 22.025-3.679 26.6-21.93 26.6-21.93-.028-.788-.06-1.575-.06-2.37.001-35.325 28.637-63.961 63.962-63.961z" />
-                            </svg>
-                            <span><?php $this->user->screenName(); ?></span>
-                        </div>
-                        <nav class="joe_dropdown__menu list">
-                            <?php if ($this->user->group == 'administrator' || $this->user->group == 'editor' || $this->user->group == 'contributor') : ?>
-                                <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl("manage-posts.php"); ?>">管理文章</a>
-                            <?php endif; ?>
-                            <?php if ($this->user->group == 'administrator' || $this->user->group == 'editor') : ?>
-                                <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl("manage-comments.php"); ?>">管理评论</a>
-                            <?php endif; ?>
-                            <?php if ($this->user->group == 'administrator') : ?>
-                                <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl("options-theme.php"); ?>">修改外观</a>
-                            <?php endif; ?>
-                            <a rel="noopener noreferrer nofollow" target="_blank" href="<?php $this->options->adminUrl(); ?>">进入后台</a>
-                            <a rel="noopener nofollow" href="<?php $this->options->logoutUrl(); ?>">退出登录</a>
-                        </nav>
-                    <?php else : ?>
-                        <div class="joe_dropdown__link">
-                            <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                                <path d="M929.792 340.48c-22.016-52.224-53.76-99.328-94.208-139.776s-88.064-72.192-140.288-94.72c-54.272-23.04-112.128-34.816-171.52-34.816-77.312 0-153.6 20.48-220.16 58.88-15.36 8.704-20.48 28.16-11.776 43.52 8.704 15.36 28.16 20.48 43.52 11.776 56.832-32.768 121.856-50.176 188.416-50.176 100.352 0 195.072 38.912 266.24 110.08s110.08 165.888 110.08 266.24-38.912 195.072-110.08 266.24-165.888 110.08-266.24 110.08c-66.048 0-131.072-17.408-188.416-50.176-15.36-8.704-34.816-3.584-43.52 11.776s-3.584 34.816 11.776 43.52c66.56 38.4 142.848 58.88 220.16 58.88 59.392 0 117.248-11.776 171.52-34.816 52.224-22.016 99.328-53.76 140.288-94.208 40.448-40.448 72.192-87.552 94.208-140.288 23.04-54.272 34.816-112.128 34.816-171.52s-11.776-116.224-34.816-170.496z" />
-                                <path d="M426.496 691.712c-12.288 12.288-12.288 32.768 0 45.056 6.144 6.144 14.336 9.216 22.528 9.216s16.384-3.072 22.528-9.216l202.24-202.24c2.56-2.56 4.608-5.632 6.144-8.704l.512-1.536c0-.512.512-1.024.512-1.536s.512-.512.512-1.024v-.512c0-.512 0-.512.512-1.024V502.272c0-.512 0-.512-.512-1.024v-.512c0-.512 0-.512-.512-1.024v-.512c0-.512 0-.512-.512-1.024v-.512c0-.512-.512-.512-.512-1.024v-.512c0-.512-.512-.512-.512-1.024v-.512l-.512-.512s0-.512-.512-.512c0-.512-.512-.512-.512-1.024 0 0 0-.512-.512-.512l-.512-.512-.512-.512-.512-.512-1.024-1.024L472.064 286.72c-12.288-12.288-32.768-12.288-45.056 0-12.288 12.288-12.288 32.768 0 45.056l147.968 147.968H147.968c-17.92 0-31.744 14.336-31.744 31.744s14.336 31.744 31.744 31.744h426.496l-147.968 148.48z" />
-                            </svg>
-                            <span>登录</span>
-                        </div>
-                        <form class="joe_dropdown__menu form" method="post" name="login" action="<?php $this->options->loginAction() ?>">
-                            <input type="hidden" name="referer" value="<?php $this->options->siteUrl(); ?>">
-                            <div class="item">
-                                <div class="label">昵称</div>
-                                <input class="username" placeholder="请输入昵称" type="text" maxlength="16" name="name" autocomplete="off" />
-                            </div>
-                            <div class="item">
-                                <div class="label">密码</div>
-                                <input class="password" placeholder="请输入密码" type="password" maxlength="16" name="password" autocomplete="off" />
-                            </div>
-                            <button type="button">登 录</button>
-                        </form>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="joe_header__searchout">
         <div class="joe_container">
             <div class="joe_header__searchout-inner">
-                <form class="search" method="post" action="<?php $this->options->siteUrl(); ?>">
+                <form class="search joe_header__above-search" method="post" action="<?php $this->options->siteUrl(); ?>">
                     <input maxlength="16" autocomplete="off" placeholder="请输入关键字..." name="s" value="<?php echo $this->is('search') ? $this->archiveTitle(' &raquo; ', '', '') : '' ?>" class="input" type="text" />
                     <button type="submit" class="submit">Search</button>
+                    <nav class="result">
+                        <?php $this->widget('Widget_Contents_Hot@Search', 'pageSize=5')->to($item); ?>
+                        <?php $index = 1; ?>
+                        <?php while ($item->next()) : ?>
+                            <a href="<?php $item->permalink(); ?>" title="<?php $item->title(); ?>" class="item">
+                                <span class="sort"><?php echo $index; ?></span>
+                                <span class="text"><?php $item->title(); ?></span>
+                                <span class="views"><?php echo number_format($item->views); ?> 阅读</span>
+                            </a>
+                            <?php $index++; ?>
+                        <?php endwhile; ?>
+                    </nav>
                 </form>
                 <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 20))->to($tags); ?>
                 <?php if ($tags->have()) : ?>

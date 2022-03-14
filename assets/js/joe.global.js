@@ -669,17 +669,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 	}
-	/* 二级菜单 */
-	/* {
-		if ($('.joe_post').length) {
-			$('.joe_detail').css('margin-top', '0');
-		} else {
-			$('.joe_header__below').hide();
-		}
-		$('.subnav').on('click', function () {
-			$('.joe_header__below').slideToggle();
-		});
-	} */
 
 	/* 登录 */
 	{

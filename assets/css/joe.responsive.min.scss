@@ -437,11 +437,11 @@ html {
 						margin-left: 0;
 					}
 				}
-				&__below {
-					display: none;
-				}
 				&__searchout {
 					top: 55px;
+					&-inner {
+						width: 100%;
+					}
 				}
 			}
 			&_index {
@@ -928,7 +928,7 @@ html {
 				}
 			}
 			&_index__title {
-				margin-top: -10px;
+				margin-top: -8px;
 				margin-bottom: 5px;
 			}
 		}

@@ -429,17 +429,6 @@
 	&.active {
 		background: var(--new-background);
 		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
-		.joe_header__below {
-			border-top: none;
-		}
-		&.current {
-			.joe_header__below-title {
-				display: block;
-			}
-			.joe_header__below-class {
-				display: none;
-			}
-		}
 	}
 	&__above {
 		position: relative;
@@ -610,7 +599,7 @@
 			.result {
 				position: absolute;
 				z-index: 2;
-				top: 60px;
+				top: 3rem;
 				left: 0;
 				right: 0;
 				background: var(--background);
@@ -801,76 +790,12 @@
 			}
 		}
 	}
-	&__below {
-		position: relative;
-		/* border-top: 1px solid var(--classC); */
-		height: 45px;
-		&-title {
-			max-width: 450px;
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			display: none;
-			line-height: 45px;
-			font-size: 17px;
-			font-weight: 700;
-			color: var(--main);
-			animation: showHeaderTitle 0.35s;
-		}
-		&-class {
-			display: flex;
-			.item {
-				margin-right: 15px;
-				color: #fff;
-				text-shadow: 0 0.1875rem 0.3125rem #222f3e;
-				height: 45px;
-				line-height: 45px;
-				transition: color 0.35s;
-				white-space: nowrap;
-				&:hover,
-				&.active {
-					color: var(--minor);
-				}
-			}
-			.joe_dropdown {
-				margin-right: 15px;
-				&__link {
-					.item {
-						margin-right: 3px;
-					}
-				}
-				&__menu {
-					width: 110px;
-					border-radius: 5px;
-					text-align: center;
-					a {
-						display: block;
-						height: 34px;
-						line-height: 34px;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						color: #fff;
-						text-shadow: 0 0.1875rem 0.3125rem #222f3e;
-						transition: color 0.35s, background 0.35s;
-						padding: 0 15px;
-						&:hover,
-						&.active {
-							color: var(--minor);
-							background: var(--classD);
-						}
-					}
-				}
-			}
-		}
-	}
 	&__searchout {
 		position: absolute;
 		top: 60px;
 		left: 0;
 		right: 0;
 		z-index: 890;
-		background: rgb(0 0 0 / 10%);
 		transform: translate3d(0, -100%, 0);
 		transition: transform 0.35s, visibility 0.35s;
 		visibility: hidden;
@@ -879,8 +804,10 @@
 			transform: translate3d(0, 0, 0);
 		}
 		&-inner {
-			padding: 15px 0;
-			width: 100%;
+			padding: 15px;
+			width: 60%;
+			margin-left: auto;
+			background: rgb(0 0 0 / 10%);
 			.search {
 				width: 100%;
 				display: flex;
