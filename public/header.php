@@ -114,7 +114,7 @@
                                     <?php if (empty($children)) : ?>
                                         <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                                     <?php else : ?>
-                                        <div class="joe_dropdown" trigger="hover" placement="60px">
+                                        <div class="joe_dropdown">
                                             <div class="joe_dropdown__link">
                                                 <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                                             </div>

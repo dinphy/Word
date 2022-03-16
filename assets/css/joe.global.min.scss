@@ -32,7 +32,7 @@
 				fill: #f9f9f9;
 			}
 			.line {
-				padding: 0 .5rem;
+				padding: 0 0.5rem;
 				&::after {
 					content: '/';
 					font-size: 8px;
@@ -369,7 +369,6 @@
 		left: 50%;
 		visibility: hidden;
 		z-index: 999;
-		/* border-top: 3px solid var(--theme); */
 		transform-origin: top;
 		background: var(--new-background);
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -378,18 +377,6 @@
 		opacity: 0;
 		transform: translateX(-50%) perspective(600px) rotateX(-45deg);
 		transition: opacity 0.35s, visibility 0.35s, transform 0.35s;
-		/* &::before {
-			content: '';
-			position: absolute;
-			top: -10px;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 0;
-			height: 0;
-			border-left: 7px solid transparent;
-			border-right: 7px solid transparent;
-			border-bottom: 7px solid var(--theme);
-		} */
 	}
 	&.active {
 		.joe_dropdown__link-icon {
@@ -464,7 +451,9 @@
 					bottom: 1px;
 					left: 0;
 					right: 0;
+					width: 1rem;
 					height: 2px;
+					margin: auto;
 					transition: opacity 0.5s, transform 0.5s;
 					border-radius: 6px 6px 0 0;
 					opacity: 0;
@@ -516,7 +505,9 @@
 							bottom: 1px;
 							left: 0;
 							right: 0;
+							width: 1rem;
 							height: 2px;
+							margin: auto;
 							transition: opacity 0.5s, transform 0.5s;
 							border-radius: 6px 6px 0 0;
 							opacity: 0;
@@ -732,7 +723,9 @@
 								bottom: 1px;
 								left: 0;
 								right: 0;
+								width: 1rem;
 								height: 2px;
+								margin: auto;
 								transition: opacity 0.5s, transform 0.5s;
 								border-radius: 6px 6px 0 0;
 								opacity: 0;
@@ -3369,7 +3362,7 @@
 				}
 			}
 		}
-		&-copyright {
+		&-more {
 			position: relative;
 			svg {
 				cursor: pointer;

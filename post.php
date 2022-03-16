@@ -11,15 +11,13 @@
     <script src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js"></script>
     <script src="https://lib.baomitu.com/prism/1.26.0/prism.min.js"></script>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.post.min.css?v=7.3.7.2'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.7'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.7.2'); ?>"></script>
 </head>
 
 <body>
     <div id="Joe">
         <?php $this->need('public/header.php'); ?>
         <?php $this->need('public/batten.php'); ?>
-
-
         <div class="joe_container">
             <div class="joe_main joe_post">
                 <section class="joe_adaption">

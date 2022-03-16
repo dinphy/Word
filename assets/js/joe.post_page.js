@@ -189,17 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	/* 版权信息 */
+	/* 更多信息 */
 	{
-		if ($('.joe_detail__operate-copyright').length) {
-			$('.joe_detail__operate-copyright > svg').on('mouseleave', e => {
-				e.stopPropagation();
-				$('.joe_detail__copyright').slideUp();
-			}).on('mouseenter', e => {
-				e.stopPropagation();
-				$('.joe_detail__copyright').slideDown();
-			});
-		}
+		$('.joe_detail__operate-more').on('click', function () {
+			$('.joe_detail__copyright').slideToggle();
+		});
 	}
 });
 

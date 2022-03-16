@@ -631,32 +631,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	/* 宽屏阅读 */
-	{
-		if ($('.joe_aside').length) {
-			let isTrue = true;
-			$('.stretch .icon1').addClass('active');
-			$('.stretch .icon2').removeClass('active');
-			$('.stretch').on('click', function () {
-				if (isTrue) {
-					$('.joe_aside').hide();
-					$('.stretch .icon1').removeClass('active');
-					$('.stretch .icon2').addClass('active');
-					$('.joe_detail__article').css('font-size', '18px');
-					$('.joe_detail__article p').css('line-height', '2rem');
-					isTrue = false;
-				} else {
-					$('.joe_aside').show();
-					$('.stretch .icon1').addClass('active');
-					$('.stretch .icon2').removeClass('active');
-					$('.joe_detail__article').css('font-size', '16px');
-					$('.joe_detail__article p').css('line-height', '26px');
-					isTrue = true;
-				}
-			});
-		}
-	}
-
 	/* 登录 */
 	{
 		$(".joe_header__above-sign button[type='button']").on('click', function (e) {
