@@ -786,22 +786,24 @@
 		}
 	}
 	&__searchout {
-		position: absolute;
-		top: 60px;
+		position: fixed;
+		top: 0;
+		bottom: 0;
 		left: 0;
 		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		z-index: 890;
-		transform: translate3d(0, -100%, 0);
-		transition: transform 0.35s, visibility 0.35s;
+		transition: visibility 0.35s;
 		visibility: hidden;
 		&.active {
 			visibility: visible;
-			transform: translate3d(0, 0, 0);
 		}
 		&-inner {
 			padding: 15px;
 			width: 60%;
-			margin-left: auto;
+			margin: auto;
 			background: rgb(0 0 0 / 10%);
 			.search {
 				width: 100%;
