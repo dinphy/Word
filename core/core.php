@@ -81,11 +81,6 @@ function themeInit($self)
         }
     }
 
-    /* 目录树 */
-    if ($self->is('single')) {
-        $self->content = _CreateCatalog($self->content);
-    }
-
     /* 动态点赞 */
     if ($self->request->isPost() && $self->request->is('action=support')) {
         $res = _addSupport($self->request->get('coid'));

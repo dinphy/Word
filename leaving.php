@@ -21,7 +21,7 @@
 <body>
     <div id="Joe">
         <?php $this->need('public/header.php'); ?>
-        <?php $this->need('public/banner.php'); ?>
+        <?php $this->need('public/batten.php'); ?>
         <div class="joe_container">
             <div class="joe_main">
                 <section class="joe_adaption">

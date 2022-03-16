@@ -202,12 +202,21 @@ class editor
 
             #j-wmd-expand .dropdown {
                 position: absolute;
-                display: none;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0.35s, opacity 0.35s, transform 0.35s;
+                transform: translate3d(0, 15px, 0);
                 left: -8px;
                 top: 33px;
                 padding: 5px;
                 background: #F6F6F3;
                 border: 1px solid #D9D9D6;
+            }
+
+            #j-wmd-expand .dropdown.active {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+                visibility: visible;
             }
 
             #j-wmd-expand .dropdown:before {
@@ -276,9 +285,13 @@ class editor
                             </div>
                         </div>
                 </li>`)
-                $("#j-wmd-expand").on("click", function() {
+                /* $("#j-wmd-expand").on("click", function() {
                     $('.dropdown').toggle();
-                })
+                }) */
+                $('#j-wmd-expand').hover(
+					() => $('#j-wmd-expand .dropdown').addClass('active'),
+					() => $('#j-wmd-expand .dropdown').removeClass('active')
+				);
 
                 $("#j-wmd-tab").on("click", function() {
                     insertAtCursor('{tabs}\n{tabs-pane label="标签一"}\n 标签一内容\n{/tabs-pane}\n{tabs-pane label="标签二"}\n 标签二内容\n{/tabs-pane}\n{/tabs}\n');

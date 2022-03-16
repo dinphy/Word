@@ -23,7 +23,7 @@
 <body>
 	<div id="Joe">
 		<?php $this->need('public/header.php'); ?>
-		<?php $this->need('public/banner.php'); ?>
+		<?php $this->need('public/batten.php'); ?>
 		<div class="joe_container">
 			<div class="joe_main">
 				<div class="joe_index">
@@ -49,7 +49,7 @@
 					}
 					?>
 					<?php if (sizeof($carousel) > 0 || sizeof($recommend) === 2) : ?>
-						<div class="joe_index__banner">
+						<div class="joe_index__batten">
 							<?php if (sizeof($carousel) > 0) : ?>
 								<div class="swiper-container">
 									<div class="swiper-wrapper">
@@ -71,7 +71,7 @@
 								</div>
 							<?php endif; ?>
 							<?php if (sizeof($recommend) === 2) : ?>
-								<div class="joe_index__banner-recommend <?php echo sizeof($carousel) === 0 ? 'noswiper' : '' ?>">
+								<div class="joe_index__batten-recommend <?php echo sizeof($carousel) === 0 ? 'noswiper' : '' ?>">
 									<?php foreach ($recommend as $cid) : ?>
 										<?php $this->widget('Widget_Contents_Post@' . $cid, 'cid=' . $cid)->to($item); ?>
 										<figure class="item">

@@ -17,18 +17,12 @@
 <body>
     <div id="Joe">
         <?php $this->need('public/header.php'); ?>
-        <?php $this->need('public/banner.php'); ?>
+        <?php $this->need('public/batten.php'); ?>
 
 
         <div class="joe_container">
             <div class="joe_main joe_post">
                 <section class="joe_adaption">
-                    <!-- 目录树 -->
-                    <?php if ($this->options->JDirectoryStatus === 'on') : ?>
-                        <div class="joe_menu">
-                            <?php _GetCatalog(); ?>
-                        </div>
-                    <?php endif; ?>
                     <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
                         <div class="joe_bread__bread">
                             <li class="item">

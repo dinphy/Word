@@ -7,18 +7,6 @@ html {
 		}
 	}
 
-	@media (max-width: 1570px) {
-		.joe {
-			&_action {
-				&_item {
-					&.menu {
-						display: none !important;
-					}
-				}
-			}
-		}
-	}
-
 	@media (max-width: 1400px) {
 		.joe {
 			&_vplayer {
@@ -363,7 +351,6 @@ html {
 				&__above {
 					&-logo {
 						padding-right: 0;
-						margin: auto;
 						&::after {
 							display: none;
 						}
@@ -432,16 +419,17 @@ html {
 					}
 					&-slideicon {
 						display: block;
+						margin-left: 1rem;
 					}
 					&-searchicon {
 						margin-left: 0;
 					}
 				}
-				&__below {
-					display: none;
-				}
 				&__searchout {
 					top: 55px;
+					&-inner {
+						width: 100%;
+					}
 				}
 			}
 			&_index {
@@ -928,7 +916,7 @@ html {
 				}
 			}
 			&_index__title {
-				margin-top: -10px;
+				margin-top: -8px;
 				margin-bottom: 5px;
 			}
 		}
