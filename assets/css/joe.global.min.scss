@@ -481,6 +481,12 @@
 						text-shadow: 0 0.1875rem 0.3125rem #222f3e;
 					}
 				}
+				&__submenu {
+					display: none;
+					width: 110px;
+					border-radius: 5px;
+					text-align: center;
+				}
 				&__menu {
 					width: 110px;
 					border-radius: 5px;
@@ -786,19 +792,17 @@
 		}
 	}
 	&__searchout {
-		position: fixed;
-		top: 0;
-		bottom: 0;
+		position: absolute;
+		top: 4rem;
 		left: 0;
 		right: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		z-index: 890;
-		transition: visibility 0.35s;
+		transform: translate3d(0, -100%, 0);
+		transition: transform 0.35s, visibility 0.35s;
 		visibility: hidden;
 		&.active {
 			visibility: visible;
+			transform: translate3d(0, 0, 0);
 		}
 		&-inner {
 			padding: 15px;

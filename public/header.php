@@ -115,10 +115,10 @@
                                         <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                                     <?php else : ?>
                                         <div class="joe_dropdown">
-                                            <div class="joe_dropdown__link">
+                                            <div class="joe_dropdown__link submenu">
                                                 <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                                             </div>
-                                            <nav class="joe_dropdown__menu">
+                                            <nav class="joe_dropdown__submenu">
                                                 <?php foreach ($children as $mid) : ?>
                                                     <?php $child = $category->getCategory($mid); ?>
                                                     <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>

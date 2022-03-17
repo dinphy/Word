@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				menu.on('click', e => e.stopPropagation());
 			}
 		});
+		$('.joe_dropdown__link.submenu').on('mouseenter', function () {
+			$('.joe_dropdown__submenu').slideToggle();
+		});
 	}
 
 	/* 激活全局返回顶部功能 */

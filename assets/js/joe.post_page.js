@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 更多信息 */
 	{
-		$('.joe_detail__operate-more').on('click', function () {
-			$('.joe_detail__copyright').slideToggle();
+		$('.joe_detail__operate-more').on('click', function (e) {
+			$('.joe_detail__copyright').stop().slideToggle();
 		});
 	}
 });

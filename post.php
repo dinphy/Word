@@ -11,7 +11,7 @@
     <script src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js"></script>
     <script src="https://lib.baomitu.com/prism/1.26.0/prism.min.js"></script>
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.post.min.css?v=7.3.7.2'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.7.2'); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.7.3'); ?>"></script>
 </head>
 
 <body>
