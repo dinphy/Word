@@ -658,6 +658,18 @@ function themeConfig($form)
     $JDynamic_Background->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JDynamic_Background->multiMode());
 
+    $JWallpaper_Batten = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JWallpaper_Batten',
+        NULL,
+        NULL,
+        '自定义BATTEN背景图片（非必填）',
+        '介绍：自定义BATTEN背景图片，不填写时显示懒加载图片。<br />
+         格式：图片URL地址 或 随机图片api 例如：https://api.btstu.cn/sjbz/?lx=fengjing <br />
+         注意：如果需要显示上方动态壁纸，请不要填写此项，此项优先级最高！'
+    );
+    $JWallpaper_Batten->setAttribute('class', 'joe_content joe_image');
+    $form->addInput($JWallpaper_Batten);
+
     $JWallpaper_Background_PC = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JWallpaper_Background_PC',
         NULL,
@@ -789,7 +801,7 @@ function themeConfig($form)
     );
     $JFriendsIndex->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JFriendsIndex);
-    
+
     $JFriends = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriends',
         NULL,
@@ -1046,7 +1058,7 @@ function themeConfig($form)
     );
     $JReader_Ranking_Limit->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JReader_Ranking_Limit->multiMode());
-    
+
     $JBaiduToken = new Typecho_Widget_Helper_Form_Element_Text(
         'JBaiduToken',
         NULL,
@@ -1077,7 +1089,7 @@ function themeConfig($form)
     );
     $JOverdue->setAttribute('class', 'joe_content joe_post');
     $form->addInput($JOverdue->multiMode());
-    
+
     $JPrismTheme = new Typecho_Widget_Helper_Form_Element_Select(
         'JPrismTheme',
         array(

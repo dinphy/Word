@@ -20,7 +20,7 @@
     </div>
 <?php elseif ($this->is('category')) :  ?>
     <div class="joe_batten">
-        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php echo _getThumbnails($this)[0] ?>" />
+        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php $this->options->JWallpaper_Batten() ?>" />
         <div class="infomation">
             <div class="title"><?php echo $this->category(',', false); ?></div>
             <div class="desctitle">共 <?php echo $this->getTotal(); ?> 篇</div>
@@ -28,7 +28,7 @@
     </div>
 <?php elseif ($this->is('search')) :  ?>
     <div class="joe_batten">
-        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="https://pic.imgdb.cn/item/622c9e775baa1a80abb1ba05.png" />
+        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php $this->options->JWallpaper_Batten() ?>" />
         <div class="infomation">
             <div class="title">与「<?php echo $this->keywords; ?>」相关的结果</div>
             <div class="desctitle">共 <?php echo $this->getTotal(); ?> 条</div>
@@ -36,7 +36,7 @@
     </div>
 <?php elseif ($this->is('post')) :  ?>
     <div class="joe_batten">
-        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php echo _getThumbnails($this)[0] ?>" alt="<?php $this->title() ?>" />
+        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php $this->options->JWallpaper_Batten() ?>" alt="<?php $this->title() ?>" />
         <div class="infomation">
             <div class="title"><?php $this->title() ?></div>
             <div class="desctitle">
@@ -68,7 +68,7 @@
     </div>
 <?php else : ?>
     <div class="joe_batten">
-        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php echo _getThumbnails($this)[0] ?>" alt="<?php $this->title() ?>" />
+        <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php $this->options->JWallpaper_Batten() ?>" alt="<?php $this->title() ?>" />
         <div class="infomation">
             <div class="title"><?php $this->title() ?></div>
             <div class="desctitle"><?php $this->fields->desctitle(); ?></div>
