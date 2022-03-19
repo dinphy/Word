@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="body">
-                        <textarea class="text joe_owo__target" name="text" value="" autocomplete="new-password" placeholder="说点什么吧，点击右上方切换成画图试试？"></textarea>
+                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="说点什么吧，点击右上方切换成画图试试？"></textarea>
                         <div class="draw" style="display: none;">
                             <ul class="line">
                                 <li data-line="3">细</li>
@@ -55,9 +55,24 @@
                     </div>
                     <div class="foot">
                         <div class="owo joe_owo__contain"></div>
+                        <div class="tool">
+                            <span title="图片" onclick="document.getElementById('textarea').value+='![描述](地址)' ">
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                    <path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z"></path>
+                                    <path d="M110.5 713l153.2 32.3 315.1-225.2 242.8 73.1v34.3H868V159.7H64v700.7h627.6V814H110.5V713z m711.1-506.8v338.5l-251.3-75.6-317 226.6-142.8-30.1V206.2h711.1z"></path>
+                                    <path d="M308.3 510.8c65.9 0 119.6-53.7 119.6-119.6 0-65.9-53.7-119.6-119.6-119.6-65.9 0-119.6 53.7-119.6 119.6 0 65.9 53.7 119.6 119.6 119.6z m0-192.8c40.3 0 73.1 32.8 73.1 73.1s-32.8 73.2-73.1 73.2-73.1-32.8-73.1-73.2S268 318 308.3 318z"></path>
+                                </svg>
+                            </span>
+                            <span title="链接" onclick="document.getElementById('textarea').value+='[](https://)' ">
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                    <path d="M910.496 213.536C804.16 82.208 611.488 61.952 480.128 168.32l-100.768 81.6 50.336 62.176 100.768-81.6a225.984 225.984 0 1 1 284.448 351.264l-107.968 87.424 50.336 62.176 107.968-87.424a305.984 305.984 0 0 0 45.248-430.4zM516.352 823.552a225.984 225.984 0 1 1-284.448-351.264l110.976-89.856-50.336-62.176-110.976 89.856C50.24 516.448 29.984 709.152 136.32 840.48c106.336 131.328 299.04 151.584 430.368 45.248l105.12-85.12-50.336-62.176-105.12 85.12z"></path>
+                                    <path d="M676.16 353.28l51.232 61.44-343.552 286.304-51.2-61.44z"></path>
+                                </svg>
+                            </span>
+                        </div>
                         <div class="submit">
                             <span class="cancle joe_comment__cancle">取消</span>
-                            <button type="submit">发送评论</button>
+                            <button type="submit">发送</button>
                         </div>
                     </div>
                 </form>
