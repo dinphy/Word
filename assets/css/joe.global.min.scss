@@ -35,6 +35,8 @@
 			}
 			.line {
 				padding: 0 0.5rem;
+				display: flex;
+				align-items: center;
 				&::after {
 					content: '/';
 					font-size: 8px;
@@ -3904,11 +3906,9 @@
 				border-bottom-left-radius: var(--radius-inner);
 				border-bottom-right-radius: var(--radius-inner);
 				.owo {
-					min-height: 32px;
-					padding-top: 3px;
 					.seat {
 						width: 35px;
-						height: 30px;
+						height: 32px;
 						display: flex;
 						fill: var(--routine);
 						transition: background-color 0.1s;
@@ -3926,7 +3926,7 @@
 					display: flex;
 					span {
 						width: 35px;
-						height: 30px;
+						height: 32px;
 						display: flex;
 						fill: var(--routine);
 						transition: background-color 0.1s;
