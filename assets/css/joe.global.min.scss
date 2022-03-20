@@ -25,8 +25,10 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			text-align: center;
 			color: #f3f3f3;
 			font-size: 1rem;
+			padding: 0 1rem;
 			text-shadow: 0 0.1875rem 0.3125rem #1c1f21;
 			svg {
 				fill: #f9f9f9;
@@ -258,6 +260,9 @@
 					img {
 						height: 150px;
 						object-fit: fill;
+						&.owo_image {
+							height: auto;
+						}
 					}
 				}
 				.foot {
@@ -3906,7 +3911,7 @@
 						height: 30px;
 						display: flex;
 						fill: var(--routine);
-						transition: background-color .1s;
+						transition: background-color 0.1s;
 						justify-content: center;
 						align-items: center;
 						border-radius: var(--radius-inner);

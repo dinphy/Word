@@ -6,7 +6,7 @@
             <div class="desctitle" id="hitokoto" style="font-size: 1rem;">
                 <span id="hitokoto_text"><?php $this->options->description() ?></span>
                 <script>
-                    fetch('https://v1.hitokoto.cn/?c=d&c=k')
+                    fetch('https://v1.hitokoto.cn/?c=d')
                         .then(response => response.json())
                         .then(data => {
                             const hitokoto = document.getElementById('hitokoto_text')

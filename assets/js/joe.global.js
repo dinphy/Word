@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			});
 		}
-		$('.joe_dynamic .content img').each(function () {
+		$('.joe_dynamic .content img:not(img.owo_image)').each(function () {
 			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Joe" href="${$(this).attr('src')}"></span>`));
 		});
 	}
