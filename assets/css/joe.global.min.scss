@@ -4040,10 +4040,19 @@
 								font-weight: 500;
 							}
 							.owo_image {
-								height: 22px;
+								height: 2rem;
 							}
 							.draw_image {
 								max-width: 100%;
+							}
+							img {
+								height: 9rem;
+							}
+							a {
+								color: var(--theme);
+								&:hover {
+									color: var(--routine);
+								}
 							}
 						}
 						.handle {
