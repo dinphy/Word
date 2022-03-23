@@ -483,7 +483,7 @@
                                 <input placeholder="请输入密码" type="password" maxlength="16" name="password" autocomplete="off" />
                             </li>
                             <li class="link">
-                                <button type="button" id="login_btn">登 录</button>
+                                <button type="button">登 录</button>
                             </li>
                         </form>
                     </ul>

@@ -135,6 +135,19 @@
     ?>
     console.log("%c页面加载耗时：<?php _endCountTime(); ?> | Theme By Joe", "color:#fff; background: linear-gradient(270deg, #986fee, #8695e6, #68b7dd, #18d7d3); padding: 8px 15px; border-radius: 0 15px 0 15px");
     <?php $this->options->JCustomScript() ?>
+    //全局回车监听事件 - 登录
+    document.onkeydown = function (event) {
+        var e = event || window.event;
+        if (e && e.keyCode == 13) { //回车键的键值为13
+            if ($("#loginForm input[name='name']").val().trim() === '') {
+	    		return Qmsg.warning('请输入昵称');
+		    }
+		    if ($("#loginForm input[name='password']").val().trim() === '') {
+			    return Qmsg.warning('请输入密码');
+		    }
+            $('#loginForm').submit();
+        }
+    };
 </script>
 
 <?php $this->options->JCustomBodyEnd() ?>
