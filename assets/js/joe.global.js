@@ -659,5 +659,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			$(this).html('登录中...').attr('disabled', true);
 			$('#loginForm').submit();
 		});
+		
+		//回车事件绑定
+		$('#login_btn').bind('keyup', function(event) {
+			if (event.keyCode == "13") {
+				//回车执行查询
+				$('#loginForm').submit();
+			}
+		});
 	}
 });
