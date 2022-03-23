@@ -44,9 +44,7 @@ function _checkXSS($text)
                 break;
             }
         }
-    } else {
-        $isXss = true;
-    };
+    }
     return $isXss;
 }
 
