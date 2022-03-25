@@ -115,15 +115,18 @@
                                         <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                                     <?php else : ?>
                                         <div class="joe_dropdown">
-                                            <div class="joe_dropdown__link submenu">
+                                            <div class="joe_dropdown__link">
                                                 <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
+                                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                                    <path d="M381.57809 345.996199c-2.908236 4.233418-4.614088 9.380648-4.614088 14.892175s1.705851 10.658757 4.614088 14.922874L544.443411 539.42256c10.32209 10.324136 10.32209 27.042913 0 37.381375L385.842207 735.921909c-5.376451 4.843308-8.771781 11.818163-8.771781 19.61371 0 14.602579 11.83249 26.433022 26.434046 26.433022 5.953595 0 11.420097-1.979074 15.835663-5.298679l5.300726-5.299703 175.866427-175.884846c20.650319-20.647249 20.650319-54.114478 0-74.763774L422.95036 343.132988l-1.811252-1.794879c-4.690836-4.264117-10.903328-6.884804-17.740036-6.884804C394.339742 334.453305 386.34465 339.02339 381.57809 345.996199z"></path>
+                                                </svg>
+                                                <div class="joe_dropdown__submenu">
+                                                    <?php foreach ($children as $mid) : ?>
+                                                        <?php $child = $category->getCategory($mid); ?>
+                                                        <a class="aaa <?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
+                                                    <?php endforeach; ?>
+                                                </div>
                                             </div>
-                                            <nav class="joe_dropdown__submenu">
-                                                <?php foreach ($children as $mid) : ?>
-                                                    <?php $child = $category->getCategory($mid); ?>
-                                                    <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
-                                                <?php endforeach; ?>
-                                            </nav>
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>

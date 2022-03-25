@@ -426,6 +426,7 @@
 			}
 			.joe_dropdown {
 				&__link {
+					position: relative;
 					a {
 						height: 60px;
 						line-height: 60px;
@@ -436,12 +437,22 @@
 						color: #fff;
 						text-shadow: 0 0.1875rem 0.3125rem #222f3e;
 					}
+					svg {
+						position: absolute;
+						right: 5px;
+						fill: var(--routine);
+					}
 				}
 				&__submenu {
 					display: none;
+					position: absolute;
+					top: 0;
+					left: 105%;
 					width: 110px;
 					border-radius: 5px;
 					text-align: center;
+					background: var(--new-background);
+					box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 				}
 				&__menu {
 					width: 110px;
