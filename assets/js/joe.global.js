@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		$('.joe_dropdown__link')
 			.has('.joe_dropdown__submenu')
 			.hover(function () {
-				$(this).children('.joe_dropdown__submenu').stop().slideToggle();
+				$(this).children('.joe_dropdown__submenu').stop().toggleClass('active');
 			});
 	}
 

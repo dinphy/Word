@@ -18,7 +18,7 @@
 <?php endif; ?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.mode.min.css?v=7.3.7.1'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.normalize.min.css?v=7.3.6'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7.59'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7.60'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.7.10'); ?>">
 <link rel="stylesheet" href="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.css">
 <link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
@@ -40,6 +40,6 @@
 <?php if ($this->options->JCursorEffects && $this->options->JCursorEffects !== 'off') : ?>
 	<script src="<?php $this->options->themeUrl('assets/cursor/' . $this->options->JCursorEffects); ?>" async></script>
 <?php endif; ?>
-<script src="<?php $this->options->themeUrl('assets/js/joe.global.min.js?v=7.3.7.40'); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/joe.global.min.js?v=7.3.7.41'); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/joe.short.min.js?v=7.3.6'); ?>"></script>
 <?php $this->options->JCustomHeadEnd() ?>

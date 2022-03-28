@@ -123,7 +123,7 @@
                                                 <div class="joe_dropdown__submenu">
                                                     <?php foreach ($children as $mid) : ?>
                                                         <?php $child = $category->getCategory($mid); ?>
-                                                        <a class="aaa <?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
+                                                        <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
                                                     <?php endforeach; ?>
                                                 </div>
                                             </div>
