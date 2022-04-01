@@ -651,6 +651,21 @@ document.addEventListener('DOMContentLoaded', () => {
 			$('.joe_header__above-sign form').submit();
 		});
 
+		$('.joe_header__above-sign form').keydown(function() {
+			var e = window.event;
+			if (e && e.keyCode == 13) {
+				if ($(".joe_header__above-sign input[name='name']").val().trim() === '') {
+					$(".joe_header__above-sign input[name='name']").focus();
+					return Qmsg.warning('请输入昵称');
+				}
+				if ($(".joe_header__above-sign input[name='password']").val().trim() === '') {
+					$(".joe_header__above-sign input[name='password']").focus();
+					return Qmsg.warning('请输入密码');
+				}
+				$(this).submit();
+			}
+		});
+		
 		$("#loginForm button[type='button']").on('click', function (e) {
 			if ($("#loginForm input[name='name']").val().trim() === '') {
 				return Qmsg.warning('请输入昵称');
