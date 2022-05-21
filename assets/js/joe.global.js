@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 激活Live2d人物 */
 	{
 		if (Joe.LIVE2D !== 'off' && Joe.LIVE2D) {
-			$.getScript('https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js', () => {
+			$.getScript('https://fastly.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js', () => {
 				L2Dwidget.init({
 					model: { jsonPath: Joe.LIVE2D, scale: 1 },
 					mobile: { show: false },
@@ -625,11 +625,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				dataType: 'json',
 				success: res => {
 					if (res.success) {
-						Qmsg.success('谢谢点赞哦~');
-						$(this).parent().removeClass('fa-heart-o').addClass('fa-heart');
-						$(this).text('(' + res.count + ')' + '已赞');
+						$(this).removeClass('zm zm-icon_dianzan_x').addClass('zm zm-icon_dianzan_m');
+						$(this).text(res.count);
+						Qmsg.success('谢谢你支持~');
 					} else {
-						Qmsg.warning('您已赞过啦~');
+						Qmsg.info('明天再支持~');
 					}
 				}
 			});
@@ -651,7 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			$('.joe_header__above-sign form').submit();
 		});
 
-		$('.joe_header__above-sign form').keydown(function() {
+		$('.joe_header__above-sign form').keydown(function () {
 			var e = window.event;
 			if (e && e.keyCode == 13) {
 				if ($(".joe_header__above-sign input[name='name']").val().trim() === '') {
@@ -665,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				$(this).submit();
 			}
 		});
-		
+
 		$("#loginForm button[type='button']").on('click', function (e) {
 			if ($("#loginForm input[name='name']").val().trim() === '') {
 				return Qmsg.warning('请输入昵称');

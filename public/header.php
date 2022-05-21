@@ -1,9 +1,7 @@
 <header class="joe_header">
-
     <div class="joe_header__above">
         <div class="joe_container">
-
-            <a title="<?php $this->options->title(); ?>" class="joe_header__above-logo" href="<?php $this->options->siteUrl(); ?>">
+            <a title="<?php $this->options->title(); ?>" class="joe_header__above-logo" style="display: none;" href="<?php $this->options->siteUrl(); ?>">
                 <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo() ?>" alt="<?php $this->options->title(); ?>" />
                 <svg class="profile-color-modes" height="45" viewBox="0 0 106 60" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <g class="profile-color-modes-illu-group profile-color-modes-illu-red">
@@ -79,7 +77,7 @@
                 </svg>
             </a>
             <nav class="joe_header__above-nav">
-                <a class="item <?php echo $this->is('index') ? 'active' : '' ?>" href="<?php $this->options->siteUrl(); ?>" title="首页">首页</a>
+                <a class="item <?php echo $this->is('index') ? 'active' : '' ?>" href="<?php $this->options->siteUrl(); ?>" title="首页"><?php $this->options->title(); ?></a>
                 <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
                 <?php if ($this->options->JNavStatus == 'on') : ?>
                     <?php while ($category->next()) : ?>

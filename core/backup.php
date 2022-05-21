@@ -5,18 +5,18 @@ if (isset($_POST['type'])) {
         $value = $db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name))['value'];
         if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name . '_backup'))) {
             $db->query($db->update('table.options')->rows(array('value' => $value))->where('name = ?', 'theme:' . $name . '_backup')); ?>
+            <div class="success" style="text-align: center;">已更新，请 <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">刷新</a></div>
             <script>
-                alert("备份更新成功！");
-                window.location.href = '<?php Helper::options()->adminUrl('options-theme.php'); ?>'
+                window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
             </script>
         <?php } else { ?>
             <?php
             if ($value) {
                 $db->query($db->insert('table.options')->rows(array('name' => 'theme:' . $name . '_backup', 'user' => '0', 'value' => $value)));
             ?>
+                <div class="success" style="text-align: center;">已备份，请 <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">刷新</a></div>
                 <script>
-                    alert("备份成功！");
-                    window.location.href = '<?php Helper::options()->adminUrl('options-theme.php'); ?>'
+                    window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
                 </script>
             <?php }
         }
@@ -25,28 +25,28 @@ if (isset($_POST['type'])) {
         if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name . '_backup'))) {
             $_value = $db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name . '_backup'))['value'];
             $db->query($db->update('table.options')->rows(array('value' => $_value))->where('name = ?', 'theme:' . $name)); ?>
+            <div class="success" style="text-align: center;">已还原，请 <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">刷新</a></div>
             <script>
-                alert("还原成功！");
-                window.location.href = '<?php Helper::options()->adminUrl('options-theme.php'); ?>'
+                window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
             </script>
         <?php } else { ?>
+            <div class="success" style="text-align: center;">无备份，还原不了</div>
             <script>
-                alert("未备份过数据，无法恢复！");
-                window.location.href = '<?php Helper::options()->adminUrl('options-theme.php'); ?>'
+                window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
             </script>
         <?php } ?>
     <?php } ?>
     <?php if ($_POST["type"] == "删除备份") {
         if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:' . $name . '_backup'))) {
             $db->query($db->delete('table.options')->where('name = ?', 'theme:' . $name . '_backup')); ?>
+            <div class="success" style="text-align: center;">已删除，请 <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">刷新</a></div>
             <script>
-                alert("删除成功");
-                window.location.href = '<?php Helper::options()->adminUrl('options-theme.php'); ?>'
+                window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
             </script>
         <?php } else { ?>
+            <div class="success" style="text-align: center;">无备份，删除不了</div>
             <script>
-                alert("没有备份内容，无法删除！");
-                window.location.href = '<?php Helper::options()->adminUrl('options-theme.php'); ?>'
+                window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);
             </script>
         <?php } ?>
     <?php } ?>

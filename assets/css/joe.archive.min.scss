@@ -1,5 +1,9 @@
 /* 搜索页的样式 */
 .joe_archive {
+	.joe_list__item:first-child {
+		border-top-left-radius: var(--radius-wrap);
+		border-top-right-radius: var(--radius-wrap);
+	}
 	&__title {
 		display: flex;
 		align-items: center;

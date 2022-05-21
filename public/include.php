@@ -16,30 +16,30 @@
 <?php else : ?>
 	<?php $this->header(); ?>
 <?php endif; ?>
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.mode.min.css?v=7.3.7.1'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.normalize.min.css?v=7.3.6'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7.60'); ?>">
-<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.7.10'); ?>">
-<link rel="stylesheet" href="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.css">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.mode.min.css?v=7.3.7@1'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.normalize.min.css?v=7.3.7@1'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.global.min.css?v=7.3.7@1'); ?>">
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=7.3.7@1'); ?>">
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.css">
 <link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 <link rel="stylesheet" href="https://lib.baomitu.com/animate.css/3.7.2/animate.min.css" />
 <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="https://lib.baomitu.com/aplayer/1.10.1/APlayer.min.css" />
 <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/plugin/scroll/joe.scroll.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/plugin/scroll/joe.scroll.js"></script>
 <script src="https://lib.baomitu.com/lazysizes/5.3.2/lazysizes.min.js"></script>
 <script src="https://lib.baomitu.com/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/plugin/sketchpad/joe.sketchpad.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/plugin/sketchpad/joe.sketchpad.js"></script>
 <script src="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script src="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/assets/js/joe.extend.min.js"></script>
-<script src="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.js"></script>
-<script src="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.0.0/plugin/smooth/joe.smooth.js" async></script>
+<script src="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/js/joe.extend.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/plugin/qmsg/qmsg.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/plugin/smooth/joe.smooth.js" async></script>
 <?php if ($this->options->JAside_3DTag === 'on') : ?>
-	<script src="https://jsdelivr.panbaidu.cn/npm/typecho-joe-next@6.2.3/plugin/3dtag/3dtag.min.js"></script>
+	<script src="https://fastly.jsdelivr.net/npm/typecho-joe-next@6.2.3/plugin/3dtag/3dtag.min.js"></script>
 <?php endif; ?>
 <?php if ($this->options->JCursorEffects && $this->options->JCursorEffects !== 'off') : ?>
 	<script src="<?php $this->options->themeUrl('assets/cursor/' . $this->options->JCursorEffects); ?>" async></script>
 <?php endif; ?>
-<script src="<?php $this->options->themeUrl('assets/js/joe.global.min.js?v=7.3.7.43'); ?>"></script>
-<script src="<?php $this->options->themeUrl('assets/js/joe.short.min.js?v=7.3.6'); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/joe.global.min.js?v=7.3.7@1'); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/joe.short.min.js?v=7.3.7@1'); ?>"></script>
 <?php $this->options->JCustomHeadEnd() ?>

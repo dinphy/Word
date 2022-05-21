@@ -19,6 +19,7 @@
     <?php else : ?>
         <link rel="stylesheet" href="https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css">
     <?php endif; ?>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1159885_w154ju7gn8e.css">
     <script src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js"></script>
     <script src="https://lib.baomitu.com/prism/1.26.0/prism.min.js"></script>
     <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
@@ -126,11 +127,9 @@
                                         <div class="action">
                                             <div class="item">
                                                 <?php $suport = _getSupport($comments->coid) ?>
-                                                <i class="fa <?php echo $suport['icon'] ?>">
-                                                    <a class="support" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
-                                                        <?php echo '(' . $suport['count'] . ')' . $suport['text'] ?>
-                                                    </a>
-                                                </i>
+                                                <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
+                                                    <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

@@ -1,6 +1,6 @@
 <?php $this->comments()->to($comments); ?>
 
-<div class="joe_comment">
+<div class="joe_comment" id="comments">
     <h3 class="joe_comment__title">评论 <?php if ($this->allow('comment') && $this->options->JCommentStatus !== "off") : ?>(<?php $this->commentsNum(); ?>)<?php endif; ?></h3>
 
     <?php if ($this->hidden) : ?>

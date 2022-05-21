@@ -18,7 +18,7 @@ function themeConfig($form)
     } catch (Exception $e) {
     }
 ?>
-    <link rel="stylesheet" href="<?php Helper::options()->themeUrl('typecho/config/css/joe.config.min.css') ?>">
+    <link rel="stylesheet" href="<?php Helper::options()->themeUrl('typecho/config/css/joe.config.min.css?1') ?>">
     <script src="<?php Helper::options()->themeUrl('typecho/config/js/joe.config.min.js') ?>"></script>
     <div class="joe_config">
         <div>
@@ -93,6 +93,8 @@ function themeConfig($form)
     $JNavMaxNum = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavMaxNum',
         array(
+            '1' => '1个',
+            '2' => '2个',
             '3' => '3个（默认）',
             '4' => '4个',
             '5' => '5个',
@@ -236,33 +238,33 @@ function themeConfig($form)
         'JLive2d',
         array(
             'off' => '关闭（默认）',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json' => 'shizuku',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-izumi@1.0.5/assets/izumi.model.json' => 'izumi',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/01/assets/haru01.model.json' => 'haru01',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/02/assets/haru02.model.json' => 'haru02',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json' => 'wanko',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json' => 'hijiki',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json' => 'koharu',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-z16@1.0.5/assets/z16.model.json' => 'z16',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json' => 'haruto',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-tororo@1.0.5/assets/tororo.model.json' => 'tororo',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json' => 'chitose',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-miku@1.0.5/assets/miku.model.json' => 'miku',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-epsilon2_1@1.0.5/assets/Epsilon2.1.model.json' => 'Epsilon2.1',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-unitychan@1.0.5/assets/unitychan.model.json' => 'unitychan',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nico@1.0.5/assets/nico.model.json' => 'nico',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-rem@1.0.1/assets/rem.model.json' => 'rem',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nito@1.0.5/assets/nito.model.json' => 'nito',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nipsilon@1.0.5/assets/nipsilon.model.json' => 'nipsilon',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-ni-j@1.0.5/assets/ni-j.model.json' => 'ni-j',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nietzsche@1.0.5/assets/nietzche.model.json' => 'nietzche',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-platelet@1.1.0/assets/platelet.model.json' => 'platelet',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-isuzu@1.0.4/assets/model.json' => 'isuzu',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-jth@1.0.0/assets/model/katou_01/katou_01.model.json' => 'katou_01',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-mikoto@1.0.0/assets/mikoto.model.json' => 'mikoto',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-mashiro-seifuku@1.0.1/assets/seifuku.model.json' => 'seifuku',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-ichigo@1.0.1/assets/ichigo.model.json' => 'ichigo',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-hk_fos@1.0.0/assets/hk416.model.json' => 'hk416'
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json' => 'shizuku',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-izumi@1.0.5/assets/izumi.model.json' => 'izumi',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/01/assets/haru01.model.json' => 'haru01',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/02/assets/haru02.model.json' => 'haru02',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json' => 'wanko',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json' => 'hijiki',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json' => 'koharu',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-z16@1.0.5/assets/z16.model.json' => 'z16',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json' => 'haruto',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-tororo@1.0.5/assets/tororo.model.json' => 'tororo',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json' => 'chitose',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-miku@1.0.5/assets/miku.model.json' => 'miku',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-epsilon2_1@1.0.5/assets/Epsilon2.1.model.json' => 'Epsilon2.1',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-unitychan@1.0.5/assets/unitychan.model.json' => 'unitychan',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nico@1.0.5/assets/nico.model.json' => 'nico',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-rem@1.0.1/assets/rem.model.json' => 'rem',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nito@1.0.5/assets/nito.model.json' => 'nito',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nipsilon@1.0.5/assets/nipsilon.model.json' => 'nipsilon',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-ni-j@1.0.5/assets/ni-j.model.json' => 'ni-j',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nietzsche@1.0.5/assets/nietzche.model.json' => 'nietzche',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-platelet@1.1.0/assets/platelet.model.json' => 'platelet',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-isuzu@1.0.4/assets/model.json' => 'isuzu',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-jth@1.0.0/assets/model/katou_01/katou_01.model.json' => 'katou_01',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-mikoto@1.0.0/assets/mikoto.model.json' => 'mikoto',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-mashiro-seifuku@1.0.1/assets/seifuku.model.json' => 'seifuku',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-ichigo@1.0.1/assets/ichigo.model.json' => 'ichigo',
+            'https://fastly.jsdelivr.net/npm/live2d-widget-model-hk_fos@1.0.0/assets/hk416.model.json' => 'hk416'
         ),
         'off',
         '选择一款喜爱的Live2D动态人物模型（仅在屏幕分辨率大于1760px下显示）',
@@ -387,6 +389,19 @@ function themeConfig($form)
     $JCustomAvatarSource->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JCustomAvatarSource);
 
+    $JAside_Switch = new Typecho_Widget_Helper_Form_Element_Select(
+        'JAside_Switch',
+        array(
+            'off' => '关闭（默认）',
+            'on' => '开启'
+        ),
+        'off',
+        '是否开启侧边栏 - PC',
+        '介绍：用于控制是否显示侧边栏'
+    );
+    $JAside_Switch->setAttribute('class', 'joe_content joe_aside');
+    $form->addInput($JAside_Switch->multiMode());
+
     $JAside_Author_Nick = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Nick',
         NULL,
@@ -412,7 +427,7 @@ function themeConfig($form)
     $JAside_Author_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JAside_Author_Image',
         NULL,
-        "https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg",
+        "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg",
         '博主栏背景壁纸 - PC',
         '介绍：用于修改PC端博主栏的背景壁纸 <br/>
          格式：图片地址 或 Base64地址'
@@ -423,7 +438,7 @@ function themeConfig($form)
     $JAside_Wap_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JAside_Wap_Image',
         NULL,
-        "https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/wap_aside_image.jpg",
+        "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/wap_aside_image.jpg",
         '博主栏背景壁纸 - WAP',
         '介绍：用于修改WAP端博主栏的背景壁纸 <br/>
          格式：图片地址 或 Base64地址'
@@ -631,7 +646,7 @@ function themeConfig($form)
     $JLazyload = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JLazyload',
         NULL,
-        "https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/lazyload.jpg",
+        "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/lazyload.jpg",
         '自定义懒加载图',
         '介绍：用于修改主题默认懒加载图 <br/>
          格式：图片地址'
@@ -707,10 +722,10 @@ function themeConfig($form)
     $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JIndex_Top_Image',
         NULL,
-        NULL,
+        'https://img1.imgtp.com/2022/05/14/o7kjyw7e.jpeg',
         '首页顶部壁纸(非必填)',
         '介绍：用于修改首页顶部背景壁纸 <br />
-        格式：图片地址，例如：https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg'
+        格式：图片地址，例如：https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg'
     );
     $JIndex_Top_Image->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Top_Image);
@@ -724,8 +739,8 @@ function themeConfig($form)
          格式：图片地址 || 跳转链接 || 标题 （中间使用两个竖杠分隔）<br />
          其他：一行一个，一行代表一个轮播图 <br />
          例如：<br />
-            https://puui.qpic.cn/media_img/lena/PICykqaoi_580_1680/0 || https://baidu.com || 百度一下 <br />
-            https://puui.qpic.cn/tv/0/1223447268_1680580/0 || https://v.qq.com || 腾讯视频
+         https://img1.imgtp.com/2022/05/14/u6k61Mzu.jpeg || about.html || 寻着光的方向<br />
+         https://img1.imgtp.com/2022/05/14/o7kjyw7e.jpeg || about.html || 望向遥遥前方
          '
     );
     $JIndex_Carousel->setAttribute('class', 'joe_content joe_index');
@@ -790,10 +805,31 @@ function themeConfig($form)
     $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Notice);
 
+    $JIndex_Dynamic = new Typecho_Widget_Helper_Form_Element_Radio(
+        'JIndex_Dynamic',
+        array('off' => '关闭（默认）', 'on' => '开启'),
+        'off',
+        '首页动态（非必填）',
+        '介绍：开启时，显示一条动态页面的内容'
+    );
+    $JIndex_Dynamic->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Dynamic);
+
+    $JIndex_DynamicText = new Typecho_Widget_Helper_Form_Element_Text(
+        'JIndex_DynamicText',
+        NULL,
+        NULL,
+        '页面别名（非必填）',
+        '介绍：此项填写动态页面的别名<br />
+         例如：创建的页面别名为dynamic，则填写: dynamic '
+    );
+    $JIndex_DynamicText->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_DynamicText);
+
     $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriendsIndex',
         NULL,
-        '青山小站 || https://blog.yanqingshan.com/ || https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
+        '青山小站 || https://blog.yanqingshan.com/ || https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
         '首页链接（非必填）',
         '介绍：用于填写首页友情链接 <br />
          格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />
@@ -805,7 +841,7 @@ function themeConfig($form)
     $JFriends = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriends',
         NULL,
-        'Joe的博客 || https://78.al || https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
+        'Joe的博客 || https://78.al || https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
         '内页链接（非必填）',
         '介绍：用于填写友情链接 <br />
          注意：您需要先增加友链链接页面（新增独立页面-右侧模板选择友链），该项才会生效 <br />

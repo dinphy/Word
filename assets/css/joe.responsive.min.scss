@@ -401,6 +401,16 @@ html {
 			&_vplayer {
 				height: 225px;
 			}
+			&_batten {
+				.title {
+					.sitelogo {
+						display: none !important;
+					}
+					.sitename {
+						display: block !important;
+					}
+				}
+			}
 			&_header {
 				&__above {
 					.joe_container {
@@ -411,6 +421,7 @@ html {
 						display: none;
 					}
 					&-logo {
+						display: flex !important;
 						height: 55px;
 						margin-right: 0;
 						img {
@@ -489,7 +500,6 @@ html {
 					&.single {
 						.thumbnail {
 							height: 130px;
-							margin-bottom: 0;
 							time,
 							svg {
 								display: none;
@@ -540,9 +550,6 @@ html {
 						}
 					}
 					&.none {
-						.information {
-							height: 120px;
-						}
 						.abstract {
 							display: -webkit-box;
 							font-size: 14px;
@@ -894,6 +901,7 @@ html {
 	@media (max-width: 576px) {
 		.joe {
 			&_header {
+				padding: 0 15px;
 				&__above {
 					&-searchicon {
 						margin-right: 10px;
@@ -903,8 +911,19 @@ html {
 					}
 				}
 			}
-			&_container {
-				padding: 0 5px;
+			&_container,
+			&_main {
+				padding: 0;
+			}
+			&_batten {
+				margin-bottom: 5px;
+				border-radius: 0;
+				img {
+					border-radius: 0 !important;
+				}
+				&:before {
+					border-radius: 0;
+				}
 			}
 			&_bread {
 				padding-top: 15px;
@@ -912,11 +931,28 @@ html {
 			&_list {
 				&__item {
 					margin-bottom: 5px;
+					border-bottom: none;
+					border-radius: 0;
+					&:first-child,
+					&:last-child {
+						border-radius: 0;
+					}
 				}
 			}
-			&_index__title {
-				margin-top: -8px;
-				margin-bottom: 5px;
+			&_archive {
+				.joe_list__item:first-child {
+					border-radius: 0;
+				}
+			}
+			&_index {
+				&__hot {
+					display: none;
+				}
+				&__title {
+					margin-bottom: 5px;
+					border-bottom: none;
+					border-radius: 0;
+				}
 			}
 		}
 	}
