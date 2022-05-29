@@ -2,7 +2,7 @@
 .joe_index {
 	&__banner {
 		display: flex;
-		margin-top: -3.8rem;
+		margin-bottom: 15px;
 		&-recommend {
 			width: 270px;
 			margin-left: 15px;
@@ -80,7 +80,7 @@
 	}
 	&__hot {
 		padding: 15px;
-		margin: 15px 0;
+		margin-bottom: 15px;
 		background: var(--background);
 		box-shadow: var(--box-shadow);
 		border-radius: var(--radius-wrap);

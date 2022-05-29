@@ -398,6 +398,12 @@ html {
 
 	@media (max-width: 768px) {
 		.joe {
+			&_tabbar {
+				display: block;
+			}
+			&_footer {
+				padding-bottom: 3.5rem;
+			}
 			&_vplayer {
 				height: 225px;
 			}
@@ -918,11 +924,12 @@ html {
 			&_batten {
 				margin-bottom: 5px;
 				border-radius: 0;
-				img {
-					border-radius: 0 !important;
+				.author {
+					display: none;
 				}
-				&:before {
-					border-radius: 0;
+				.motto {
+					display: block;
+					margin-top: 2rem;
 				}
 			}
 			&_bread {
@@ -945,11 +952,13 @@ html {
 				}
 			}
 			&_index {
+				&__banner,
 				&__hot {
 					display: none;
 				}
 				&__title {
 					margin-bottom: 5px;
+					margin-top: 0;
 					border-bottom: none;
 					border-radius: 0;
 				}

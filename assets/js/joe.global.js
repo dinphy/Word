@@ -613,6 +613,114 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	/* 动态发表 */
+	{
+		if ($('.joe_cross').length) {
+			let isSubmit = false;
+			$('.joe_cross__respond-form').on('submit', function (e) {
+				e.preventDefault();
+				const action = $('.joe_cross__respond-form').attr('action') + '?time=' + +new Date();
+				const type = $('.joe_cross__respond-form').attr('data-type');
+				const parent = $('.joe_cross__respond-form').attr('data-coid');
+				const author = $(".joe_cross__respond-form .head input[name='author']").val();
+				const _ = $(".joe_cross__respond-form input[name='_']").val();
+				const mail = $(".joe_cross__respond-form .head input[name='mail']").val();
+				const url = $(".joe_cross__respond-form .head input[name='url']").val();
+				let text = $(".joe_cross__respond-form .body textarea[name='text']").val();
+				if (type === 'text' && text.trim() === '') return Qmsg.info('别急，说一句呗~');
+				if ($('#author').length) {
+					if (author.trim() === '') return $('#author').focus();
+				}
+				if ($('#mail').length) {
+					if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) return $('#mail').focus();
+				}
+				if (isSubmit) return;
+				isSubmit = true;
+				$('.joe_cross__respond-form .foot .submit button').html('发表中...');
+				$.ajax({
+					url: action,
+					type: 'POST',
+					data: { author, mail, text, parent, url, _ },
+					dataType: 'text',
+					success(res) {
+						let arr = [],
+							str = '';
+						arr = $(res).contents();
+						Array.from(arr).forEach(_ => {
+							if (_.parentNode.className === 'container') str = _;
+						});
+						if (!/Joe/.test(res)) {
+							Qmsg.warning(str.textContent.trim() || '');
+							isSubmit = false;
+							$('.joe_cross__respond-form .foot .submit button').html('确定');
+						} else {
+							window.location.reload();
+						}
+					},
+					error() {
+						isSubmit = false;
+						$('.joe_cross__respond-form .foot .submit button').html('确定');
+						Qmsg.error('失败了，刷新重试~');
+					}
+				});
+			});
+		}
+		$('.joe_cross .content img:not(img.owo_image)').each(function () {
+			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Joe" href="${$(this).attr('src')}"></span>`));
+		});
+	}
+
+	/* 动态回复 */
+	{
+		if ($('.joe_cross__respond').length) {
+			const respond = $('.joe_cross__respond');
+			/* 回复 */
+			$('.joe_cross__reply').on('click', function () {
+				const coid = $(this).attr('data-coid');
+				const item = $('#' + $(this).attr('data-id'));
+				respond.show();
+				respond.find('.joe_cross__respond-form').attr('data-coid', coid);
+				item.append(respond);
+				$(".joe_cross__respond-type .item[data-type='text']").click();
+				$('#textarea').focus();
+				$('.joe_cross__cancle').show();
+				window.scrollTo({
+					top: item.offset().top - $('.joe_header').height() - 15,
+					behavior: 'smooth'
+				});
+			});
+			/* 取消回复 */
+			$('.joe_cross__cancle').on('click', function () {
+				if ($('.joe_cross__respond-form .head').length) {
+					respond.hide();
+				}
+				respond.find('.joe_cross__respond-form').removeAttr('data-coid');
+				$('.joe_cross__cancle').hide();
+				$('.joe_cross__title').after(respond);
+				$(".joe_cross__respond-type .item[data-type='text']").click();
+				window.scrollTo({
+					top: $('.joe_cross').offset().top - $('.joe_header').height() - 15,
+					behavior: 'smooth'
+				});
+			});
+		}
+	}
+
+	/* 动态回复网址为新窗口打开 */
+	{
+		$('.comment-list__item .term .content .user .author a').each((index, item) => $(item).attr('target', '_blank'));
+	}
+
+	/* 格式化分页的hash值 */
+	{
+		$('.joe_cross .joe_pagination a').each((index, item) => {
+			const href = $(item).attr('href');
+			if (href && href.includes('#')) {
+				$(item).attr('href', href.replace('#comments', '?scroll=joe_cross'));
+			}
+		});
+	}
+
 	/* 动态点赞 */
 	{
 		$('.support').on('click', function () {

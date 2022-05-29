@@ -1,26 +1,43 @@
 <aside class="joe_aside">
-    <section class="joe_aside__item author">
-        <img width="100%" height="120" class="image lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JAside_Author_Image() ?>" alt="博主栏壁纸" />
-        <div class="user">
-            <img width="75" height="75" class="avatar lazyload" src="<?php _getAvatarLazyload(); ?>" data-src="<?php $this->options->JAside_Author_Avatar ? $this->options->JAside_Author_Avatar() : _getAvatarByMail($this->authorId ? $this->author->mail : $this->user->mail) ?>" alt="博主头像" />
-            <a class="link" href="<?php $this->options->JAside_Author_Link() ?>" target="_blank" rel="noopener noreferrer nofollow"><?php $this->options->JAside_Author_Nick ? $this->options->JAside_Author_Nick() : ($this->authorId ? $this->author->screenName() : $this->user->screenName()); ?></a>
-            <p class="motto joe_motto"></p>
-        </div>
-        <?php Typecho_Widget::widget('Widget_Stat')->to($item); ?>
-        <div class="count">
-            <div class="item" title="累计文章数">
-                <span class="num"><?php echo number_format($item->publishedPostsNum); ?></span>
-                <span>文章数</span>
+    <?php if ($this->options->JAside_Rand !== "off") : ?>
+        <section class="joe_aside__item rand">
+            <div class="joe_aside__item-title">
+                <svg t="1653485244007" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16034" width="18" height="18">
+                    <path d="M610.009709 480.126059c-17.231453 0-30.379914-12.43624-30.607088-28.928866l-1.611707-125.007085c-0.12075-7.736195 2.752694-15.001669 8.085142-20.413935 9.8176-9.991562 27.704992-12.140505 40.894386-4.780887l102.685707 61.361533c10.434653 5.842055 16.693194 15.069207 16.814967 25.128307 0.12075 9.441023-5.278213 18.10331-14.800078 23.757077l-103.048981 63.712067C622.659821 478.380298 616.361371 480.126059 610.009709 480.126059zM609.216647 323.948043c-1.812275 0-3.210112 0.577145-3.746324 1.127683l1.436722 125.759215c0.026606 1.759063 2.189875 3.6399 7.266497 0.604774l103.047957-63.712067c0.148379-0.094144 0.295735-0.173962 0.429789-0.268106-0.497327-0.38988-1.140986-0.832971-1.974981-1.302669l-102.658078-61.34823C611.783099 324.136332 610.237907 323.948043 609.216647 323.948043z" p-id="16035"></path>
+                    <path d="M496.968144 918.253584c-246.320035 0-446.708971-200.38996-446.708971-446.696692 0-246.320035 200.388936-446.708971 446.708971-446.708971 246.321058 0 446.708971 200.388936 446.708971 446.708971C943.678138 717.863624 743.289202 918.253584 496.968144 918.253584zM496.968144 79.856769c-215.981053 0-391.700123 175.718047-391.700123 391.700123 0 215.982076 175.718047 391.68682 391.700123 391.68682s391.700123-175.704744 391.700123-391.68682C888.66929 255.57584 712.95022 79.856769 496.968144 79.856769z" p-id="16036"></path>
+                    <path d="M829.066821 485.310128c-7.602142 0-13.751189-6.151094-13.751189-13.752212 0-143.123698-96.306416-269.405823-234.192833-307.104423-7.333012-2.000564-11.644201-9.561773-9.643638-16.894785 2.01489-7.333012 9.656941-11.589966 16.895809-9.642614 149.811004 40.961924 254.444063 178.149423 254.444063 333.641823C842.818009 479.159034 836.667939 485.310128 829.066821 485.310128z" p-id="16037"></path>
+                    <path d="M515.515568 153.708777c-0.255827 0-0.51063 0-0.765433-0.026606-5.89629-0.322341-11.831466-0.484024-17.781992-0.484024-7.601118 0-13.752212-6.151094-13.752212-13.752212s6.151094-13.752212 13.752212-13.752212c6.459109 0 12.879332 0.188288 19.286252 0.537236 7.587815 0.403183 13.389962 6.888897 12.973476 14.477736C528.839015 148.027381 522.767739 153.708777 515.515568 153.708777z" p-id="16038"></path>
+                    <path d="M276.340257 638.19719c-25.489534 0-42.451858-6.018064-42.921555-6.192026-7.118118-2.659573-10.730389-10.583033-8.085142-17.701151 2.659573-7.118118 10.609639-10.663874 17.700127-8.084119 4.431939 1.651616 111.093191 38.22151 184.327122-112.154359 65.297169-134.005017 162.30148-120.010281 166.371168-119.365598 7.493671 1.209548 12.597923 8.272407 11.389398 15.767102-1.209548 7.467065-8.192589 12.516058-15.687284 11.401678-3.477194-0.496304-81.493036-10.381441-137.334855 104.244202C397.505851 618.158808 322.780963 638.19719 276.340257 638.19719z" p-id="16039"></path>
+                    <path d="M609.216647 688.653349 609.216647 688.653349c-8.997931 0-17.498536-3.397377-23.340591-9.333576-5.332449-5.412266-8.206916-12.67774-8.085142-20.453844l1.611707-124.95285c0.228197-16.504906 13.375635-28.941146 30.607088-28.941146 6.351662 0 12.650111 1.74576 18.210757 5.050016l103.45114 63.954591c9.320273 5.531993 14.72026 14.19428 14.59951 23.636327-0.12075 10.0591-6.379291 19.286252-17.137309 25.315572l-102.013395 60.972677C621.423667 687.082574 615.354438 688.653349 609.216647 688.653349zM610.009709 532.475334c-2.042519 0-3.090385 0.605797-3.102664 1.801019l-1.611707 124.979456c1.101077 2.054799 3.666506 3.236718 8.071839 0.831948l101.987812-60.95835c0.99363-0.564865 1.732457-1.074472 2.281973-1.50426-0.065492-0.039909-0.148379-0.080841-0.213871-0.134053l-103.452163-63.954591C612.51988 532.676925 610.989013 532.475334 610.009709 532.475334z" p-id="16040"></path>
+                    <path d="M575.265394 611.713003c-35.991726 0-113.591081-13.390985-148.630109-122.509195-18.49319-57.58758-46.883797-95.111195-84.380806-111.522979-49.181119-21.515013-97.744161 0.537236-98.227162 0.778736-6.92983 3.210112-15.068184 0.201591-18.278295-6.674003-3.196809-6.889921-0.201591-15.069207 6.675026-18.278295 2.443655-1.128707 60.435441-27.451212 120.856555-1.034563 45.044916 19.715017 78.538751 62.892399 99.543134 128.323621 38.758746 120.722502 132.044362 103.343693 135.992277 102.537328 7.440459-1.489934 14.69263 3.317559 16.211217 10.759041 1.503237 7.439436-3.317559 14.70491-10.759041 16.20917C593.973478 610.356099 586.735633 611.713003 575.265394 611.713003z" p-id="16041"></path>
+                </svg>
+                <span class="text">随机阅读</span>
+                <span class="line"></span>
             </div>
-            <div class="item" title="累计评论数">
-                <span class="num"><?php echo number_format($item->publishedCommentsNum); ?></span>
-                <span>评论量</span>
+            <ul class="list"><?php echo _getRandomPosts(); ?></ul>
+        </section>
+    <?php endif; ?>
+    <?php if ($this->options->JAside_Author_Status === 'on') : ?>
+        <section class="joe_aside__item author">
+            <img width="100%" height="120" class="image lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JAside_Author_Image() ?>" alt="博主栏壁纸" />
+            <div class="user">
+                <img width="75" height="75" class="avatar lazyload" src="<?php _getAvatarLazyload(); ?>" data-src="<?php $this->options->JAside_Author_Avatar ? $this->options->JAside_Author_Avatar() : _getAvatarByMail($this->authorId ? $this->author->mail : $this->user->mail) ?>" alt="博主头像" />
+                <a class="link" href="<?php $this->options->JAside_Author_Link() ?>" target="_blank" rel="noopener noreferrer nofollow"><?php $this->options->JAside_Author_Nick ? $this->options->JAside_Author_Nick() : ($this->authorId ? $this->author->screenName() : $this->user->screenName()); ?></a>
+                <p class="motto joe_motto"></p>
             </div>
-        </div>
-        <?php if ($this->options->JAside_Author_Nav !== "off") : ?>
-            <ul class="list"><?php _getAsideAuthorNav() ?></ul>
-        <?php endif; ?>
-    </section>
+            <?php Typecho_Widget::widget('Widget_Stat')->to($item); ?>
+            <div class="count">
+                <div class="item" title="累计文章数">
+                    <span class="num"><?php echo number_format($item->publishedPostsNum); ?></span>
+                    <span>文章数</span>
+                </div>
+                <div class="item" title="累计评论数">
+                    <span class="num"><?php echo number_format($item->publishedCommentsNum); ?></span>
+                    <span>评论量</span>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
     <?php if ($this->options->JAside_Timelife_Status === 'on') : ?>
         <section class="joe_aside__item timelife">
             <div class="joe_aside__item-title">

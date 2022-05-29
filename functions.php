@@ -211,6 +211,27 @@ function themeConfig($form)
     $JList_Animate->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JList_Animate->multiMode());
 
+    $JFooter_Tabbar = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JFooter_Tabbar',
+        NULL,
+        'zm-home2 || 首页 || index.html
+         zm-pinglun3 || 碎语 || cross.html
+         zm-guidang || 归档 || archives.html
+         zm-wo || 关于 || about.html',
+        '自定义底部导航（非必填）',
+        '提示：将在底部导航上显示，请参考示例填写，一行一个，为空则不显示<br />
+            格式：图标 || 名称 || 链接 （中间使用 || 分隔）<br />
+            示例：<br />
+            zm-home2 || 首页 || index.html <br />
+            zm-pinglun3 || 碎语 || cross.html <br />
+            zm-guidang || 归档 || archives.html <br />
+            zm-wo || 关于 || about.html <br />
+            更多图标：<a href="https://www.iconfont.cn/" target="_blank">阿里巴巴矢量图标库</a>
+            '
+    );
+    $JFooter_Tabbar->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JFooter_Tabbar);
+
     $JFooter_Left = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFooter_Left',
         NULL,
@@ -402,6 +423,19 @@ function themeConfig($form)
     $JAside_Switch->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Switch->multiMode());
 
+    $JAside_Author_Status = new Typecho_Widget_Helper_Form_Element_Select(
+        'JAside_Author_Status',
+        array(
+            'off' => '关闭（默认）',
+            'on' => '开启'
+        ),
+        'off',
+        '是否博主栏 - PC',
+        '介绍：用于控制是否显示博主基本信息'
+    );
+    $JAside_Author_Status->setAttribute('class', 'joe_content joe_aside');
+    $form->addInput($JAside_Author_Status->multiMode());
+
     $JAside_Author_Nick = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Nick',
         NULL,
@@ -470,25 +504,25 @@ function themeConfig($form)
     $JAside_Author_Motto->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Motto);
     /* --------------------------------------- */
-    $JAside_Author_Nav = new Typecho_Widget_Helper_Form_Element_Select(
-        'JAside_Author_Nav',
+    $JAside_Rand = new Typecho_Widget_Helper_Form_Element_Select(
+        'JAside_Rand',
         array(
             'off' => '关闭（默认）',
-            '3' => '开启，并显示3条最新文章',
-            '4' => '开启，并显示4条最新文章',
-            '5' => '开启，并显示5条最新文章',
-            '6' => '开启，并显示6条最新文章',
-            '7' => '开启，并显示7条最新文章',
-            '8' => '开启，并显示8条最新文章',
-            '9' => '开启，并显示9条最新文章',
-            '10' => '开启，并显示10条最新文章'
+            '3' => '开启，并显示3条随机文章',
+            '4' => '开启，并显示4条随机文章',
+            '5' => '开启，并显示5条随机文章',
+            '6' => '开启，并显示6条随机文章',
+            '7' => '开启，并显示7条随机文章',
+            '8' => '开启，并显示8条随机文章',
+            '9' => '开启，并显示9条随机文章',
+            '10' => '开启，并显示10条随机文章'
         ),
         'off',
-        '博主栏下方随机文章条目 - PC',
-        '介绍：用于设置博主栏下方的随机文章显示数量'
+        '随机文章 - PC',
+        '介绍：用于设置随机文章的显示数量'
     );
-    $JAside_Author_Nav->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Author_Nav->multiMode());
+    $JAside_Rand->setAttribute('class', 'joe_content joe_aside');
+    $form->addInput($JAside_Rand->multiMode());
     /* --------------------------------------- */
     $JAside_Timelife_Status = new Typecho_Widget_Helper_Form_Element_Select(
         'JAside_Timelife_Status',

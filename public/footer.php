@@ -47,6 +47,30 @@
     </div>
 </footer>
 
+<?php if ($this->options->JFooter_Tabbar != NULL) : ?>
+    <div class="joe_tabbar">
+        <ul>
+            <?php
+            $txt = $this->options->JFooter_Tabbar;
+            $string_arr = explode("\r\n", $txt);
+            $long = count($string_arr);
+            for ($i = 0; $i < $long; $i++) {
+                $icon = explode("||", $string_arr[$i])[0];
+                $name = explode("||", $string_arr[$i])[1];
+                $url = explode("||", $string_arr[$i])[2];
+            ?>
+                <?php if ($txt) : ?>
+                    <li class="joe_tabbar__item">
+                        <a href="<?php $this->options->siteUrl(); ?><?php echo trim($url); ?>">
+                            <i class="<?php echo trim($icon); ?> zm"></i><?php echo trim($name); ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
+            <?php } ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
 <div class="joe_action">
     <div class="joe_action_item scroll">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

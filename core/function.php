@@ -120,11 +120,29 @@ function _getAvatarLazyload($type = true)
 function _getViews($item, $type = true)
 {
 	$db = Typecho_Db::get();
+	if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
+		$db->query('ALTER TABLE `' . $db->getPrefix() . 'contents` ADD `views` INT(10) DEFAULT 0;');
+		echo 0;
+		return;
+	}
 	$result = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $item->cid))['views'];
+	if ($item->is('single')) {
+		$views = Typecho_Cookie::get('extend_contents_views');
+		if (empty($views)) {
+			$views = array();
+		} else {
+			$views = explode(',', $views);
+		}
+		if (!in_array($item->cid, $views)) {
+			$db->query($db->update('table.contents')->rows(array('views' => (int) $result + 1))->where('cid = ?', $item->cid));
+			array_push($views, $item->cid);
+			$views = implode(',', $views);
+			Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
+		}
+	}
 	if ($type) echo number_format($result);
 	else return number_format($result);
 }
-
 /* 查询文章点赞量 */
 function _getAgree($item, $type = true)
 {
@@ -251,28 +269,39 @@ function _getParentReply($parent)
 	if ($parent !== "0") {
 		$db = Typecho_Db::get();
 		$commentInfo = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ?', $parent));
-		echo '<div class="parent"><span style="vertical-align: 1px;">@</span> ' . $commentInfo['author'] . '</div>';
+		echo '<div class="parent"><span style="vertical-align: 1px;">@</span>' . $commentInfo['author'] . '：</div>';
 	}
 }
 
 /* 获取侧边栏作者随机文章 */
-function _getAsideAuthorNav()
+function _getRandomPosts()
 {
-	if (Helper::options()->JAside_Author_Nav && Helper::options()->JAside_Author_Nav !== "off") {
-		$limit = Helper::options()->JAside_Author_Nav;
+	if (Helper::options()->JAside_Rand && Helper::options()->JAside_Rand !== "off") {
+		$limit = Helper::options()->JAside_Rand;
 		$db = Typecho_Db::get();
-		$prefix = $db->getPrefix();
-		$sql = "SELECT * FROM `{$prefix}contents` WHERE cid >= (SELECT floor( RAND() * ((SELECT MAX(cid) FROM `{$prefix}contents`)-(SELECT MIN(cid) FROM `{$prefix}contents`)) + (SELECT MIN(cid) FROM `{$prefix}contents`))) and type='post' and status='publish' and (password is NULL or password='') ORDER BY cid LIMIT $limit";
+		$adapterName = $db->getAdapterName(); //兼容非MySQL数据库
+		if ($adapterName == 'pgsql' || $adapterName == 'Pdo_Pgsql' || $adapterName == 'Pdo_SQLite' || $adapterName == 'SQLite') {
+			$order_by = 'RANDOM()';
+		} else {
+			$order_by = 'RAND()';
+		}
+		$sql = $db->select()->from('table.contents')
+			->where('status = ?', 'publish')
+			->where('table.contents.created <= ?', time())
+			->where('type = ?', 'post')
+			->limit($limit)
+			->order($order_by);
 		$result = $db->query($sql);
 		if ($result instanceof Traversable) {
 			foreach ($result as $item) {
 				$item = Typecho_Widget::widget('Widget_Abstract_Contents')->push($item);
 				$title = htmlspecialchars($item['title']);
 				$permalink = $item['permalink'];
+				$date = _dateFormat($item['created']);
 				echo "
 						<li class='item'>
 							<a class='link' href='{$permalink}' title='{$title}'>{$title}</a>
-							<svg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M448.12 320.331a30.118 30.118 0 0 1-42.616-42.586L552.568 130.68a213.685 213.685 0 0 1 302.2 0l38.552 38.551a213.685 213.685 0 0 1 0 302.2L746.255 618.497a30.118 30.118 0 0 1-42.586-42.616l147.034-147.035a153.45 153.45 0 0 0 0-217.028l-38.55-38.55a153.45 153.45 0 0 0-216.998 0L448.12 320.33zM575.88 703.67a30.118 30.118 0 0 1 42.616 42.586L471.432 893.32a213.685 213.685 0 0 1-302.2 0l-38.552-38.551a213.685 213.685 0 0 1 0-302.2l147.065-147.065a30.118 30.118 0 0 1 42.586 42.616L173.297 595.125a153.45 153.45 0 0 0 0 217.027l38.55 38.551a153.45 153.45 0 0 0 216.998 0L575.88 703.64zm-234.256-63.88L639.79 341.624a30.118 30.118 0 0 1 42.587 42.587L384.21 682.376a30.118 30.118 0 0 1-42.587-42.587z'/></svg>
+							<span>{$date}</span>
 						</li>
 					";
 			}
@@ -361,7 +390,7 @@ function _getSupport($coid)
 	if (!array_key_exists('support', $db->fetchRow($db->select()->from('table.comments')))) {
 		$db->query('ALTER TABLE `' . $prefix . 'comments` ADD `support` INT(10) DEFAULT 0;');
 		return [
-			'icon' => 'zm zm-icon_dianzan_x',
+			'icon' => 'zm zm-thumb-up-line',
 			'count' => 0,
 			'text' => ''
 		];
@@ -375,13 +404,13 @@ function _getSupport($coid)
 	}
 	if (!in_array($coid, $support)) {
 		return [
-			'icon' => 'zm zm-icon_dianzan_x',
+			'icon' => 'zm zm-thumb-up-line',
 			'count' => $row['support'],
 			'text' => ''
 		];
 	} else {
 		return [
-			'icon' => 'zm zm-icon_dianzan_m',
+			'icon' => 'zm zm-thumb-up-fill',
 			'count' => $row['support'],
 			'text' => ''
 		];
@@ -432,4 +461,39 @@ function _dateFormat($time)
 			return $c . $v . '前';
 		}
 	}
+}
+
+/* 评论显示IP */
+function curl_tencentlbs_ip($ip)
+{
+	$key = 'OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77';
+	$url = 'https://apis.map.qq.com/ws/location/v1/ip?ip=' . $ip . '&key=' . $key;
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	curl_setopt($ch, CURLOPT_HTTPGET, true);
+	curl_setopt($ch, CURLOPT_REFERER, $url);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36');
+	curl_setopt($curl, CURLOPT_REFERER, 'https://apis.map.qq.com/');
+	$content = curl_exec($ch);
+	curl_close($ch);
+	if ($content) {
+		$json = json_decode($content, true);
+		if ($json['status'] == 0) {
+			$resjson = $json['result']['ad_info'];
+			if ($resjson['province'] == '北京市' || $resjson['province'] == '天津市' || $resjson['province'] == '上海市' || $resjson['province'] == '重庆市') {
+				return $resjson['nation'] . $resjson['city'];
+			}
+			if ($resjson['nation'] == '中国') {
+				return $resjson['province'] . $resjson['city'];
+			}
+			return $resjson['nation'] . $resjson['province'] . $resjson['city'];
+		}
+	}
+	return '';
 }

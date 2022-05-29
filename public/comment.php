@@ -20,17 +20,17 @@
                 <form method="post" class="joe_comment__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
                     <div class="head">
                         <div class="list">
-                            <input type="text" value="<?php $this->user->hasLogin() ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="请输入昵称..." />
+                            <input type="text" value="<?php $this->user->hasLogin() ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
                         </div>
                         <div class="list">
-                            <input type="text" value="<?php $this->user->hasLogin() ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="请输入邮箱..." />
+                            <input type="text" value="<?php $this->user->hasLogin() ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
                         </div>
                         <div class="list">
-                            <input type="text" autocomplete="off" name="url" placeholder="请输入网址（非必填）..." />
+                            <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
                         </div>
                     </div>
                     <div class="body">
-                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="说点什么吧，点击右上方切换成画图试试？"></textarea>
+                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="说点什么吧，或切换成画图试试？"></textarea>
                         <div class="draw" style="display: none;">
                             <ul class="line">
                                 <li data-line="3">细</li>
@@ -118,20 +118,30 @@ function threadedComments($comments, $options)
     <li class="comment-list__item">
         <div class="comment-list__item-contain" id="<?php $comments->theId(); ?>">
             <div class="term">
+                <div class="author">
                 <img width="48" height="48" class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($comments->mail); ?>" alt="头像" />
+                <?php if ($comments->authorId === $comments->ownerId) : ?>
+                    <i class="owner">
+                        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                            <path d="M924.8 336l-208 128c-3.2 3.2-3.2 3.2-6.4 0L512 211.2c-3.2-3.2-3.2-3.2-6.4 0l-224 252.8c-3.2 3.2-3.2 3.2-6.4 0l-179.2-128c-3.2-3.2-6.4 0-6.4 3.2L160 793.6c0 6.4 6.4 9.6 12.8 9.6h662.4c6.4 0 9.6-3.2 12.8-9.6l83.2-451.2c0-6.4-3.2-9.6-6.4-6.4zM806.4 857.6H201.6c-16 0-32 12.8-32 32v22.4c0 16 12.8 32 32 32h608c16 0 32-12.8 28.8-32v-22.4c0-16-16-32-32-32z" fill="#F5AB16" p-id="14912"></path>
+                            <path d="M57.6 278.4m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="#F5AB16" p-id="14913"></path>
+                            <path d="M512 140.8m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="#F5AB16" p-id="14914"></path>
+                            <path d="M966.4 278.4m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="#F5AB16" p-id="14915"></path>
+                        </svg>
+                    </i>
+                <?php endif; ?>
+                </div>
                 <div class="content">
                     <div class="user">
-                        <span class="author"><?php $comments->author(); ?></span>
-                        <?php if ($comments->authorId === $comments->ownerId) : ?>
-                            <i class="owner">作者</i>
-                        <?php endif; ?>
+                        <span class="author"><?php $comments->author(); ?><?php _getParentReply($comments->parent) ?></span>
                         <?php if ($comments->status === "waiting") : ?>
                             <em class="waiting">（评论审核中...）</em>
                         <?php endif; ?>
-                        <div class="agent"><?php _getAgentOS($comments->agent); ?> · <?php _getAgentBrowser($comments->agent); ?></div>
+                        <div class="agent">
+                            <?php echo curl_tencentlbs_ip($comments->ip); ?> · <?php _getAgentOS($comments->agent); ?> · <?php _getAgentBrowser($comments->agent); ?>
+                        </div>
                     </div>
                     <div class="substance">
-                        <?php _getParentReply($comments->parent) ?>
                         <?php echo _parseCommentReply($comments->content); ?>
                     </div>
                     <div class="handle">
