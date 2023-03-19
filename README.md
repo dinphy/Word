@@ -1,9 +1,9 @@
-## Joe
+## Joe 扩版
 
-> 一款基于Typecho博客的双栏极致优化主题
+> 一款基于 Typecho 博客的双栏极致优化主题
 
-- QQ交流群：457337579
-- Git仓库：https://github.com/HaoOuBa/Joe
+- QQ交流群：345655679
+- 效果预览：https://xwsir.cn
 - 主题宗旨：简洁、超强、开源、精华
 
 #### 扩版亮点:
@@ -19,7 +19,7 @@
 9. 修改文章页编辑内容/页面为图标
 10. 修改a标签的href属性值
 11. 更新JOE编辑器为白色系并精简编辑器工具栏图标（短代码功能还在）
-12. 主题编辑器适配后台美化插件 [wangStyle](https://github.com/dinphy/wangStyle)
+12. 主题编辑器适配后台美化插件 [WordStyle](https://github.com/dinphy/WordStyle)
 
 #### 主题简介：
 
@@ -63,6 +63,10 @@
 ├── archive.php 搜索页面
 
 ├── friends.php 友情链接页面
+
+├── cross.php 说说页面（卡片）
+
+├── dynamic.php 说说页面（时间轴）
 
 ├── functions.php 主题的外观、功能设置
 
