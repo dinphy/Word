@@ -494,9 +494,6 @@ html {
 						._last {
 							display: block !important;
 						}
-						.last {
-							display: none !important;
-						}
 					}
 					&.single {
 						.thumbnail {
@@ -527,7 +524,6 @@ html {
 						}
 						.meta {
 							.items {
-								width: 100%;
 								li {
 									display: none;
 									&:nth-child(1) {
@@ -964,18 +960,6 @@ html {
 					border-radius: var(--radius-wrap);
 					border-bottom: none;
 					background: var(--background);
-					&.default,
-					&.none,
-					&.multiple,
-					&.single {
-						.meta-right {
-							.items {
-								li:last-child {
-									display: none;
-								}
-							}
-						}
-					}
 				}
 			}
 			&_archive {

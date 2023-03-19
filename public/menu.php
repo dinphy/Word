@@ -93,7 +93,7 @@
         <?php if (sizeof($custom) > 0) : ?>
             <div class="joe_dropdown" trigger="hover" placement="45px">
                 <div class="joe_dropdown__link">
-                    <a href="javascript:void(0);" rel="nofollow">推荐</a>
+                    <a href="javascript:void(0);" rel="nofollow" style="padding-left: 0;">推荐</a>
                     <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
                         <path d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z" fill="var(--main)" />
                     </svg>

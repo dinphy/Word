@@ -438,6 +438,7 @@
 	position: relative;
 	max-width: 992px;
 	background: var(--background);
+	padding-bottom: 1rem;
 }
 /* 文章页面的样式 */
 .joe_bread {
@@ -545,24 +546,17 @@
 
 .joe_menu {
 	width: 20%;
-	/* display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	position: fixed;
-	left: 0;
-	bottom: 0; */
 }
 
 .joe_header {
-	/* 	position: sticky;
-	top: 0; */
 	margin-top: -1rem;
 	margin-left: -2rem;
 	margin-right: -2rem;
 	z-index: 1000;
 	transition: top 0.35s;
 	&.active {
-		background: var(--new-background);
+		background: var(--background);
+		backdrop-filter: saturate(200%) blur(20px);
 	}
 	&__above {
 		position: relative;
@@ -625,7 +619,7 @@
 						height: 45px;
 						line-height: 45px;
 						font-size: 1rem;
-						padding: 0 15px;
+						padding: 0 1rem;
 						transition: color 0.35s;
 						white-space: nowrap;
 						color: var(--main);
@@ -633,7 +627,7 @@
 					}
 					svg {
 						position: absolute;
-						right: 5px;
+						right: -1rem;
 						fill: var(--routine);
 					}
 				}
@@ -978,7 +972,7 @@
 	}
 	&__searchout {
 		position: absolute;
-		top: 4rem;
+		top: 0;
 		left: 0;
 		right: 0;
 		z-index: 890;
@@ -993,7 +987,6 @@
 			padding: 15px;
 			width: 60%;
 			margin: auto;
-			background: rgb(0 0 0 / 10%);
 			.search {
 				width: 100%;
 				display: flex;
@@ -1925,6 +1918,8 @@
 			}
 			&-right {
 				margin-left: auto;
+				display: flex;
+				position: relative;
 				.like {
 					font-size: 14px;
 					color: var(--minor);
@@ -1942,6 +1937,31 @@
 						margin-right: 3px;
 						fill: var(--minor);
 					}
+				}
+				.items:first-child {
+					position: absolute;
+					right: 2rem;
+					bottom: -5px;
+					background: var(--classC);
+					padding: 5px 10px;
+					border-radius: var(--radius-inner);
+					opacity: 0;
+					visibility: hidden;
+					transition: all 0.2s ease-in-out;
+					&::before {
+						content: '';
+						width: 0;
+						height: 0;
+						border-left: 8px solid var(--classC);
+						border-top: 8px solid rgba(0, 0, 0, 0);
+						border-bottom: 8px solid rgba(0, 0, 0, 0);
+						position: absolute;
+						left: 100%;
+					}
+				}
+				&:hover .items:first-child {
+					opacity: 1;
+					visibility: initial;
 				}
 			}
 			.last {
@@ -3992,7 +4012,7 @@
 	z-index: 333;
 	&_item {
 		position: fixed;
-		bottom: 20%;
+		bottom: 10rem;
 		cursor: pointer;
 		svg {
 			width: 28px;
@@ -4012,7 +4032,7 @@
 			cursor: pointer;
 			svg {
 				position: fixed;
-				bottom: 15%;
+				bottom: 7.5rem;
 				width: 28px;
 				height: 28px;
 				transform: scale(0);
@@ -4025,7 +4045,7 @@
 			}
 		}
 		&.scroll {
-			bottom: 10%;
+			bottom: 5rem;
 			visibility: hidden;
 			transform: translate(0, 24px);
 			transition: visibility 0.35s, transform 0.35s;
@@ -4310,8 +4330,10 @@
 		}
 	}
 	.comment-list {
-		padding-top: 15px;
 		&__item {
+			&:first-child {
+				padding-top: 1rem;
+			}
 			&-contain {
 				&:hover {
 					.term {
@@ -4365,10 +4387,10 @@
 								}
 							}
 							.substance {
-								p {
-									float: right !important;
-									border-radius: 0 var(--radius-inner) 10px var(--radius-inner) !important;
-								}
+								float: right !important;
+								border-radius: 0 0 10px var(--radius-inner) !important;
+								background: #95ec69 !important;
+								color: #303133 !important;
 							}
 						}
 					}
@@ -4462,6 +4484,13 @@
 							}
 						}
 						.substance {
+							background: var(--classD);
+							padding: 12px;
+							border-radius: 0 var(--radius-inner) var(--radius-inner) 10px;
+							color: var(--main);
+							word-break: break-word;
+							line-height: 24px;
+							float: left;
 							.owo_image {
 								height: 2rem;
 							}
@@ -4477,15 +4506,6 @@
 									color: var(--routine);
 								}
 							}
-							p {
-								background: var(--classD);
-								padding: 12px;
-								border-radius: 0 var(--radius-inner) var(--radius-inner) 10px;
-								color: var(--main);
-								word-break: break-word;
-								line-height: 24px;
-								float: left;
-							}
 							.secret {
 								background: repeating-linear-gradient(145deg, #f1f3fa, #f1f3fa 15px, #fff 0, #fff 30px);
 								padding: 10px 40px 10px 40px;
@@ -4497,13 +4517,12 @@
 				}
 			}
 			&-children {
-				//padding-left: 63px;
 				.comment-list__item-children {
 					padding-left: 0;
 				}
 			}
 			.joe_comment__respond {
-				margin-bottom: 15px;
+				margin-bottom: 1rem;
 				//animation: showComment 0.5s;
 			}
 		}
