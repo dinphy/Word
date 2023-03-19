@@ -2,7 +2,8 @@
 /* 获取主题当前版本号 */
 function _getVersion()
 {
-	return "7.3.7";
+	$info = Typecho_Plugin::parseInfo(Helper::options()->themeFile(Helper::options()->theme, 'index.php'));
+    return $info['version'];
 };
 
 /* 判断是否是手机 */
@@ -140,8 +141,8 @@ function _getViews($item, $type = true)
 			Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
 		}
 	}
-	if ($type) echo number_format($result);
-	else return number_format($result);
+	if ($type) echo format_number($result);
+	else return format_number($result);
 }
 /* 查询文章点赞量 */
 function _getAgree($item, $type = true)
@@ -269,7 +270,7 @@ function _getParentReply($parent)
 	if ($parent !== "0") {
 		$db = Typecho_Db::get();
 		$commentInfo = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ?', $parent));
-		echo '<div class="parent"><span style="vertical-align: 1px;">@</span>' . $commentInfo['author'] . '：</div>';
+		echo '<div class="parent"><span style="vertical-align: 1px;">@</span>' . $commentInfo['author'] . '</div>';
 	}
 }
 
@@ -343,7 +344,7 @@ function _checkSensitiveWords($words_str, $str)
 }
 
 /* 首页动态 */
-function _indexDynamic()
+/* function _indexDynamic()
 {
 	$slug = Helper::options()->JIndex_DynamicText;
 	$ispage = true;  //true 输出slug页面评论，false输出其它所有评论
@@ -381,7 +382,7 @@ function _indexDynamic()
 	} else {
 		echo '<div class="joe_index__title-notice" style="display: flex;">他很懒，什么也没说。</div>';
 	}
-}
+} */
 /* 动态点赞 */
 function _getSupport($coid)
 {
@@ -464,36 +465,197 @@ function _dateFormat($time)
 }
 
 /* 评论显示IP */
-function curl_tencentlbs_ip($ip)
+function convertip($ip)
 {
-	$key = 'OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77';
-	$url = 'https://apis.map.qq.com/ws/location/v1/ip?ip=' . $ip . '&key=' . $key;
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_AUTOREFERER, 1);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPGET, true);
-	curl_setopt($ch, CURLOPT_REFERER, $url);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36');
-	curl_setopt($curl, CURLOPT_REFERER, 'https://apis.map.qq.com/');
-	$content = curl_exec($ch);
-	curl_close($ch);
-	if ($content) {
-		$json = json_decode($content, true);
-		if ($json['status'] == 0) {
-			$resjson = $json['result']['ad_info'];
-			if ($resjson['province'] == '北京市' || $resjson['province'] == '天津市' || $resjson['province'] == '上海市' || $resjson['province'] == '重庆市') {
-				return $resjson['nation'] . $resjson['city'];
+	$ip1num = 0;
+	$ip2num = 0;
+	$ipAddr1 = "";
+	$ipAddr2 = "";
+	$dat_path = './usr/themes/Word/assets/qqwry.dat';
+	if (!preg_match("/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/", $ip)) {
+		return 'IP数据库路径不对';
+	}
+	if (!$fd = @fopen($dat_path, 'rb')) {
+		return 'IP数据库路径不正确';
+	}
+	$ip = explode('.', $ip);
+	$ipNum = $ip[0] * 16777216 + $ip[1] * 65536 + $ip[2] * 256 + $ip[3];
+	$DataBegin = fread($fd, 4);
+	$DataEnd = fread($fd, 4);
+	$ipbegin = implode('', unpack('L', $DataBegin));
+	if ($ipbegin < 0) $ipbegin += pow(2, 32);
+	$ipend = implode('', unpack('L', $DataEnd));
+	if ($ipend < 0) $ipend += pow(2, 32);
+	$ipAllNum = ($ipend - $ipbegin) / 7 + 1;
+	$BeginNum = 0;
+	$EndNum = $ipAllNum;
+	while ($ip1num > $ipNum || $ip2num < $ipNum) {
+		$Middle = intval(($EndNum + $BeginNum) / 2);
+		fseek($fd, $ipbegin + 7 * $Middle);
+		$ipData1 = fread($fd, 4);
+		if (strlen($ipData1) < 4) {
+			fclose($fd);
+			return 'System Error';
+		}
+		$ip1num = implode('', unpack('L', $ipData1));
+		if ($ip1num < 0) $ip1num += pow(2, 32);
+
+		if ($ip1num > $ipNum) {
+			$EndNum = $Middle;
+			continue;
+		}
+		$DataSeek = fread($fd, 3);
+		if (strlen($DataSeek) < 3) {
+			fclose($fd);
+			return 'System Error';
+		}
+		$DataSeek = implode('', unpack('L', $DataSeek . chr(0)));
+		fseek($fd, $DataSeek);
+		$ipData2 = fread($fd, 4);
+		if (strlen($ipData2) < 4) {
+			fclose($fd);
+			return 'System Error';
+		}
+		$ip2num = implode('', unpack('L', $ipData2));
+		if ($ip2num < 0) $ip2num += pow(2, 32);
+		if ($ip2num < $ipNum) {
+			if ($Middle == $BeginNum) {
+				fclose($fd);
+				return 'Unknown';
 			}
-			if ($resjson['nation'] == '中国') {
-				return $resjson['province'] . $resjson['city'];
-			}
-			return $resjson['nation'] . $resjson['province'] . $resjson['city'];
+			$BeginNum = $Middle;
 		}
 	}
-	return '';
+	$ipFlag = fread($fd, 1);
+	if ($ipFlag == chr(1)) {
+		$ipSeek = fread($fd, 3);
+		if (strlen($ipSeek) < 3) {
+			fclose($fd);
+			return 'System Error';
+		}
+		$ipSeek = implode('', unpack('L', $ipSeek . chr(0)));
+		fseek($fd, $ipSeek);
+		$ipFlag = fread($fd, 1);
+	}
+	if ($ipFlag == chr(2)) {
+		$AddrSeek = fread($fd, 3);
+		if (strlen($AddrSeek) < 3) {
+			fclose($fd);
+			return 'System Error';
+		}
+		$ipFlag = fread($fd, 1);
+		if ($ipFlag == chr(2)) {
+			$AddrSeek2 = fread($fd, 3);
+			if (strlen($AddrSeek2) < 3) {
+				fclose($fd);
+				return 'System Error';
+			}
+			$AddrSeek2 = implode('', unpack('L', $AddrSeek2 . chr(0)));
+			fseek($fd, $AddrSeek2);
+		} else {
+			fseek($fd, -1, SEEK_CUR);
+		}
+		while (($char = fread($fd, 1)) != chr(0))
+			$ipAddr2 .= $char;
+		$AddrSeek = implode('', unpack('L', $AddrSeek . chr(0)));
+		fseek($fd, $AddrSeek);
+		while (($char = fread($fd, 1)) != chr(0))
+			$ipAddr1 .= $char;
+	} else {
+		fseek($fd, -1, SEEK_CUR);
+		while (($char = fread($fd, 1)) != chr(0))
+			$ipAddr1 .= $char;
+		$ipFlag = fread($fd, 1);
+		if ($ipFlag == chr(2)) {
+			$AddrSeek2 = fread($fd, 3);
+			if (strlen($AddrSeek2) < 3) {
+				fclose($fd);
+				return 'System Error';
+			}
+			$AddrSeek2 = implode('', unpack('L', $AddrSeek2 . chr(0)));
+			fseek($fd, $AddrSeek2);
+		} else {
+			fseek($fd, -1, SEEK_CUR);
+		}
+		while (($char = fread($fd, 1)) != chr(0)) {
+			$ipAddr2 .= $char;
+		}
+	}
+	fclose($fd);
+	if (preg_match('/http/i', $ipAddr2)) {
+		$ipAddr2 = '';
+	}
+	$ipaddr = "$ipAddr1";
+	$ipaddr = preg_replace('/CZ88.NET/is', '', $ipaddr);
+	$ipaddr = preg_replace('/^s*/is', '', $ipaddr);
+	$ipaddr = preg_replace('/s*$/is', '', $ipaddr);
+	if (preg_match('/http/i', $ipaddr) || $ipaddr == '') {
+		$ipaddr = '可能来自火星';
+	}
+	$ipaddr = iconv('gbk', 'utf-8//IGNORE', $ipaddr); //转换编码
+	return $ipaddr;
+}
+
+/* 那年今日 */
+function _historyDay($created)
+{
+	$date = date('m/d', $created);
+	$time = time();
+	$db = Typecho_Db::get();
+	$prefix = $db->getPrefix();
+	$sql = "SELECT * FROM `{$prefix}contents` WHERE DATE_FORMAT(FROM_UNIXTIME(created), '%m/%d') = '{$date}' and created <= {$time} and created != {$created} and type = 'post' and status = 'publish' and (password is NULL or password = '') ORDER BY created DESC LIMIT 10";
+	$result = $db->query($sql);
+	$historyTodaylist = [];
+	if ($result instanceof Traversable) {
+		foreach ($result as $item) {
+			$item = Typecho_Widget::widget('Widget_Abstract_Contents')->push($item);
+			$historyTodaylist[] = array(
+				"title" => htmlspecialchars($item['title']),
+				"permalink" => $item['permalink'],
+				"date" => $item['year'] . ' ' . $item['month'] . '/' . $item['day']
+			);
+		}
+	}
+	if (count($historyTodaylist) > 0) {
+		echo '
+			<section class="joe_aside__item today">
+				<div class="joe_aside__item-title">
+					<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+						<path d="M701.217 207.026H304.974v26.713c0 17.809-13.357 33.391-33.391 33.391-17.81 0-33.392-13.356-33.392-33.39v-26.714h-91.27c-33.39 0-60.104 26.713-60.104 60.104v601.044c0 33.391 26.713 60.104 60.105 60.104h739.06a60.817 60.817 0 0 0 60.105-60.104V267.13c0-33.39-26.713-60.104-60.104-60.104h-120.21v26.713c0 17.809-13.356 33.391-33.39 33.391-17.81 0-33.392-13.356-33.392-33.39v-26.714zm64.557-64.556h120.209c69.008 0 124.66 55.652 124.66 124.66v601.044c0 33.391-13.356 64.556-35.617 89.043-22.26 22.261-55.652 35.618-89.043 35.618H146.922c-33.392 0-64.557-13.357-89.044-35.618-22.26-22.26-35.617-55.652-35.617-89.043V267.13c0-69.008 55.652-124.66 124.66-124.66h91.27V53.426c0-17.809 13.357-33.391 33.392-33.391 17.808 0 33.39 13.356 33.39 33.391v89.044h396.244V53.426c0-17.809 15.583-31.165 33.392-31.165S768 35.617 768 55.652v86.818zm0 0" />
+						<path d="M471.93 460.8c46.748 20.035 91.27 44.522 129.113 73.46l-26.713 44.523c-42.295-31.166-86.817-57.879-129.113-75.687L471.93 460.8zm-153.6 129.113h396.244v40.07c-33.391 89.043-106.852 155.826-215.93 202.574l-35.618-46.748c91.27-35.618 153.6-84.592 189.217-149.148H318.33v-46.748zm180.313-269.356h37.844c66.783 75.686 149.148 135.79 240.417 180.313l-26.713 48.973c-91.27-46.747-166.956-106.852-231.513-180.313-57.878 69.01-135.791 129.113-231.513 180.313l-26.713-48.973c93.496-46.748 173.635-109.079 238.191-180.313zm0 0" />
+					</svg>
+					<span class="text">那年今日</span>
+					<span class="line"></span>
+				</div>
+				<ul class="joe_aside__item-contain">
+			';
+		foreach ($historyTodaylist as $item) {
+			echo "
+					<li class='item'>
+						<div class='tail'></div>
+						<div class='head'></div>
+						<div class='desc'>
+							<time datetime='{$item['date']}'>{$item['date']}</time>
+							<a href='{$item['permalink']}' title='{$item['title']}'>{$item['title']}</a>
+						</div>
+					</li>
+                ";
+		}
+		echo '</ul></section>';
+	}
+}
+
+/* 数字k\w格式化 */
+function format_number($number)
+{
+	if ($number >= 10000) {
+		# 判断是否超过w
+		$newNum = round($number / 1000, 2) . 'w';
+	} elseif ($number >= 1000) {
+		# 判断是否超过k
+		$newNum = round($number / 1000, 1) . 'k';
+	} else {
+		$newNum = $number;
+	}
+	return $newNum;
 }

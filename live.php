@@ -20,9 +20,12 @@
 
 <body>
     <div id="Joe">
-        <?php $this->need('public/header.php'); ?>
+        <?php $this->need('public/head.php'); ?>
         <div class="joe_container">
+            <?php $this->need('public/menu.php'); ?>
             <div class="joe_main">
+                <?php $this->need('public/header.php'); ?>
+                <?php $this->need('public/batten.php'); ?>
                 <!-- 播放页 -->
                 <?php if (isset($_GET['profileRoom'])) : ?>
                     <div class="joe_live__contain joe_live__play">

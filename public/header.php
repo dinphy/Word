@@ -1,6 +1,10 @@
 <header class="joe_header">
     <div class="joe_header__above">
         <div class="joe_container">
+            <svg class="joe_header__above-slideicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M12 3v2H3V3h9zm4 16v2H3v-2h13zm6-8v2H3v-2h19z" />
+            </svg>
             <a title="<?php $this->options->title(); ?>" class="joe_header__above-logo" style="display: none;" href="<?php $this->options->siteUrl(); ?>">
                 <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo() ?>" alt="<?php $this->options->title(); ?>" />
                 <svg class="profile-color-modes" height="45" viewBox="0 0 106 60" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -76,131 +80,19 @@
                     </g>
                 </svg>
             </a>
-            <nav class="joe_header__above-nav">
-                <a class="item <?php echo $this->is('index') ? 'active' : '' ?>" href="<?php $this->options->siteUrl(); ?>" title="首页">首页</a>
-                <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
-                <?php if ($this->options->JNavStatus == 'on') : ?>
-                    <?php while ($category->next()) : ?>
-                        <?php if ($category->levels === 0) : ?>
-                            <?php $children = $category->getAllChildren($category->mid); ?>
-                            <?php if (empty($children)) : ?>
-                                <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
-                            <?php else : ?>
-                                <div class="joe_dropdown" trigger="hover" placement="60px">
-                                    <div class="joe_dropdown__link">
-                                        <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
-                                    </div>
-                                    <nav class="joe_dropdown__menu">
-                                        <?php foreach ($children as $mid) : ?>
-                                            <?php $child = $category->getCategory($mid); ?>
-                                            <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
-                                        <?php endforeach; ?>
-                                    </nav>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
-                <?php else : ?>
-                    <div class="joe_dropdown" trigger="hover" placement="60px" style="margin-right: 15px;">
-                        <div class="joe_dropdown__link">
-                            <a href="javascript:void(0);" rel="nofollow">分类</a>
-                        </div>
-                        <nav class="joe_dropdown__menu">
-                            <?php while ($category->next()) : ?>
-                                <?php if ($category->levels === 0) : ?>
-                                    <?php $children = $category->getAllChildren($category->mid); ?>
-                                    <?php if (empty($children)) : ?>
-                                        <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
-                                    <?php else : ?>
-                                        <div class="joe_dropdown">
-                                            <div class="joe_dropdown__link">
-                                                <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
-                                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                                                    <path d="M381.57809 345.996199c-2.908236 4.233418-4.614088 9.380648-4.614088 14.892175s1.705851 10.658757 4.614088 14.922874L544.443411 539.42256c10.32209 10.324136 10.32209 27.042913 0 37.381375L385.842207 735.921909c-5.376451 4.843308-8.771781 11.818163-8.771781 19.61371 0 14.602579 11.83249 26.433022 26.434046 26.433022 5.953595 0 11.420097-1.979074 15.835663-5.298679l5.300726-5.299703 175.866427-175.884846c20.650319-20.647249 20.650319-54.114478 0-74.763774L422.95036 343.132988l-1.811252-1.794879c-4.690836-4.264117-10.903328-6.884804-17.740036-6.884804C394.339742 334.453305 386.34465 339.02339 381.57809 345.996199z"></path>
-                                                </svg>
-                                                <div class="joe_dropdown__submenu">
-                                                    <?php foreach ($children as $mid) : ?>
-                                                        <?php $child = $category->getCategory($mid); ?>
-                                                        <a class="<?php echo $this->is('category', $child['slug']) ? 'active' : '' ?>" href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                            <?php endwhile; ?>
-                        </nav>
-                    </div>
-                <?php endif; ?>
-
-                <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-                <?php if (count($pages->stack) <= $this->options->JNavMaxNum) : ?>
-                    <?php foreach ($pages->stack as $item) : ?>
-                        <a class="item <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <?php foreach (array_slice($pages->stack, 0, $this->options->JNavMaxNum) as $item) : ?>
-                        <a class="item <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                    <?php endforeach; ?>
-                    <div class="joe_dropdown" trigger="hover" placement="60px" style="margin-right: 15px;">
-                        <div class="joe_dropdown__link">
-                            <a href="javascript:void(0);" rel="nofollow">其他</a>
-                        </div>
-                        <nav class="joe_dropdown__menu">
-                            <?php foreach (array_slice($pages->stack, $this->options->JNavMaxNum) as $item) : ?>
-                                <a class="<?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                            <?php endforeach; ?>
-                        </nav>
-                    </div>
-                <?php endif; ?>
-                <?php
-                $custom = [];
-                $custom_text = $this->options->JCustomNavs;
-                if ($custom_text) {
-                    $custom_arr = explode("\r\n", $custom_text);
-                    if (count($custom_arr) > 0) {
-                        for ($i = 0; $i < count($custom_arr); $i++) {
-                            $title = explode("||", $custom_arr[$i])[0];
-                            $url = explode("||", $custom_arr[$i])[1];
-                            $custom[] = array("title" => trim($title), "url" => trim($url));
-                        };
-                    }
-                }
-                ?>
-                <?php if (sizeof($custom) > 0) : ?>
-                    <div class="joe_dropdown" trigger="hover" placement="60px">
-                        <div class="joe_dropdown__link">
-                            <a href="javascript:void(0);" rel="nofollow">推荐</a>
-                            <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
-                                <path d="M561.873 725.165c-11.262 11.262-26.545 21.72-41.025 18.502-14.479 2.413-28.154-8.849-39.415-18.502L133.129 375.252c-17.697-17.696-17.697-46.655 0-64.352s46.655-17.696 64.351 0l324.173 333.021 324.977-333.02c17.696-17.697 46.655-17.697 64.351 0s17.697 46.655 0 64.351L561.873 725.165z" fill="var(--main)" />
-                            </svg>
-                        </div>
-                        <nav class="joe_dropdown__menu">
-                            <?php foreach ($custom as $item) : ?>
-                                <a href="<?php echo $item['url'] ?>" target="_blank" rel="noopener noreferrer nofollow"><?php echo $item['title'] ?></a>
-                            <?php endforeach; ?>
-                        </nav>
-                    </div>
-                <?php endif; ?>
-            </nav>
+            <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
             <div class="joe_header__above-right">
-                <div class="joe_header__above-mode">
-                    <svg class="icon-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path d="M10 6a8 8 0 0 0 11.955 6.956C21.474 18.03 17.2 22 12 22 6.477 22 2 17.523 2 12c0-5.2 3.97-9.474 9.044-9.955A7.963 7.963 0 0 0 10 6zm-6 6a8 8 0 0 0 8 8 8.006 8.006 0 0 0 6.957-4.045c-.316.03-.636.045-.957.045-5.523 0-10-4.477-10-10 0-.321.015-.64.045-.957A8.006 8.006 0 0 0 4 12zm14.164-9.709L19 2.5v1l-.836.209a2 2 0 0 0-1.455 1.455L16.5 6h-1l-.209-.836a2 2 0 0 0-1.455-1.455L13 3.5v-1l.836-.209A2 2 0 0 0 15.29.836L15.5 0h1l.209.836a2 2 0 0 0 1.455 1.455zm5 5L24 7.5v1l-.836.209a2 2 0 0 0-1.455 1.455L21.5 11h-1l-.209-.836a2 2 0 0 0-1.455-1.455L18 8.5v-1l.836-.209a2 2 0 0 0 1.455-1.455L20.5 5h1l.209.836a2 2 0 0 0 1.455 1.455z" />
-                    </svg>
-                    <svg class="icon-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
-                    </svg>
-                </div>
+                <svg class="joe_header__above-noticeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path fill="var(--main)" d="M5 18h14v-6.969C19 7.148 15.866 4 12 4s-7 3.148-7 7.031V18zm7-16c4.97 0 9 4.043 9 9.031V20H3v-8.969C3 6.043 7.03 2 12 2zM9.5 21h5a2.5 2.5 0 1 1-5 0z" />
+                </svg>
                 <div class="joe_header__above-sign">
-                    <div class="joe_dropdown" trigger="click" placement="52px">
+                    <div class="joe_dropdown" trigger="click" placement="45px">
                         <?php if ($this->user->hasLogin()) : ?>
                             <div class="joe_dropdown__link">
-                                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M604.501333 542.037333A242.346667 242.346667 0 1 0 238.933333 332.572444a240.867556 240.867556 0 0 0 123.335111 209.464889 372.280889 372.280889 0 0 1 242.232889 0zM291.271111 332.572444a192.170667 192.170667 0 0 1 384.227556 0 192.170667 192.170667 0 0 1-384.227556 0zM604.501333 542.037333a244.622222 244.622222 0 0 1-242.232889 0A366.705778 366.705778 0 0 0 113.777778 887.466667h52.337778a318.008889 318.008889 0 0 1 560.128-201.386667L762.311111 647.736889a371.143111 371.143111 0 0 0-157.809778-105.699556z"></path>
-                                    <path d="M604.501333 542.037333a372.280889 372.280889 0 0 0-242.232889 0 244.622222 244.622222 0 0 0 242.232889 0zM670.72 932.977778L516.664889 775.736889l38.570667-35.384889 115.712 115.598222 201.045333-217.770666L910.222222 673.905778 670.72 932.977778z"></path>
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10653" width="24" height="24">
+                                    <path fill="var(--main)" d="M604.501333 542.037333A242.346667 242.346667 0 1 0 238.933333 332.572444a240.867556 240.867556 0 0 0 123.335111 209.464889 372.280889 372.280889 0 0 1 242.232889 0zM291.271111 332.572444a192.170667 192.170667 0 0 1 384.227556 0 192.170667 192.170667 0 0 1-384.227556 0zM604.501333 542.037333a244.622222 244.622222 0 0 1-242.232889 0A366.705778 366.705778 0 0 0 113.777778 887.466667h52.337778a318.008889 318.008889 0 0 1 560.128-201.386667L762.311111 647.736889a371.143111 371.143111 0 0 0-157.809778-105.699556z" p-id="10654"></path>
+                                    <path fill="var(--main)" d="M604.501333 542.037333a372.280889 372.280889 0 0 0-242.232889 0 244.622222 244.622222 0 0 0 242.232889 0zM670.72 932.977778L516.664889 775.736889l38.570667-35.384889 115.712 115.598222 201.045333-217.770666L910.222222 673.905778 670.72 932.977778z" p-id="10655"></path>
                                 </svg>
                             </div>
                             <nav class="joe_dropdown__menu list">
@@ -215,8 +107,8 @@
                             </nav>
                         <?php else : ?>
                             <div class="joe_dropdown__link">
-                                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M640 542.72c76.8-44.8 128-128 128-217.6 0-140.8-115.2-256-256-256s-256 108.8-256 249.6c0 96 51.2 172.8 128 217.6-166.4 51.2-281.6 204.8-288 384 0 25.6 12.8 38.4 32 38.4s32-12.8 32-32c6.4-192 160-345.6 352-345.6s345.6 153.6 352 345.6c0 19.2 12.8 32 32 32s32-12.8 32-32c-6.4-179.2-121.6-332.8-288-384z m-320-224c0-108.8 83.2-192 192-192s192 83.2 192 192-83.2 192-192 192-192-83.2-192-192z"></path>
+                                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12420">
+                                    <path fill="var(--main)" d="M511.26 651.52c-162.18 0-294.13-131.95-294.13-294.14S349.07 63.26 511.26 63.26 805.39 195.2 805.39 357.39 673.44 651.52 511.26 651.52z m0-513.6c-121.01 0-219.46 98.45-219.46 219.46s98.45 219.47 219.46 219.47 219.47-98.46 219.47-219.47-98.46-219.46-219.47-219.46zM106.05 959.26c-8.37 0-16.79-2.8-23.74-8.54-15.9-13.13-18.16-36.65-5.03-52.55 107.49-130.25 265.89-204.95 434.59-204.95 167.93 0 325.86 74.13 433.3 203.38 13.18 15.85 11.01 39.39-4.85 52.57-15.86 13.17-39.4 11-52.57-4.85-93.21-112.13-230.22-176.44-375.88-176.44-146.34 0-283.76 64.8-377.01 177.81-7.38 8.95-18.05 13.57-28.81 13.57z" p-id="12421"></path>
                                 </svg>
                             </div>
                             <form class="joe_dropdown__menu form" method="post" name="login" action="<?php $this->options->loginAction() ?>">
@@ -235,12 +127,65 @@
                 <svg class="joe_header__above-searchicon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <path d="M933.308465 890.723577l-146.767692-157.046802c59.488883-71.644737 92.202958-160.954809 92.202958-254.974136 0-220.566488-179.481767-400.048255-400.110677-400.048255-220.566488 0-400.048255 179.451068-400.048255 400.048255s179.481767 400.048255 400.078954 400.048255c57.796334-0.030699 113.530706-12.094456 165.633365-35.82288 15.479553-7.04751 22.312168-25.297153 15.264659-40.74703-7.04751-15.511275-25.38925-22.373567-40.74703-15.264659-44.101427 20.066011-91.249237 30.252001-140.181693 30.2827-186.652074 0-338.498434-151.845337-338.498434-338.498434 0-186.621375 151.845337-338.498434 338.498434-338.498434 186.682773 0 338.559832 151.845337 338.559832 338.498434 0 87.863117-33.514301 171.111123-94.326319 234.415914-11.786441 12.248975-11.387351 31.729655 0.830925 43.516096 0.923022 0.892323 2.12336 1.231037 3.170203 2.000564 0.830925 1.231037 1.261737 2.64627 2.308579 3.75451L888.346437 932.700621c6.03239 6.493901 14.248516 9.756201 22.465664 9.756201 7.53972 0 15.07944-2.739391 21.019733-8.309246C944.234305 922.606729 944.910711 903.126049 933.308465 890.723577z"></path>
                 </svg>
-                <svg class="joe_header__above-slideicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M3 4h18v2H3V4zm6 7h12v2H9v-2zm-6 7h18v2H3v-2z" />
-                </svg>
             </div>
         </div>
+    </div>
+
+    <div class="joe_header__notice">
+        <section class="joe_aside__item newreply joe_header__notice-inner">
+            <div class="joe_aside__item-title">
+                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                    <path d="M834.346057 855.835999 189.678502 855.835999c-47.472198 0-85.974094-38.533618-85.974094-85.957721l0-515.746324c0-47.39238 38.501896-85.957721 85.974094-85.957721L834.346057 168.174234c47.40773 0 85.957721 38.566364 85.957721 85.957721l0 85.957721c0 10.216689-7.131421 18.723434-16.597003 20.946055-24.542976 9.849322-245.737774 135.092791-381.037273 212.608236-6.939039 3.965312-15.429411 3.75758-22.240537-0.528026L264.060583 422.721651c-9.993608-6.412037-12.967336-19.698644-6.603395-29.692253 6.395664-10.008958 19.698644-12.983709 29.692253-6.619768L512.579703 529.881253C757.821173 389.384381 844.658937 342.327646 877.324918 326.547241l0-72.415286c0-23.695678-19.314904-42.97886-42.97886-42.97886L189.678502 211.153094c-23.712051 0-42.97886 19.283182-42.97886 42.97886l0 515.746324c0 23.712051 19.266809 42.97886 42.97886 42.97886L834.346057 812.857139c23.663956 0 42.97886-19.266809 42.97886-42.97886l0-257.873162c0-11.864212 9.593496-21.521153 21.473057-21.521153s21.505803 9.657964 21.505803 21.521153l0 257.873162C920.303778 817.302381 881.753787 855.835999 834.346057 855.835999L834.346057 855.835999z" p-id="11334"></path>
+                </svg>
+                <span class="text">最新消息</span>
+                <span class="line"></span>
+            </div>
+            <div class="joe_header__notice-close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
+                </svg>
+            </div>
+            <?php $this->widget('Widget_Comments_Recent', 'ignoreAuthor=true&pageSize=5')->to($item); ?>
+            <ul class="joe_aside__item-contain">
+                <?php if ($item->have()) : ?>
+                    <?php while ($item->next()) : ?>
+                        <li class="item">
+                            <div class="user">
+                                <div class="info">
+                                    <div class="author">
+                                        <?php $item->author(false) ?>
+                                        <span class="date"> · <?php $item->date('m-d'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reply">
+                                <a class="link" href="<?php _parseAsideLink($item->permalink); ?>">
+                                    <?php
+                                    $db = Typecho_Db::get();
+                                    $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $item->parent)->limit(1));
+                                    $smhf = $item->mail;
+                                    $user = Typecho_Widget::widget('Widget_User');
+                                    if (strpos($item->content, '私语#') == true) {
+                                        $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
+                                        if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
+                                            _parseAsideReply(str_replace('私语#', '', $item->content));
+                                        } else {
+                                            echo '<div class="secret">此条为私语，发布者可见</div>';
+                                        }
+                                    } else {
+                                        _parseAsideReply($item->content);
+                                    }
+                                    ?>
+                                </a>
+                            </div>
+                        </li>
+                    <?php endwhile; ?>
+                <?php else : ?>
+                    <li class="empty">暂无任何消息！</li>
+                <?php endif; ?>
+            </ul>
+        </section>
     </div>
 
     <div class="joe_header__searchout">
@@ -249,18 +194,6 @@
                 <form class="search joe_header__above-search" method="post" action="<?php $this->options->siteUrl(); ?>">
                     <input maxlength="16" autocomplete="off" placeholder="请输入关键字..." name="s" value="<?php echo $this->is('search') ? $this->archiveTitle(' &raquo; ', '', '') : '' ?>" class="input" type="text" />
                     <button type="submit" class="submit">Search</button>
-                    <nav class="result">
-                        <?php $this->widget('Widget_Contents_Hot@Search', 'pageSize=5')->to($item); ?>
-                        <?php $index = 1; ?>
-                        <?php while ($item->next()) : ?>
-                            <a href="<?php $item->permalink(); ?>" title="<?php $item->title(); ?>" class="item">
-                                <span class="sort"><?php echo $index; ?></span>
-                                <span class="text"><?php $item->title(); ?></span>
-                                <span class="views"><?php echo number_format($item->views); ?> 阅读</span>
-                            </a>
-                            <?php $index++; ?>
-                        <?php endwhile; ?>
-                    </nav>
                 </form>
                 <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 20))->to($tags); ?>
                 <?php if ($tags->have()) : ?>
@@ -392,41 +325,44 @@
             </li>
             <!-- 页面 -->
             <li>
-                <a class="link panel" href="javascript:void(0);" rel="nofollow">
-                    <span>页面</span>
-                    <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
-                        <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                    </svg>
-                </a>
-                <ul class="slides panel-body panel-box">
-                    <li>
-                        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-                        <?php if (count($pages->stack) <= $this->options->JNavMaxNum) : ?>
-                            <?php foreach ($pages->stack as $item) : ?>
-                                <a class="link <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <?php foreach (array_slice($pages->stack, 0, $this->options->JNavMaxNum) as $item) : ?>
-                                <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                            <?php endforeach; ?>
-                            <div class="link panel <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>">
-                                <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="javascript: viod(0);">更多</a>
-                                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
-                                    <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
-                                </svg>
-                            </div>
-                            <ul class="slides panel-body">
-                                <?php foreach (array_slice($pages->stack, $this->options->JNavMaxNum) as $item) : ?>
-                                    <li>
-                                        <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
-                    </li>
-                </ul>
+                <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                <?php if (count($pages->stack) <= $this->options->JNavMaxNum) : ?>
+                    <?php foreach ($pages->stack as $item) : ?>
+                        <a class="link <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <?php foreach (array_slice($pages->stack, 0, $this->options->JNavMaxNum) as $item) : ?>
+                        <a class="link <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
+                    <?php endforeach; ?>
+                    <div class="link panel">
+                        <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="javascript: viod(0);">页面</a>
+                        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="13" height="13">
+                            <path d="M624.865 512.247L332.71 220.088c-12.28-12.27-12.28-32.186 0-44.457 12.27-12.28 32.186-12.28 44.457 0l314.388 314.388c12.28 12.27 12.28 32.186 0 44.457L377.167 848.863c-6.136 6.14-14.183 9.211-22.228 9.211s-16.092-3.071-22.228-9.211c-12.28-12.27-12.28-32.186 0-44.457l292.155-292.16z" />
+                        </svg>
+                    </div>
+                    <nav class="slides panel-body">
+                        <?php foreach (array_slice($pages->stack, $this->options->JNavMaxNum) as $item) : ?>
+                            <a class="link <?php echo $this->is('page', $item['slug']) ? 'current' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
+                        <?php endforeach; ?>
+                    </nav>
+                <?php endif; ?>
             </li>
+
             <!-- 推荐 -->
+            <?php
+            $custom = [];
+            $custom_text = $this->options->JCustomNavs;
+            if ($custom_text) {
+                $custom_arr = explode("\r\n", $custom_text);
+                if (count($custom_arr) > 0) {
+                    for ($i = 0; $i < count($custom_arr); $i++) {
+                        $title = explode("||", $custom_arr[$i])[0];
+                        $url = explode("||", $custom_arr[$i])[1];
+                        $custom[] = array("title" => trim($title), "url" => trim($url));
+                    };
+                }
+            }
+            ?>
             <?php if (sizeof($custom) > 0) : ?>
                 <li>
                     <a class="link panel" href="javascript:void(0);" rel="nofollow">

@@ -210,23 +210,15 @@ html {
 				}
 			}
 			&_index {
-				&__ad {
-					&-link {
-						.image {
-							height: 180px;
-						}
-					}
-				}
 				&__hot {
 					&-list {
-						column-gap: 10px;
 						.item .link .inner .image {
 							height: 90px;
 						}
 					}
 				}
 				&__banner {
-					display: block;
+					display: flex;
 					&-recommend {
 						padding-top: 15px;
 						width: 100%;
@@ -275,9 +267,9 @@ html {
 			}
 		}
 		.swiper-container {
-			height: 280px;
+			height: 14rem;
 			.item {
-				height: 280px;
+				height: 14rem;
 			}
 		}
 	}
@@ -289,6 +281,11 @@ html {
 			}
 			&_aside {
 				display: none;
+			}
+			&_action {
+				.aside {
+					display: none;
+				}
 			}
 			&_video {
 				&__player {
@@ -355,12 +352,6 @@ html {
 							display: none;
 						}
 					}
-					&-search {
-						display: none;
-					}
-					&-searchicon {
-						display: block;
-					}
 				}
 			}
 			&_census {
@@ -389,15 +380,18 @@ html {
 		}
 
 		.swiper-container {
-			height: 250px;
+			height: 13rem;
 			.item {
-				height: 250px;
+				height: 13rem;
 			}
 		}
 	}
 
 	@media (max-width: 768px) {
 		.joe {
+			&_head {
+				display: none;
+			}
 			&_tabbar {
 				display: block;
 			}
@@ -417,10 +411,21 @@ html {
 					}
 				}
 			}
+			&_menu {
+				width: auto;
+			}
 			&_header {
+				position: sticky;
+				top: 0;
 				&__above {
 					.joe_container {
 						justify-content: space-between;
+					}
+					&-right {
+						margin-left: 0;
+						&:last-child {
+							padding-right: 1rem;
+						}
 					}
 					&-sign,
 					&-nav {
@@ -438,7 +443,14 @@ html {
 						display: block;
 						margin-left: 1rem;
 					}
+					&-search {
+						display: none;
+					}
+					&-noticeicon {
+						display: none;
+					}
 					&-searchicon {
+						display: block;
 						margin-left: 0;
 					}
 				}
@@ -451,24 +463,13 @@ html {
 			&_index {
 				&__banner {
 					&-recommend {
-						gap: 10px;
 						.item {
-							height: 100px;
+							height: 8rem;
 						}
 					}
 				}
 				&__hot {
-					&-list {
-						grid-template-columns: repeat(2, 1fr);
-						gap: 10px;
-					}
-				}
-				&__ad {
-					&-link {
-						.image {
-							height: 120px;
-						}
-					}
+					display: none;
 				}
 				&__title {
 					&-notice {
@@ -818,20 +819,11 @@ html {
 				}
 				&__respond-form {
 					.head {
-						display: block;
-						border-bottom: none;
 						.list {
-							border-bottom: 1px solid var(--classB);
-							&:nth-child(2) {
-								&::before,
-								&::after {
-									display: none;
-								}
+							input {
+								padding: 0 8px;
 							}
 						}
-					}
-					.body .text {
-						height: 140px;
 					}
 				}
 				.comment-list__item-contain .term .avatar {
@@ -898,9 +890,9 @@ html {
 			}
 		}
 		.swiper-container {
-			height: 180px;
+			height: 12rem;
 			.item {
-				height: 180px;
+				height: 12rem;
 			}
 		}
 	}
@@ -908,60 +900,119 @@ html {
 		.joe {
 			&_header {
 				padding: 0 15px;
+				margin: 0;
 				&__above {
+					&-right {
+						&:last-child {
+							padding-right: 0;
+						}
+					}
 					&-searchicon {
 						margin-right: 10px;
+						fill: #fff;
 					}
 					&-slideicon {
 						margin-left: 10px;
+						fill: #fff;
+					}
+					&-mode svg {
+						fill: #fff;
 					}
 				}
 			}
 			&_container,
 			&_main {
 				padding: 0;
+				margin: 0;
+				background: none;
+				box-shadow: none;
 			}
 			&_batten {
-				margin-bottom: 5px;
+				margin-top: -3.5rem;
 				border-radius: 0;
+				&-index {
+					display: flex;
+				}
 				.author {
 					display: none;
+				}
+				.information {
+					bottom: 1.2rem;
+					line-height: 1.8;
+					.title {
+						font-size: 1.3rem;
+					}
 				}
 				.motto {
 					display: block;
 					margin-top: 2rem;
 				}
 			}
+			&_comment {
+				padding: 15px;
+			}
+			&_cross {
+				padding: .5rem 1rem;
+			}
 			&_bread {
 				padding-top: 15px;
+				&__bread {
+					padding-left: 10px;
+				}
 			}
 			&_list {
 				&__item {
-					margin-bottom: 5px;
+					margin: .5rem 0;
+					padding: 1rem;
+					border-radius: var(--radius-wrap);
 					border-bottom: none;
-					border-radius: 0;
-					&:first-child,
-					&:last-child {
-						border-radius: 0;
+					background: var(--background);
+					&.default,
+					&.none,
+					&.multiple,
+					&.single {
+						.meta-right {
+							.items {
+								li:last-child {
+									display: none;
+								}
+							}
+						}
 					}
 				}
 			}
 			&_archive {
-				.joe_list__item:first-child {
-					border-radius: 0;
-				}
+				padding: 0 .5rem;
 			}
 			&_index {
-				&__banner,
-				&__hot {
+				padding: .5rem;
+				&__banner {
 					display: none;
 				}
 				&__title {
-					margin-bottom: 5px;
 					margin-top: 0;
+					padding-left: 1rem;
 					border-bottom: none;
 					border-radius: 0;
+					height: 1.5rem;
+					line-height: 1.5rem;
+					&-title {
+						height: 1.5rem;
+						line-height: 1.5rem;
+					}
 				}
+			}
+			&_detail {
+				&__operate {
+					padding-left: 1rem;
+					padding-right: 1rem;
+				}
+			}
+			&_aside__item.today {
+				padding: 0 1rem;
+			}
+			&_footer {
+				margin-top: 1rem;
 			}
 		}
 	}

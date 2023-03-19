@@ -10,16 +10,18 @@
     <?php endif; ?>
     <script src="https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js"></script>
     <script src="https://lib.baomitu.com/prism/1.26.0/prism.min.js"></script>
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.post.min.css?v=7.3.7@1'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js?v=7.3.7@1'); ?>"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.post.min.css'); ?>">
+    <script src="<?php $this->options->themeUrl('assets/js/joe.post_page.min.js'); ?>"></script>
 </head>
 
 <body>
     <div id="Joe">
-        <?php $this->need('public/header.php'); ?>
-        <?php $this->need('public/batten.php'); ?>
+        <?php $this->need('public/head.php'); ?>
         <div class="joe_container">
+            <?php $this->need('public/menu.php'); ?>
             <div class="joe_main joe_post">
+                <?php $this->need('public/header.php'); ?>
+                <?php $this->need('public/batten.php'); ?>
                 <section class="joe_adaption">
                     <div class="joe_detail" data-cid="<?php echo $this->cid ?>">
                         <div class="joe_bread__bread">
@@ -40,6 +42,7 @@
                         </div>
                         <?php $this->need('public/article.php'); ?>
                         <?php $this->need('public/handle.php'); ?>
+                        <?php _historyDay($this->created) ?>
                         <?php $this->need('public/operate.php'); ?>
                         <?php $this->need('public/copyright.php'); ?>
                         <?php $this->need('public/related.php'); ?>

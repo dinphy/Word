@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				keyboard: false,
 				direction,
 				loop: true,
-				autoplay: true,
+				//autoplay: true,
 				mousewheel: false,
 				navigation: {
 					nextEl: '.swiper-button-next',
@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="${_.permalink}" class="title" title="${_.title}" target="_blank" rel="noopener noreferrer">
                                 <span class="badge" style="display: ${_.type === 'sticky' ? 'inline-block' : 'none'}">置顶</span>${_.title}
                             </a>
+							<a class="category" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a>
                             <a class="abstract" href="${_.permalink}" title="文章摘要" target="_blank" rel="noopener noreferrer">${_.abstract}</a>
                         </div>
                         <a href="${_.permalink}" class="thumbnail" title="${_.title}" target="_blank" rel="noopener noreferrer">
@@ -124,10 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 							<ul class="items">
 								<li>${_.created}</li>
 							</ul>
-							<div class="last" style="display: ${_.category.length ? 'flex' : 'none'}">
-								<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M512.2 564.743a76.818 76.818 0 0 1-30.973-6.508L108.224 393.877c-26.105-11.508-42.56-35.755-42.927-63.272-.384-27.44 15.356-52.053 41.042-64.232l373.004-176.74c20.591-9.737 45.16-9.755 65.75.017L917.68 266.39c25.668 12.188 41.39 36.792 41.024 64.231-.384 27.5-16.821 51.73-42.908 63.237l-372.57 164.377a77.18 77.18 0 0 1-31.025 6.508zM139.843 329.592l370.213 163.241c1.291.56 3.018.567 4.345-.009l369.758-163.128-369.706-175.464v-.01c-1.326-.628-3.158-.636-4.502 0l-370.108 175.37zm748.015 1.858h.175-.175zM512.376 941.674c-10.348 0-20.8-2.32-30.537-6.997L121.05 778.624c-18.113-7.834-26.454-28.87-18.62-46.983 7.835-18.112 28.862-26.488 46.993-18.61l362.08 156.629 345.26-156.366c17.939-8.166 39.14-.253 47.324 17.746 8.166 17.964.227 39.157-17.729 47.324l-344.51 156.61c-9.196 4.449-19.281 6.7-29.471 6.7z" fill="#444"/><path d="M871.563 515.449L511.81 671.775 152.358 515.787v73.578a34.248 34.248 0 0 0 20.76 31.48l301.518 129.19c11.806 5.703 24.499 8.546 37.175 8.546s25.367-2.843 37.174-8.546L850.82 620.534a34.248 34.248 0 0 0 20.744-31.474V515.45z" fill="#ff6a18"/></svg>
-								<a class="link" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a>
-							</div>
 							<div class="meta-right">
 								<ul class="items">
 									<li class="like">
@@ -154,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="${_.authorlink}" target="_blank" rel="noopener noreferrer">
                                 <img class="avatar" src="${_.avatar}" alt="头像">
                             </a>
+							<a class="category" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a>
                             <div class="desc">
                                 <div class="title"><a href="${_.permalink}" target="_blank" rel="noopener noreferrer">${_.title}</a></div>
                                 <div class="time">${_.created}</div>
@@ -167,28 +165,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </a>
                         <div class="meta">
-                            <div class="meta-left">
-                                <ul class="items">
-									<svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M512.2 564.743a76.818 76.818 0 0 1-30.973-6.508L108.224 393.877c-26.105-11.508-42.56-35.755-42.927-63.272-.384-27.44 15.356-52.053 41.042-64.232l373.004-176.74c20.591-9.737 45.16-9.755 65.75.017L917.68 266.39c25.668 12.188 41.39 36.792 41.024 64.231-.384 27.5-16.821 51.73-42.908 63.237l-372.57 164.377a77.18 77.18 0 0 1-31.025 6.508zM139.843 329.592l370.213 163.241c1.291.56 3.018.567 4.345-.009l369.758-163.128-369.706-175.464v-.01c-1.326-.628-3.158-.636-4.502 0l-370.108 175.37zm748.015 1.858h.175-.175zM512.376 941.674c-10.348 0-20.8-2.32-30.537-6.997L121.05 778.624c-18.113-7.834-26.454-28.87-18.62-46.983 7.835-18.112 28.862-26.488 46.993-18.61l362.08 156.629 345.26-156.366c17.939-8.166 39.14-.253 47.324 17.746 8.166 17.964.227 39.157-17.729 47.324l-344.51 156.61c-9.196 4.449-19.281 6.7-29.471 6.7z" fill="#444"/><path d="M871.563 515.449L511.81 671.775 152.358 515.787v73.578a34.248 34.248 0 0 0 20.76 31.48l301.518 129.19c11.806 5.703 24.499 8.546 37.175 8.546s25.367-2.843 37.174-8.546L850.82 620.534a34.248 34.248 0 0 0 20.744-31.474V515.45z" fill="#ff6a18"/></svg>
-                                    <li><a class="link" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a></li>
-                                </ul>
-                            </div>
-                            <div class="meta-right">
-								<ul class="items">
-									<li class="like">
-										<a class="like like-handle ${likeArr.includes(_.cid) ? 'active' : ''}" data-cid="${_.cid}" href="javascript:;">
-											<span class="like-status">${likeArr.includes(_.cid) ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 9h3v12H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1zm5.293-1.293l6.4-6.4a.5.5 0 0 1 .654-.047l.853.64a1.5 1.5 0 0 1 .553 1.57L14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H8a1 1 0 0 1-1-1V8.414a1 1 0 0 1 .293-.707z"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h3.482a1 1 0 0 0 .817-.423L11.752.85a.5.5 0 0 1 .632-.159l1.814.907a2.5 2.5 0 0 1 1.305 2.853L14.6 8zM7 10.588V19h11.16L21 12.104V10h-6.4a2 2 0 0 1-1.938-2.493l.903-3.548a.5.5 0 0 0-.261-.571l-.661-.33-4.71 6.672c-.25.354-.57.644-.933.858zM5 11H3v8h2v-8z"/></svg>'}</span>
-											<span class="like-num">${_.agree}</span>
-										</a>
-									</li>
-									<li>
-										<a href="${_.permalink}#comments">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 8.994A5.99 5.99 0 0 1 8 3h8c3.313 0 6 2.695 6 5.994V21H8c-3.313 0-6-2.695-6-5.994V8.994zM20 19V8.994A4.004 4.004 0 0 0 16 5H8a3.99 3.99 0 0 0-4 3.994v6.012A4.004 4.004 0 0 0 8 19h12zm-6-8h2v2h-2v-2zm-6 0h2v2H8v-2z"/></svg>
-											${_.commentsNum}
-										</a>
-									</li>
-								</ul>
-                            </div>
+							<ul class="items">
+								<li>${_.views} 人围观</li>
+							</ul>
+							<ul class="items">
+								<li class="like">
+									<a class="like like-handle ${likeArr.includes(_.cid) ? 'active' : ''}" data-cid="${_.cid}" href="javascript:;">
+										<span class="like-status">${likeArr.includes(_.cid) ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 9h3v12H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1zm5.293-1.293l6.4-6.4a.5.5 0 0 1 .654-.047l.853.64a1.5 1.5 0 0 1 .553 1.57L14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H8a1 1 0 0 1-1-1V8.414a1 1 0 0 1 .293-.707z"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h3.482a1 1 0 0 0 .817-.423L11.752.85a.5.5 0 0 1 .632-.159l1.814.907a2.5 2.5 0 0 1 1.305 2.853L14.6 8zM7 10.588V19h11.16L21 12.104V10h-6.4a2 2 0 0 1-1.938-2.493l.903-3.548a.5.5 0 0 0-.261-.571l-.661-.33-4.71 6.672c-.25.354-.57.644-.933.858zM5 11H3v8h2v-8z"/></svg>'}</span>
+										<span class="like-num">${_.agree}</span>
+									</a>
+								</li>
+							</ul>
+							<ul class="items">
+								<li>
+									<a href="${_.permalink}#comments">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 8.994A5.99 5.99 0 0 1 8 3h8c3.313 0 6 2.695 6 5.994V21H8c-3.313 0-6-2.695-6-5.994V8.994zM20 19V8.994A4.004 4.004 0 0 0 16 5H8a3.99 3.99 0 0 0-4 3.994v6.012A4.004 4.004 0 0 0 8 19h12zm-6-8h2v2h-2v-2zm-6 0h2v2H8v-2z"/></svg>
+										${_.commentsNum}
+									</a>
+								</li>
+							</ul>
                         </div>
                     </li>
                 `;
@@ -200,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="${_.permalink}" class="title" title="${_.title}" target="_blank" rel="noopener noreferrer">
                                 <span class="badge" style="display: ${_.type === 'sticky' ? 'inline-block' : 'none'}">置顶</span>${_.title}
                             </a>
-							<a class="category" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}"># ${_.category.length && _.category[0].name}</a>
+							<a class="category" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a>
                             <a class="abstract" href="${_.permalink}" title="文章摘要" target="_blank" rel="noopener noreferrer">${_.abstract}</a>
                             <div class="meta">
                                 <ul class="items">

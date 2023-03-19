@@ -27,10 +27,12 @@
 
 <body>
     <div id="Joe">
-        <?php $this->need('public/header.php'); ?>
-        <?php $this->need('public/batten.php'); ?>
+        <?php $this->need('public/head.php'); ?>
         <div class="joe_container">
+            <?php $this->need('public/menu.php'); ?>
             <div class="joe_main">
+                <?php $this->need('public/header.php'); ?>
+                <?php $this->need('public/batten.php'); ?>
                 <section class="joe_adaption">
                     <?php $this->comments()->to($comments); ?>
                     <div class="joe_dynamic">

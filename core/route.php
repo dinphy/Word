@@ -291,58 +291,6 @@ function _getHuyaList($self)
     }
 }
 
-/* 获取服务器状态 */
-function _getServerStatus($self)
-{
-    $self->response->setStatus(200);
-
-    $api_panel = Helper::options()->JBTPanel;
-    $api_sk = Helper::options()->JBTKey;
-    if (!$api_panel) return $self->response->throwJson([
-        "code" => 0,
-        "data" => "宝塔面板地址未填写！"
-    ]);
-    if (!$api_sk) return $self->response->throwJson([
-        "code" => 0,
-        "data" => "宝塔接口密钥未填写！"
-    ]);
-    $request_time = time();
-    $request_token = md5($request_time . '' . md5($api_sk));
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $api_panel . '/system?action=GetNetWork');
-    curl_setopt($ch, CURLOPT_NOSIGNAL, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, 3000);
-    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 3000);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,  array("request_time" => $request_time, "request_token" => $request_token));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $response  = json_decode(curl_exec($ch), true);
-    curl_close($ch);
-    $self->response->throwJson(array(
-        /* 状态 */
-        "status" => $response ? true : false,
-        /* 信息提示 */
-        "message" => $response['msg'],
-        /* 上行流量KB */
-        "up" => $response["up"] ? $response["up"] : 0,
-        /* 下行流量KB */
-        "down" => $response["down"] ? $response["down"] : 0,
-        /* 总发送（字节数） */
-        "upTotal" => $response["upTotal"] ? $response["upTotal"] : 0,
-        /* 总接收（字节数） */
-        "downTotal" => $response["downTotal"] ? $response["downTotal"] : 0,
-        /* 内存占用 */
-        "memory" => $response["mem"] ? $response["mem"] : ["memBuffers" => 0, "memCached" => 0, "memFree" => 0, "memRealUsed" => 0, "memTotal" => 0],
-        /* CPU */
-        "cpu" => $response["cpu"] ? $response["cpu"] : [0, 0, [0], 0, 0, 0],
-        /* 系统负载 */
-        "load" => $response["load"] ? $response["load"] : ["fifteen" => 0, "five" => 0, "limit" => 0, "max" => 0, "one" => 0, "safe" => 0],
-    ));
-}
-
 /* 获取最近评论 */
 function _getCommentLately($self)
 {

@@ -4,7 +4,6 @@ function _parseContent($post, $login)
 {
     $content = $post->content;
     $content = _parseReply($content);
-
     if (strpos($content, '{lamp/}') !== false) {
         $content = strtr($content, array(
             "{lamp/}" => '<span class="joe_lamp"></span>',

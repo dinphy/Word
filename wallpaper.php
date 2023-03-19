@@ -20,9 +20,12 @@
 
 <body>
     <div id="Joe">
-        <?php $this->need('public/header.php'); ?>
+        <?php $this->need('public/head.php'); ?>
         <div class="joe_container">
+            <?php $this->need('public/menu.php'); ?>
             <div class="joe_main">
+                <?php $this->need('public/header.php'); ?>
+                <?php $this->need('public/batten.php'); ?>
                 <div class="joe_wallpaper__type">
                     <div class="joe_wallpaper__type-title">壁纸分类</div>
                     <ul class="joe_wallpaper__type-list">

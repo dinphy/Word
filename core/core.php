@@ -31,7 +31,7 @@ function themeInit($self)
     Helper::options()->commentsMaxNestingLevels = 999;
 
     /* 主题开放API 路由规则 */
-    if ($self->request->getPathInfo() == "/joe/api") {
+    if ($self->request->getPathInfo() == "/word/api") {
         switch ($self->request->routeType) {
             case 'publish_list':
                 _getPost($self);
@@ -97,19 +97,17 @@ function themeInit($self)
 /* 增加自定义字段 */
 function themeFields($layout)
 {
-    $mode = new Typecho_Widget_Helper_Form_Element_Radio(
+    $mode = new Typecho_Widget_Helper_Form_Element_Select(
         'mode',
         array(
-            'default' => '默认',
-            'single' => '大图',
-            'multiple' => '三图',
-            'none' => '无图',
-            'chat' => '闲谈'
+            'default' => '默认模式',
+            'single' => '大图模式',
+            'multiple' => '三图模式',
+            'none' => '无图模式',
+            'chat' => '闲谈模式'
         ),
         'default',
-        '文章模式',
-        '介绍：用于设置当前文章在首页和搜索页的显示方式 <br /> 
-         注意：该功能独立页面无效'
+        '文章模式'
     );
     $layout->addItem($mode);
 
@@ -117,8 +115,7 @@ function themeFields($layout)
         'desctitle',
         NULL,
         NULL,
-        '标题描述',
-        '介绍：用于设置当前页面的附加标题'
+        '标题描述'
     );
     $layout->addItem($descTitle);
 

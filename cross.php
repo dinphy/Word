@@ -25,17 +25,19 @@
 
 <body>
     <div id="Joe">
-        <?php $this->need('public/header.php'); ?>
-        <?php $this->need('public/batten.php'); ?>
+        <?php $this->need('public/head.php'); ?>
         <div class="joe_container">
+            <?php $this->need('public/menu.php'); ?>
             <div class="joe_main">
+                <?php $this->need('public/header.php'); ?>
+                <?php $this->need('public/batten.php'); ?>
                 <section class="joe_adaption">
                     <?php $this->comments()->to($comments); ?>
 
                     <div class="joe_cross" id="comments">
                         <h3 class="joe_cross__title">
-                            <span><i class="zm zm-pinglun-1"></i> 我的<?php $this->title(); ?></span>
-                            <span><?php $this->commentsNum(); ?> 条<?php $this->title(); ?>，<?php _getViews($this); ?> 次观望</span>
+                            <span><i class="zm zm-pinglun-1"></i> 言之有理</span>
+                            <span><?php $this->commentsNum(); ?> 言，<?php _getViews($this); ?> 阅</span>
                         </h3>
 
                         <div id="<?php $this->respondId(); ?>" class="joe_cross__respond" style="display: <?php if (!$this->user->hasLogin()) : ?>none<?php endif; ?>">
@@ -71,6 +73,16 @@
                                             <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                                                 <path d="M910.496 213.536C804.16 82.208 611.488 61.952 480.128 168.32l-100.768 81.6 50.336 62.176 100.768-81.6a225.984 225.984 0 1 1 284.448 351.264l-107.968 87.424 50.336 62.176 107.968-87.424a305.984 305.984 0 0 0 45.248-430.4zM516.352 823.552a225.984 225.984 0 1 1-284.448-351.264l110.976-89.856-50.336-62.176-110.976 89.856C50.24 516.448 29.984 709.152 136.32 840.48c106.336 131.328 299.04 151.584 430.368 45.248l105.12-85.12-50.336-62.176-105.12 85.12z"></path>
                                                 <path d="M676.16 353.28l51.232 61.44-343.552 286.304-51.2-61.44z"></path>
+                                            </svg>
+                                        </span>
+                                        <span title="私语" class="privacy">
+                                            <svg class="unlock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                                <path fill="none" d="M0 0h24v24H0z" />
+                                                <path d="M7 10h13a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 0 1 13.262-3.131l-1.789.894A5 5 0 0 0 7 9v1zm-2 2v8h14v-8H5zm5 3h4v2h-4v-2z" />
+                                            </svg>
+                                            <svg class="lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                                <path fill="none" d="M0 0h24v24H0z" />
+                                                <path d="M19 10h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 1 1 14 0v1zM5 12v8h14v-8H5zm6 2h2v4h-2v-4zm6-4V9A5 5 0 0 0 7 9v1h10z" />
                                             </svg>
                                         </span>
                                     </div>
@@ -120,15 +132,32 @@
                         }
                     ?>
                         <li class="comment-list__item">
+                            <div class="tail"></div>
+                            <div class="headline-light"></div>
+                            <div class="headline"></div>
                             <div class="comment-list__item-contain" id="<?php $comments->theId(); ?>">
                                 <div class="term">
-                                    <img width="48" height="48" class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($comments->mail); ?>" alt="头像" />
                                     <div class="content">
                                         <div class="user">
-                                            <span class="author"><?php $comments->author(); ?><?php _getParentReply($comments->parent) ?></span>
+                                            <span class="author"><?php $comments->author(); ?><?php _getParentReply($comments->parent) ?><i>说：</i></span>
                                         </div>
                                         <div class="substance">
-                                            <?php _parseCommentReply($comments->content); ?>
+                                            <?php
+                                            $db = Typecho_Db::get();
+                                            $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $comments->parent)->limit(1));
+                                            $smhf = $comments->mail;
+                                            $user = Typecho_Widget::widget('Widget_User');
+                                            if (strpos($comments->content, '私语#') == true) {
+                                                $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
+                                                if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
+                                                    _parseCommentReply(str_replace('私语#', '', $comments->content));
+                                                } else {
+                                                    echo '<div class="secret">此条为私语，发布者可见</div>';
+                                                }
+                                            } else {
+                                                _parseCommentReply($comments->content);
+                                            }
+                                            ?>
                                             <div class="handle">
                                                 <time class="date" datetime="<?php $comments->dateWord(); ?>"><?php $comments->dateWord(); ?></time>
                                                 <?php $suport = _getSupport($comments->coid) ?>
@@ -140,7 +169,6 @@
                                                 </span>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

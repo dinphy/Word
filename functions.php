@@ -18,25 +18,33 @@ function themeConfig($form)
     } catch (Exception $e) {
     }
 ?>
-    <link rel="stylesheet" href="<?php Helper::options()->themeUrl('typecho/config/css/joe.config.min.css?1') ?>">
-    <script src="<?php Helper::options()->themeUrl('typecho/config/js/joe.config.min.js') ?>"></script>
+    <link rel="stylesheet" href="<?php Helper::options()->themeUrl('typecho/config/css/joe.config.min.css') ?>?<?php echo _getVersion() ?>">
+    <script src="<?php Helper::options()->themeUrl('typecho/config/js/joe.config.min.js') ?>?<?php echo _getVersion() ?>"></script>
     <div class="joe_config">
         <div>
             <div class="joe_config__aside">
-                <div class="logo">Joe <?php echo _getVersion() ?></div>
+                <div class="logo">Word</div>
                 <ul class="tabs">
-                    <li class="item" data-current="joe_notice">最新公告</li>
+                    <li class="item" data-current="joe_notice">版本信息</li>
                     <li class="item" data-current="joe_global">全局设置</li>
-                    <li class="item" data-current="joe_image">图片设置</li>
-                    <li class="item" data-current="joe_post">文章设置</li>
-                    <li class="item" data-current="joe_aside">侧栏设置</li>
                     <li class="item" data-current="joe_index">首页设置</li>
+                    <li class="item" data-current="joe_aside">侧栏设置</li>
+                    <li class="item" data-current="joe_post">文章设置</li>
+                    <li class="item" data-current="joe_image">图片设置</li>
                     <li class="item" data-current="joe_other">其他设置</li>
                 </ul>
                 <?php require_once('core/backup.php'); ?>
             </div>
         </div>
-        <div class="joe_config__notice">请求数据中...</div>
+        <div class="joe_config__notice">
+            <div class="title">主题须知</div>
+            <div class="content">Word，是一款专为文字创作而生，又简而不凡的全新 typecho 主题。它是基于 <a href="https://78.al" target="_blank">Joe</a> 二次开发而来的，延续了原主题的大部分功能，简化了页面布局，优化了诸多细节。</div>
+            <ol>
+                <li>当前版本： Word <?php echo _getVersion() ?> </li>
+                <li>主题作者：<a href="https://78.al" target="_blank">Joe</a>，<a href="https://xwsir.cn" target="_blank">小王先森</a></li>
+                <li>注意事项：已移除主题集成的编辑器，但短代码功能都在，使用参考 《 <a href="https://xwsir.cn/2905.html" target="_blank">Typecho 主题——Joe 使用文档</a>》</li>
+            </ol>
+        </div>
     <?php
     $JFavicon = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFavicon',
@@ -255,45 +263,6 @@ function themeConfig($form)
     $JFooter_Right->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JFooter_Right);
 
-    $JLive2d = new Typecho_Widget_Helper_Form_Element_Select(
-        'JLive2d',
-        array(
-            'off' => '关闭（默认）',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json' => 'shizuku',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-izumi@1.0.5/assets/izumi.model.json' => 'izumi',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/01/assets/haru01.model.json' => 'haru01',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/02/assets/haru02.model.json' => 'haru02',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json' => 'wanko',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json' => 'hijiki',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json' => 'koharu',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-z16@1.0.5/assets/z16.model.json' => 'z16',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json' => 'haruto',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-tororo@1.0.5/assets/tororo.model.json' => 'tororo',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json' => 'chitose',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-miku@1.0.5/assets/miku.model.json' => 'miku',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-epsilon2_1@1.0.5/assets/Epsilon2.1.model.json' => 'Epsilon2.1',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-unitychan@1.0.5/assets/unitychan.model.json' => 'unitychan',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nico@1.0.5/assets/nico.model.json' => 'nico',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-rem@1.0.1/assets/rem.model.json' => 'rem',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nito@1.0.5/assets/nito.model.json' => 'nito',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nipsilon@1.0.5/assets/nipsilon.model.json' => 'nipsilon',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-ni-j@1.0.5/assets/ni-j.model.json' => 'ni-j',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-nietzsche@1.0.5/assets/nietzche.model.json' => 'nietzche',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-platelet@1.1.0/assets/platelet.model.json' => 'platelet',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-isuzu@1.0.4/assets/model.json' => 'isuzu',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-jth@1.0.0/assets/model/katou_01/katou_01.model.json' => 'katou_01',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-mikoto@1.0.0/assets/mikoto.model.json' => 'mikoto',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-mashiro-seifuku@1.0.1/assets/seifuku.model.json' => 'seifuku',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-ichigo@1.0.1/assets/ichigo.model.json' => 'ichigo',
-            'https://fastly.jsdelivr.net/npm/live2d-widget-model-hk_fos@1.0.0/assets/hk416.model.json' => 'hk416'
-        ),
-        'off',
-        '选择一款喜爱的Live2D动态人物模型（仅在屏幕分辨率大于1760px下显示）',
-        '介绍：开启后会在右下角显示一个小人'
-    );
-    $JLive2d->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JLive2d->multiMode());
-
     $JDocumentTitle = new Typecho_Widget_Helper_Form_Element_Text(
         'JDocumentTitle',
         NULL,
@@ -483,7 +452,7 @@ function themeConfig($form)
     $JAside_Author_Link = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Link',
         NULL,
-        "https://78.al",
+        "https://xwsir.cn",
         '博主栏昵称跳转地址 - PC/WAP',
         '介绍：用于修改博主栏点击博主昵称后的跳转地址'
     );
@@ -556,49 +525,7 @@ function themeConfig($form)
     );
     $JAside_Hot_Num->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Hot_Num->multiMode());
-    /* --------------------------------------- */
-    $JAside_Newreply_Status = new Typecho_Widget_Helper_Form_Element_Select(
-        'JAside_Newreply_Status',
-        array(
-            'off' => '关闭（默认）',
-            'on' => '开启'
-        ),
-        'off',
-        '是否开启最新回复栏 - PC',
-        '介绍：用于控制是否开启最新回复栏 <br>
-         注意：如果您关闭了全站评论，将不会显示最新回复！'
-    );
-    $JAside_Newreply_Status->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Newreply_Status->multiMode());
-    /* --------------------------------------- */
-    $JAside_Weather_Key = new Typecho_Widget_Helper_Form_Element_Text(
-        'JAside_Weather_Key',
-        NULL,
-        NULL,
-        '天气栏KEY值 - PC',
-        '介绍：用于初始化天气栏 <br/>
-         注意：填写时务必填写正确！不填写则不会显示<br />
-         其他：免费申请地址：<a href="//widget.qweather.com/create-standard">widget.qweather.com/create-standard</a><br />
-         简要：在网页生成时，配置项随便选择，只需要生成代码后的Token即可'
-    );
-    $JAside_Weather_Key->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Weather_Key);
-    /* --------------------------------------- */
-    $JAside_Weather_Style = new Typecho_Widget_Helper_Form_Element_Select(
-        'JAside_Weather_Style',
-        array(
-            '1' => '自动（默认）',
-            '2' => '浅色',
-            '3' => '深色'
-        ),
-        '1',
-        '选择天气栏的风格 - PC',
-        '介绍：选择一款您所喜爱的天气风格 <br />
-         注意：需要先填写天气的KEY值才会生效'
-    );
-    $JAside_Weather_Style->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Weather_Style->multiMode());
-    /* --------------------------------------- */
+
     $JADContent = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JADContent',
         NULL,
@@ -635,34 +562,6 @@ function themeConfig($form)
     );
     $JAside_3DTag->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_3DTag->multiMode());
-    /* --------------------------------------- */
-    $JAside_Flatterer = new Typecho_Widget_Helper_Form_Element_Select(
-        'JAside_Flatterer',
-        array(
-            'off' => '关闭（默认）',
-            'on' => '开启'
-        ),
-        'off',
-        '是否开启舔狗日记 - PC',
-        '介绍：用于设置侧边栏是否显示舔狗日记'
-    );
-    $JAside_Flatterer->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Flatterer->multiMode());
-    /* --------------------------------------- */
-    $JAside_History_Today = new Typecho_Widget_Helper_Form_Element_Select(
-        'JAside_History_Today',
-        array(
-            'off' => '关闭（默认）',
-            'on' => '开启'
-        ),
-        'off',
-        '是否开启那年今日 - PC',
-        '介绍：用于设置侧边栏是否显示往年今日的文章 <br />
-         其他：如果往年今日有文章则显示，没有则不显示！'
-    );
-    $JAside_History_Today->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_History_Today->multiMode());
-
 
     $JThumbnail = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JThumbnail',
@@ -756,7 +655,7 @@ function themeConfig($form)
     $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JIndex_Top_Image',
         NULL,
-        'https://img1.imgtp.com/2022/05/14/o7kjyw7e.jpeg',
+        'https://pic.imgdb.cn/item/620e24df2ab3f51d9132481f.png',
         '首页顶部壁纸(非必填)',
         '介绍：用于修改首页顶部背景壁纸 <br />
         格式：图片地址，例如：https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg'
@@ -767,7 +666,7 @@ function themeConfig($form)
     $JIndex_Carousel = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JIndex_Carousel',
         NULL,
-        NULL,
+        'https://pic1.imgdb.cn/item/63355d0e16f2c2beb14b024c.jpg || about.html || 夕阳无限好',
         '首页轮播图',
         '介绍：用于显示首页轮播图，请务必填写正确的格式 <br />
          格式：图片地址 || 跳转链接 || 标题 （中间使用两个竖杠分隔）<br />
@@ -815,18 +714,6 @@ function themeConfig($form)
     $JIndex_Hot->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Hot->multiMode());
 
-    $JIndex_Ad = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JIndex_Ad',
-        NULL,
-        NULL,
-        '首页大屏广告',
-        '介绍：请务必填写正确的格式 <br />
-         格式：广告图片 || 广告链接 （中间使用两个竖杠分隔，限制一个）<br />
-         例如：https://puui.qpic.cn/media_img/lena/PICykqaoi_580_1680/0 || https://baidu.com'
-    );
-    $JIndex_Ad->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Ad);
-
     $JIndex_Notice = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JIndex_Notice',
         NULL,
@@ -838,27 +725,6 @@ function themeConfig($form)
     );
     $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Notice);
-
-    $JIndex_Dynamic = new Typecho_Widget_Helper_Form_Element_Radio(
-        'JIndex_Dynamic',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '首页动态（非必填）',
-        '介绍：开启时，显示一条动态页面的内容'
-    );
-    $JIndex_Dynamic->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Dynamic);
-
-    $JIndex_DynamicText = new Typecho_Widget_Helper_Form_Element_Text(
-        'JIndex_DynamicText',
-        NULL,
-        NULL,
-        '页面别名（非必填）',
-        '介绍：此项填写动态页面的别名<br />
-         例如：创建的页面别名为dynamic，则填写: dynamic '
-    );
-    $JIndex_DynamicText->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_DynamicText);
 
     $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriendsIndex',
@@ -970,31 +836,6 @@ function themeConfig($form)
     );
     $JSiteMap->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JSiteMap->multiMode());
-
-    $JBTPanel = new Typecho_Widget_Helper_Form_Element_Text(
-        'JBTPanel',
-        NULL,
-        NULL,
-        '宝塔面板地址',
-        '介绍：用于统计页面获取服务器状态使用 <br>
-         例如：http://192.168.1.245:8888/ <br>
-         注意：结尾需要带有一个 / 字符！<br>
-         该功能需要去宝塔面板开启开放API，并添加白名单才可使用'
-    );
-    $JBTPanel->setAttribute('class', 'joe_content joe_other');
-    $form->addInput($JBTPanel->multiMode());
-
-    $JBTKey = new Typecho_Widget_Helper_Form_Element_Text(
-        'JBTKey',
-        NULL,
-        NULL,
-        '宝塔开放接口密钥',
-        '介绍：用于统计页面获取服务器状态使用 <br>
-         例如：thVLXFtUCCNzBShBweKTPBmw8296q8R8 <br>
-         该功能需要去宝塔面板开启开放API，并添加白名单才可使用'
-    );
-    $JBTKey->setAttribute('class', 'joe_content joe_other');
-    $form->addInput($JBTKey->multiMode());
 
     /* 评论发信 */
     $JCommentMail = new Typecho_Widget_Helper_Form_Element_Select(
@@ -1139,26 +980,6 @@ function themeConfig($form)
     );
     $JBaiduToken->setAttribute('class', 'joe_content joe_post');
     $form->addInput($JBaiduToken);
-
-    $JOverdue = new Typecho_Widget_Helper_Form_Element_Select(
-        'JOverdue',
-        array(
-            'off' => '关闭（默认）',
-            '3' => '大于3天',
-            '7' => '大于7天',
-            '15' => '大于15天',
-            '30' => '大于30天',
-            '60' => '大于60天',
-            '90' => '大于90天',
-            '120' => '大于120天',
-            '180' => '大于180天'
-        ),
-        'off',
-        '是否开启文章更新时间大于多少天提示（仅针对文章有效）',
-        '介绍：开启后如果文章在多少天内无任何修改，则进行提示'
-    );
-    $JOverdue->setAttribute('class', 'joe_content joe_post');
-    $form->addInput($JOverdue->multiMode());
 
     $JPrismTheme = new Typecho_Widget_Helper_Form_Element_Select(
         'JPrismTheme',

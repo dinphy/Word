@@ -16,8 +16,7 @@
     localStorage.getItem("data-night") && document.querySelector("html").setAttribute("data-night", "night");
     window.Joe = {
         THEME_URL: `<?php Helper::options()->themeUrl() ?>`,
-        LIVE2D: `<?php $this->options->JLive2d() ?>`,
-        BASE_API: `<?php echo $this->options->rewrite == 0 ? Helper::options()->rootUrl . '/index.php/joe/api' : Helper::options()->rootUrl . '/joe/api' ?>`,
+        BASE_API: `<?php echo $this->options->rewrite == 0 ? Helper::options()->rootUrl . '/index.php/word/api' : Helper::options()->rootUrl . '/word/api' ?>`,
         DYNAMIC_BACKGROUND: `<?php $this->options->JDynamic_Background() ?>`,
         WALLPAPER_BACKGROUND_PC: `<?php $this->options->JWallpaper_Background_PC() ?>`,
         IS_MOBILE: /windows phone|iphone|android/gi.test(window.navigator.userAgent),

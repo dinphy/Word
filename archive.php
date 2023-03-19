@@ -4,16 +4,18 @@
 <head>
     <?php $this->need('public/include.php'); ?>
     <script src="https://lib.baomitu.com/wow/1.1.2/wow.min.js"></script>
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.archive.min.css?v=7.3.7@1'); ?>">
-    <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js?v=7.3.7@1'); ?>"></script>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.archive.min.css'); ?>">
+    <script src="<?php $this->options->themeUrl('assets/js/joe.archive.min.js'); ?>"></script>
 </head>
 
 <body>
     <div id="Joe">
-        <?php $this->need('public/header.php'); ?>
-        <?php $this->need('public/batten.php'); ?>
+        <?php $this->need('public/head.php'); ?>
         <div class="joe_container">
+            <?php $this->need('public/menu.php'); ?>
             <div class="joe_main">
+                <?php $this->need('public/header.php'); ?>
+                <?php $this->need('public/batten.php'); ?>
                 <section class="joe_adaption" style="background: none;border-radius: 0;">
                     <div class="joe_archive">
                         <?php if ($this->have()) : ?>
@@ -24,7 +26,7 @@
                                             <div class="line"></div>
                                             <a href="<?php $this->permalink() ?>" class="thumbnail" title="<?php $this->title() ?>" target="_blank" rel="noopener noreferrer">
                                                 <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php echo _getThumbnails($this)[0] ?>" alt="<?php $this->title() ?>" />
-                                                <time datetime="<?php $this->date('Y-m-d'); ?>"><?php $this->date('Y-m-d'); ?></time>
+                                                <time datetime="<?php $this->date('Y-m-d'); ?>"><?php _getViews($this) ?> 人围观</time>
                                                 <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                                                     <path d="M903.93 107.306H115.787c-51.213 0-93.204 42.505-93.204 93.72V825.29c0 51.724 41.99 93.717 93.717 93.717h788.144c51.72 0 93.717-41.993 93.717-93.717V201.025c-.512-51.214-43.017-93.719-94.23-93.719zm-788.144 64.527h788.657c16.385 0 29.704 13.316 29.704 29.704v390.229L760.54 402.285c-12.805-13.828-30.217-21.508-48.14-19.971-17.924 1.02-34.821 10.754-46.602 26.114l-172.582 239.16-87.06-85.52c-12.29-11.783-27.654-17.924-44.039-17.924-16.39.508-31.755 7.676-43.53 20.48L86.595 821.705V202.05c-1.025-17.416 12.804-30.73 29.191-30.217zm788.145 683.674H141.906l222.255-245.82 87.06 86.037c12.8 12.807 30.212 18.95 47.115 17.417 17.41-1.538 33.797-11.266 45.063-26.118l172.584-238.647 216.111 236.088 2.051-1.54V825.8c.509 16.39-13.315 29.706-30.214 29.706zm0 0" />
                                                     <path d="M318.072 509.827c79.89 0 144.417-65.037 144.417-144.416 0-79.378-64.527-144.925-144.417-144.925-79.891 0-144.416 64.527-144.416 144.412 0 79.892 64.525 144.93 144.416 144.93zm0-225.327c44.553 0 80.912 36.362 80.912 80.91 0 44.557-35.847 81.43-80.912 81.43-45.068 0-80.916-36.36-80.916-80.915 0-44.556 36.872-81.425 80.916-81.425zm0 0" />
@@ -84,7 +86,7 @@
                                             </div>
                                             <a href="<?php $this->permalink() ?>" class="thumbnail" title="<?php $this->title() ?>" target="_blank" rel="noopener noreferrer">
                                                 <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php echo _getThumbnails($this)[0] ?>" alt="<?php $this->title() ?>" />
-                                                <time datetime="<?php $this->date('Y-m-d'); ?>"><?php $this->date('Y-m-d'); ?></time>
+                                                <time datetime="<?php $this->date('Y-m-d'); ?>"><?php _getViews($this) ?> 人围观</time>
                                                 <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                                                     <path d="M903.93 107.306H115.787c-51.213 0-93.204 42.505-93.204 93.72V825.29c0 51.724 41.99 93.717 93.717 93.717h788.144c51.72 0 93.717-41.993 93.717-93.717V201.025c-.512-51.214-43.017-93.719-94.23-93.719zm-788.144 64.527h788.657c16.385 0 29.704 13.316 29.704 29.704v390.229L760.54 402.285c-12.805-13.828-30.217-21.508-48.14-19.971-17.924 1.02-34.821 10.754-46.602 26.114l-172.582 239.16-87.06-85.52c-12.29-11.783-27.654-17.924-44.039-17.924-16.39.508-31.755 7.676-43.53 20.48L86.595 821.705V202.05c-1.025-17.416 12.804-30.73 29.191-30.217zm788.145 683.674H141.906l222.255-245.82 87.06 86.037c12.8 12.807 30.212 18.95 47.115 17.417 17.41-1.538 33.797-11.266 45.063-26.118l172.584-238.647 216.111 236.088 2.051-1.54V825.8c.509 16.39-13.315 29.706-30.214 29.706zm0 0" />
                                                     <path d="M318.072 509.827c79.89 0 144.417-65.037 144.417-144.416 0-79.378-64.527-144.925-144.417-144.925-79.891 0-144.416 64.527-144.416 144.412 0 79.892 64.525 144.93 144.416 144.93zm0-225.327c44.553 0 80.912 36.362 80.912 80.91 0 44.557-35.847 81.43-80.912 81.43-45.068 0-80.916-36.36-80.916-80.915 0-44.556 36.872-81.425 80.916-81.425zm0 0" />
@@ -187,7 +189,7 @@
                                                 </a>
                                                 <div class="desc">
                                                     <div class="title"><a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->title(); ?></a></div>
-                                                    <div class="time"><?php _getViews($this) ?> 人围观</div>
+                                                    <div class="time"><?php $this->dateWord(); ?></div>
                                                 </div>
                                             </div>
                                             <a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer">
@@ -196,42 +198,42 @@
                                                 </div>
                                             </a>
                                             <div class="meta">
-                                                <div class="meta-left">
-                                                    <ul class="items">
-                                                        <li><?php $this->dateWord(); ?></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="meta-right">
-                                                    <ul class="items">
-                                                        <li>
-                                                            <a class="like like-<?php echo $this->cid; ?>" data-cid="<?php echo $this->cid; ?>" href="javascript:;">
-                                                                <span class="like-status">
-                                                                    <?php if ($this->cid) : ?>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                                            <path fill="none" d="M0 0h24v24H0z" />
-                                                                            <path d="M14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h3.482a1 1 0 0 0 .817-.423L11.752.85a.5.5 0 0 1 .632-.159l1.814.907a2.5 2.5 0 0 1 1.305 2.853L14.6 8zM7 10.588V19h11.16L21 12.104V10h-6.4a2 2 0 0 1-1.938-2.493l.903-3.548a.5.5 0 0 0-.261-.571l-.661-.33-4.71 6.672c-.25.354-.57.644-.933.858zM5 11H3v8h2v-8z" />
-                                                                        </svg>
-                                                                    <?php else : ?>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
-                                                                            <path fill="none" d="M0 0h24v24H0z" />
-                                                                            <path d="M2 9h3v12H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1zm5.293-1.293l6.4-6.4a.5.5 0 0 1 .654-.047l.853.64a1.5 1.5 0 0 1 .553 1.57L14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H8a1 1 0 0 1-1-1V8.414a1 1 0 0 1 .293-.707z" />
-                                                                        </svg>
-                                                                    <?php endif; ?>
-                                                                </span>
-                                                                <span class="like-num"><?php _getAgree($this) ?></span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="<?php $this->permalink(); ?>#comments">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-                                                                    <path fill="none" d="M0 0h24v24H0z" />
-                                                                    <path d="M2 8.994A5.99 5.99 0 0 1 8 3h8c3.313 0 6 2.695 6 5.994V21H8c-3.313 0-6-2.695-6-5.994V8.994zM20 19V8.994A4.004 4.004 0 0 0 16 5H8a3.99 3.99 0 0 0-4 3.994v6.012A4.004 4.004 0 0 0 8 19h12zm-6-8h2v2h-2v-2zm-6 0h2v2H8v-2z" />
-                                                                </svg>
-                                                                <?php $this->commentsNum('%d'); ?>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                <ul class="items">
+                                                    <li>
+                                                        <?php _getViews($this) ?> 人围观
+                                                    </li>
+                                                </ul>
+                                                <ul class="items">
+                                                    <li>
+                                                        <a class="like like-<?php echo $this->cid; ?>" data-cid="<?php echo $this->cid; ?>" href="javascript:;">
+                                                            <span class="like-status">
+                                                                <?php if ($this->cid) : ?>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                                                                        <path fill="none" d="M0 0h24v24H0z" />
+                                                                        <path d="M14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1h3.482a1 1 0 0 0 .817-.423L11.752.85a.5.5 0 0 1 .632-.159l1.814.907a2.5 2.5 0 0 1 1.305 2.853L14.6 8zM7 10.588V19h11.16L21 12.104V10h-6.4a2 2 0 0 1-1.938-2.493l.903-3.548a.5.5 0 0 0-.261-.571l-.661-.33-4.71 6.672c-.25.354-.57.644-.933.858zM5 11H3v8h2v-8z" />
+                                                                    </svg>
+                                                                <?php else : ?>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                                                                        <path fill="none" d="M0 0h24v24H0z" />
+                                                                        <path d="M2 9h3v12H2a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1zm5.293-1.293l6.4-6.4a.5.5 0 0 1 .654-.047l.853.64a1.5 1.5 0 0 1 .553 1.57L14.6 8H21a2 2 0 0 1 2 2v2.104a2 2 0 0 1-.15.762l-3.095 7.515a1 1 0 0 1-.925.619H8a1 1 0 0 1-1-1V8.414a1 1 0 0 1 .293-.707z" />
+                                                                    </svg>
+                                                                <?php endif; ?>
+                                                            </span>
+                                                            <span class="like-num"><?php _getAgree($this) ?></span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <ul class="items">
+                                                    <li>
+                                                        <a href="<?php $this->permalink(); ?>#comments">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                                                <path fill="none" d="M0 0h24v24H0z" />
+                                                                <path d="M2 8.994A5.99 5.99 0 0 1 8 3h8c3.313 0 6 2.695 6 5.994V21H8c-3.313 0-6-2.695-6-5.994V8.994zM20 19V8.994A4.004 4.004 0 0 0 16 5H8a3.99 3.99 0 0 0-4 3.994v6.012A4.004 4.004 0 0 0 8 19h12zm-6-8h2v2h-2v-2zm-6 0h2v2H8v-2z" />
+                                                            </svg>
+                                                            <?php $this->commentsNum('%d'); ?>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </li>
                                     <?php else : ?>
@@ -241,6 +243,7 @@
                                                 <a href="<?php $this->permalink() ?>" class="title" title="<?php $this->title() ?>" target="_blank" rel="noopener noreferrer">
                                                     <?php $this->title() ?>
                                                 </a>
+                                                <span class="category"><?php _getViews($this) ?> 人围观</span>
                                                 <a class="abstract" href="<?php $this->permalink() ?>" title="文章摘要" target="_blank" rel="noopener noreferrer"><?php _getAbstract($this) ?></a>
                                                 <div class="meta">
                                                     <ul class="items">

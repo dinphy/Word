@@ -111,7 +111,12 @@ table {
 .joe_main {
     min-width: 0;
     flex: 1;
-    padding: 15px 0;
+    padding: 1rem 2rem;
+    margin: 1rem 0 2rem;
+    border-radius: var(--radius-wrap);
+    text-shadow: 0 0 black;
+    box-shadow: var(--box-shadow);
+    background: var(--background);
 }
 
 .joe_container {
@@ -133,16 +138,16 @@ table {
 }
 @media (min-width: 992px) {
     .joe_container {
-        max-width: 50rem;
+        max-width: 48rem;
     }
 }
 @media (min-width: 1200px) {
     .joe_container {
-        max-width: 58rem;
+        max-width: 54rem;
     }
 }
 @media (min-width: 1400px) {
     .joe_container {
-        max-width: 64rem;
+        max-width: 58rem;
     }
 }

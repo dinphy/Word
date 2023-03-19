@@ -1,21 +1,21 @@
 <?php $this->comments()->to($comments); ?>
 
 <div class="joe_comment" id="comments">
-    <h3 class="joe_comment__title">评论 <?php if ($this->allow('comment') && $this->options->JCommentStatus !== "off") : ?>(<?php $this->commentsNum(); ?>)<?php endif; ?></h3>
+    <h3 class="joe_comment__title">评语 <?php if ($this->allow('comment') && $this->options->JCommentStatus !== "off") : ?>(<?php $this->commentsNum(); ?>)<?php endif; ?></h3>
 
     <?php if ($this->hidden) : ?>
         <div class="joe_comment__close">
             <svg class="joe_comment__close-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
                 <path d="M512.307.973c282.317 0 511.181 201.267 511.181 449.587a402.842 402.842 0 0 1-39.27 173.26 232.448 232.448 0 0 0-52.634-45.977c16.384-39.782 25.293-82.688 25.293-127.283 0-211.098-199.117-382.157-444.621-382.157-245.555 0-444.57 171.06-444.57 382.157 0 133.427 79.514 250.88 200.039 319.18v107.982l102.041-65.127a510.157 510.157 0 0 0 142.49 20.122l19.405-.359c19.405-.716 38.758-2.508 57.958-5.427l3.584 13.415a230.607 230.607 0 0 0 22.323 50.688l-20.633 3.328a581.478 581.478 0 0 1-227.123-12.288L236.646 982.426c-19.66 15.001-35.635 7.168-35.635-17.664v-157.39C79.411 725.198 1.024 595.969 1.024 450.56 1.024 202.24 229.939.973 512.307.973zm318.464 617.011c97.485 0 176.794 80.435 176.794 179.2S928.256 976.23 830.77 976.23c-97.433 0-176.742-80.281-176.742-179.046 0-98.816 79.309-179.149 176.742-179.149zM727.757 719.002a131.174 131.174 0 0 0-25.754 78.182c0 71.885 57.805 130.406 128.768 130.406 28.877 0 55.552-9.625 77.056-26.01zm103.014-52.327c-19.712 0-39.117 4.557-56.678 13.312L946.33 854.58c8.499-17.305 13.158-36.864 13.158-57.395 0-71.987-57.805-130.509-128.717-130.509zM512.307 383.13l6.861.358a67.072 67.072 0 0 1 59.853 67.072l-.307 6.86a67.072 67.072 0 0 1-66.407 60.57l-6.81-.358a67.072 67.072 0 0 1-59.852-67.072 67.072 67.072 0 0 1 66.662-67.43zm266.752 0l6.861.358a67.072 67.072 0 0 1 59.853 67.072l-.307 6.86a67.072 67.072 0 0 1-66.407 60.57l-6.81-.358a67.072 67.072 0 0 1-59.852-67.072h-.051l.307-6.86a67.072 67.072 0 0 1 66.406-60.57zm-533.504 0l6.861.358a67.072 67.072 0 0 1 59.853 67.072l-.307 6.86a67.072 67.072 0 0 1-66.407 60.57l-6.81-.358a67.072 67.072 0 0 1-59.852-67.072 67.072 67.072 0 0 1 66.662-67.43z" />
             </svg>
-            <span>当前文章受密码保护，无法评论</span>
+            <span>当前文章受密码保护，无法评语</span>
         </div>
     <?php else : ?>
         <?php if ($this->allow('comment') && $this->options->JCommentStatus !== "off") : ?>
             <div id="<?php $this->respondId(); ?>" class="joe_comment__respond">
                 <div class="joe_comment__respond-type">
-                    <button class="item" data-type="draw">画图模式</button>
-                    <button class="item active" data-type="text">文本模式</button>
+                    <button class="item active" data-type="text">默认</button>
+                    <button class="item" data-type="draw">涂鸦</button>
                 </div>
                 <form method="post" class="joe_comment__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
                     <div class="head">
@@ -30,7 +30,8 @@
                         </div>
                     </div>
                     <div class="body">
-                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="说点什么吧，或切换成画图试试？"></textarea>
+                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="点评一下吧"></textarea>
+                        <input type="hidden" name="token" id="token" value="">
                         <div class="draw" style="display: none;">
                             <ul class="line">
                                 <li data-line="3">细</li>
@@ -50,23 +51,33 @@
                                 <path d="M954.9 228.4H619.1c-4.5 0-8.1 3.6-8.1 8s53.8 56 58.2 56H955c4.4 0 8.1-3.6 8.1-8v-48c-.1-4.4-3.7-8-8.2-8zm5.3 352H837.9c-1.5 0-2.8 3.6-2.8 8v48c0 4.4 1.3 8 2.8 8h122.4c1.5 0 2.8-3.6 2.8-8v-48c-.1-4.4-1.3-8-2.9-8zm-1.6 128H807.4c-2.4 0-4.4 3.6-4.4 8v48c0 4.4 2 8 4.4 8h151.2c2.4 0 4.4-3.6 4.4-8v-48c0-4.4-2-8-4.4-8z" />
                                 <path d="M457.4 798.5l-171.7 90.3c-31.3 16.4-70 4.4-86.4-26.9-6.5-12.5-8.8-26.7-6.4-40.6l32.8-191.2-139-135.4c-25.3-24.7-25.8-65.2-1.2-90.5 9.8-10.1 22.7-16.6 36.6-18.7l192-27.9 85.9-174c15.6-31.7 54-44.7 85.7-29.1 12.6 6.2 22.8 16.4 29.1 29.1l85.9 174 192 27.9c35 5.1 59.2 37.6 54.1 72.5-2 13.9-8.6 26.8-18.7 36.6L689.2 630.1 722 821.4c6 34.8-17.4 67.9-52.3 73.9-13.9 2.4-28.1.1-40.6-6.4l-171.7-90.4zM656 837.8c1.2.7 2.7.9 4.1.6 3.5-.6 5.8-3.9 5.2-7.4l-37.9-221L788 453.4c1-1 1.7-2.3 1.9-3.7.5-3.5-1.9-6.7-5.4-7.3l-222-32.3-99.3-201.2c-.6-1.3-1.6-2.3-2.9-2.9-3.2-1.6-7-.3-8.6 2.9l-99.3 201.2-222 32.3c-1.4.2-2.7.9-3.7 1.9-2.5 2.5-2.4 6.6.1 9.1L287.5 610l-37.9 221.1c-.2 1.4 0 2.8.6 4.1 1.6 3.1 5.5 4.3 8.6 2.7l198.6-104.4L656 837.8z" />
                             </svg>
-                            <canvas id="joe_comment_draw" height="300"></canvas>
+                            <canvas id="joe_comment_draw" height="200"></canvas>
                         </div>
                     </div>
                     <div class="foot">
                         <div class="owo joe_owo__contain"></div>
                         <div class="tool">
                             <span title="图片" onclick="document.getElementById('textarea').value+='![描述](地址)' ">
-                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                                     <path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z"></path>
                                     <path d="M110.5 713l153.2 32.3 315.1-225.2 242.8 73.1v34.3H868V159.7H64v700.7h627.6V814H110.5V713z m711.1-506.8v338.5l-251.3-75.6-317 226.6-142.8-30.1V206.2h711.1z"></path>
                                     <path d="M308.3 510.8c65.9 0 119.6-53.7 119.6-119.6 0-65.9-53.7-119.6-119.6-119.6-65.9 0-119.6 53.7-119.6 119.6 0 65.9 53.7 119.6 119.6 119.6z m0-192.8c40.3 0 73.1 32.8 73.1 73.1s-32.8 73.2-73.1 73.2-73.1-32.8-73.1-73.2S268 318 308.3 318z"></path>
                                 </svg>
                             </span>
                             <span title="链接" onclick="document.getElementById('textarea').value+='[](https://)' ">
-                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
                                     <path d="M910.496 213.536C804.16 82.208 611.488 61.952 480.128 168.32l-100.768 81.6 50.336 62.176 100.768-81.6a225.984 225.984 0 1 1 284.448 351.264l-107.968 87.424 50.336 62.176 107.968-87.424a305.984 305.984 0 0 0 45.248-430.4zM516.352 823.552a225.984 225.984 0 1 1-284.448-351.264l110.976-89.856-50.336-62.176-110.976 89.856C50.24 516.448 29.984 709.152 136.32 840.48c106.336 131.328 299.04 151.584 430.368 45.248l105.12-85.12-50.336-62.176-105.12 85.12z"></path>
                                     <path d="M676.16 353.28l51.232 61.44-343.552 286.304-51.2-61.44z"></path>
+                                </svg>
+                            </span>
+                            <span title="私语" class="privacy">
+                                <svg class="unlock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path d="M7 10h13a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 0 1 13.262-3.131l-1.789.894A5 5 0 0 0 7 9v1zm-2 2v8h14v-8H5zm5 3h4v2h-4v-2z" />
+                                </svg>
+                                <svg class="lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path d="M19 10h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 1 1 14 0v1zM5 12v8h14v-8H5zm6 2h2v4h-2v-4zm6-4V9A5 5 0 0 0 7 9v1h10z" />
                                 </svg>
                             </span>
                         </div>
@@ -103,9 +114,9 @@
                     <path d="M512.307.973c282.317 0 511.181 201.267 511.181 449.587a402.842 402.842 0 0 1-39.27 173.26 232.448 232.448 0 0 0-52.634-45.977c16.384-39.782 25.293-82.688 25.293-127.283 0-211.098-199.117-382.157-444.621-382.157-245.555 0-444.57 171.06-444.57 382.157 0 133.427 79.514 250.88 200.039 319.18v107.982l102.041-65.127a510.157 510.157 0 0 0 142.49 20.122l19.405-.359c19.405-.716 38.758-2.508 57.958-5.427l3.584 13.415a230.607 230.607 0 0 0 22.323 50.688l-20.633 3.328a581.478 581.478 0 0 1-227.123-12.288L236.646 982.426c-19.66 15.001-35.635 7.168-35.635-17.664v-157.39C79.411 725.198 1.024 595.969 1.024 450.56 1.024 202.24 229.939.973 512.307.973zm318.464 617.011c97.485 0 176.794 80.435 176.794 179.2S928.256 976.23 830.77 976.23c-97.433 0-176.742-80.281-176.742-179.046 0-98.816 79.309-179.149 176.742-179.149zM727.757 719.002a131.174 131.174 0 0 0-25.754 78.182c0 71.885 57.805 130.406 128.768 130.406 28.877 0 55.552-9.625 77.056-26.01zm103.014-52.327c-19.712 0-39.117 4.557-56.678 13.312L946.33 854.58c8.499-17.305 13.158-36.864 13.158-57.395 0-71.987-57.805-130.509-128.717-130.509zM512.307 383.13l6.861.358a67.072 67.072 0 0 1 59.853 67.072l-.307 6.86a67.072 67.072 0 0 1-66.407 60.57l-6.81-.358a67.072 67.072 0 0 1-59.852-67.072 67.072 67.072 0 0 1 66.662-67.43zm266.752 0l6.861.358a67.072 67.072 0 0 1 59.853 67.072l-.307 6.86a67.072 67.072 0 0 1-66.407 60.57l-6.81-.358a67.072 67.072 0 0 1-59.852-67.072h-.051l.307-6.86a67.072 67.072 0 0 1 66.406-60.57zm-533.504 0l6.861.358a67.072 67.072 0 0 1 59.853 67.072l-.307 6.86a67.072 67.072 0 0 1-66.407 60.57l-6.81-.358a67.072 67.072 0 0 1-59.852-67.072 67.072 67.072 0 0 1 66.662-67.43z" />
                 </svg>
                 <?php if ($this->options->JCommentStatus === "off") : ?>
-                    <span>博主关闭了所有页面的评论</span>
+                    <span>已关闭所有页面的评语</span>
                 <?php else : ?>
-                    <span>博主关闭了当前页面的评论</span>
+                    <span>已关闭当前页面的评语</span>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
@@ -117,38 +128,43 @@ function threadedComments($comments, $options)
 { ?>
     <li class="comment-list__item">
         <div class="comment-list__item-contain" id="<?php $comments->theId(); ?>">
-            <div class="term">
+            <div class="<?php if ($comments->authorId === $comments->ownerId) : ?>term-owner<?php endif; ?> term">
                 <div class="author">
-                <img width="48" height="48" class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($comments->mail); ?>" alt="头像" />
-                <?php if ($comments->authorId === $comments->ownerId) : ?>
-                    <i class="owner">
-                        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                            <path d="M924.8 336l-208 128c-3.2 3.2-3.2 3.2-6.4 0L512 211.2c-3.2-3.2-3.2-3.2-6.4 0l-224 252.8c-3.2 3.2-3.2 3.2-6.4 0l-179.2-128c-3.2-3.2-6.4 0-6.4 3.2L160 793.6c0 6.4 6.4 9.6 12.8 9.6h662.4c6.4 0 9.6-3.2 12.8-9.6l83.2-451.2c0-6.4-3.2-9.6-6.4-6.4zM806.4 857.6H201.6c-16 0-32 12.8-32 32v22.4c0 16 12.8 32 32 32h608c16 0 32-12.8 28.8-32v-22.4c0-16-16-32-32-32z" fill="#F5AB16" p-id="14912"></path>
-                            <path d="M57.6 278.4m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="#F5AB16" p-id="14913"></path>
-                            <path d="M512 140.8m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="#F5AB16" p-id="14914"></path>
-                            <path d="M966.4 278.4m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="#F5AB16" p-id="14915"></path>
-                        </svg>
-                    </i>
-                <?php endif; ?>
+                    <img width="48" height="48" class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($comments->mail); ?>" alt="头像" />
+                    <div class="handle">
+                        <span class="reply joe_comment__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">回复</span>
+                    </div>
                 </div>
                 <div class="content">
                     <div class="user">
-                        <span class="author"><?php $comments->author(); ?><?php _getParentReply($comments->parent) ?></span>
+                        <span class="author">
+                            <?php $comments->author(); ?><?php _getParentReply($comments->parent) ?>
+                        </span>
+                        <span class="meta">
+                            <span class="date"><?php $comments->dateWord(); ?></span>
+                            <span class="agent"><?php echo convertip($comments->ip); ?></span>
+                        </span>
                         <?php if ($comments->status === "waiting") : ?>
-                            <em class="waiting">（评论审核中...）</em>
+                            <em class="waiting">（评语审核中...）</em>
                         <?php endif; ?>
-                        <div class="agent">
-                            <?php echo curl_tencentlbs_ip($comments->ip); ?> · <?php _getAgentOS($comments->agent); ?> · <?php _getAgentBrowser($comments->agent); ?>
-                        </div>
                     </div>
                     <div class="substance">
-                        <?php echo _parseCommentReply($comments->content); ?>
-                    </div>
-                    <div class="handle">
-                        <time class="date" datetime="<?php $comments->date('Y-m-d'); ?>"><?php $comments->date('Y-m-d'); ?></time>
-                        <span class="reply joe_comment__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">
-                            <i class="icon fa fa-pencil" aria-hidden="true"></i>回复
-                        </span>
+                        <?php
+                        $db = Typecho_Db::get();
+                        $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $comments->parent)->limit(1));
+                        $smhf = $comments->mail;
+                        $user = Typecho_Widget::widget('Widget_User');
+                        if (strpos($comments->content, '私语#') == true) {
+                            $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
+                            if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
+                                _parseCommentReply(str_replace('私语#', '', $comments->content));
+                            } else {
+                                echo '<div class="secret">此条为私语，发布者可见</div>';
+                            }
+                        } else {
+                            _parseCommentReply($comments->content);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
