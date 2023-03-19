@@ -116,21 +116,48 @@ function themeConfig($form)
     $JNavMaxNum->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JNavMaxNum->multiMode());
 
-    $JCustomNavs = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JCustomNavs',
-        NULL,
-        NULL,
-        '导航栏自定义链接（非必填）',
-        '介绍：用于自定义导航栏链接 <br />
-         格式：跳转文字 || 跳转链接（中间使用两个竖杠分隔）<br />
-         其他：一行一个，一行代表一个超链接 <br />
-         例如：<br />
-            百度一下 || https://baidu.com <br />
-            腾讯视频 || https://v.qq.com
-         '
+    $JCursorEffects = new Typecho_Widget_Helper_Form_Element_Select(
+        'JCursorEffects',
+        array(
+            'off' => '关闭（默认）',
+            'cursor0.js' => '效果0',
+            'cursor1.js' => '效果1',
+            'cursor2.js' => '效果2',
+            'cursor3.js' => '效果3',
+            'cursor4.js' => '效果4',
+            'cursor5.js' => '效果5',
+            'cursor6.js' => '效果6',
+            'cursor7.js' => '效果7',
+            'cursor8.js' => '效果8',
+            'cursor9.js' => '效果9',
+            'cursor10.js' => '效果10',
+            'cursor11.js' => '效果11',
+        ),
+        'off',
+        '选择鼠标特效',
+        '介绍：用于开启炫酷的鼠标特效'
     );
-    $JCustomNavs->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JCustomNavs);
+    $JCursorEffects->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JCursorEffects->multiMode());
+
+    $JDynamic_Background = new Typecho_Widget_Helper_Form_Element_Select(
+        'JDynamic_Background',
+        array(
+            'off' => '关闭（默认）',
+            'backdrop1.js' => '效果1',
+            'backdrop2.js' => '效果2',
+            'backdrop3.js' => '效果3',
+            'backdrop4.js' => '效果4',
+            'backdrop5.js' => '效果5',
+            'backdrop6.js' => '效果6'
+        ),
+        'off',
+        '是否开启动态背景图（仅限PC）',
+        '介绍：用于设置PC端动态背景<br />
+         注意：如果您填写了下方PC端静态壁纸，将优先展示下方静态壁纸！如需显示动态壁纸，请将PC端静态壁纸设置成空'
+    );
+    $JDynamic_Background->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JDynamic_Background->multiMode());
 
     $JList_Animate = new Typecho_Widget_Helper_Form_Element_Select(
         'JList_Animate',
@@ -219,6 +246,22 @@ function themeConfig($form)
     $JList_Animate->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JList_Animate->multiMode());
 
+    $JCustomNavs = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JCustomNavs',
+        NULL,
+        NULL,
+        '导航栏自定义链接（非必填）',
+        '介绍：用于自定义导航栏链接 <br />
+         格式：跳转文字 || 跳转链接（中间使用两个竖杠分隔）<br />
+         其他：一行一个，一行代表一个超链接 <br />
+         例如：<br />
+            百度一下 || https://baidu.com <br />
+            腾讯视频 || https://v.qq.com
+         '
+    );
+    $JCustomNavs->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JCustomNavs);
+
     $JFooter_Tabbar = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFooter_Tabbar',
         NULL,
@@ -273,30 +316,6 @@ function themeConfig($form)
     );
     $JDocumentTitle->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JDocumentTitle);
-
-    $JCursorEffects = new Typecho_Widget_Helper_Form_Element_Select(
-        'JCursorEffects',
-        array(
-            'off' => '关闭（默认）',
-            'cursor0.js' => '效果0',
-            'cursor1.js' => '效果1',
-            'cursor2.js' => '效果2',
-            'cursor3.js' => '效果3',
-            'cursor4.js' => '效果4',
-            'cursor5.js' => '效果5',
-            'cursor6.js' => '效果6',
-            'cursor7.js' => '效果7',
-            'cursor8.js' => '效果8',
-            'cursor9.js' => '效果9',
-            'cursor10.js' => '效果10',
-            'cursor11.js' => '效果11',
-        ),
-        'off',
-        '选择鼠标特效',
-        '介绍：用于开启炫酷的鼠标特效'
-    );
-    $JCursorEffects->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JCursorEffects->multiMode());
 
     $JCustomCSS = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomCSS',
@@ -586,25 +605,6 @@ function themeConfig($form)
     );
     $JLazyload->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JLazyload);
-
-    $JDynamic_Background = new Typecho_Widget_Helper_Form_Element_Select(
-        'JDynamic_Background',
-        array(
-            'off' => '关闭（默认）',
-            'backdrop1.js' => '效果1',
-            'backdrop2.js' => '效果2',
-            'backdrop3.js' => '效果3',
-            'backdrop4.js' => '效果4',
-            'backdrop5.js' => '效果5',
-            'backdrop6.js' => '效果6'
-        ),
-        'off',
-        '是否开启动态背景图（仅限PC）',
-        '介绍：用于设置PC端动态背景<br />
-         注意：如果您填写了下方PC端静态壁纸，将优先展示下方静态壁纸！如需显示动态壁纸，请将PC端静态壁纸设置成空'
-    );
-    $JDynamic_Background->setAttribute('class', 'joe_content joe_image');
-    $form->addInput($JDynamic_Background->multiMode());
 
     $JWallpaper_Batten = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JWallpaper_Batten',

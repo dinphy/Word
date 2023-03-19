@@ -454,6 +454,8 @@ html {
 					}
 				}
 				&__searchout {
+					top: 3rem;
+					border-radius: var(--radius-inner);
 					&-inner {
 						width: 100%;
 					}
@@ -899,15 +901,14 @@ html {
 					}
 					&-searchicon {
 						margin-right: 10px;
-						fill: #fff;
 					}
 					&-slideicon {
 						margin-left: 10px;
-						fill: #fff;
 					}
-					&-mode svg {
-						fill: #fff;
-					}
+				}
+				&__searchout {
+					top: 0;
+					border-radius: 0;
 				}
 			}
 			&_container,
@@ -922,6 +923,7 @@ html {
 			}
 			&_batten {
 				margin-top: -3.5rem;
+				height: 15rem;
 				border-radius: 0;
 				&-index {
 					display: flex;

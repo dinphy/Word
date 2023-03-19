@@ -1,10 +1,6 @@
 <header class="joe_header">
     <div class="joe_header__above">
         <div class="joe_container">
-            <svg class="joe_header__above-slideicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path d="M12 3v2H3V3h9zm4 16v2H3v-2h13zm6-8v2H3v-2h19z" />
-            </svg>
             <a title="<?php $this->options->title(); ?>" class="joe_header__above-logo" style="display: none;" href="<?php $this->options->siteUrl(); ?>">
                 <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo() ?>" alt="<?php $this->options->title(); ?>" />
                 <svg class="profile-color-modes" height="45" viewBox="0 0 106 60" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -82,9 +78,9 @@
             </a>
             <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>
             <div class="joe_header__above-right">
-                <svg class="joe_header__above-noticeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+                <svg class="joe_header__above-noticeicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path fill="none" d="M0 0h24v24H0z" />
-                    <path fill="var(--main)" d="M5 18h14v-6.969C19 7.148 15.866 4 12 4s-7 3.148-7 7.031V18zm7-16c4.97 0 9 4.043 9 9.031V20H3v-8.969C3 6.043 7.03 2 12 2zM9.5 21h5a2.5 2.5 0 1 1-5 0z" />
+                    <path fill="var(--main)" d="M20 17h2v2H2v-2h2v-7a8 8 0 1 1 16 0v7zm-2 0v-7a6 6 0 1 0-12 0v7h12zm-9 4h6v2H9v-2z" />
                 </svg>
                 <div class="joe_header__above-sign">
                     <div class="joe_dropdown" trigger="click" placement="45px">
@@ -126,6 +122,10 @@
                 </div>
                 <svg class="joe_header__above-searchicon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                     <path d="M933.308465 890.723577l-146.767692-157.046802c59.488883-71.644737 92.202958-160.954809 92.202958-254.974136 0-220.566488-179.481767-400.048255-400.110677-400.048255-220.566488 0-400.048255 179.451068-400.048255 400.048255s179.481767 400.048255 400.078954 400.048255c57.796334-0.030699 113.530706-12.094456 165.633365-35.82288 15.479553-7.04751 22.312168-25.297153 15.264659-40.74703-7.04751-15.511275-25.38925-22.373567-40.74703-15.264659-44.101427 20.066011-91.249237 30.252001-140.181693 30.2827-186.652074 0-338.498434-151.845337-338.498434-338.498434 0-186.621375 151.845337-338.498434 338.498434-338.498434 186.682773 0 338.559832 151.845337 338.559832 338.498434 0 87.863117-33.514301 171.111123-94.326319 234.415914-11.786441 12.248975-11.387351 31.729655 0.830925 43.516096 0.923022 0.892323 2.12336 1.231037 3.170203 2.000564 0.830925 1.231037 1.261737 2.64627 2.308579 3.75451L888.346437 932.700621c6.03239 6.493901 14.248516 9.756201 22.465664 9.756201 7.53972 0 15.07944-2.739391 21.019733-8.309246C944.234305 922.606729 944.910711 903.126049 933.308465 890.723577z"></path>
+                </svg>
+                <svg class="joe_header__above-slideicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M12 3v2H3V3h9zm4 16v2H3v-2h13zm6-8v2H3v-2h19z" />
                 </svg>
             </div>
         </div>
@@ -263,22 +263,6 @@
                 <p class="motto joe_motto"></p>
             </div>
         </div>
-        <ul class="joe_header__slideout-count">
-            <?php Typecho_Widget::widget('Widget_Stat')->to($count); ?>
-            <li class="item">
-                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
-                    <path d="M606.227 985.923H164.75c-69.715 0-126.404-56.722-126.404-126.442V126.477C38.346 56.755 95.04 0 164.75 0h619.275c69.715 0 126.549 56.755 126.549 126.477v503.925c0 18.216-14.814 32.997-33.07 32.997-18.183 0-32.925-14.78-32.925-32.997V126.477c0-33.355-27.2-60.488-60.554-60.488H164.75c-33.353 0-60.41 27.133-60.41 60.488v733.004c0 33.353 27.057 60.441 60.41 60.441h441.477c18.183 0 32.925 14.787 32.925 33.004 0 18.211-14.742 32.997-32.925 32.997zm0 0" />
-                    <path d="M657.62 322.056H291.154c-18.183 0-32.924-14.786-32.924-33.003 0-18.21 14.74-32.998 32.924-32.998H657.62c18.256 0 33.07 14.787 33.07 32.998 0 18.217-14.814 33.003-33.07 33.003zm0 0M657.62 504.749H291.154c-18.183 0-32.924-14.78-32.924-32.993 0-18.222 14.74-32.997 32.924-32.997H657.62c18.256 0 33.07 14.775 33.07 32.997 0 18.218-14.814 32.993-33.07 32.993zm0 0M445.611 687.486H291.154c-18.183 0-32.924-14.78-32.924-33.004 0-18.21 14.74-32.991 32.924-32.991h154.457c18.184 0 32.998 14.78 32.998 32.991 0 18.224-14.814 33.004-32.998 33.004zm0 0M866.482 1024c-8.447 0-16.896-3.225-23.34-9.662L577.595 748.786c-7.156-7.123-10.592-17.07-9.446-27.056l8.733-77.728c1.788-15.321 13.885-27.378 29.2-29.06l77.45-8.52c10.443-.965 19.9 2.433 26.905 9.449l265.558 265.551c12.875 12.877 12.875 33.784 0 46.666l-86.184 86.25c-6.438 6.437-14.887 9.662-23.33 9.662zm-231.05-310.646l231.05 231.018 39.575-39.62-231.043-231.05-35.505 3.938-4.076 35.714zm0 0" />
-                </svg>
-                <span>累计 <strong><?php echo number_format($count->publishedPostsNum); ?></strong> 篇文章</span>
-            </li>
-            <li class="item">
-                <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
-                    <path d="M921.6 153.6H102.4A102.4 102.4 0 0 0 0 256v512a102.4 102.4 0 0 0 102.4 102.4h819.2A102.4 102.4 0 0 0 1024 768V256a102.4 102.4 0 0 0-102.4-102.4zM687.616 473.088L972.8 258.304V791.04zM960 204.8L527.104 527.36 73.216 204.8zM371.2 483.584l-320 287.232V256zM73.984 819.2l339.2-307.2 83.456 59.392a51.2 51.2 0 0 0 60.416 0l89.6-67.328L931.072 819.2z" />
-                </svg>
-                <span>收到 <strong><?php echo number_format($count->publishedCommentsNum); ?></strong> 条评论</span>
-            </li>
-        </ul>
         <ul class="joe_header__slideout-menu panel-box">
             <li>
                 <a class="link" href="<?php $this->options->siteUrl(); ?>" title="首页">

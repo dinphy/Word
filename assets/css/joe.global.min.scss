@@ -555,8 +555,10 @@
 	z-index: 1000;
 	transition: top 0.35s;
 	&.active {
+		top: -60px;
 		background: var(--background);
-		backdrop-filter: saturate(200%) blur(20px);
+		border-top-left-radius: var(--radius-wrap);
+		border-top-right-radius: var(--radius-wrap);
 	}
 	&__above {
 		position: relative;
@@ -966,7 +968,6 @@
 			svg {
 				cursor: pointer;
 				fill: var(--main);
-				//margin-left: 10px;
 			}
 		}
 	}
@@ -976,6 +977,7 @@
 		left: 0;
 		right: 0;
 		z-index: 890;
+		background: var(--background);
 		transform: translate3d(0, -100%, 0);
 		transition: transform 0.35s, visibility 0.35s;
 		visibility: hidden;
@@ -1103,29 +1105,6 @@
 				.motto {
 					font-size: 12px;
 					color: var(--routine);
-				}
-			}
-		}
-		&-count {
-			background: var(--background);
-			border-radius: var(--radius-wrap);
-			padding: 10px 15px;
-			box-shadow: var(--box-shadow);
-			margin-bottom: 15px;
-			.item {
-				display: flex;
-				align-items: center;
-				color: var(--routine);
-				padding: 5px 0;
-				.icon {
-					width: 15px;
-					height: 15px;
-					fill: var(--routine);
-					margin-right: 5px;
-				}
-				strong {
-					font-weight: 500;
-					color: var(--theme);
 				}
 			}
 		}
@@ -3936,13 +3915,17 @@
 	display: none;
 	width: 100%;
 	padding: 0.5rem 0;
-	position: fixed;
+	position: sticky;
 	bottom: 0;
 	z-index: 10;
 	background: var(--new-background);
 	backdrop-filter: saturate(200%) blur(20px);
+	transition: bottom 0.35s;
 	ul {
 		display: flex;
+	}
+	&.active {
+		bottom: -60px;
 	}
 	&__item {
 		width: 100%;
