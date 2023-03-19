@@ -343,46 +343,6 @@ function _checkSensitiveWords($words_str, $str)
 	return false;
 }
 
-/* 首页动态 */
-/* function _indexDynamic()
-{
-	$slug = Helper::options()->JIndex_DynamicText;
-	$ispage = true;  //true 输出slug页面评论，false输出其它所有评论
-	$isGuestbook = $ispage ? " = " : " <> ";
-
-	$db = Typecho_Db::get();
-	$options = Typecho_Widget::widget('Widget_Options');
-
-	$page = $db->fetchRow($db->select()->from('table.contents')
-		->where('table.contents.status = ?', 'publish')
-		->where('table.contents.created < ?', $options->gmtTime)
-		->where('table.contents.slug = ?', $slug));
-
-	if ($page) {
-		$type = $page['type'];
-		$routeExists = (NULL != Typecho_Router::get($type));
-		$page['pathinfo'] = $routeExists ? Typecho_Router::url($type, $page) : '#';
-		$page['permalink'] = Typecho_Common::url($page['pathinfo'], $options->index);
-
-		$comments = $db->fetchAll($db->select()->from('table.comments')
-			->where('table.comments.status = ?', 'approved')
-			->where('table.comments.created < ?', $options->gmtTime)
-			->where('table.comments.type = ?', 'comment')
-			->where('table.comments.cid ' . $isGuestbook . ' ?', $page['cid'])
-			->order('table.comments.created', Typecho_Db::SORT_DESC)
-			->limit(1));
-
-		foreach ($comments as $comment) {
-			echo '<div class="joe_index__title-notice">';
-			echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 3v11.74l-4.696 4.695h-3.913l-2.437 2.348H6.913v-2.348H3V6.13L4.227 3H21zm-1.565 1.565H6.13v11.74h3.13v2.347l2.349-2.348h4.695l3.13-3.13V4.565zm-3.13 3.13v4.696h-1.566V7.696h1.565zm-3.914 0v4.696h-1.565V7.696h1.565z" fill="rgba(25,188,155,1)"/></svg>';
-			echo '<a href="' . $page['permalink'] . '" style="display: flex;align-items: center;" title="' . $comment['text'] . '">';
-			echo _parseReply(Typecho_Common::subStr($comment['text'], 0, 18, '...')) . '<span style="color: var(--routine);">' . _dateFormat($comment['created']) . '</span></a>';
-			echo '</div>';
-		}
-	} else {
-		echo '<div class="joe_index__title-notice" style="display: flex;">他很懒，什么也没说。</div>';
-	}
-} */
 /* 动态点赞 */
 function _getSupport($coid)
 {

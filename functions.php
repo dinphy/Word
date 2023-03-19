@@ -641,17 +641,6 @@ function themeConfig($form)
     $JWallpaper_Background_WAP->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JWallpaper_Background_WAP);
 
-    $JShare_QQ_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JShare_QQ_Image',
-        NULL,
-        "data:image/png;base64,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",
-        'QQ分享链接图片',
-        '介绍：用于修改在QQ内分享时卡片链接显示的图片 <br/>
-         格式：图片地址'
-    );
-    $JShare_QQ_Image->setAttribute('class', 'joe_content joe_image');
-    $form->addInput($JShare_QQ_Image);
-
     $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JIndex_Top_Image',
         NULL,
@@ -709,7 +698,7 @@ function themeConfig($form)
         array('off' => '关闭（默认）', 'on' => '开启'),
         'off',
         '是否开启首页热门文章',
-        '介绍：开启后，网站首页将会显示浏览量最多的4篇热门文章'
+        '介绍：首页显示浏览量最多的3篇热门文章'
     );
     $JIndex_Hot->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Hot->multiMode());
@@ -729,7 +718,7 @@ function themeConfig($form)
     $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriendsIndex',
         NULL,
-        '青山小站 || https://blog.yanqingshan.com/ || https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
+        '小王先森 || https://xwsir.cn/ || https://thirdqq.qlogo.cn/g?b=qq&nk=2027821710&s=100 || 山川异域，风月同天',
         '首页链接（非必填）',
         '介绍：用于填写首页友情链接 <br />
          格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />
@@ -750,31 +739,6 @@ function themeConfig($form)
     );
     $JFriends->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JFriends);
-
-    $JMaccmsAPI = new Typecho_Widget_Helper_Form_Element_Text(
-        'JMaccmsAPI',
-        NULL,
-        NULL,
-        '苹果CMS开放API',
-        '介绍：请填写苹果CMS V10开放API，用于视频页面使用<br />
-         例如：https://v.ini0.com/api.php/provide/vod/ <br />
-         如果您搭建了苹果cms网站，那么用你自己的即可，如果没有，请去网上找API <br />
-         '
-    );
-    $JMaccmsAPI->setAttribute('class', 'joe_content joe_other');
-    $form->addInput($JMaccmsAPI);
-
-    $JCustomPlayer = new Typecho_Widget_Helper_Form_Element_Text(
-        'JCustomPlayer',
-        NULL,
-        NULL,
-        '自定义视频播放器（非必填）',
-        '介绍：用于修改主题自带的默认播放器 <br />
-         例如：https://v.ini0.com/player/?url= <br />
-         注意：主题自带的播放器只能解析M3U8的视频格式'
-    );
-    $JCustomPlayer->setAttribute('class', 'joe_content joe_other');
-    $form->addInput($JCustomPlayer);
 
     $JSensitiveWords = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JSensitiveWords',

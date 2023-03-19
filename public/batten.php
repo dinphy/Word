@@ -1,27 +1,6 @@
 <?php if ($this->is('index')) :  ?>
     <div class="joe_batten joe_batten-index">
         <img width="100%" height="100%" class="image lazyload" src="https://pic.imgdb.cn/item/620e24df2ab3f51d9132481f.png" data-src="<?php $this->options->JIndex_Top_Image() ?>" />
-        <div class="author">
-            <div class="joe_container">
-                <div class="author__user">
-                    <div class="author__user-item">
-                        <p id="hitokoto">
-                            <span id="hitokoto_text"><?php $this->options->description() ?></span>
-                            <script>
-                                fetch('https://v1.hitokoto.cn/?c=i')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        const hitokoto = document.getElementById('hitokoto_text')
-                                        hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-                                        hitokoto.innerText = data.hitokoto
-                                    })
-                                    .catch(console.error)
-                            </script>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="information motto">
             <div class="title"><?php $this->options->title() ?></div>
             <div class="desctitle">
@@ -41,7 +20,7 @@
     <div class="joe_batten">
         <img width="100%" height="100%" class="lazyload" src="<?php _getLazyload() ?>" data-src="<?php $this->options->JWallpaper_Batten() ?>" />
         <div class="information">
-            <div class="title">与「<?php echo $this->keywords; ?>」相关的结果</div>
+            <div class="title">找到「<?php echo $this->keywords; ?>」的结果</div>
             <div class="desctitle">共 <?php echo $this->getTotal(); ?> 条</div>
         </div>
     </div>

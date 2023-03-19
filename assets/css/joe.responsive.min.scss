@@ -218,7 +218,7 @@ html {
 					}
 				}
 				&__banner {
-					display: flex;
+					display: block;
 					&-recommend {
 						padding-top: 15px;
 						width: 100%;
@@ -329,11 +329,7 @@ html {
 			}
 			&_index {
 				&__hot {
-					&-list {
-						.item .link .inner .image {
-							height: 95px;
-						}
-					}
+					display: none;
 				}
 				&__banner {
 					&-recommend {
@@ -463,13 +459,8 @@ html {
 			&_index {
 				&__banner {
 					&-recommend {
-						.item {
-							height: 8rem;
-						}
+						display: none;
 					}
-				}
-				&__hot {
-					display: none;
 				}
 				&__title {
 					&-notice {

@@ -5,7 +5,7 @@ Word 是一款专为文字创作而生，又简而不凡的全新 typecho 主题
 - QQ交流群：345655679
 - 效果预览：https://xwsir.cn
 - 主题宗旨：简洁、超强、开源、精华
-- 主题适配后台美化插件: [WordStyle](https://github.com/dinphy/WordStyle)
+- 主题适配后台美化插件: [WordStyle](https://gitee.com/dinphy/WordStyle)
 - 延续 Joe 主题相关功能，具有丰富的短代码
 
 ### 主题亮点
@@ -28,15 +28,15 @@ Word 是一款专为文字创作而生，又简而不凡的全新 typecho 主题
 ……
 ```
 
-![1][https://xwsir.cn/usr/uploads/2022/10/938684637.jpeg]
+![1][1]
 
-![2][https://xwsir.cn/usr/uploads/2022/10/1126482411.jpeg]
+![2][2]
 
-![3][https://xwsir.cn/usr/uploads/2022/10/80576426.jpeg]
+![3][3]
 
-![4][https://xwsir.cn/usr/uploads/2022/10/1088641275.jpeg]
+![4][4]
 
-![5][https://xwsir.cn/usr/uploads/2022/10/3691610397.jpeg]
+![5][5]
 
 ### 主题开发
 
@@ -106,3 +106,9 @@ Word 是一款专为文字创作而生，又简而不凡的全新 typecho 主题
 
 - 最终提交记录：[Joe 扩版终结了](https://github.com/dinphy/Word/commit/285511977dbb0241ccf03a850fd3e85a392a8a9a)
 - 使用时将文件夹改名为：Joe
+
+ [1]: https://xwsir.cn/usr/uploads/2022/10/938684637.jpeg
+ [2]: https://xwsir.cn/usr/uploads/2022/10/1126482411.jpeg
+ [3]: https://xwsir.cn/usr/uploads/2022/10/80576426.jpeg
+ [4]: https://xwsir.cn/usr/uploads/2022/10/1088641275.jpeg
+ [5]: https://xwsir.cn/usr/uploads/2022/10/3691610397.jpeg

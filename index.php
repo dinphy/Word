@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.0.0.1
+ * @version  1.1.0.1
  * @link https://xwsir.cn
  */
 
@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="https://lib.baomitu.com/Swiper/5.4.5/css/swiper.min.css">
 	<script src="https://lib.baomitu.com/Swiper/5.4.5/js/swiper.min.js"></script>
 	<script src="https://lib.baomitu.com/wow/1.1.2/wow.min.js"></script>
-	<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.index.min.css'); ?>?<?php echo _getVersion(); ?>">
 	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js'); ?>?<?php echo _getVersion(); ?>"></script>
 </head>
 
@@ -115,7 +114,7 @@
 							<li class="item" data-type="created">最新</li>
 							<li class="item" data-type="views">热门</li>
 							<li class="item" data-type="commentsNum">评论</li>
-							<!-- <li class="item" data-type="agree">点赞</li> -->
+							<li class="item" data-type="agree">点赞</li>
 							<li class="line"></li>
 						</ul>
 						<?php
@@ -140,7 +139,7 @@
 						<ul class="joe_list"></ul>
 						<ul class="joe_list__loading">
 							<li class="item">
-								<div class="thumbnail"></div>
+								
 								<div class="information">
 									<div class="title"></div>
 									<div class="abstract">
@@ -148,6 +147,7 @@
 										<p></p>
 									</div>
 								</div>
+								<div class="thumbnail"></div>
 							</li>
 							<li class="item">
 								<div class="thumbnail"></div>
