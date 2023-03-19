@@ -203,8 +203,8 @@ html {
 					}
 					&.default {
 						.thumbnail {
-							width: 185px;
-							height: 125px;
+							width: 145px;
+							height: 95px;
 						}
 					}
 				}
@@ -394,6 +394,9 @@ html {
 			&_footer {
 				padding-bottom: 3.5rem;
 			}
+			&_action {
+				right: 3.5rem;
+			}
 			&_vplayer {
 				height: 225px;
 			}
@@ -511,9 +514,9 @@ html {
 							}
 						}
 						.thumbnail {
-							width: 120px;
+							width: 110px;
 							height: 80px;
-							margin-right: 10px;
+							margin-left: 10px;
 							time,
 							svg {
 								display: none;
@@ -918,6 +921,9 @@ html {
 				background: none;
 				box-shadow: none;
 			}
+			&_action {
+				right: 3rem;
+			}
 			&_batten {
 				margin-top: -3.5rem;
 				border-radius: 0;
@@ -943,7 +949,7 @@ html {
 				padding: 15px;
 			}
 			&_cross {
-				padding: .5rem 1rem;
+				padding: 0.5rem 1rem;
 			}
 			&_bread {
 				padding-top: 15px;
@@ -953,7 +959,7 @@ html {
 			}
 			&_list {
 				&__item {
-					margin: .5rem 0;
+					margin: 0.5rem 0;
 					padding: 1rem;
 					border-radius: var(--radius-wrap);
 					border-bottom: none;
@@ -973,10 +979,10 @@ html {
 				}
 			}
 			&_archive {
-				padding: 0 .5rem;
+				padding: 0 0.5rem;
 			}
 			&_index {
-				padding: .5rem;
+				padding: 0.5rem;
 				&__banner {
 					display: none;
 				}

@@ -4,6 +4,7 @@
 	justify-content: space-between;
 	margin-top: 3rem;
 }
+
 .joe_notice {
 	position: relative;
 	svg {
@@ -1964,6 +1965,7 @@
 		}
 		&.default {
 			display: flex;
+			flex-direction: row-reverse;
 			position: relative;
 			&:hover {
 				.thumbnail {
@@ -1978,9 +1980,9 @@
 			.thumbnail {
 				flex-shrink: 0;
 				position: relative;
-				width: 210px;
-				height: 140px;
-				margin-right: 15px;
+				width: 185px;
+				height: 125px;
+				margin-left: 15px;
 				overflow: hidden;
 				img {
 					width: 100%;
@@ -3985,44 +3987,37 @@
 }
 
 .joe_action {
-	position: fixed;
-	bottom: 5rem;
-	right: 1rem;
+	position: absolute;
+	right: 0;
 	z-index: 333;
 	&_item {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 32px;
-		height: 32px;
-		border-radius: var(--radius-inner);
+		position: fixed;
+		bottom: 20%;
 		cursor: pointer;
-		margin-top: 10px;
-		border: 1px solid var(--classD);
-		box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
-		background: var(--background);
 		svg {
-			position: absolute;
-			width: 24px;
-			height: 24px;
+			width: 28px;
+			height: 28px;
 			fill: var(--minor);
+			border: 1px solid var(--classD);
+			border-radius: var(--radius-inner);
+			box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+			background: var(--background);
 			&:hover {
 				fill: var(--theme);
 			}
 		}
 		&.mode {
-			position: relative;
 			display: flex;
 			align-items: center;
 			cursor: pointer;
 			svg {
-				position: absolute;
-				width: 22px;
-				height: 22px;
+				position: fixed;
+				bottom: 15%;
+				width: 28px;
+				height: 28px;
 				transform: scale(0);
 				opacity: 0;
-				transition: transform 0.85s, opacity 0.85s, fill 0.35s;
+				transition: transform 0.35s, opacity 0.85s, fill 0.35s;
 				&.active {
 					transform: scale(1);
 					opacity: 1;
@@ -4030,6 +4025,7 @@
 			}
 		}
 		&.scroll {
+			bottom: 10%;
 			visibility: hidden;
 			transform: translate(0, 24px);
 			transition: visibility 0.35s, transform 0.35s;

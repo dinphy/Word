@@ -46,45 +46,24 @@ Word 是一款专为文字创作而生，又简而不凡的全新 typecho 主题
 
 ### 主题目录介绍（非实时）
 
+```html
 ├── assets 主题静态资源
-
 ├── core 主题核心文件夹
-
 ├── library 主题内集成第三方库
-
 ├── public 共用的一些模块文件
-
 ├── typecho
-
 │      ├── config 主题外观、功能设置的样式脚本目录
-
 ├── 404.php 404页面
-
 ├── archive.php 搜索页面
-
 ├── friends.php 友情链接页面
-
-├── cross.php 说说页面（卡片）
-
-├── dynamic.php 说说页面（时间轴）
-
+├── cross.php 说说页面
 ├── functions.php 主题的外观、功能设置
-
 ├── index.php 博客首页页面
-
 ├── leaving.php 留言板页面
-
-├── live.php 虎牙直播页面
-
 ├── page.php 独立页面
-
 ├── post.php 文章页面
-
-├── screenshot.php 主题截图图片
-
-├── video.php 全网影视页面
-
-└── wallpaper.php 壁纸页面
+├── screenshot.png 主题截图图片
+```
 
 #### Joe 扩版亮点:
 
@@ -104,7 +83,7 @@ Word 是一款专为文字创作而生，又简而不凡的全新 typecho 主题
 
 #### 扩版使用指南：
 
-- 最终提交记录：[Joe 扩版终结了](https://github.com/dinphy/Word/commit/285511977dbb0241ccf03a850fd3e85a392a8a9a)
+- 最终提交记录：[Joe 扩版终结了](https://gitee.com/dinphy/Word/commit/285511977dbb0241ccf03a850fd3e85a392a8a9a)
 - 使用时将文件夹改名为：Joe
 
  [1]: https://xwsir.cn/usr/uploads/2022/10/938684637.jpeg

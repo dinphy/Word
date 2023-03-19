@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.1.0.1
+ * @version  1.1.4.5
  * @link https://xwsir.cn
  */
 
@@ -114,7 +114,7 @@
 							<li class="item" data-type="created">最新</li>
 							<li class="item" data-type="views">热门</li>
 							<li class="item" data-type="commentsNum">评论</li>
-							<li class="item" data-type="agree">点赞</li>
+							<!-- <li class="item" data-type="agree">点赞</li> -->
 							<li class="line"></li>
 						</ul>
 						<?php
@@ -139,7 +139,6 @@
 						<ul class="joe_list"></ul>
 						<ul class="joe_list__loading">
 							<li class="item">
-								
 								<div class="information">
 									<div class="title"></div>
 									<div class="abstract">
