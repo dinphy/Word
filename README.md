@@ -3,7 +3,7 @@ Word 是一款专为文字创作而生，又简而不凡的全新 typecho 主题
 ### 主题相关
 
 - QQ交流群：345655679
-- 效果预览：https://xwsir.cn
+- 效果预览：[小王先森](https://xwsir.cn)
 - 主题宗旨：简洁、超强、开源、精华
 - 主题适配后台美化插件: [WordStyle](https://gitee.com/dinphy/WordStyle)
 - 延续 Joe 主题相关功能，具有丰富的短代码

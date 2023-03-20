@@ -140,25 +140,6 @@ function themeConfig($form)
     $JCursorEffects->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JCursorEffects->multiMode());
 
-    $JDynamic_Background = new Typecho_Widget_Helper_Form_Element_Select(
-        'JDynamic_Background',
-        array(
-            'off' => '关闭（默认）',
-            'backdrop1.js' => '效果1',
-            'backdrop2.js' => '效果2',
-            'backdrop3.js' => '效果3',
-            'backdrop4.js' => '效果4',
-            'backdrop5.js' => '效果5',
-            'backdrop6.js' => '效果6'
-        ),
-        'off',
-        '是否开启动态背景图（仅限PC）',
-        '介绍：用于设置PC端动态背景<br />
-         注意：如果您填写了下方PC端静态壁纸，将优先展示下方静态壁纸！如需显示动态壁纸，请将PC端静态壁纸设置成空'
-    );
-    $JDynamic_Background->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JDynamic_Background->multiMode());
-
     $JList_Animate = new Typecho_Widget_Helper_Form_Element_Select(
         'JList_Animate',
         array(
@@ -617,6 +598,25 @@ function themeConfig($form)
     );
     $JWallpaper_Batten->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JWallpaper_Batten);
+
+    $JDynamic_Background = new Typecho_Widget_Helper_Form_Element_Select(
+        'JDynamic_Background',
+        array(
+            'off' => '关闭（默认）',
+            'backdrop1.js' => '效果1',
+            'backdrop2.js' => '效果2',
+            'backdrop3.js' => '效果3',
+            'backdrop4.js' => '效果4',
+            'backdrop5.js' => '效果5',
+            'backdrop6.js' => '效果6'
+        ),
+        'off',
+        '是否开启动态背景图（仅限PC）',
+        '介绍：用于设置PC端动态背景<br />
+         注意：如果您填写了下方PC端静态壁纸，将优先展示下方静态壁纸！如需显示动态壁纸，请将PC端静态壁纸设置成空'
+    );
+    $JDynamic_Background->setAttribute('class', 'joe_content joe_image');
+    $form->addInput($JDynamic_Background->multiMode());
 
     $JWallpaper_Background_PC = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JWallpaper_Background_PC',

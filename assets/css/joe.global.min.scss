@@ -1878,6 +1878,16 @@
 						color: var(--minor);
 						display: flex;
 						align-items: center;
+						padding: 5px;
+						em {
+							width: 4px;
+							height: 4px;
+							background: var(--seat);
+							border-radius: var(--radius-wrap);
+							&:first-child {
+								margin-right: 4px;
+							}
+						}
 					}
 				}
 			}
@@ -1922,7 +1932,7 @@
 					right: 2rem;
 					bottom: -5px;
 					background: var(--classC);
-					padding: 5px 10px;
+					padding: 1px 5px;
 					border-radius: var(--radius-inner);
 					opacity: 0;
 					visibility: hidden;
@@ -1933,7 +1943,7 @@
 						height: 0;
 						border-left: 8px solid var(--classC);
 						border-top: 8px solid rgba(0, 0, 0, 0);
-						border-bottom: 8px solid rgba(0, 0, 0, 0);
+						border-bottom: 5px solid rgba(0, 0, 0, 0);
 						position: absolute;
 						left: 100%;
 					}

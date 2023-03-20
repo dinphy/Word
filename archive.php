@@ -72,10 +72,8 @@
                                                         <ul class="items">
                                                             <li>
                                                                 <a href="javascript:void(0);">
-                                                                    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14502" width="18" height="18">
-                                                                        <path d="M368 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14503"></path>
-                                                                        <path d="M656 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14504"></path>
-                                                                    </svg>
+                                                                    <em></em>
+                                                                    <em></em>
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -137,10 +135,8 @@
                                                     <ul class="items">
                                                         <li>
                                                             <a href="javascript:void(0);">
-                                                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14502" width="18" height="18">
-                                                                    <path d="M368 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14503"></path>
-                                                                    <path d="M656 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14504"></path>
-                                                                </svg>
+                                                                <em></em>
+                                                                <em></em>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -199,10 +195,8 @@
                                                     <ul class="items">
                                                         <li>
                                                             <a href="javascript:void(0);">
-                                                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14502" width="18" height="18">
-                                                                    <path d="M368 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14503"></path>
-                                                                    <path d="M656 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14504"></path>
-                                                                </svg>
+                                                                <em></em>
+                                                                <em></em>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -264,10 +258,8 @@
                                                     <ul class="items">
                                                         <li>
                                                             <a href="javascript:void(0);">
-                                                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14502" width="18" height="18">
-                                                                    <path d="M368 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14503"></path>
-                                                                    <path d="M656 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14504"></path>
-                                                                </svg>
+                                                                <em></em>
+                                                                <em></em>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -320,10 +312,8 @@
                                                         <ul class="items">
                                                             <li>
                                                                 <a href="javascript:void(0);">
-                                                                    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14502" width="18" height="18">
-                                                                        <path d="M368 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14503"></path>
-                                                                        <path d="M656 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="14504"></path>
-                                                                    </svg>
+                                                                    <em></em>
+                                                                    <em></em>
                                                                 </a>
                                                             </li>
                                                         </ul>
