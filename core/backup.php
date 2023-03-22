@@ -1,4 +1,4 @@
-<?php $name = "Joe";
+<?php $name = "Word";
 $db = Typecho_Db::get();
 if (isset($_POST['type'])) {
     if ($_POST["type"] == "备份设置") {
