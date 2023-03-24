@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.1.8.9
+ * @version  1.1.9.6
  * @link https://xwsir.cn
  */
 
@@ -114,7 +114,6 @@
 							<li class="item" data-type="created">最新</li>
 							<li class="item" data-type="views">热门</li>
 							<li class="item" data-type="commentsNum">评论</li>
-							<!-- <li class="item" data-type="agree">点赞</li> -->
 							<li class="line"></li>
 						</ul>
 						<?php

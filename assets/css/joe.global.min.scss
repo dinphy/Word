@@ -554,12 +554,6 @@
 	margin-right: -2rem;
 	z-index: 1000;
 	transition: top 0.35s;
-	&.active {
-		top: -60px;
-		background: var(--background);
-		border-top-left-radius: var(--radius-wrap);
-		border-top-right-radius: var(--radius-wrap);
-	}
 	&__above {
 		position: relative;
 		z-index: 666;

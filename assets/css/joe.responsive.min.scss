@@ -416,6 +416,12 @@ html {
 			&_header {
 				position: sticky;
 				top: 0;
+				background: none;
+				box-shadow: none;
+				&.active {
+					background: var(--new-background);
+					box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+				}
 				&__above {
 					.joe_container {
 						justify-content: space-between;
@@ -901,14 +907,22 @@ html {
 					}
 					&-searchicon {
 						margin-right: 10px;
+						fill: var(--background);
 					}
 					&-slideicon {
 						margin-left: 10px;
+						fill: var(--background);
 					}
 				}
 				&__searchout {
 					top: 0;
 					border-radius: 0;
+				}
+				&.active {
+					.joe_header__above-searchicon,
+					.joe_header__above-slideicon {
+						fill: var(--main);
+					}
 				}
 			}
 			&_container,
