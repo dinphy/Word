@@ -33,14 +33,13 @@
                 <?php $this->need('public/batten.php'); ?>
                 <section class="joe_adaption">
                     <?php $this->comments()->to($comments); ?>
-
                     <div class="joe_cross" id="comments">
                         <h3 class="joe_cross__title">
                             <span><i class="zm zm-pinglun-1"></i> 言之有理</span>
                             <span><?php $this->commentsNum(); ?> 言，<?php _getViews($this); ?> 阅</span>
                         </h3>
-
                         <div id="<?php $this->respondId(); ?>" class="joe_cross__respond" style="display: <?php if (!$this->user->hasLogin()) : ?>none<?php endif; ?>">
+
                             <form method="post" class="joe_cross__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
                                 <div class="body">
                                     <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="<?php if ($this->user->hasLogin()) : ?>说点儿什么吧<?php else : ?>我也说一句..<?php endif; ?>"></textarea>
@@ -138,8 +137,18 @@
                             <div class="comment-list__item-contain" id="<?php $comments->theId(); ?>">
                                 <div class="term">
                                     <div class="content">
-                                        <div class="user">
-                                            <span class="author"><?php $comments->author(); ?><?php _getParentReply($comments->parent) ?><i>说：</i></span>
+                                        <div class="handle">
+                                            <?php if ($comments->parent) {
+                                                $comments->author();
+                                            } ?>
+                                            <time class="date" datetime="<?php $comments->dateWord(); ?>"><?php $comments->dateWord(); ?></time>
+                                            <?php $suport = _getSupport($comments->coid) ?>
+                                            <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
+                                                <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
+                                            </a>
+                                            <span class="reply joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">
+                                                <em></em><em></em>
+                                            </span>
                                         </div>
                                         <div class="substance">
                                             <?php
@@ -150,31 +159,24 @@
                                             if (strpos($comments->content, '私语#') == true) {
                                                 $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
                                                 if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
-                                                    _parseCommentReply(str_replace('私语#', '', $comments->content));
+                                                    echo _getParentReply($comments->parent) . _parseCommentReply(str_replace('私语#', '', str_replace('<p>', '<span>', $comments->content)));
                                                 } else {
                                                     echo '<div class="secret">此条为私语，发布者可见</div>';
                                                 }
                                             } else {
-                                                _parseCommentReply($comments->content);
+                                                echo _getParentReply($comments->parent) . _parseCommentReply(str_replace('<p>', '<span>', $comments->content));
                                             }
                                             ?>
-                                            <div class="handle">
-                                                <time class="date" datetime="<?php $comments->dateWord(); ?>"><?php $comments->dateWord(); ?></time>
-                                                <?php $suport = _getSupport($comments->coid) ?>
-                                                <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
-                                                    <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
-                                                </a>
-                                                <span class="reply joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">
-                                                    <i class="zm zm-liu-yan"></i>
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <?php if ($comments->children) : ?>
-                                <div class="comment-list__item-children">
-                                    <?php $comments->threadedComments($options); ?>
+                                <div class="joe_cross__panel">
+                                    <div class="joe_cross__panel-header"><?php _commentNum($comments); ?></div>
+                                    <div class="joe_cross__panel-body comment-list__item-children">
+                                        <?php $comments->threadedComments($options); ?>
+                                    </div>
                                 </div>
                             <?php endif; ?>
                         </li>

@@ -674,53 +674,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	/* 动态页面 */
-	{
-		if ($('#joe_dynamic-form').length) {
-			let isSubmit = false;
-			$('#joe_dynamic-form').on('submit', function (e) {
-				e.preventDefault();
-				const action = $('#joe_dynamic-form').attr('action') + '?time=' + +new Date();
-				const type = $('#joe_dynamic-form').attr('data-type');
-				const text = $("#joe_dynamic-form textarea[name='text']").val();
-				const _ = $("#joe_dynamic-form input[name='_']").val();
-				if (type === 'text' && text.trim() === '') return Qmsg.info('你还没说点什么呢！');
-				if (isSubmit) return;
-				isSubmit = true;
-				$('#joe_dynamic-form .form-foot button').html('发布中...');
-				$.ajax({
-					url: action,
-					type: 'POST',
-					data: { text, _ },
-					dataType: 'text',
-					success(res) {
-						let arr = [],
-							str = '';
-						arr = $(res).contents();
-						Array.from(arr).forEach(_ => {
-							if (_.parentNode.className === 'container') str = _;
-						});
-						if (!/Joe/.test(res)) {
-							Qmsg.warning(str.textContent.trim() || '');
-							isSubmit = false;
-							$('#joe_dynamic-form .form-foot button').html('发布');
-						} else {
-							window.location.reload();
-						}
-					},
-					error() {
-						isSubmit = false;
-						$('#joe_dynamic-form .form-foot button').html('发布');
-						Qmsg.warning('发布失败，请刷新重试！');
-					}
-				});
-			});
-		}
-		$('.joe_dynamic .content img:not(img.owo_image)').each(function () {
-			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Joe" href="${$(this).attr('src')}"></span>`));
-		});
-	}
-
 	/* 动态发表 */
 	{
 		if ($('.joe_cross').length) {
@@ -819,6 +772,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		$('.comment-list__item .term .content .user .author a').each((index, item) => $(item).attr('target', '_blank'));
 	}
 
+	/* 动态评论展开 */
+	{
+		$('.joe_cross__panel-header').click(function () {
+			$(this).hide();
+			$(this).next('.joe_cross__panel-body').slideToggle();
+			$(this).parent('.joe_cross__panel').siblings().find('.joe_cross__panel-body').slideUp();
+		});
+	}
 	/* 格式化分页的hash值 */
 	{
 		$('.joe_cross .joe_pagination a').each((index, item) => {
@@ -841,7 +802,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				dataType: 'json',
 				success: res => {
 					if (res.success) {
-						$(this).removeClass('zm zm-icon_dianzan_x').addClass('zm zm-icon_dianzan_m');
+						$(this).removeClass('zm zm-unlike').addClass('zm zm-like');
 						$(this).text(res.count);
 						Qmsg.success('谢谢你支持~');
 					} else {

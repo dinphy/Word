@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="https://lib.baomitu.com/animate.css/3.7.2/animate.min.css" />
 <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="https://lib.baomitu.com/aplayer/1.10.1/APlayer.min.css" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1159885_syvp0if9gpm.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1159885_aq7qptpvhk.css">
 <script src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?php $this->options->themeUrl('assets/js/joe.scroll.js'); ?>"></script>
 <script src="https://lib.baomitu.com/lazysizes/5.3.2/lazysizes.min.js"></script>

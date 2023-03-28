@@ -3,7 +3,7 @@
 function _getVersion()
 {
 	$info = Typecho_Plugin::parseInfo(Helper::options()->themeFile(Helper::options()->theme, 'index.php'));
-    return $info['version'];
+	return $info['version'];
 };
 
 /* 判断是否是手机 */
@@ -262,15 +262,30 @@ function _getThumbnails($item)
 	return $result;
 }
 
-
-
 /* 获取父级评论 */
 function _getParentReply($parent)
 {
 	if ($parent !== "0") {
 		$db = Typecho_Db::get();
 		$commentInfo = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ?', $parent));
-		echo '<div class="parent"><span style="vertical-align: 1px;">@</span>' . $commentInfo['author'] . '</div>';
+		echo '<span>@' . $commentInfo['author'] . '：</span>';
+	}
+}
+
+function _commentNum($parent)
+{
+	$db = Typecho_Db::get();
+	$childrenNum = $db->fetchObject(
+		$db->select('COUNT(coid) AS count')
+			->from('table.comments')
+			->where('status = ?', 'approved')
+			->where('parent = ?', $parent->coid)
+	)->count;
+
+	if ($childrenNum == 0) {
+		return;
+	} else {
+		echo '<a href="javascript:void(0);">展开评论 /<span style="padding: 0 5px;">' . $childrenNum . '</span>条</a>';
 	}
 }
 
@@ -365,13 +380,13 @@ function _getSupport($coid)
 	}
 	if (!in_array($coid, $support)) {
 		return [
-			'icon' => 'zm zm-thumb-up-line',
+			'icon' => 'zm zm-unlike',
 			'count' => $row['support'],
 			'text' => ''
 		];
 	} else {
 		return [
-			'icon' => 'zm zm-thumb-up-fill',
+			'icon' => 'zm zm-like',
 			'count' => $row['support'],
 			'text' => ''
 		];
