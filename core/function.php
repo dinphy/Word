@@ -272,15 +272,24 @@ function _getParentReply($parent)
 	}
 }
 
-function _commentNum($parent)
+/* 获取子评论数量 */
+function getChildCommentCount($parent_id)
 {
 	$db = Typecho_Db::get();
-	$childrenNum = $db->fetchObject(
-		$db->select('COUNT(coid) AS count')
-			->from('table.comments')
-			->where('status = ?', 'approved')
-			->where('parent = ?', $parent->coid)
-	)->count;
+	$sub_comment_count = $db->fetchObject($db->select('COUNT(*)')->from('table.comments')
+		->where('parent = ?', $parent_id))->{"COUNT(*)"};
+	$sub_comments = $db->fetchAll($db->select()->from('table.comments')
+		->where('parent = ?', $parent_id));
+	foreach ($sub_comments as $sub_comment) {
+		$sub_comment_count += getChildCommentCount($sub_comment['coid']);
+	}
+	return $sub_comment_count;
+}
+
+/* 统计子评论总数 */
+function _commentNum($comment)
+{
+	$childrenNum = getChildCommentCount($comment->coid);
 
 	if ($childrenNum == 0) {
 		return;

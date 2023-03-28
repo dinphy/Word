@@ -4936,7 +4936,9 @@
 										padding-top: 10px;
 										background: var(--background);
 										a {
-											color: var(--theme);
+											&:first-child {
+												color: var(--theme);
+											}
 											&:hover {
 												opacity: 0.8;
 											}
@@ -4987,6 +4989,14 @@
 						&:last-child {
 							border-bottom: none;
 							padding-bottom: 0;
+						}
+						.joe_cross__panel {
+							&-header {
+								display: none;
+							}
+							&-body {
+								display: block;
+							}
 						}
 					}
 				}
