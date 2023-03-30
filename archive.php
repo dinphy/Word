@@ -214,11 +214,11 @@
                                                     <div class="time"><?php $this->dateWord(); ?></div>
                                                 </div>
                                             </div>
-                                            <a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer">
-                                                <div class="content">
-                                                    <div class="abstract"><?php _getAbstract($this) ?></div>
-                                                </div>
-                                            </a>
+                                            <div class="content">
+                                                <div class="abstract"><?php _getAbstract($this) ?></div>
+                                                <div class="content-full" style="display: none;"><?php $this->content(); ?></div>
+                                                <a href="#" class="content-more">全文</a>
+                                            </div>
                                             <div class="meta">
                                                 <ul class="items">
                                                     <li>

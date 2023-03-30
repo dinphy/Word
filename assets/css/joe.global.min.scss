@@ -2203,6 +2203,12 @@
 				line-height: 1.8rem;
 				background: var(--classD);
 				color: var(--seat);
+				&-full {
+					color: var(--routine);
+				}
+				&-more {
+					color: var(--theme);
+				}
 				&::before {
 					content: '';
 					width: 0;
