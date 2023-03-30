@@ -35,7 +35,7 @@ function _checkXSS($text)
         '/width:/is',
         '/height=/is',
         '/height:/is',
-        '/src=/is',
+        //'/src=/is',
     );
     if (strip_tags($text)) {
         for ($i = 0; $i < count($list); $i++) {
@@ -52,7 +52,7 @@ function _checkXSS($text)
 function _parseCommentReply($text)
 {
     if (_checkXSS($text)) {
-        echo "该回复疑似异常，已被系统拦截！";
+        echo "内容疑似灌水，已作拦截处理！";
     } else {
         $text = _parseReply($text);
         echo preg_replace('/\{!\{([^\"]*)\}!\}/', '<img class="lazyload draw_image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="$1" alt="画图"/>', $text);
@@ -83,7 +83,7 @@ function _parseReply($text)
 function _parseLeavingReply($text)
 {
     if (_checkXSS($text)) {
-        echo "该回复疑似异常，已被系统拦截！";
+        echo "内容疑似灌水，已作拦截处理！";
     } else {
         $text = strip_tags($text);
         $text = _parseReply($text);
@@ -95,7 +95,7 @@ function _parseLeavingReply($text)
 function _parseAsideReply($text, $type = true)
 {
     if (_checkXSS($text)) {
-        echo "该回复疑似异常，已被系统拦截！";
+        echo "内容疑似灌水，已作拦截处理！";
     } else {
         $text = strip_tags($text);
         $text = preg_replace('/\{!\{([^\"]*)\}!\}/', '# 图片回复', $text);

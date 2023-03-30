@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="content">
                                 <div class="abstract">${_.abstract}</div>
 								<div class="content-full" style="display: none;">${_.content}</div>
-                                <a href="#" class="content-more">全文</a>
+                                <a href="javascript:void(0);" class="content-more">全文</a>
                             </div>
                         
                         <div class="meta">

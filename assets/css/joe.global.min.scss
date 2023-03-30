@@ -2205,6 +2205,9 @@
 				color: var(--seat);
 				&-full {
 					color: var(--routine);
+					img {
+						width: 100%;
+					}
 				}
 				&-more {
 					color: var(--theme);

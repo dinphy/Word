@@ -715,8 +715,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			});
 		}
-		$('.joe_cross .content img:not(img.owo_image)').each(function () {
-			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Joe" href="${$(this).attr('src')}"></span>`));
+		$('.joe_cross .content img:not(img.owo_image),.joe_list__item.chat .content-full img:not(img.owo_image)').each(function () {
+			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Word" href="${$(this).attr('src')}"></span>`));
 		});
 	}
 
