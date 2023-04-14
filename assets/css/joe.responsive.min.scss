@@ -1,52 +1,10 @@
 /* 基类：基于 最大屏幕 + 有侧边栏 下进行适配 */
 
 html {
-	@media (max-width: 1760px) {
-		#live2d-widget {
-			visibility: hidden;
-		}
-	}
-
 	@media (max-width: 1400px) {
 		.joe {
 			&_vplayer {
 				height: 450px;
-			}
-			&_wallpaper {
-				&__list {
-					grid-template-columns: repeat(3, 1fr);
-				}
-			}
-			&_video {
-				&__list {
-					&-item {
-						.item {
-							.thumb {
-								height: 210px;
-							}
-						}
-					}
-				}
-				&__detail {
-					&-info {
-						.thumbnail {
-							width: 165px;
-							height: 235px;
-						}
-					}
-				}
-				&__player {
-					&-play {
-						height: 480px;
-					}
-				}
-			}
-			&_live {
-				&__play {
-					&-player {
-						height: 500px;
-					}
-				}
 			}
 			&_detail {
 				&__article {
@@ -141,52 +99,11 @@ html {
 					}
 				}
 			}
-			&_video {
-				&__list {
-					&-item {
-						grid-template-columns: repeat(4, 1fr);
-						.item {
-							.title {
-								height: 34px;
-								line-height: 34px;
-							}
-						}
-					}
-				}
-				&__detail {
-					&-info {
-						.thumbnail {
-							width: 155px;
-							height: 220px;
-						}
-					}
-				}
-				&__player {
-					&-play {
-						height: 450px;
-					}
-				}
-				&__source {
-					&-list {
-						grid-template-columns: repeat(5, 1fr);
-					}
-				}
-			}
 			&_owo {
 				&__contain {
 					.box .scroll .item {
 						width: calc(100% / 12);
 					}
-				}
-			}
-			&_live {
-				&__play {
-					&-player {
-						height: 430px;
-					}
-				}
-				&__list {
-					grid-template-columns: repeat(2, 1fr);
 				}
 			}
 			&_list {
@@ -285,20 +202,6 @@ html {
 			&_action {
 				.aside {
 					display: none;
-				}
-			}
-			&_video {
-				&__player {
-					&-play {
-						height: 400px;
-					}
-				}
-			}
-			&_live {
-				&__play {
-					&-player {
-						height: 400px;
-					}
 				}
 			}
 			&_detail {
@@ -581,14 +484,6 @@ html {
 					}
 				}
 			}
-			&_wallpaper {
-				&__list {
-					grid-template-columns: repeat(2, 1fr);
-				}
-				&__pagination {
-					justify-content: center;
-				}
-			}
 			&_detail {
 				&__friends {
 					grid-template-columns: repeat(1, 1fr);
@@ -713,67 +608,6 @@ html {
 								font-size: 13px;
 							}
 						}
-					}
-				}
-			}
-			&_video {
-				&__list {
-					&-item {
-						grid-template-columns: repeat(2, 1fr);
-						.item {
-							.thumb {
-								height: 200px;
-							}
-						}
-					}
-				}
-				&__pagination {
-					justify-content: center;
-				}
-				&__detail {
-					&-info {
-						.thumbnail {
-							width: 125px;
-							height: 180px;
-						}
-						.description {
-							dt {
-								font-size: 16px;
-								margin-bottom: 8px;
-							}
-							dd {
-								font-size: 13px;
-								margin-bottom: 5px;
-								line-height: 20px;
-								max-height: 40px;
-								&:not(:last-child) {
-									-webkit-line-clamp: 1;
-								}
-							}
-						}
-					}
-				}
-				&__player {
-					&-play {
-						height: 225px;
-					}
-				}
-				&__source {
-					&-list {
-						grid-template-columns: repeat(3, 1fr);
-					}
-				}
-			}
-			&_live {
-				&__pagination {
-					justify-content: center;
-				}
-				&__list {
-					grid-template-columns: repeat(1, 1fr);
-				}
-				&__play {
-					&-player {
-						height: 185px;
 					}
 				}
 			}

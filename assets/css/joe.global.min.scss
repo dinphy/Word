@@ -581,9 +581,8 @@
 			align-items: center;
 			margin-top: 3rem;
 			margin-right: -1rem;
-			&.active {
-				position: sticky;
-			}
+			position: sticky;
+			transition: top 0.5s;
 			&:hover {
 				color: var(--theme);
 			}

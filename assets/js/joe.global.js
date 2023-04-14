@@ -580,15 +580,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			} else {
 				if (window.pageYOffset >= $('.joe_header').height() && diffY <= 0) {
 					if (flag) return;
-					$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
-					$('.joe_menu .joe_header__above-nav')
-						.addClass('active')
-						.css('top', $('.joe_header').height() + 15);
+					$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
 					flag = true;
 				} else {
 					if (!flag) return;
-					$('.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height());
-					$('.joe_menu .joe_header__above-nav').removeClass('active').css('top', $('.joe_header').height());
+					$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height());
 					flag = false;
 				}
 			}
