@@ -72,7 +72,6 @@ function themeInit($self)
         };
     }
 
-
     /* 增加自定义SiteMap功能 */
     if (Helper::options()->JSiteMap && Helper::options()->JSiteMap !== 'off') {
         if (strpos($self->request->getRequestUri(), 'sitemap.xml') !== false) {

@@ -1,4 +1,4 @@
-<div class="joe_menu">
+<div class="joe_menu" style="display: <?php echo $this->is('post') ? 'none' : '' ?>">
     <nav class="joe_header__above-nav">
         <a class="item <?php echo $this->is('index') ? 'active' : '' ?>" href="<?php $this->options->siteUrl(); ?>" title="首页">首页</a>
         <?php $this->widget('Widget_Metas_Category_List')->to($category); ?>

@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.2.0.7
+ * @version  1.2.0.8
  * @link https://xwsir.cn
  */
 
