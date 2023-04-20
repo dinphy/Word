@@ -38,6 +38,7 @@ function _getPost($self)
                     "title" => $item->title,
                     "content" => $item->content,
                     "abstract" => _getAbstract($item, false),
+                    "chatContent" => _getContent($item, false),
                     "category" => $item->categories,
                     "views" => _getViews($item, false),
                     "commentsNum" => number_format($item->commentsNum),
@@ -45,6 +46,10 @@ function _getPost($self)
                     "permalink" => $item->permalink,
                     "lazyload" => _getLazyload(false),
                     "type" => "sticky",
+                    "cid" => $item->cid,
+                    "name" => $item->author->screenName,
+                    "authorlink" => $item->author->permalink,
+                    "avatar" => _getAvatarByMail($item->author->mail, false)
                 );
             }
         }
@@ -59,6 +64,7 @@ function _getPost($self)
             "title" => $item->title,
             "content" => $item->content,
             "abstract" => _getAbstract($item, false),
+            "chatContent" => _getContent($item, false),
             "category" => $item->categories,
             "views" => number_format($item->views),
             "commentsNum" => number_format($item->commentsNum),

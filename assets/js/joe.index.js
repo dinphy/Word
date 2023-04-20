@@ -174,14 +174,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             </a>
 							<a class="category" target="_blank" rel="noopener noreferrer" href="${_.category.length && _.category[0].permalink}">${_.category.length && _.category[0].name}</a>
                             <div class="desc">
-                                <div class="title"><a href="${_.permalink}" target="_blank" rel="noopener noreferrer">${_.title}</a></div>
+                                <div class="title"><a href="${_.permalink}" target="_blank" rel="noopener noreferrer"><span class="badge" style="display: ${_.type === 'sticky' ? 'inline-block' : 'none'}">置顶</span>${_.title}</a></div>
                                 <div class="time">${_.created}</div>
                             </div>
                         </div>
                         
                             <div class="content">
                                 <div class="abstract">${_.abstract}</div>
-								<div class="content-full" style="display: none;">${_.content}</div>
+								<div class="content-full" style="display: none;">${_.chatContent}</div>
                                 <a href="javascript:void(0);" class="content-more">全文</a>
                             </div>
                         

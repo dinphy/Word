@@ -206,20 +206,41 @@ function _getAbstract($item, $type = true)
 {
 	$abstract = "";
 	if ($item->password) {
-		$abstract = "加密文章，请前往内页查看详情";
+		$abstract = "加密文章，请前往内页查看";
 	} else {
 		if ($item->fields->abstract) {
 			$abstract = $item->fields->abstract;
 		} else {
 			$abstract = strip_tags($item->excerpt);
 			if (strpos($abstract, '{hide') !== false) {
-				$abstract = preg_replace('/{hide[^}]*}([\s\S]*?){\/hide}/', '隐藏内容，请前往内页查看详情', $abstract);
+				$abstract = preg_replace('/{hide[^}]*}([\s\S]*?){\/hide}/', '隐藏内容，请前往内页查看', $abstract);
 			}
 		}
 	}
 	if ($abstract === '') $abstract = "暂无简介";
 	if ($type) echo $abstract;
 	else return $abstract;
+}
+
+/* 获取文章内容 */
+function _getContent($item, $type = true)
+{
+	$content = "";
+	if ($item->password) {
+		$content = "加密文章，请前往内页查看";
+	} else {
+		if ($item->content) {
+			$content = $item->content;
+		} else {
+			$content = strip_tags($item->content);
+			if (strpos($content, '{hide') !== false) {
+				$content = preg_replace('/{hide[^}]*}([\s\S]*?){\/hide}/', '隐藏内容，请前往内页查看', $content);
+			}
+		}
+	}
+	if ($content === '') $content = "暂无内容";
+	if ($type) echo $content;
+	else return $content;
 }
 
 /* 获取列表缩略图 */

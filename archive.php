@@ -216,7 +216,7 @@
                                             </div>
                                             <div class="content">
                                                 <div class="abstract"><?php _getAbstract($this) ?></div>
-                                                <div class="content-full" style="display: none;"><?php $this->content(); ?></div>
+                                                <div class="content-full" style="display: none;"><?php _getContent($this); ?></div>
                                                 <a href="javascript:void(0);" class="content-more">全文</a>
                                             </div>
                                             <div class="meta">
