@@ -567,14 +567,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		const handleHeader = diffY => {
 			if (window.pageYOffset >= $('.joe_header').height() && diffY <= 0) {
 				if (flag) return;
-				$('.joe_header').addClass('active');
-				$('.joe_tabbar').addClass('active');
+				$('.joe_header,.joe_tabbar').addClass('active');
 				$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
 				flag = true;
 			} else {
 				if (!flag) return;
-				$('.joe_header').removeClass('active');
-				$('.joe_tabbar').removeClass('active');
+				$('.joe_header,.joe_tabbar').removeClass('active');
 				$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height());
 				flag = false;
 			}

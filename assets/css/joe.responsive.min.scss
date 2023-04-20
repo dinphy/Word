@@ -293,6 +293,9 @@ html {
 			}
 			&_tabbar {
 				display: block;
+				&.active {
+					bottom: -60px;
+				}
 			}
 			&_footer {
 				padding-bottom: 3.5rem;
