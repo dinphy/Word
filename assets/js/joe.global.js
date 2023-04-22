@@ -855,4 +855,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 	}
+	/* tabbar高亮显示当前 */
+	{
+		var current = window.location.href;
+		$('.joe_tabbar__item a').each(function () {
+			if ($(this).attr('href') == current) {
+				$(this).addClass('active');
+			}
+		});
+	}
 });

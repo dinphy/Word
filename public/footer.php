@@ -100,7 +100,6 @@
     </div>
 </div>
 
-
 <style>
     .mouse-cursor {
         position: fixed;
@@ -181,7 +180,6 @@
     console.log("%c页面加载耗时：<?php _endCountTime(); ?> | Theme By Joe", "color:#fff; background: linear-gradient(270deg, #986fee, #8695e6, #68b7dd, #18d7d3); padding: 8px 15px; border-radius: 0 15px 0 15px");
     <?php $this->options->JCustomScript() ?>
 </script>
-
 <?php $this->options->JCustomBodyEnd() ?>
 
 <?php $this->footer(); ?>
