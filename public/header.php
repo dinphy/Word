@@ -169,12 +169,12 @@
                                     if (strpos($item->content, '私语#') == true) {
                                         $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
                                         if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
-                                            _parseAsideReply(str_replace('私语#', '', $item->content));
+                                            _parseCommentReply(str_replace('私语#', '', $item->content));
                                         } else {
                                             echo '<div class="secret">此条为私语，发布者可见</div>';
                                         }
                                     } else {
-                                        _parseAsideReply($item->content);
+                                        _parseCommentReply($item->content);
                                     }
                                     ?>
                                 </a>
