@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.2.1.3
+ * @version  1.2.1.4
  * @link https://xwsir.cn
  */
 
@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="https://lib.baomitu.com/Swiper/5.4.5/css/swiper.min.css">
 	<script src="https://lib.baomitu.com/Swiper/5.4.5/js/swiper.min.js"></script>
 	<script src="https://lib.baomitu.com/wow/1.1.2/wow.min.js"></script>
-	<script src="<?php $this->options->themeUrl('assets/js/joe.index.min.js'); ?>?<?php echo _getVersion(); ?>"></script>
 </head>
 
 <body>

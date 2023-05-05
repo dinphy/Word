@@ -933,10 +933,10 @@
 		}
 	}
 	&__notice {
-		position: absolute;
+		position: fixed;
 		top: 2rem;
-		left: 0;
-		right: 0;
+		max-width: 30rem;
+		width: 100%;
 		z-index: 999;
 		display: none;
 		&.active {
@@ -944,9 +944,7 @@
 		}
 		&-inner {
 			padding: 15px;
-			max-width: 420px !important;
-			width: 100% !important;
-			margin: auto;
+			width: 100%!important;
 			background: rgb(0 0 0 / 10%);
 			.item {
 				padding-bottom: 0 !important;
