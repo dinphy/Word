@@ -238,11 +238,12 @@ function _getArticleFiling($self)
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
     $result = [];
-    $sql = "SELECT FROM_UNIXTIME(created, '%Y 年 %m 月') as date FROM `{$prefix}contents` WHERE created < {$time} AND (password is NULL or password = '') AND status = 'publish' AND type = 'post' GROUP BY FROM_UNIXTIME(created, '%Y 年 %m 月') DESC LIMIT {$pageSize} OFFSET {$offset}";
+    $sql = "SELECT FROM_UNIXTIME(created, '%Y 年 %m 月') as date, COUNT(*) as count FROM `{$prefix}contents` WHERE created < {$time} AND (password is NULL or password = '') AND status = 'publish' AND type = 'post' GROUP BY FROM_UNIXTIME(created, '%Y 年 %m 月') DESC LIMIT {$pageSize} OFFSET {$offset}";
     $temp = $db->fetchAll($sql);
     $options = Typecho_Widget::widget('Widget_Options');
     foreach ($temp as $item) {
         $date = $item['date'];
+        $count = $item['count'];
         $list = [];
         $sql = "SELECT * FROM `{$prefix}contents` WHERE created < {$time} AND (password is NULL or password = '') AND status = 'publish' AND type = 'post' AND FROM_UNIXTIME(created, '%Y 年 %m 月') = '{$date}' ORDER BY created DESC LIMIT 100";
         $_list = $db->fetchAll($sql);
@@ -267,7 +268,7 @@ function _getArticleFiling($self)
                 "permalink" => $_item['permalink'],
             );
         }
-        $result[] = array("date" => $date, "list" => $list);
+        $result[] = array("date" => $date, "count" => $count, "list" => $list);
     }
     $self->response->throwJson($result);
 }
