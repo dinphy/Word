@@ -3,6 +3,12 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 3rem;
+	flex: 1;
+}
+
+.joe_newnotice {
+	display: flex;
+	justify-content: center;
 }
 
 .joe_notice {
@@ -944,7 +950,7 @@
 		}
 		&-inner {
 			padding: 15px;
-			width: 100%!important;
+			width: 100% !important;
 			background: rgb(0 0 0 / 10%);
 			.item {
 				padding-bottom: 0 !important;

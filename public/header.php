@@ -131,63 +131,6 @@
         </div>
     </div>
 
-    <div class="joe_header__notice">
-        <section class="joe_aside__item newreply joe_header__notice-inner">
-            <div class="joe_aside__item-title">
-                <svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-                    <path d="M834.346057 855.835999 189.678502 855.835999c-47.472198 0-85.974094-38.533618-85.974094-85.957721l0-515.746324c0-47.39238 38.501896-85.957721 85.974094-85.957721L834.346057 168.174234c47.40773 0 85.957721 38.566364 85.957721 85.957721l0 85.957721c0 10.216689-7.131421 18.723434-16.597003 20.946055-24.542976 9.849322-245.737774 135.092791-381.037273 212.608236-6.939039 3.965312-15.429411 3.75758-22.240537-0.528026L264.060583 422.721651c-9.993608-6.412037-12.967336-19.698644-6.603395-29.692253 6.395664-10.008958 19.698644-12.983709 29.692253-6.619768L512.579703 529.881253C757.821173 389.384381 844.658937 342.327646 877.324918 326.547241l0-72.415286c0-23.695678-19.314904-42.97886-42.97886-42.97886L189.678502 211.153094c-23.712051 0-42.97886 19.283182-42.97886 42.97886l0 515.746324c0 23.712051 19.266809 42.97886 42.97886 42.97886L834.346057 812.857139c23.663956 0 42.97886-19.266809 42.97886-42.97886l0-257.873162c0-11.864212 9.593496-21.521153 21.473057-21.521153s21.505803 9.657964 21.505803 21.521153l0 257.873162C920.303778 817.302381 881.753787 855.835999 834.346057 855.835999L834.346057 855.835999z" p-id="11334"></path>
-                </svg>
-                <span class="text">最新消息</span>
-                <span class="line"></span>
-            </div>
-            <div class="joe_header__notice-close">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
-                </svg>
-            </div>
-            <?php $this->widget('Widget_Comments_Recent', 'ignoreAuthor=true&pageSize=5')->to($item); ?>
-            <ul class="joe_aside__item-contain">
-                <?php if ($item->have()) : ?>
-                    <?php while ($item->next()) : ?>
-                        <li class="item">
-                            <div class="user">
-                                <div class="info">
-                                    <div class="author">
-                                        <?php $item->author(false) ?>
-                                        <span class="date"> · <?php $item->date('m-d'); ?></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="reply">
-                                <a class="link" href="<?php _parseAsideLink($item->permalink); ?>">
-                                    <?php
-                                    $db = Typecho_Db::get();
-                                    $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $item->parent)->limit(1));
-                                    $smhf = $item->mail;
-                                    $user = Typecho_Widget::widget('Widget_User');
-                                    if (strpos($item->content, '私语#') == true) {
-                                        $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
-                                        if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
-                                            _parseCommentReply(str_replace('私语#', '', $item->content));
-                                        } else {
-                                            echo '<div class="secret">此条为私语，发布者可见</div>';
-                                        }
-                                    } else {
-                                        _parseCommentReply($item->content);
-                                    }
-                                    ?>
-                                </a>
-                            </div>
-                        </li>
-                    <?php endwhile; ?>
-                <?php else : ?>
-                    <li class="empty">暂无任何消息！</li>
-                <?php endif; ?>
-            </ul>
-        </section>
-    </div>
-
     <div class="joe_header__searchout">
         <div class="joe_container">
             <div class="joe_header__searchout-inner">
