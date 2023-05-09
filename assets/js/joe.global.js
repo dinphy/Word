@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 侧边栏开关 */
 	{
 		$('.joe_action_item.aside').on('click', function () {
-			$('.joe_aside,.joe_menu').toggle(100);
+			$('.joe_aside,.joe_menu').toggle('slow');
 		});
 	}
 
