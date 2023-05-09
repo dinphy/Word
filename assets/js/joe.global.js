@@ -364,29 +364,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 初始化昼夜模式 */
 	{
-		if (localStorage.getItem('data-night')) {
-			$('.joe_action_item.mode .icon-1').addClass('active');
-			$('.joe_action_item.mode .icon-2').removeClass('active');
-		} else {
-			$('html').removeAttr('data-night');
-			$('.joe_action_item.mode .icon-1').removeClass('active');
-			$('.joe_action_item.mode .icon-2').addClass('active');
-		}
-		$('.joe_action_item.mode').on('click', () => {
-			if (localStorage.getItem('data-night')) {
-				$('.joe_action_item.mode .icon-1').removeClass('active');
-				$('.joe_action_item.mode .icon-2').addClass('active');
-				$('html').removeAttr('data-night');
-				localStorage.removeItem('data-night');
-				$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'none');
-			} else {
+		let currentMode = localStorage.getItem('data-night') ? 'manual' : 'auto';
+
+		const toggleMode = mode => {
+			if (mode === 'manual') {
 				$('.joe_action_item.mode .icon-1').addClass('active');
 				$('.joe_action_item.mode .icon-2').removeClass('active');
 				$('html').attr('data-night', 'night');
 				localStorage.setItem('data-night', 'night');
 				$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'brightness(0.5)');
+			} else {
+				$('.joe_action_item.mode .icon-1').removeClass('active');
+				$('.joe_action_item.mode .icon-2').addClass('active');
+				$('html').removeAttr('data-night');
+				localStorage.removeItem('data-night');
+				$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'none');
+			}
+			currentMode = mode;
+		};
+
+		const checkTime = () => {
+			const now = new Date();
+			const hour = now.getHours();
+			if (localStorage.getItem('data-night')) {
+				toggleMode('manual');
+			} else if (currentMode === 'auto' && (hour >= 18 || hour < 10)) {
+				toggleMode('manual');
+			} else if (currentMode === 'manual' && hour >= 10 && hour < 18) {
+				toggleMode('auto');
+			}
+		};
+
+		if (currentMode === 'manual') {
+			toggleMode('manual');
+		} else {
+			toggleMode('auto');
+		}
+
+		$('.joe_action_item.mode').on('click', () => {
+			if (currentMode === 'manual') {
+				toggleMode('auto');
+			} else {
+				toggleMode('manual');
 			}
 		});
+
+		setInterval(() => {
+			checkTime();
+		}, 60000);
+
+		checkTime();
 	}
 
 	/* 动态背景 */
