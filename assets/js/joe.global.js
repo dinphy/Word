@@ -388,9 +388,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			const hour = now.getHours();
 			if (localStorage.getItem('data-night')) {
 				toggleMode('manual');
-			} else if (currentMode === 'auto' && (hour >= 18 || hour < 10)) {
+			} else if (currentMode === 'auto' && (hour >= 18 || hour < 6)) {
 				toggleMode('manual');
-			} else if (currentMode === 'manual' && hour >= 10 && hour < 18) {
+			} else if (currentMode === 'manual' && hour >= 6 && hour < 18) {
 				toggleMode('auto');
 			}
 		};
