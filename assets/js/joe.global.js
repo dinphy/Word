@@ -372,7 +372,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (localStorage.getItem('data-night')) {
 			activateNightMode();
-		} else if (!isNight()) {
+		} else if (isNight()) {
+			activateNightMode();
+		} else {
 			deactivateNightMode();
 		}
 
