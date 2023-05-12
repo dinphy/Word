@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		$('.joe_action_item.mode').on('click', () => {
-			if (localStorage.getItem('data-night') || isNight()) {
+			if (localStorage.getItem('data-night')) {
 				deactivateNightMode();
 			} else {
 				activateNightMode();
