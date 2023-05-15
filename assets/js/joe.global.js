@@ -895,32 +895,30 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 头部滚动 */
 	{
 		let flag = true;
+		let Y = window.pageYOffset;
+
 		const handleHeader = diffY => {
-			if (window.pageYOffset >= $('.joe_header').height() && diffY <= 0) {
-				if (flag) return;
+			const headerHeight = $('.joe_header').height();
+			flag = window.pageYOffset >= headerHeight && diffY <= 0 ? true : false;
+
+			if (flag) {
 				$('.joe_header,.joe_tabbar').addClass('active');
-				$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height() + 15);
-				flag = true;
+				$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', headerHeight + 15);
 			} else {
-				if (!flag) return;
 				$('.joe_header,.joe_tabbar').removeClass('active');
-				$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', $('.joe_header').height());
-				flag = false;
+				$('.joe_menu .joe_header__above-nav,.joe_aside .joe_aside__item:last-child').css('top', headerHeight);
 			}
 		};
-		let Y = window.pageYOffset;
+
 		handleHeader(Y);
+
 		let _last = Date.now();
 		document.addEventListener('scroll', () => {
 			let _now = Date.now();
 			if (_now - _last > 15) {
 				handleHeader(Y - window.pageYOffset);
 				Y = window.pageYOffset;
-				if (Y >= $('.joe_header').height()) {
-					$('.joe_header').addClass('active');
-				} else {
-					$('.joe_header').removeClass('active');
-				}
+				$('.joe_header').toggleClass('active', Y >= $('.joe_header').height());
 			}
 			_last = _now;
 		});
