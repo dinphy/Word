@@ -123,22 +123,7 @@
                                 </div>
                                 <div class="reply">
                                     <a class="link" href="<?php _parseAsideLink($item->permalink); ?>">
-                                        <?php
-                                        $db = Typecho_Db::get();
-                                        $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $item->parent)->limit(1));
-                                        $smhf = $item->mail;
-                                        $user = Typecho_Widget::widget('Widget_User');
-                                        if (strpos($item->content, '私语#') == true) {
-                                            $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
-                                            if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
-                                                _parseCommentReply(str_replace('私语#', '', $item->content));
-                                            } else {
-                                                echo '<div class="secret">此条为私语，发布者可见</div>';
-                                            }
-                                        } else {
-                                            _parseCommentReply($item->content);
-                                        }
-                                        ?>
+                                        <?php secretComment($item); ?>
                                     </a>
                                 </div>
                             </li>

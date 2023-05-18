@@ -151,22 +151,7 @@
                                             </span>
                                         </div>
                                         <div class="substance">
-                                            <?php
-                                            $db = Typecho_Db::get();
-                                            $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $comments->parent)->limit(1));
-                                            $smhf = $comments->mail;
-                                            $user = Typecho_Widget::widget('Widget_User');
-                                            if (strpos($comments->content, '私语#') == true) {
-                                                $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
-                                                if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
-                                                    echo _getParentReply($comments->parent) . _parseCommentReply(str_replace('私语#', '', str_replace('<p>', '<span>', $comments->content)));
-                                                } else {
-                                                    echo '<div class="secret">此条为私语，发布者可见</div>';
-                                                }
-                                            } else {
-                                                echo _getParentReply($comments->parent) . _parseCommentReply(str_replace('<p>', '<span>', $comments->content));
-                                            }
-                                            ?>
+                                            <?php secretComment($comments); ?>
                                         </div>
                                     </div>
                                 </div>

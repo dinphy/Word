@@ -364,43 +364,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 初始化昼夜模式 */
 	{
+		let isNightMode = false;
+		const $modeBtn = $('.joe_action_item.mode');
+
 		function isNight() {
-			const now = new Date();
-			const hour = now.getHours();
-			return hour >= 18 || hour < 6;
+			const now = new Date().getHours();
+			return now >= 18 || now < 6;
 		}
-
-		if (localStorage.getItem('data-night')) {
-			activateNightMode();
-		} else if (isNight()) {
-			activateNightMode();
-		} else {
-			deactivateNightMode();
-		}
-
-		$('.joe_action_item.mode').on('click', () => {
-			if (localStorage.getItem('data-night')) {
-				deactivateNightMode();
-			} else {
-				activateNightMode();
-			}
-		});
 
 		function activateNightMode() {
-			$('.joe_action_item.mode .icon-1').addClass('active');
-			$('.joe_action_item.mode .icon-2').removeClass('active');
+			$modeBtn.find('.icon-1').addClass('active');
+			$modeBtn.find('.icon-2').removeClass('active');
 			$('html').attr('data-night', 'night');
 			localStorage.setItem('data-night', 'night');
 			$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'brightness(0.5)');
+			isNightMode = true;
+			localStorage.setItem('isNightMode', 'true');
 		}
 
 		function deactivateNightMode() {
-			$('.joe_action_item.mode .icon-1').removeClass('active');
-			$('.joe_action_item.mode .icon-2').addClass('active');
+			$modeBtn.find('.icon-1').removeClass('active');
+			$modeBtn.find('.icon-2').addClass('active');
 			$('html').removeAttr('data-night');
 			localStorage.removeItem('data-night');
 			$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'none');
+			isNightMode = false;
+			localStorage.setItem('isNightMode', 'false');
 		}
+
+		function checkNightMode() {
+			const lastStatus = localStorage.getItem('isNightMode');
+
+			if (lastStatus !== null) {
+				// 本地存储中有夜间模式设置状态记录
+				if (lastStatus === 'true') {
+					activateNightMode();
+				} else {
+					deactivateNightMode();
+				}
+			} else {
+				// 本地存储中没有夜间模式设置状态记录
+				if (localStorage.getItem('data-night')) {
+					activateNightMode();
+				} else if (isNight()) {
+					activateNightMode();
+				} else {
+					deactivateNightMode();
+				}
+			}
+		}
+
+		checkNightMode(); // 页面首次载入时，检查并自动切换到相应的模式
+
+		$modeBtn.on('click', () => {
+			if (isNightMode) {
+				deactivateNightMode();
+				console.log('已关闭夜间模式');
+			} else {
+				activateNightMode();
+				console.log('已开启夜间模式');
+			}
+		});
+
+		window.addEventListener('load', () => {
+			console.log(`当前${isNightMode ? '夜间' : '正常'}模式`);
+		});
+
+		window.addEventListener('beforeunload', () => {
+			localStorage.setItem('isNightMode', isNightMode ? 'true' : 'false');
+		});
 	}
 
 	/* 动态背景 */
@@ -726,9 +758,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 小屏幕伸缩侧边栏 */
 	{
 		$('.joe_header__above-slideicon').on('click', function () {
-			/* 关闭搜索框 */
-			$('.joe_header__searchout').removeClass('active');
-			/* 处理开启关闭状态 */
 			if ($('.joe_header__slideout').hasClass('active')) {
 				$('.joe_header__mask').removeClass('active slideout');
 				$('.joe_header__slideout').removeClass('active');
@@ -739,12 +768,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	/* 小屏幕搜索框 */
+	{
+		$('.joe_header__above-searchicon').on('click', function () {
+			if ($('.joe_header__searchout').hasClass('active')) {
+				$('.joe_header__mask').removeClass('active slideout');
+				$('.joe_header__searchout').removeClass('active');
+			} else {
+				$('.joe_header__mask').addClass('active');
+				$('.joe_header__searchout').addClass('active');
+			}
+		});
+	}
+
 	/* 消息弹窗 */
 	{
 		$('.joe_header__above-noticeicon').on('click', function () {
-			/* 关闭弹窗 */
-			$('.joe_header__notice').removeClass('active');
-			/* 处理开启关闭状态 */
 			if ($('.joe_header__notice').hasClass('active')) {
 				$('.joe_header__mask').removeClass('active slideout');
 				$('.joe_header__notice').removeClass('active');
@@ -758,22 +797,6 @@ document.addEventListener('DOMContentLoaded', () => {
 					$('.joe_header__notice').removeClass('active');
 				}
 			});
-		});
-	}
-
-	/* 小屏幕搜索框 */
-	{
-		$('.joe_header__above-searchicon').on('click', function () {
-			/* 关闭侧边栏 */
-			$('.joe_header__slideout').removeClass('active');
-			/* 处理开启关闭状态 */
-			if ($('.joe_header__searchout').hasClass('active')) {
-				$('.joe_header__mask').removeClass('active slideout');
-				$('.joe_header__searchout').removeClass('active');
-			} else {
-				$('.joe_header__mask').addClass('active');
-				$('.joe_header__searchout').addClass('active');
-			}
 		});
 	}
 
@@ -1161,16 +1184,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 私密评论 */
 	{
 		$('.privacy').on('click', function () {
-			if ($('.lock').css('opacity') == 0) {
-				$('#textarea').val('私语# ').focus();
-				$('.body').addClass('active');
-				$('.lock').addClass('active');
-				$('.unlock').removeClass('active');
+			const lock = $('.lock');
+			const textarea = $('#textarea');
+			const body = $('.body');
+			const unlock = $('.unlock');
+
+			if (lock.css('opacity') == 0) {
+				textarea.val('私语# ').focus();
+				body.add(lock).addClass('active');
+				unlock.removeClass('active');
 			} else {
-				$('#textarea').val('');
-				$('.body').removeClass('active');
-				$('.lock').removeClass('active');
-				$('.unlock').addClass('active');
+				textarea.val('');
+				body.add(lock).removeClass('active');
+				unlock.addClass('active');
 			}
 		});
 	}

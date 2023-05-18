@@ -138,7 +138,7 @@ function threadedComments($comments, $options)
                 <div class="content">
                     <div class="user">
                         <span class="author">
-                            <?php $comments->author(); ?><?php _getParentReply($comments->parent) ?>
+                            <?php $comments->author(); ?>
                         </span>
                         <span class="meta">
                             <span class="date"><?php $comments->dateWord(); ?></span>
@@ -149,22 +149,7 @@ function threadedComments($comments, $options)
                         <?php endif; ?>
                     </div>
                     <div class="substance">
-                        <?php
-                        $db = Typecho_Db::get();
-                        $smyk = $db->fetchRow($db->select('mail')->from('table.comments')->where('coid = ?', $comments->parent)->limit(1));
-                        $smhf = $comments->mail;
-                        $user = Typecho_Widget::widget('Widget_User');
-                        if (strpos($comments->content, '私语#') == true) {
-                            $ykmail = Typecho_Cookie::get('__typecho_remember_mail');
-                            if ($smhf == $user->mail or $smhf == $ykmail or $user->group == 'administrator' or $smyk['mail'] == $ykmail and !empty($smyk['mail'])) {
-                                _parseCommentReply(str_replace('私语#', '', $comments->content));
-                            } else {
-                                echo '<div class="secret">此条为私语，发布者可见</div>';
-                            }
-                        } else {
-                            _parseCommentReply($comments->content);
-                        }
-                        ?>
+                        <?php secretComment($comments); ?>
                     </div>
                 </div>
             </div>

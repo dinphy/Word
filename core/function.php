@@ -319,6 +319,41 @@ function _commentNum($comment)
 	}
 }
 
+/* 私密评论 */
+function secretComment($comments)
+{
+	$db = Typecho_Db::get();
+	$select = $db->select('mail')->from('table.comments')->where('coid = ?', $comments->parent)->limit(1);
+	$parent_comment = $db->fetchRow($select);
+
+	if ($parent_comment === null) {
+		$parent_comment_mail = '';
+	} else {
+		$parent_comment_mail = $parent_comment['mail'];
+	}
+
+	$user = Typecho_Widget::widget('Widget_User');
+	$comment_mail = $comments->mail;
+	$is_secret_comment = strpos($comments->content, '私语#') !== false;
+
+	if ($is_secret_comment) {
+		$remembered_mail = Typecho_Cookie::get('__typecho_remember_mail');
+
+		if (
+			$comment_mail == $user->mail
+			|| $comment_mail == $remembered_mail
+			|| $user->group == 'administrator'
+			|| ($parent_comment_mail == $remembered_mail && !empty($parent_comment_mail))
+		) {
+			echo _getParentReply($comments->parent) . _parseCommentReply(str_replace('私语#', '', str_replace('<p>', '<span>', $comments->content)));
+		} else {
+			echo '<div class="secret">此条为私语，发布者可见</div>';
+		}
+	} else {
+		echo _getParentReply($comments->parent) . _parseCommentReply(str_replace('<p>', '<span>', $comments->content));
+	}
+}
+
 /* 获取侧边栏作者随机文章 */
 function _getRandomPosts()
 {
@@ -422,6 +457,7 @@ function _getSupport($coid)
 		];
 	}
 }
+
 function _addSupport($coid)
 {
 	$db = Typecho_Db::get();
@@ -442,6 +478,7 @@ function _addSupport($coid)
 		return false;
 	}
 }
+
 /* 时间格式化：几小时前、几天前 */
 function _dateFormat($time)
 {
