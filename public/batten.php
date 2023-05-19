@@ -1,6 +1,6 @@
 <?php if ($this->is('index')) :  ?>
     <div class="joe_batten joe_batten-index">
-        <img width="100%" height="100%" class="image lazyload" src="https://pic.imgdb.cn/item/620e24df2ab3f51d9132481f.png" data-src="<?php $this->options->JIndex_Top_Image() ?>" />
+        <img width="100%" height="100%" class="image lazyload" src="<?php _getLazyload() ?>" data-src="<?php $this->options->JIndex_Top_Image() ?>" />
         <div class="information motto">
             <div class="title"><?php $this->options->title() ?></div>
             <div class="desctitle">

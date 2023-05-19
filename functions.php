@@ -250,19 +250,30 @@ function themeConfig($form)
          zm-pinglun3 || 碎语 || cross.html
          zm-guidang || 归档 || archives.html
          zm-wo || 关于 || about.html',
-        '自定义底部导航（非必填）',
-        '提示：将在底部导航上显示，请参考示例填写，一行一个，为空则不显示<br />
+        '底部导航（非必填）',
+        '提示：请参考示例填写，一行一个，为空则不显示<br />
             格式：图标 || 名称 || 链接 （中间使用 || 分隔）<br />
             示例：<br />
             zm-home2 || 首页 || index.html <br />
             zm-pinglun3 || 碎语 || cross.html <br />
             zm-guidang || 归档 || archives.html <br />
             zm-wo || 关于 || about.html <br />
-            更多图标：<a href="https://www.iconfont.cn/" target="_blank">阿里巴巴矢量图标库</a>
+            更多图标：<a href="https://www.iconfont.cn/" target="_blank">阿里巴巴矢量图标库</a> <br />
             '
     );
     $JFooter_Tabbar->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JFooter_Tabbar);
+
+    $Tabbar_Icon_Link = new Typecho_Widget_Helper_Form_Element_Text(
+        'Tabbar_Icon_Link',
+        NULL,
+        NULL,
+        '自定义底部导航图标（非必填）',
+        '介绍：如果你需要改变图标，请将自己的图标链接填写在此处，一般为图标的 css 链接 <br />
+         注意：图标的前缀是 zm，如果不是，将不能正常显示'
+    );
+    $Tabbar_Icon_Link->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($Tabbar_Icon_Link);
 
     $JFooter_Left = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFooter_Left',
