@@ -258,16 +258,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
 			}
 		};
-		let queryData = { page: 1, pageSize: window.Joe.PAGE_SIZE, type: 'created' };
+		let queryData = { page: window.Joe.PAGE_INDEX, pageSize: window.Joe.PAGE_SIZE, type: window.Joe.TYPE_INDEX };
 		const initDom = () => {
 			$('.joe_index__list .joe_list').html('');
 			$('.joe_load').show();
 			let activeItem = $('.joe_index__title-title .item[data-type="' + queryData.type + '"]');
-			let activeLine = $('.joe_index__title-title .line');
 			activeItem.addClass('active').siblings().removeClass('active');
-			if ($('.joe_index__title').length) {
-				activeLine.css({ left: activeItem.position().left, width: activeItem.width() });
-			}
 		};
 		const pushDom = () => {
 			return new Promise((reslove, reject) => {
@@ -298,12 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 		initDom();
 		pushDom();
-		$('.joe_index__title-title .item').on('click', async function () {
-			if ($(this).attr('data-type') === queryData.type) return;
-			queryData = { page: 1, pageSize: window.Joe.PAGE_SIZE, type: $(this).attr('data-type') };
-			initDom();
-			pushDom();
-		});
 		$('.joe_load').on('click', async function () {
 			if ($(this).attr('loading')) return;
 			queryData.page++;
@@ -1092,11 +1082,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	/* 动态回复网址为新窗口打开 */
-	{
-		$('.comment-list__item .term .content .user .author a').each((index, item) => $(item).attr('target', '_blank'));
-	}
-
 	/* 动态评论展开 */
 	{
 		$('.joe_cross__panel-header').click(function () {
@@ -1118,7 +1103,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 动态点赞 */
 	{
-		$('.support').on('click', function () {
+		const supportBtns = $('.support');
+		supportBtns.on('click', function () {
 			$.ajax({
 				url: `/?action=support`,
 				type: 'POST',

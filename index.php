@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.2.2.9
+ * @version  1.2.3.4
  * @link https://xwsir.cn
  */
 
@@ -108,31 +108,27 @@
 							</ul>
 						</div>
 					<?php endif; ?>
-					<div class="joe_index__title">
-						<ul class="joe_index__title-title">
-							<li class="item" data-type="created">最新</li>
-							<li class="item" data-type="views">热门</li>
-							<li class="item" data-type="commentsNum">评论</li>
-							<li class="line"></li>
-						</ul>
-						<?php
-						$index_notice_text = $this->options->JIndex_Notice;
-						$index_notice = null;
-						if ($index_notice_text) {
-							$index_notice_arr = explode("||", $index_notice_text);
-							if (count($index_notice_arr) === 2) $index_notice = array("text" => trim($index_notice_arr[0]), "url" => trim($index_notice_arr[1]));
-						}
-						?>
-						<?php if ($index_notice) : ?>
-							<div class="joe_index__title-notice">
-								<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-									<path d="M656.261 347.208a188.652 188.652 0 1 0 0 324.05v-324.05z" fill="#F4CA1C" />
-									<path d="M668.35 118.881a73.35 73.35 0 0 0-71.169-4.06l-310.01 148.68a4.608 4.608 0 0 1-2.013.46h-155.11a73.728 73.728 0 0 0-73.728 73.636v349.64a73.728 73.728 0 0 0 73.728 73.636h156.554a4.68 4.68 0 0 1 1.94.43l309.592 143.196a73.702 73.702 0 0 0 104.668-66.82V181.206a73.216 73.216 0 0 0-34.453-62.326zM125.403 687.237v-349.64a4.608 4.608 0 0 1 4.608-4.608h122.035v358.882H130.048a4.608 4.608 0 0 1-4.644-4.634zm508.319 150.441a4.608 4.608 0 0 1-6.564 4.193L321.132 700.32V323.773l305.97-146.723a4.608 4.608 0 0 1 6.62 4.157v656.471zM938.26 478.72H788.01a34.509 34.509 0 1 0 0 69.018H938.26a34.509 34.509 0 1 0 0-69.018zM810.01 360.96a34.447 34.447 0 0 0 24.417-10.102l106.245-106.122a34.524 34.524 0 0 0-48.84-48.809L785.587 302.08a34.509 34.509 0 0 0 24.423 58.88zm24.417 314.609a34.524 34.524 0 1 0-48.84 48.814L891.832 830.52a34.524 34.524 0 0 0 48.84-48.809z" fill="#595BB3" />
-								</svg>
-								<a href="<?php echo $index_notice['url'] ?>" target="_blank" rel="noopener noreferrer nofollow"><?php echo $index_notice['text'] ?></a>
+					<?php
+					$index_notice_text = $this->options->JIndex_Notice;
+					$index_notice = null;
+					if ($index_notice_text) {
+						$index_notice_arr = explode("||", $index_notice_text);
+						if (count($index_notice_arr) === 2) $index_notice = array("text" => trim($index_notice_arr[0]), "url" => trim($index_notice_arr[1]));
+					}
+					?>
+					<?php if ($index_notice) : ?>
+						<div class="joe_index__title">
+							<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+								<path d="M656.261 347.208a188.652 188.652 0 1 0 0 324.05v-324.05z" fill="#F4CA1C" />
+								<path d="M668.35 118.881a73.35 73.35 0 0 0-71.169-4.06l-310.01 148.68a4.608 4.608 0 0 1-2.013.46h-155.11a73.728 73.728 0 0 0-73.728 73.636v349.64a73.728 73.728 0 0 0 73.728 73.636h156.554a4.68 4.68 0 0 1 1.94.43l309.592 143.196a73.702 73.702 0 0 0 104.668-66.82V181.206a73.216 73.216 0 0 0-34.453-62.326zM125.403 687.237v-349.64a4.608 4.608 0 0 1 4.608-4.608h122.035v358.882H130.048a4.608 4.608 0 0 1-4.644-4.634zm508.319 150.441a4.608 4.608 0 0 1-6.564 4.193L321.132 700.32V323.773l305.97-146.723a4.608 4.608 0 0 1 6.62 4.157v656.471zM938.26 478.72H788.01a34.509 34.509 0 1 0 0 69.018H938.26a34.509 34.509 0 1 0 0-69.018zM810.01 360.96a34.447 34.447 0 0 0 24.417-10.102l106.245-106.122a34.524 34.524 0 0 0-48.84-48.809L785.587 302.08a34.509 34.509 0 0 0 24.423 58.88zm24.417 314.609a34.524 34.524 0 1 0-48.84 48.814L891.832 830.52a34.524 34.524 0 0 0 48.84-48.809z" fill="#595BB3" />
+							</svg>
+							<div class=" joe_index__title-notice">
+
+								<a href="<?php echo $index_notice['url'] ?>" target="_blank" rel="noopener noreferrer nofollow" title="<?php echo $index_notice['text'] ?>"><?php echo $index_notice['text'] ?></a>
 							</div>
-						<?php endif; ?>
-					</div>
+						</div>
+					<?php endif; ?>
+
 					<div class="joe_index__list" data-wow="<?php $this->options->JList_Animate() ?>">
 						<ul class="joe_list"></ul>
 						<ul class="joe_list__loading">
@@ -158,14 +154,34 @@
 							</li>
 						</ul>
 					</div>
+					<?php if ($this->options->JPageStatus === 'default') : ?>
+						<?php $this->pageNav(
+							'<svg class="icon icon-prev" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M822.272 146.944l-396.8 396.8c-19.456 19.456-51.2 19.456-70.656 0-18.944-19.456-18.944-51.2 0-70.656l396.8-396.8c19.456-19.456 51.2-19.456 70.656 0 18.944 19.456 18.944 45.056 0 70.656z"/><path d="M745.472 940.544l-396.8-396.8c-19.456-19.456-19.456-51.2 0-70.656 19.456-19.456 51.2-19.456 70.656 0l403.456 390.144c19.456 25.6 19.456 51.2 0 76.8-26.112 19.968-51.712 19.968-77.312.512zm-564.224-63.488c0-3.584 0-7.68.512-11.264h-.512v-714.24h.512c-.512-3.584-.512-7.168-.512-11.264 0-43.008 21.504-78.336 48.128-78.336s48.128 34.816 48.128 78.336c0 3.584 0 7.68-.512 11.264h.512v714.24h-.512c.512 3.584.512 7.168.512 11.264 0 43.008-21.504 78.336-48.128 78.336s-48.128-35.328-48.128-78.336z"/></svg>',
+							'<svg class="icon icon-next" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M822.272 146.944l-396.8 396.8c-19.456 19.456-51.2 19.456-70.656 0-18.944-19.456-18.944-51.2 0-70.656l396.8-396.8c19.456-19.456 51.2-19.456 70.656 0 18.944 19.456 18.944 45.056 0 70.656z"/><path d="M745.472 940.544l-396.8-396.8c-19.456-19.456-19.456-51.2 0-70.656 19.456-19.456 51.2-19.456 70.656 0l403.456 390.144c19.456 25.6 19.456 51.2 0 76.8-26.112 19.968-51.712 19.968-77.312.512zm-564.224-63.488c0-3.584 0-7.68.512-11.264h-.512v-714.24h.512c-.512-3.584-.512-7.168-.512-11.264 0-43.008 21.504-78.336 48.128-78.336s48.128 34.816 48.128 78.336c0 3.584 0 7.68-.512 11.264h.512v714.24h-.512c.512 3.584.512 7.168.512 11.264 0 43.008-21.504 78.336-48.128 78.336s-48.128-35.328-48.128-78.336z"/></svg>',
+							1,
+							'...',
+							array(
+								'wrapTag' => 'ul',
+								'wrapClass' => 'joe_pagination',
+								'itemTag' => 'li',
+								'textTag' => 'a',
+								'currentClass' => 'active',
+								'prevClass' => 'prev',
+								'nextClass' => 'next'
+							)
+						);
+						?>
+					<?php else : ?>
+						<div class="joe_load">查看更多</div>
+					<?php endif ?>
 				</div>
-				<div class="joe_load">查看更多</div>
 			</div>
-			<?php if ($this->options->JAside_Switch === "on") : ?>
-				<?php $this->need('public/aside.php'); ?>
-			<?php endif; ?>
 		</div>
-		<?php $this->need('public/footer.php'); ?>
+		<?php if ($this->options->JAside_Switch === "on") : ?>
+			<?php $this->need('public/aside.php'); ?>
+		<?php endif; ?>
+	</div>
+	<?php $this->need('public/footer.php'); ?>
 	</div>
 </body>
 

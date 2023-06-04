@@ -32,26 +32,27 @@
                 <?php $this->need('public/header.php'); ?>
                 <?php $this->need('public/batten.php'); ?>
                 <section class="joe_adaption">
-                    <?php $this->comments()->to($comments); ?>
+                    <?php
+                    $this->comments()->to($comments);
+                    $is_login = $this->user->hasLogin();
+                    ?>
                     <div class="joe_cross" id="comments">
                         <h3 class="joe_cross__title">
                             <span><i class="zm zm-pinglun-1"></i> 言之有理</span>
                             <span><?php $this->commentsNum(); ?> 言，<?php _getViews($this); ?> 阅</span>
                         </h3>
-                        <div id="<?php $this->respondId(); ?>" class="joe_cross__respond" style="display: <?php if (!$this->user->hasLogin()) : ?>none<?php endif; ?>">
-
+                        <div id="<?php $this->respondId(); ?>" class="joe_cross__respond" style="display: <?php echo $is_login ? 'block' : 'none'; ?>">
                             <form method="post" class="joe_cross__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
                                 <div class="body">
-                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="<?php if ($this->user->hasLogin()) : ?>说点儿什么吧<?php else : ?>我也说一句..<?php endif; ?>"></textarea>
+                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="<?php echo $is_login  ? '说点儿什么吧' : '我也说一句..'; ?>"></textarea>
                                 </div>
-                                <?php if ($this->user->hasLogin()) : ?>
-                                <?php else : ?>
+                                <?php if (!$is_login) : ?>
                                     <div class="head">
                                         <div class="list">
-                                            <input id="author" type="text" value="<?php $this->user->hasLogin() ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
+                                            <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
                                         </div>
                                         <div class="list">
-                                            <input id="mail" type="text" value="<?php $this->user->hasLogin() ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
+                                            <input id="mail" type="text" value="<?php echo $is_login ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
                                         </div>
                                         <div class="list">
                                             <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
@@ -88,7 +89,7 @@
                                     <div class="submit">
                                         <span class="cancle joe_cross__cancle">取消</span>
                                         <button type="submit">
-                                            <?php if ($this->user->hasLogin()) : ?>发表<?php else : ?>确定<?php endif; ?>
+                                            <?php echo $is_login ? '发表' : '确定'; ?>
                                         </button>
                                     </div>
                                 </div>
@@ -115,58 +116,53 @@
                             ?>
                         <?php endif; ?>
                     </div>
+                </section>
 
-                    <?php
-                    if ($this->user->hasLogin()) {
-                        $GLOBALS['isLogin'] = true;
-                    } else {
-                        $GLOBALS['isLogin'] = false;
-                    }
-                    function threadedComments($comments, $options)
-                    {
-                        if ($comments->authorId) {
-                            if ($comments->authorId == $comments->ownerId) {
-                                $commentClass = 'comment-by-author';
-                            }
+                <?php
+                function threadedComments($comments, $options)
+                {
+                    if ($comments->authorId) {
+                        if ($comments->authorId == $comments->ownerId) {
+                            $commentClass = 'comment-by-author';
                         }
-                    ?>
-                        <li class="comment-list__item">
-                            <div class="tail"></div>
-                            <div class="headline-light"></div>
-                            <div class="headline"></div>
-                            <div class="comment-list__item-contain" id="<?php $comments->theId(); ?>">
-                                <div class="term">
-                                    <div class="content">
-                                        <div class="handle">
-                                            <?php if ($comments->parent) {
-                                                $comments->author();
-                                            } ?>
-                                            <time class="date" datetime="<?php $comments->dateWord(); ?>"><?php $comments->dateWord(); ?></time>
-                                            <?php $suport = _getSupport($comments->coid) ?>
-                                            <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
-                                                <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
-                                            </a>
-                                            <span class="reply joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">
-                                                <em></em><em></em>
-                                            </span>
-                                        </div>
-                                        <div class="substance">
-                                            <?php secretComment($comments); ?>
-                                        </div>
+                    }
+                ?>
+                    <li class="comment-list__item">
+                        <div class="tail"></div>
+                        <div class="headline-light"></div>
+                        <div class="headline"></div>
+                        <div class="comment-list__item-contain" id="<?php $comments->theId(); ?>">
+                            <div class="term">
+                                <div class="content">
+                                    <div class="handle">
+                                        <?php if ($comments->parent) {
+                                            $comments->author();
+                                        } ?>
+                                        <time class="date" datetime="<?php $comments->dateWord(); ?>"><?php $comments->dateWord(); ?></time>
+                                        <?php $suport = _getSupport($comments->coid) ?>
+                                        <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
+                                            <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
+                                        </a>
+                                        <span class="reply joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">
+                                            <em></em><em></em>
+                                        </span>
+                                    </div>
+                                    <div class="substance">
+                                        <?php secretComment($comments); ?>
                                     </div>
                                 </div>
                             </div>
-                            <?php if ($comments->children) : ?>
-                                <div class="joe_cross__panel">
-                                    <div class="joe_cross__panel-header"><?php _commentNum($comments); ?></div>
-                                    <div class="joe_cross__panel-body comment-list__item-children">
-                                        <?php $comments->threadedComments($options); ?>
-                                    </div>
+                        </div>
+                        <?php if ($comments->children) : ?>
+                            <div class="joe_cross__panel">
+                                <div class="joe_cross__panel-header"><?php _commentNum($comments); ?></div>
+                                <div class="joe_cross__panel-body comment-list__item-children">
+                                    <?php $comments->threadedComments($options); ?>
                                 </div>
-                            <?php endif; ?>
-                        </li>
-                    <?php } ?>
-                </section>
+                            </div>
+                        <?php endif; ?>
+                    </li>
+                <?php } ?>
             </div>
         </div>
         <?php $this->need('public/footer.php'); ?>

@@ -96,19 +96,21 @@ function themeInit($self)
 /* 增加自定义字段 */
 function themeFields($layout)
 {
-    $mode = new Typecho_Widget_Helper_Form_Element_Select(
-        'mode',
-        array(
-            'default' => '默认模式',
-            'single' => '大图模式',
-            'multiple' => '三图模式',
-            'none' => '无图模式',
-            'chat' => '闲谈模式'
-        ),
-        'default',
-        '文章模式'
-    );
-    $layout->addItem($mode);
+    if ($_SERVER['SCRIPT_NAME'] == "/admin/write-post.php") {
+        $mode = new Typecho_Widget_Helper_Form_Element_Select(
+            'mode',
+            array(
+                'default' => '默认模式',
+                'single' => '大图模式',
+                'multiple' => '三图模式',
+                'none' => '无图模式',
+                'chat' => '闲谈模式'
+            ),
+            'default',
+            '文章模式'
+        );
+        $layout->addItem($mode);
+    }
 
     $descTitle = new Typecho_Widget_Helper_Form_Element_Text(
         'desctitle',

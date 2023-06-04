@@ -88,12 +88,12 @@ function themeConfig($form)
     $JNavStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavStatus',
         array(
-            'on' => '开启（默认）',
-            'off' => '关闭'
+            'on' => '分类展开（默认）',
+            'off' => '分类合并'
         ),
         '3',
-        '导航分类合并',
-        '介绍：用于设置导航分类合并或展开'
+        '导航分类展开或合并',
+        '介绍：默认为展开，导航分类分开显示，合并时显示分类下拉菜单'
     );
     $JNavStatus->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JNavStatus->multiMode());
@@ -427,7 +427,7 @@ function themeConfig($form)
     $JAside_Author_Nick->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Nick);
     /* --------------------------------------- */
-    $JAside_Author_Avatar = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JAside_Author_Avatar = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Avatar',
         NULL,
         NULL,
@@ -438,7 +438,7 @@ function themeConfig($form)
     $JAside_Author_Avatar->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Avatar);
     /* --------------------------------------- */
-    $JAside_Author_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JAside_Author_Image = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Image',
         NULL,
         "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg",
@@ -449,7 +449,7 @@ function themeConfig($form)
     $JAside_Author_Image->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Image);
     /* --------------------------------------- */
-    $JAside_Wap_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JAside_Wap_Image = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Wap_Image',
         NULL,
         "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/wap_aside_image.jpg",
@@ -574,7 +574,7 @@ function themeConfig($form)
     $JAside_3DTag->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_3DTag->multiMode());
 
-    $JThumbnail = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JThumbnail = new Typecho_Widget_Helper_Form_Element_Text(
         'JThumbnail',
         NULL,
         NULL,
@@ -587,7 +587,7 @@ function themeConfig($form)
     $JThumbnail->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JThumbnail);
 
-    $JLazyload = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JLazyload = new Typecho_Widget_Helper_Form_Element_Text(
         'JLazyload',
         NULL,
         "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/lazyload.jpg",
@@ -598,7 +598,7 @@ function themeConfig($form)
     $JLazyload->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JLazyload);
 
-    $JWallpaper_Batten = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JWallpaper_Batten = new Typecho_Widget_Helper_Form_Element_Text(
         'JWallpaper_Batten',
         NULL,
         NULL,
@@ -629,7 +629,7 @@ function themeConfig($form)
     $JDynamic_Background->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JDynamic_Background->multiMode());
 
-    $JWallpaper_Background_PC = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JWallpaper_Background_PC = new Typecho_Widget_Helper_Form_Element_Text(
         'JWallpaper_Background_PC',
         NULL,
         NULL,
@@ -641,7 +641,7 @@ function themeConfig($form)
     $JWallpaper_Background_PC->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JWallpaper_Background_PC);
 
-    $JWallpaper_Background_WAP = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JWallpaper_Background_WAP = new Typecho_Widget_Helper_Form_Element_Text(
         'JWallpaper_Background_WAP',
         NULL,
         NULL,
@@ -652,7 +652,7 @@ function themeConfig($form)
     $JWallpaper_Background_WAP->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JWallpaper_Background_WAP);
 
-    $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Text(
         'JIndex_Top_Image',
         NULL,
         'https://pic.imgdb.cn/item/620e24df2ab3f51d9132481f.png',
@@ -704,7 +704,7 @@ function themeConfig($form)
     $JIndexSticky->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndexSticky);
 
-    $JIndex_Hot = new Typecho_Widget_Helper_Form_Element_Radio(
+    $JIndex_Hot = new Typecho_Widget_Helper_Form_Element_Select(
         'JIndex_Hot',
         array('off' => '关闭（默认）', 'on' => '开启'),
         'off',
@@ -714,7 +714,7 @@ function themeConfig($form)
     $JIndex_Hot->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Hot->multiMode());
 
-    $JIndex_Notice = new Typecho_Widget_Helper_Form_Element_Textarea(
+    $JIndex_Notice = new Typecho_Widget_Helper_Form_Element_Text(
         'JIndex_Notice',
         NULL,
         NULL,
@@ -725,6 +725,34 @@ function themeConfig($form)
     );
     $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Notice);
+
+    $IndexListOrder = new Typecho_Widget_Helper_Form_Element_Select(
+        'IndexListOrder',
+        array(
+            'created' => '按时间排序',
+            'views' => '按浏览排序',
+            'commentsNum' => '按评论排序',
+            'agree' => '按点赞排序',
+        ),
+        'created',
+        '首页文章排序方式',
+        '介绍：默认按时间排序，请选择一种您所喜欢的呈现形式'
+    );
+    $IndexListOrder->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($IndexListOrder->multiMode());
+
+    $JPageStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'JPageStatus',
+        array(
+            'default' => '普通分页（默认）',
+            'ajax' => '加载更多',
+        ),
+        'default',
+        '首页文章分页形式',
+        '介绍：选择一款您所喜欢的分页形式'
+    );
+    $JPageStatus->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JPageStatus->multiMode());
 
     $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriendsIndex',

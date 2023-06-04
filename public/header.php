@@ -108,7 +108,7 @@
                                 </svg>
                             </div>
                             <form class="joe_dropdown__menu form" method="post" name="login" action="<?php $this->options->loginAction() ?>">
-                                <input type="hidden" name="referer" value="<?php $this->options->siteUrl(); ?>">
+                                <input type="hidden" name="referer" value="<?php echo $this->request->getRequestUrl(); ?>">
                                 <div class="item">
                                     <input class="username" placeholder="Nickname" type="text" maxlength="16" name="name" autocomplete="off" />
                                 </div>
@@ -339,7 +339,7 @@
                     </a>
                     <ul class="slides panel-body">
                         <form id="loginForm" method="post" name="login" action="<?php $this->options->loginAction() ?>">
-                            <input type="hidden" name="referer" value="<?php $this->options->siteUrl(); ?>">
+                            <input type="hidden" name="referer" value="<?php echo $this->request->getRequestUrl(); ?>">
                             <li class="link">
                                 <input placeholder="请输入昵称" type="text" maxlength="16" name="name" autocomplete="off" />
                             </li>

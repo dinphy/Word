@@ -383,9 +383,6 @@ html {
 					}
 				}
 				&__title {
-					&-notice {
-						display: none;
-					}
 					&-title {
 						.item {
 							display: none;
@@ -828,7 +825,7 @@ html {
 				}
 				&__title {
 					margin-top: 0;
-					padding-left: 1rem;
+					padding-left: 5px;
 					border-bottom: none;
 					border-radius: 0;
 					height: 1.5rem;

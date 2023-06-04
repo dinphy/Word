@@ -152,6 +152,7 @@ function _getRecord($self)
     $header[] = "accept-language: en-US,en;q=0.8";
     $header[] = "CLIENT-IP:" . $ip;
     $header[] = "X-FORWARDED-FOR:" . $ip;
+    $header[] = "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $baiduSite);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);

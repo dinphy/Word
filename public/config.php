@@ -25,7 +25,9 @@
         LAZY_LOAD: `<?php _getLazyload() ?>`,
         BIRTHDAY: `<?php $this->options->JBirthDay() ?>`,
         MOTTO: `<?php _getAsideAuthorMotto() ?>`,
-        PAGE_SIZE: `<?php $this->parameter->pageSize() ?>`
+        PAGE_INDEX: `<?php echo $this->_currentPage; ?>` || 1,
+        PAGE_SIZE: `<?php $this->parameter->pageSize() ?>`,
+        TYPE_INDEX: `<?php echo $this->options->IndexListOrder ? $this->options->IndexListOrder() : 'created' ?>`
     }
 </script>
 <?php
