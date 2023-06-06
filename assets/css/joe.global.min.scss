@@ -4555,6 +4555,7 @@
 	&__respond {
 		padding-bottom: 1rem;
 		margin-top: 1rem;
+		display: none;
 		&-type {
 			display: flex;
 			align-items: center;
@@ -4620,6 +4621,8 @@
 				}
 			}
 			.body {
+				display: flex;
+				background: var(--classD);
 				padding: 15px;
 				.text {
 					width: 100%;
@@ -4629,6 +4632,25 @@
 					vertical-align: middle;
 					color: var(--routine);
 					background: transparent;
+				}
+				.submit {
+					display: flex;
+					align-items: center;
+					button {
+						padding: 5px;
+						border: none;
+						border-radius: 50%;
+						background: var(--theme);
+						color: var(--background);
+						svg {
+							width: 18px;
+							height: 18px;
+							fill: var(--background);
+						}
+						&:hover {
+							animation: 5s ease-in-out 0s infinite normal none running shaked;
+						}
+					}
 				}
 				&.active {
 					background: var(--classC);
@@ -4714,6 +4736,9 @@
 				}
 			}
 		}
+		&.active {
+			display: block;
+		}
 	}
 	._show {
 		display: flex;
@@ -4751,25 +4776,21 @@
 			.tail {
 				position: absolute;
 				left: 0.3rem;
-				top: 0;
+				top: 1.2rem;
+				bottom: 0;
 				width: 2px;
-				height: 100%;
+				height: auto;
 				background: var(--classC);
+				transform: translateX(-50%);
 			}
 			&:first-child {
 				border-top-left-radius: var(--radius-inner);
 				border-top-right-radius: var(--radius-inner);
-				.tail {
-					top: 0.3rem;
-				}
 			}
 			&:last-child {
 				margin-bottom: 0;
 				border-bottom-left-radius: var(--radius-inner);
 				border-bottom-right-radius: var(--radius-inner);
-				.tail {
-					top: -15px;
-				}
 			}
 			&-contain {
 				.joe_cross__respond {
@@ -4821,25 +4842,6 @@
 								font-size: 13px;
 								cursor: pointer;
 								transition: color 0.35s;
-								em {
-									width: 4px;
-									height: 4px;
-									background: var(--seat);
-									border-radius: var(--radius-wrap);
-									&:first-child {
-										margin-right: 4px;
-									}
-								}
-								&:hover {
-									color: var(--theme);
-								}
-							}
-							.cancle {
-								display: none;
-								color: var(--routine);
-								cursor: pointer;
-								margin-right: 10px;
-								transition: color 0.35s;
 								&:hover {
 									color: var(--theme);
 								}
@@ -4868,6 +4870,7 @@
 								padding: 10px 40px 10px 40px;
 								position: relative;
 								border-radius: 5px;
+								margin-bottom: 5px;
 								text-align: center;
 							}
 							.owo_image {
@@ -4891,17 +4894,8 @@
 			}
 			&-children {
 				position: relative;
-				&::before {
-					content: '';
-					width: 100%;
-					height: 0;
-					border-bottom: 1px solid var(--classC);
-					position: absolute;
-					right: 0;
-					bottom: 100%;
-				}
 				.comment-list {
-					margin: 1rem -1rem 0;
+					margin: 0 -1rem 0;
 					border-bottom: none;
 					&__item {
 						padding: 0 15px;
@@ -4923,11 +4917,8 @@
 									border-bottom: none;
 									.handle {
 										padding-top: 10px;
-										background: var(--background);
 										a {
-											&:first-child {
-												color: var(--theme);
-											}
+											color: var(--routine);
 											&:hover {
 												opacity: 0.8;
 											}
@@ -5003,11 +4994,19 @@
 	}
 	&__panel {
 		&-header {
-			text-align: center;
 			padding: 10px 0;
 			border-bottom: 1px dashed var(--seat);
-			a {
+			text-align: center;
+			.count,
+			.open {
 				color: var(--routine);
+				cursor: pointer;
+				&:hover {
+					color: var(--theme);
+				}
+				i {
+					padding: 0 10px;
+				}
 			}
 		}
 		&-body {

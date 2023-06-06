@@ -654,10 +654,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				$('.joe_comment__cancle').hide();
 				$('.joe_comment__title').after(respond);
 				$(".joe_comment__respond-type .item[data-type='text']").click();
-				/* window.scrollTo({
+				window.scrollTo({
 					top: $('.joe_comment').offset().top - $('.joe_header').height() - 15,
 					behavior: 'smooth'
-				}); */
+				});
 			});
 		}
 	}
@@ -1048,44 +1048,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	/* 动态回复 */
 	{
-		if ($('.joe_cross__respond').length) {
+		$('.joe_cross__reply').on('click', function () {
+			const coid = $(this).attr('data-coid');
+			const item = $('#' + $(this).attr('data-id'));
 			const respond = $('.joe_cross__respond');
-			/* 回复 */
-			$('.joe_cross__reply').on('click', function () {
-				const coid = $(this).attr('data-coid');
-				const item = $('#' + $(this).attr('data-id'));
+			const form = respond.find('.joe_cross__respond-form');
+
+			if ($(this).hasClass('active')) {
+				// 取消回复
+				$(this).removeClass('active').text('回复');
+				if (form.attr('data-coid', coid) && respond.hasClass('active')) {
+					form.removeAttr('data-coid');
+					respond.show();
+					$('.joe_cross__title').after(respond);
+					$(".joe_cross__respond-type .item[data-type='text']").click();
+					window.scrollTo({
+						top: $('.joe_cross').offset().top - $('.joe_header').height() - 15,
+						behavior: 'smooth'
+					});
+				} else {
+					respond.hide();
+				}
+			} else {
+				// 点击回复
+				$('.joe_cross__reply.active').removeClass('active').text('回复');
+				$(this).addClass('active').text('取消');
 				respond.show();
-				respond.find('.joe_cross__respond-form').attr('data-coid', coid);
+				form.attr('data-coid', coid);
 				item.append(respond);
 				$(".joe_cross__respond-type .item[data-type='text']").click();
 				$('#textarea').focus();
-				$('.joe_cross__cancle').show();
 				window.scrollTo({
 					top: item.offset().top - $('.joe_header').height() - 15,
 					behavior: 'smooth'
 				});
-			});
-			/* 取消回复 */
-			$('.joe_cross__cancle').on('click', function () {
-				if ($('.joe_cross__respond-form .head').length) {
-					respond.hide();
-				}
-				respond.find('.joe_cross__respond-form').removeAttr('data-coid');
-				$('.joe_cross__cancle').hide();
-				$('.joe_cross__title').after(respond);
-				$(".joe_cross__respond-type .item[data-type='text']").click();
-				window.scrollTo({
-					top: $('.joe_cross').offset().top - $('.joe_header').height() - 15,
-					behavior: 'smooth'
-				});
-			});
-		}
+			}
+		});
 	}
 
 	/* 动态评论展开 */
 	{
 		$('.joe_cross__panel-header').click(function () {
-			$(this).hide();
+			var linkText = $(this).find('.open').text();
+			var newText = linkText === '展开 ▽' ? '收起 △' : '展开 ▽';
+			$(this).find('.open').html(newText);
 			$(this).next('.joe_cross__panel-body').slideToggle();
 			$(this).parent('.joe_cross__panel').siblings().find('.joe_cross__panel-body').slideUp();
 		});

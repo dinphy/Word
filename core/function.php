@@ -315,7 +315,7 @@ function _commentNum($comment)
 	if ($childrenNum == 0) {
 		return;
 	} else {
-		echo '<a href="javascript:void(0);">展开评论 /<span style="padding: 0 5px;">' . $childrenNum . '</span>条</a>';
+		echo '<span class="count">余下' . $childrenNum . '条<i>/</i></span>';
 	}
 }
 
@@ -687,15 +687,28 @@ function _historyDay($created)
 	}
 }
 
-/* 数字k\w格式化 */
-function format_number($number)
+/**
+ * 格式化数字，超过1000的显示为k，超过10000的显示为w
+ *
+ * @param int|float $number 需要格式化的数字
+ * @param int $precision 可选参数，四舍五入保留小数点后几位，默认为 2 
+ * @return string
+ */
+function format_number($number, $precision = 2)
 {
+	if (!is_numeric($number)) {
+		return 'NaN';
+	}
+
+	$K_FORMAT = 'k';
+	$W_FORMAT = 'w';
+
 	if ($number >= 10000) {
 		# 判断是否超过w
-		$newNum = round($number / 1000, 2) . 'w';
+		$newNum = round($number / 10000, $precision) . $W_FORMAT;
 	} elseif ($number >= 1000) {
 		# 判断是否超过k
-		$newNum = round($number / 1000, 1) . 'k';
+		$newNum = round($number / 1000, $precision) . $K_FORMAT;
 	} else {
 		$newNum = $number;
 	}

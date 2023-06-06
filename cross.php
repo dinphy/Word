@@ -41,10 +41,17 @@
                             <span><i class="zm zm-pinglun-1"></i> 言之有理</span>
                             <span><?php $this->commentsNum(); ?> 言，<?php _getViews($this); ?> 阅</span>
                         </h3>
-                        <div id="<?php $this->respondId(); ?>" class="joe_cross__respond" style="display: <?php echo $is_login ? 'block' : 'none'; ?>">
+                        <div id="<?php $this->respondId(); ?>" class="joe_cross__respond <?php echo $is_login ? 'active' : ''; ?>">
                             <form method="post" class="joe_cross__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
                                 <div class="body">
                                     <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="<?php echo $is_login  ? '说点儿什么吧' : '我也说一句..'; ?>"></textarea>
+                                    <div class="submit">
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M1.94631 9.31555C1.42377 9.14137 1.41965 8.86034 1.95706 8.6812L21.0433 2.31913C21.5717 2.14297 21.8748 2.43878 21.7268 2.95706L16.2736 22.0433C16.1226 22.5718 15.8179 22.5901 15.5946 22.0877L12.0002 14.0002L18.0002 6.00017L10.0002 12.0002L1.94631 9.31555Z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                                 <?php if (!$is_login) : ?>
                                     <div class="head">
@@ -85,12 +92,6 @@
                                                 <path d="M19 10h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 1 1 14 0v1zM5 12v8h14v-8H5zm6 2h2v4h-2v-4zm6-4V9A5 5 0 0 0 7 9v1h10z" />
                                             </svg>
                                         </span>
-                                    </div>
-                                    <div class="submit">
-                                        <span class="cancle joe_cross__cancle">取消</span>
-                                        <button type="submit">
-                                            <?php echo $is_login ? '发表' : '确定'; ?>
-                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -140,22 +141,25 @@
                                         } ?>
                                         <time class="date" datetime="<?php $comments->dateWord(); ?>"><?php $comments->dateWord(); ?></time>
                                         <?php $suport = _getSupport($comments->coid) ?>
-                                        <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
-                                            <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
-                                        </a>
-                                        <span class="reply joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">
-                                            <em></em><em></em>
-                                        </span>
                                     </div>
                                     <div class="substance">
                                         <?php secretComment($comments); ?>
+                                        <div class="handle">
+                                            <?php $suport = _getSupport($comments->coid) ?>
+                                            <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
+                                                <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
+                                            </a>
+                                            <div class="reply">
+                                                <span class="joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">回复</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <?php if ($comments->children) : ?>
                             <div class="joe_cross__panel">
-                                <div class="joe_cross__panel-header"><?php _commentNum($comments); ?></div>
+                                <div class="joe_cross__panel-header"><?php echo $comments->children ? _commentNum($comments) : ''; ?><span class="open">展开 ▽</span></div>
                                 <div class="joe_cross__panel-body comment-list__item-children">
                                     <?php $comments->threadedComments($options); ?>
                                 </div>
