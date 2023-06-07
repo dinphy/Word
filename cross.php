@@ -44,28 +44,17 @@
                         <div id="<?php $this->respondId(); ?>" class="joe_cross__respond <?php echo $is_login ? 'active' : ''; ?>">
                             <form method="post" class="joe_cross__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
                                 <div class="body">
-                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="<?php echo $is_login  ? '说点儿什么吧' : '我也说一句..'; ?>"></textarea>
-                                    <div class="submit">
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path d="M1.94631 9.31555C1.42377 9.14137 1.41965 8.86034 1.95706 8.6812L21.0433 2.31913C21.5717 2.14297 21.8748 2.43878 21.7268 2.95706L16.2736 22.0433C16.1226 22.5718 15.8179 22.5901 15.5946 22.0877L12.0002 14.0002L18.0002 6.00017L10.0002 12.0002L1.94631 9.31555Z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
+                                    <?php if ($is_login) : ?>
+                                        <img class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($this->authorId ? $this->author->mail : $this->user->mail); ?>" />
+                                    <?php else : ?>
+                                        <?php if (!empty($this->remember('mail', true))) : ?>
+                                            <img class="avatar lazyload" src="<?php _getAvatarByMail($this->remember('mail', true)); ?>">
+                                        <?php else : ?>
+                                            <img class="avatar lazyload" src="<?php $this->options->themeUrl('assets/tx.png'); ?>">
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" rows="3" autocomplete="new-password" placeholder="<?php echo $is_login  ? '说点儿什么吧' : '我也说一句..'; ?>"></textarea>
                                 </div>
-                                <?php if (!$is_login) : ?>
-                                    <div class="head">
-                                        <div class="list">
-                                            <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
-                                        </div>
-                                        <div class="list">
-                                            <input id="mail" type="text" value="<?php echo $is_login ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
-                                        </div>
-                                        <div class="list">
-                                            <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
                                 <div class="foot">
                                     <div class="owo joe_owo__contain"></div>
                                     <div class="tool">
@@ -93,7 +82,25 @@
                                             </svg>
                                         </span>
                                     </div>
+                                    <div class="submit">
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path d="M1.94631 9.31555C1.42377 9.14137 1.41965 8.86034 1.95706 8.6812L21.0433 2.31913C21.5717 2.14297 21.8748 2.43878 21.7268 2.95706L16.2736 22.0433C16.1226 22.5718 15.8179 22.5901 15.5946 22.0877L12.0002 14.0002L18.0002 6.00017L10.0002 12.0002L1.94631 9.31555Z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
+                                <?php if (!$is_login) : ?>
+                                    <div class="head">
+                                        <div class="list">
+                                            <input id="mail" type="text" value="<?php echo $is_login ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
+                                            <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
+                                        </div>
+                                        <div class="list">
+                                            <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                             </form>
                         </div>
                         <?php if ($comments->have()) : ?>
@@ -144,7 +151,7 @@
                                     </div>
                                     <div class="substance">
                                         <?php secretComment($comments); ?>
-                                        <div class="handle">
+                                        <div class="handle" style="padding-top: 10px;">
                                             <?php $suport = _getSupport($comments->coid) ?>
                                             <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
                                                 <?php echo '' . $suport['count'] . '' . $suport['text'] ?>

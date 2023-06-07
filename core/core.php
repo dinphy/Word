@@ -48,21 +48,6 @@ function themeInit($self)
             case 'handle_agree':
                 _handleAgree($self);
                 break;
-            case 'wallpaper_type':
-                _getWallpaperType($self);
-                break;
-            case 'wallpaper_list':
-                _getWallpaperList($self);
-                break;
-            case 'maccms_list':
-                _getMaccmsList($self);
-                break;
-            case 'huya_list':
-                _getHuyaList($self);
-                break;
-            case 'server_status':
-                _getServerStatus($self);
-                break;
             case 'comment_lately':
                 _getCommentLately($self);
                 break;

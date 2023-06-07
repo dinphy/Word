@@ -4583,75 +4583,47 @@
 			border-radius: 5px;
 			margin-top: 10px;
 			box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 4%);
-			border: 1px solid var(--classC);
+			border: 1px solid var(--classA);
 			background: var(--background);
 			.head {
-				display: flex;
-				align-items: center;
-				border-bottom: 1px solid var(--classC);
+				margin: 0 5px;
 				.list {
-					flex: 1;
+					display: flex;
+					align-items: center;
 					input {
 						width: 100%;
-						border: none;
-						background: transparent;
-						padding: 0 15px;
+						border: 1px solid var(--classC);
+						border-radius: var(--radius-inner);
+						background: var(--classD);
 						height: 40px;
 						color: var(--routine);
-					}
-					&:nth-child(2) {
 						position: relative;
-						&::after,
-						&::before {
-							content: '';
-							position: absolute;
-							top: 50%;
-							transform: translateY(-50%);
-							width: 1px;
-							height: 15px;
-							background: var(--classA);
-						}
-						&::before {
-							left: 0;
-						}
-						&::after {
-							right: 0;
-						}
+						padding: 0 10px;
+						margin: 0 5px 10px;
 					}
 				}
 			}
 			.body {
 				display: flex;
-				background: var(--classD);
-				padding: 15px;
+				align-items: center;
+				padding: 10px;
+				.avatar {
+					width: 36px;
+					height: 36px;
+					border-radius: 50%;
+					border: 1px solid var(--classD);
+					object-fit: cover;
+				}
 				.text {
+					padding-left: 10px;
 					width: 100%;
-					//height: 80px;
 					border: none;
 					resize: none;
 					vertical-align: middle;
 					color: var(--routine);
 					background: transparent;
 				}
-				.submit {
-					display: flex;
-					align-items: center;
-					button {
-						padding: 5px;
-						border: none;
-						border-radius: 50%;
-						background: var(--theme);
-						color: var(--background);
-						svg {
-							width: 18px;
-							height: 18px;
-							fill: var(--background);
-						}
-						&:hover {
-							animation: 5s ease-in-out 0s infinite normal none running shaked;
-						}
-					}
-				}
+
 				&.active {
 					background: var(--classC);
 				}
@@ -4712,23 +4684,18 @@
 					}
 				}
 				.submit {
-					.cancle {
-						display: none;
-						color: var(--routine);
-						cursor: pointer;
-						margin-right: 5px;
-						transition: color 0.35s;
-						&:hover {
-							color: var(--theme);
-						}
-					}
+					padding-right: 10px;
 					button {
-						height: 32px;
-						padding: 5px 15px;
+						padding: 5px;
 						border: none;
-						border-radius: 3px;
+						border-radius: 50%;
 						background: var(--theme);
 						color: var(--background);
+						svg {
+							width: 18px;
+							height: 18px;
+							fill: var(--background);
+						}
 						&:hover {
 							animation: 5s ease-in-out 0s infinite normal none running shaked;
 						}
@@ -4798,15 +4765,6 @@
 				}
 				.term {
 					display: flex;
-					.avatar {
-						width: 48px;
-						height: 48px;
-						border-radius: 50%;
-						margin-right: 15px;
-						padding: 3px;
-						border: 1px solid var(--classD);
-						object-fit: cover;
-					}
 					.content {
 						min-width: 0;
 						flex: 1;
@@ -4821,14 +4779,13 @@
 							.support {
 								display: flex;
 								align-items: center;
-								margin-left: auto;
 								margin-right: 5px;
-								color: var(--routine);
+								color: var(--theme);
 								cursor: pointer;
 								transition: color 0.35s;
 								&:hover,
 								&:active {
-									color: var(--theme);
+									color: #f56c6c;
 								}
 								&::before {
 									margin-right: 3px;
@@ -4857,14 +4814,7 @@
 							margin-top: 10px;
 							text-align: justify;
 							line-height: 1.8;
-							span {
-								&:first-child {
-									color: var(--routine);
-								}
-							}
-							&:hover {
-								opacity: 0.85;
-							}
+							opacity: 0.85;
 							.secret {
 								background: repeating-linear-gradient(145deg, #f1f3fa, #f1f3fa 15px, #fff 0, #fff 30px);
 								padding: 10px 40px 10px 40px;

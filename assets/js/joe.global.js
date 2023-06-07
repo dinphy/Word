@@ -1012,7 +1012,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 				if (isSubmit) return;
 				isSubmit = true;
-				$('.joe_cross__respond-form .foot .submit button').html('发表中...');
 				$.ajax({
 					url: action,
 					type: 'POST',
