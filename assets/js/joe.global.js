@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 初始化昼夜模式 */
 	{
 		let isNightMode = false;
-		const $modeBtn = $('.joe_action_item.mode');
+		const $modeBtn = $('.joe_action_item.mode,.joe_header__slideout .mode');
 
 		function isNight() {
 			const now = new Date().getHours();
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* 激活全局返回顶部功能 */
 	{
 		let _debounce = null;
-		const handleScroll = () => ((document.documentElement.scrollTop || document.body.scrollTop) > 300 ? $('.joe_action_item.scroll').addClass('active') : $('.joe_action_item.scroll').removeClass('active'));
+		const handleScroll = () => ((document.documentElement.scrollTop || document.body.scrollTop) > 200 ? $('.joe_action_item.scroll').addClass('active') : $('.joe_action_item.scroll').removeClass('active'));
 		handleScroll();
 		$(document).on('scroll', () => {
 			clearTimeout(_debounce);

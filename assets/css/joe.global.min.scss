@@ -1037,6 +1037,30 @@
 			visibility: visible;
 			transform: translate3d(0, 0, 0);
 		}
+		.mode {
+			svg {
+				position: fixed;
+				top: 1rem;
+				right: 1rem;
+				width: 24px;
+				height: 24px;
+				padding: 2px;
+				fill: var(--minor);
+				cursor: pointer;
+				border-radius: 50%;
+				background: var(--background);
+				transform: scale(0);
+				opacity: 0;
+				transition: transform 0.35s, opacity 0.85s, fill 0.35s;
+				&:hover {
+					fill: var(--theme);
+				}
+				&.active {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+		}
 		&-image {
 			position: absolute;
 			top: 0;
@@ -3990,12 +4014,11 @@
 		bottom: 10rem;
 		cursor: pointer;
 		svg {
-			width: 28px;
-			height: 28px;
+			width: 24px;
+			height: 24px;
+			padding: 2px;
 			fill: var(--minor);
-			border: 1px solid var(--classD);
-			border-radius: var(--radius-inner);
-			box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+			border-radius: 50%;
 			background: var(--background);
 			&:hover {
 				fill: var(--theme);
@@ -4008,8 +4031,6 @@
 			svg {
 				position: fixed;
 				bottom: 7.5rem;
-				width: 28px;
-				height: 28px;
 				transform: scale(0);
 				opacity: 0;
 				transition: transform 0.35s, opacity 0.85s, fill 0.35s;
@@ -4022,7 +4043,7 @@
 		&.scroll {
 			bottom: 5rem;
 			visibility: hidden;
-			transform: translate(0, 24px);
+			transform: translate(0, 25px);
 			transition: visibility 0.35s, transform 0.35s;
 			&.active {
 				visibility: visible;

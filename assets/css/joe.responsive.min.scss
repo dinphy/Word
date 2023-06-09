@@ -304,7 +304,10 @@ html {
 				padding-bottom: 3.5rem;
 			}
 			&_action {
-				right: 3.5rem;
+				right: 3rem;
+				&_item.mode {
+					display: none;
+				}
 			}
 			&_vplayer {
 				height: 225px;
@@ -768,9 +771,6 @@ html {
 				margin: 0;
 				background: none;
 				box-shadow: none;
-			}
-			&_action {
-				right: 3rem;
 			}
 			&_batten {
 				margin-top: -3.5rem;
