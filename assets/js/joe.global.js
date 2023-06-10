@@ -1198,13 +1198,21 @@ document.addEventListener('DOMContentLoaded', () => {
 			const unlock = $('.unlock');
 
 			if (lock.css('opacity') == 0) {
-				textarea.val('私语# ').focus();
+				textarea.val('').focus();
+				textarea.attr('placeholder', '想要说什么..');
 				body.add(lock).addClass('active');
 				unlock.removeClass('active');
+				textarea.on('input', function () {
+					if ($(this).val().indexOf('私语#') !== 0) {
+						$(this).val('私语# ' + $(this).val());
+					}
+				});
 			} else {
-				textarea.val('');
+				textarea.val('').focus();
+				textarea.attr('placeholder', '说点什么吧..');
 				body.add(lock).removeClass('active');
 				unlock.addClass('active');
+				textarea.off('input');
 			}
 		});
 	}

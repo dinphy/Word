@@ -53,7 +53,7 @@
                                             <img class="avatar lazyload" src="<?php $this->options->themeUrl('assets/tx.png'); ?>">
                                         <?php endif; ?>
                                     <?php endif; ?>
-                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" rows="3" autocomplete="new-password" placeholder="<?php echo $is_login  ? '说点儿什么吧' : '我也说一句..'; ?>"></textarea>
+                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" rows="3" autocomplete="new-password" placeholder="说点什么吧.."></textarea>
                                 </div>
                                 <div class="foot">
                                     <div class="owo joe_owo__contain"></div>

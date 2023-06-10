@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="body">
-                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="点评一下吧"></textarea>
+                        <textarea class="text joe_owo__target" id="textarea" name="text" value="" autocomplete="new-password" placeholder="说点什么吧.."></textarea>
                         <input type="hidden" name="token" id="token" value="">
                         <div class="draw" style="display: none;">
                             <ul class="line">
