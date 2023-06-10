@@ -1039,6 +1039,23 @@ document.addEventListener('DOMContentLoaded', () => {
 					}
 				});
 			});
+			$('#mail').blur(function () {
+				var _email = $(this).val();
+				if (_email != '') {
+					$.ajax({
+						type: 'GET',
+						data: {
+							action: 'GET_AJAX_AVATAR',
+							form: Joe.BASE_API,
+							email: _email
+						},
+						success: function (data) {
+							$('.avatar').attr('src', data);
+						}
+					});
+				}
+				return false;
+			});
 		}
 		$('.joe_cross .content img:not(img.owo_image),.joe_list__item.chat .content-full img:not(img.owo_image)').each(function () {
 			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Word" href="${$(this).attr('src')}"></span>`));

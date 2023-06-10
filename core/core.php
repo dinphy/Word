@@ -76,6 +76,30 @@ function themeInit($self)
         echo json_encode($json);
         exit();
     }
+
+    /* 通过邮箱地址获取评论头像 */
+    if (isset($_GET['action']) == 'GET_AJAX_AVATAR' && 'GET' == $_SERVER['REQUEST_METHOD']) {
+        $email = filter_input(INPUT_GET, 'email', FILTER_VALIDATE_EMAIL);
+        if (!$email) {
+            echo '';
+            exit();
+        }
+        $email = strtolower($email);
+        $avatar = '';
+        $domain = substr(strrchr($email, "@"), 1);
+        if ($domain == "qq.com") {
+            $username = strstr($email, '@', true);
+            $avatar = 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $username . '&s=100';
+        } else {
+            $md5_email = md5($email);
+            $host = Helper::options()->JCustomAvatarSource ? Helper::options()->JCustomAvatarSource : 'https://gravatar.helingqi.com/wavatar/';
+            $avatar = $host . $md5_email . '?d=mm';
+        }
+        echo $avatar;
+        exit();
+    } else {
+        echo '';
+    }
 }
 
 /* 增加自定义字段 */
