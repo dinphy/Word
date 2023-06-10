@@ -1050,7 +1050,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							email: _email
 						},
 						success: function (data) {
-							$('.avatar').attr('src', data);
+							$('.joe_cross__respond-form .avatar').attr('src', data);
 						}
 					});
 				}
