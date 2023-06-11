@@ -414,12 +414,34 @@
 			fill: var(--routine);
 		}
 	}
+	&__more {
+		margin: auto;
+		text-align: center;
+		width: 120px;
+		height: 32px;
+		line-height: 32px;
+		border-radius: 16px;
+		cursor: pointer;
+		user-select: none;
+		background: var(--background);
+		color: var(--routine);
+		transition: transform 0.25s;
+		box-shadow: var(--box-shadow);
+		&:active {
+			transform: scale(0.75);
+		}
+		.next {
+			color: var(--minor);
+			&:hover {
+				color: var(--theme);
+			}
+		}
+	}
 }
 .joe_adaption {
 	position: relative;
 	max-width: 992px;
 	background: var(--background);
-	padding-bottom: 1rem;
 }
 /* 文章页面的样式 */
 .joe_bread {
@@ -3966,8 +3988,8 @@
 .joe_pagination {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
-	padding: 15px 0;
+	justify-content: center;
+	padding-top: 15px;
 	li {
 		margin-left: 5px;
 		&.active a {
@@ -5361,6 +5383,14 @@
 	}
 	100% {
 		width: 80%;
+	}
+}
+@keyframes list_archive_loading {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
 	}
 }
 @keyframes profile-color-modes-illu-anim {

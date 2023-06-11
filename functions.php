@@ -76,7 +76,7 @@ function themeConfig($form)
             'on' => '开启（默认）',
             'off' => '关闭'
         ),
-        '3',
+        'on',
         '开启或关闭全站评论',
         '介绍：用于一键开启关闭所有页面的评论 <br>
          注意：此处的权重优先级最高 <br>
@@ -88,15 +88,28 @@ function themeConfig($form)
     $JNavStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavStatus',
         array(
-            'on' => '分类展开（默认）',
-            'off' => '分类合并'
+            'on' => '关闭合并（默认）',
+            'off' => '开启合并'
         ),
-        '3',
-        '导航分类展开或合并',
-        '介绍：默认为展开，导航分类分开显示，合并时显示分类下拉菜单'
+        'on',
+        '导航分类合并',
+        '介绍：默认为分开显示，导航分类分开显示，合并时显示分类下拉菜单'
     );
     $JNavStatus->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JNavStatus->multiMode());
+
+    $JNavDropdown = new Typecho_Widget_Helper_Form_Element_Select(
+        'JNavDropdown',
+        array(
+            'hover' => '鼠标经过（默认）',
+            'click' => '鼠标点击'
+        ),
+        'hover',
+        '导航分类合并后展开方式',
+        '介绍：默认为鼠标经过显示下拉菜单，可选择鼠标点击显示'
+    );
+    $JNavDropdown->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JNavDropdown->multiMode());
 
     $JNavMaxNum = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavMaxNum',
@@ -226,6 +239,19 @@ function themeConfig($form)
     );
     $JList_Animate->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JList_Animate->multiMode());
+
+    $JPageStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'JPageStatus',
+        array(
+            'default' => '普通分页（默认）',
+            'ajax' => '加载更多',
+        ),
+        'default',
+        '文章列表分页形式',
+        '介绍：选择一款您所喜欢的分页形式'
+    );
+    $JPageStatus->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JPageStatus->multiMode());
 
     $JCustomNavs = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomNavs',
@@ -740,19 +766,6 @@ function themeConfig($form)
     );
     $IndexListOrder->setAttribute('class', 'joe_content joe_index');
     $form->addInput($IndexListOrder->multiMode());
-
-    $JPageStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JPageStatus',
-        array(
-            'default' => '普通分页（默认）',
-            'ajax' => '加载更多',
-        ),
-        'default',
-        '首页文章分页形式',
-        '介绍：选择一款您所喜欢的分页形式'
-    );
-    $JPageStatus->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JPageStatus->multiMode());
 
     $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriendsIndex',

@@ -352,6 +352,44 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	/* 分类文章列表加载更多 */
+	{
+		$('.joe_archive__more .next').click(function () {
+			$this = $(this);
+			$this.text('loading..');
+			var href = $this.attr('href');
+			if (href != undefined) {
+				$.ajax({
+					url: href,
+					type: 'get',
+					error: function (request) {
+						return Qmsg.error('加载失败，请刷新再试');
+					},
+					success: function (data) {
+						$this.text('查看更多');
+						var $res = $(data).find('.joe_list__item');
+						$('.joe_archive__list').append($res.fadeIn(500));
+						$('html, body').animate(
+							{
+								scrollTop: $res.offset().top
+							},
+							500
+						);
+						var newhref = $(data).find('.next').attr('href');
+
+						if (newhref != undefined) {
+							$('.next').attr('href', newhref);
+						} else {
+							$('.joe_archive__more').remove();
+							return Qmsg.warning('没有更多内容了');
+						}
+					}
+				});
+			}
+			return false;
+		});
+	}
+	
 	/* 初始化昼夜模式 */
 	{
 		let isNightMode = false;
@@ -458,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			} else {
 				$(this).on('click', function (e) {
 					$(this).toggleClass('active');
+					$(this).siblings('.joe_dropdown').removeClass('active');
 					$(document).one('click', () => $(this).removeClass('active'));
 					e.stopPropagation();
 				});

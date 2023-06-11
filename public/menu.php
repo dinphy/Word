@@ -9,7 +9,7 @@
                     <?php if (empty($children)) : ?>
                         <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                     <?php else : ?>
-                        <div class="joe_dropdown" trigger="hover" placement="45px">
+                        <div class="joe_dropdown" trigger="<?php $this->options->JNavDropdown ?$this->options->JNavDropdown() : 'hover' ?>" placement="45px">
                             <div class="joe_dropdown__link">
                                 <a class="item <?php echo $this->is('category', $category->slug) ? 'active' : '' ?>" href="<?php $category->permalink(); ?>" title="<?php $category->name(); ?>"><?php $category->name(); ?></a>
                             </div>
@@ -24,7 +24,7 @@
                 <?php endif; ?>
             <?php endwhile; ?>
         <?php else : ?>
-            <div class="joe_dropdown" trigger="click" placement="45px" style="margin-right: 15px;">
+            <div class="joe_dropdown" trigger="<?php $this->options->JNavDropdown ?$this->options->JNavDropdown() : 'hover' ?>" placement="45px" style="margin-right: 15px;">
                 <div class="joe_dropdown__link">
                     <a href="javascript:void(0);" rel="nofollow">分类</a>
                 </div>
@@ -62,7 +62,7 @@
                 <a class="item <?php echo $this->is('page', $item['slug']) ? 'active' : '' ?>" href="<?php echo $item['permalink'] ?>" title="<?php echo $item['title'] ?>"><?php echo $item['title'] ?></a>
             <?php endforeach; ?>
         <?php else : ?>
-            <div class="joe_dropdown" trigger="click" placement="45px" style="margin-right: 15px;">
+            <div class="joe_dropdown" trigger="<?php $this->options->JNavDropdown ?$this->options->JNavDropdown() : 'hover' ?>" placement="45px" style="margin-right: 15px;">
                 <div class="joe_dropdown__link">
                     <a href="javascript:void(0);" rel="nofollow">页面</a>
                 </div>
@@ -91,7 +91,7 @@
         }
         ?>
         <?php if (sizeof($custom) > 0) : ?>
-            <div class="joe_dropdown" trigger="hover" placement="45px">
+            <div class="joe_dropdown" trigger="<?php $this->options->JNavDropdown ?$this->options->JNavDropdown() : 'hover' ?>" placement="45px">
                 <div class="joe_dropdown__link">
                     <a href="javascript:void(0);" rel="nofollow" style="padding-left: 0;">推荐</a>
                     <svg class="joe_dropdown__link-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
