@@ -415,7 +415,7 @@
 		}
 	}
 	&__more {
-		margin: auto;
+		margin: 15px auto;
 		text-align: center;
 		width: 120px;
 		height: 32px;
@@ -5383,14 +5383,6 @@
 	}
 	100% {
 		width: 80%;
-	}
-}
-@keyframes list_archive_loading {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
 	}
 }
 @keyframes profile-color-modes-illu-anim {

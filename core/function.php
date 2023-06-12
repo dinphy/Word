@@ -177,21 +177,20 @@ function _getAvatarByMail($mail, $type = true)
 {
 	$gravatarsUrl = Helper::options()->JCustomAvatarSource ? Helper::options()->JCustomAvatarSource : 'https://gravatar.helingqi.com/wavatar/';
 	$mailLower = strtolower($mail);
-	$md5MailLower = md5($mailLower);
 	$qqMail = str_replace('@qq.com', '', $mailLower);
 	if (strstr($mailLower, "qq.com") && is_numeric($qqMail) && strlen($qqMail) < 11 && strlen($qqMail) > 4) {
-		if ($type) {
-			echo 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $qqMail . '&s=100';
-		} else {
-			return 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $qqMail . '&s=100';
-		}
+		$url = 'https://s.p.qq.com/pub/get_face?img_type=3&uin=' . $qqMail;
+		$api = get_headers($url, true)['Location'];
+		$json_api = json_encode($api);
+		$ex_api = explode("&k=", $json_api)[1];
+		$k_value = explode("&s=", $ex_api)[0];
+		$avatar = 'https://q.qlogo.cn/g?b=qq&k=' . $k_value . '&s=100';
 	} else {
-		if ($type) {
-			echo $gravatarsUrl . $md5MailLower . '?d=mm';
-		} else {
-			return $gravatarsUrl . $md5MailLower . '?d=mm';
-		}
+		$md5MailLower = md5($mailLower);
+		$avatar = $gravatarsUrl . $md5MailLower . '?d=mm';
 	}
+	if ($type) echo $avatar;
+	else return $avatar;
 };
 
 /* 获取侧边栏随机一言 */
