@@ -5,7 +5,7 @@
  * 
  * @package Word
  * @author 小王先森
- * @version  1.2.4.9
+ * @version  1.2.5.0
  * @link https://xwsir.cn
  */
 
@@ -98,7 +98,7 @@
 									<li class="item">
 										<a class="link" href="<?php $item->permalink(); ?>" title="<?php $item->title(); ?>">
 											<figure class="inner">
-												<span class="views"><?php echo number_format($item->views); ?> ℃</span>
+												<span class="views"><?php echo format_number($item->views); ?> ℃</span>
 												<img width="100%" height="120" class="image lazyload" src="<?php _getLazyload(); ?>" data-src="<?php echo _getThumbnails($item)[0]; ?>" alt="<?php $item->title(); ?>" />
 												<figcaption class="title"><?php $item->title(); ?></figcaption>
 											</figure>
