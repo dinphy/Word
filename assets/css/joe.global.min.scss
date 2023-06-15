@@ -3155,7 +3155,7 @@
 		}
 	}
 	&__article {
-		padding: 15px 15px 30px;
+		padding-top: 15px;
 		font-size: 16px;
 		text-align: justify;
 		word-break: break-word;
@@ -3522,6 +3522,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding-top: 30px;
 		.agree {
 			display: flex;
 			align-items: center;
@@ -3726,8 +3727,33 @@
 			}
 		}
 	}
+	&__tabs {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 1rem;
+		.item {
+			position: relative;
+			cursor: pointer;
+			padding: 10px;
+			color: var(--routine);
+			font-size: 1rem;
+			&.active {
+				color: var(--theme);
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 10px;
+					width: 50%;
+					height: 1px;
+					background: var(--theme);
+				}
+			}
+		}
+	}
 	&__friends {
-		display: grid;
+		display: none;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 15px;
 		margin-bottom: 15px;
@@ -3746,23 +3772,18 @@
 				}
 				.title {
 					position: relative;
-					&::after {
-						content: '';
-						position: absolute;
-						bottom: -5px;
-						left: 0;
-						width: 100%;
-						height: 1px;
-						background: #fff;
-					}
-				}
-				.content {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					margin-top: 15px;
-					.desc {
-						margin-right: 10px;
+					font-weight: 600;
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 1.5rem;
+						height: 1px;
+						background: #fff;
 					}
 					.avatar {
 						width: 40px;
@@ -3773,7 +3794,19 @@
 						object-fit: cover;
 					}
 				}
+				.content {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-top: 15px;
+					.desc {
+						margin-right: 10px;
+					}
+				}
 			}
+		}
+		&.active {
+			display: grid;
 		}
 	}
 	&__leaving {
@@ -3955,7 +3988,7 @@
 	display: none;
 	width: 100%;
 	padding: 0.5rem 0;
-	position: sticky;
+	position: fixed;
 	bottom: 0;
 	z-index: 10;
 	background: var(--new-background);

@@ -492,7 +492,7 @@ html {
 			}
 			&_detail {
 				&__friends {
-					grid-template-columns: repeat(1, 1fr);
+					grid-template-columns: repeat(2, 1fr);
 				}
 				&__title {
 					font-size: 18px;
@@ -840,6 +840,10 @@ html {
 				&__operate {
 					padding-left: 1rem;
 					padding-right: 1rem;
+				}
+				&__friends {
+					padding-left: 15px;
+					padding-right: 15px;
 				}
 			}
 			&_aside__item.today {

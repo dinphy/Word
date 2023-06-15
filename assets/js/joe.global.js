@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			return false;
 		});
 	}
-	
+
 	/* 初始化昼夜模式 */
 	{
 		let isNightMode = false;
@@ -1276,6 +1276,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			if ($(this).attr('href') == current) {
 				$(this).addClass('active');
 			}
+		});
+	}
+
+	/* 友情链接tab */
+	{
+		$('.joe_detail__tabs .item').click(function () {
+			var index = $(this).index();
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.joe_detail__friends').eq(index).addClass('active').siblings().removeClass('active');
 		});
 	}
 });
