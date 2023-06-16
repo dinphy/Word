@@ -103,8 +103,8 @@
                         <?php if (!empty($friends_index)) : ?>
                             <ul class="joe_detail__friends active">
                                 <?php foreach ($friends_index as $iitem) : ?>
-                                    <li class="joe_detail__friends-item">
-                                        <a class="contain" href="<?php echo $iitem['url']; ?>" target="_blank" rel="noopener noreferrer" style="background: <?php echo $friends_color[array_rand($friends_color)]; ?>">
+                                    <li class="joe_detail__friends-item" style="background: <?php echo $friends_color[array_rand($friends_color)]; ?>">
+                                        <a class="contain" href="<?php echo $iitem['url']; ?>" target="_blank" rel="noopener noreferrer">
                                             <span class="title">
                                                 <?php echo $iitem['name']; ?>
                                                 <img width="40" height="40" class="avatar lazyload" src="<?php _getAvatarLazyload(); ?>" data-src="<?php echo $iitem['avatar']; ?>" alt="<?php echo $iitem['name']; ?>" />
@@ -121,8 +121,8 @@
                         <?php if (!empty($friends)) : ?>
                             <ul class="joe_detail__friends">
                                 <?php foreach ($friends as $item) : ?>
-                                    <li class="joe_detail__friends-item">
-                                        <a class="contain" href="<?php echo $item['url']; ?>" target="_blank" rel="noopener noreferrer" style="background: <?php echo $friends_color[array_rand($friends_color)]; ?>">
+                                    <li class="joe_detail__friends-item" style="background: <?php echo $friends_color[array_rand($friends_color)]; ?>">
+                                        <a class="contain" href="<?php echo $item['url']; ?>" target="_blank" rel="noopener noreferrer">
                                             <span class="title">
                                                 <?php echo $item['name']; ?>
                                                 <img width="40" height="40" class="avatar lazyload" src="<?php _getAvatarLazyload(); ?>" data-src="<?php echo $item['avatar']; ?>" alt="<?php echo $item['name']; ?>" />
