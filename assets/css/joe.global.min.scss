@@ -4150,79 +4150,64 @@
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
-			.item {
-				background: var(--background);
-				padding: 0 15px;
-				height: 32px;
-				color: var(--routine);
-				border: none;
-				transition: color 0.35s, background 0.35s;
-				&:first-child {
-					border-top-left-radius: var(--radius-inner);
-				}
-				&:last-child {
-					border-top-right-radius: var(--radius-inner);
-				}
+			svg {
+				display: none;
 				&.active {
-					color: var(--main);
-					background: var(--classD);
+					display: block;
 				}
 			}
 		}
 		&-form {
-			background: var(--classD);
+			border-radius: 5px;
+			margin-top: 10px;
+			box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+			border: 1px solid var(--classA);
+			background: var(--background);
 			.head {
-				display: flex;
-				align-items: center;
+				margin: 0 5px;
 				.list {
-					flex: 1;
+					display: flex;
+					align-items: center;
 					input {
 						width: 100%;
-						border: none;
-						background: transparent;
-						padding: 0 15px;
+						border: 1px solid var(--classC);
+						border-radius: var(--radius-inner);
+						background: var(--classD);
 						height: 40px;
 						color: var(--routine);
-					}
-					&:nth-child(2) {
 						position: relative;
-						&::after,
-						&::before {
-							content: '';
-							position: absolute;
-							top: 50%;
-							transform: translateY(-50%);
-							width: 1px;
-							height: 15px;
-							background: var(--classA);
-						}
-						&::before {
-							left: 0;
-						}
-						&::after {
-							right: 0;
-						}
+						padding: 0 10px;
+						margin: 0 5px 10px;
 					}
 				}
 			}
 			.body {
-				padding: 15px;
-				border: 1px solid var(--classC);
-				background: var(--background);
+				display: flex;
+				align-items: center;
+				padding: 10px;
+				.avatar {
+					width: 36px;
+					height: 36px;
+					border-radius: 50%;
+					border: 1px solid var(--classD);
+					-o-object-fit: cover;
+					object-fit: cover;
+				}
 				.text {
+					padding-left: 10px;
 					width: 100%;
-					height: 66px;
 					border: none;
 					resize: none;
 					vertical-align: middle;
 					color: var(--routine);
-					background: transparent;
+					background: rgba(0, 0, 0, 0);
 				}
 				&.active {
 					background: var(--classC);
 				}
 				.draw {
 					position: relative;
+					display: none;
 					width: 100%;
 					.line {
 						display: flex;
@@ -4291,11 +4276,10 @@
 				}
 			}
 			.foot {
-				position: relative;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				background: var(--background);
+				padding: 5px 10px;
 				.owo {
 					.seat {
 						width: 35px;
@@ -4308,8 +4292,8 @@
 						align-items: center;
 						border-radius: var(--radius-inner);
 						svg {
-							height: 20px;
-							width: 20px;
+							height: 16px;
+							width: 16px;
 						}
 						&:hover {
 							cursor: pointer;
@@ -4352,12 +4336,11 @@
 					}
 				}
 				.submit {
-					padding-top: 10px;
 					white-space: nowrap;
 					button {
 						border-radius: 3px;
-						height: 32px;
-						padding: 0 15px;
+						height: 30px;
+						padding: 0 10px;
 						border: none;
 						background: var(--theme);
 						color: var(--background);
@@ -4855,8 +4838,8 @@
 							.support {
 								display: flex;
 								align-items: center;
-								margin-right: 5px;
-								color: var(--theme);
+								margin-right: auto;
+								color: var(--routine);
 								cursor: pointer;
 								transition: color 0.35s;
 								&:hover,
@@ -4871,7 +4854,7 @@
 								display: flex;
 								align-items: center;
 								color: var(--routine);
-								padding-left: 10px;
+								padding-right: 10px;
 								font-size: 13px;
 								cursor: pointer;
 								transition: color 0.35s;
@@ -5020,18 +5003,18 @@
 	}
 	&__panel {
 		&-header {
-			padding: 10px 0;
-			border-bottom: 1px dashed var(--seat);
-			text-align: center;
-			.count,
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			.count {
+				i {
+					padding: 0 10px;
+				}
+			}
 			.open {
-				color: var(--routine);
 				cursor: pointer;
 				&:hover {
 					color: var(--theme);
-				}
-				i {
-					padding: 0 10px;
 				}
 			}
 		}

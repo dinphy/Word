@@ -94,9 +94,9 @@
                                     <div class="head">
                                         <div class="list">
                                             <input id="mail" type="text" value="<?php echo $is_login ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
-                                            <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
                                         </div>
                                         <div class="list">
+                                            <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
                                             <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
                                         </div>
                                     </div>
@@ -151,13 +151,16 @@
                                     <div class="substance">
                                         <?php secretComment($comments); ?>
                                         <div class="handle" style="padding-top: 10px;">
+                                            <div class="reply">
+                                                <span class="joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">回复</span>
+                                            </div>
                                             <?php $suport = _getSupport($comments->coid) ?>
                                             <a class="support <?php echo $suport['icon'] ?>" data-coid="<?php echo $comments->coid ?>" href="javascript:void (0)">
                                                 <?php echo '' . $suport['count'] . '' . $suport['text'] ?>
                                             </a>
-                                            <div class="reply">
-                                                <span class="joe_cross__reply" data-id="<?php $comments->theId(); ?>" data-coid="<?php $comments->coid(); ?>">回复</span>
-                                            </div>
+                                            <?php if ($comments->children) : ?>
+                                                <div class="joe_cross__panel-header"><?php echo $comments->children ? _commentNum($comments) : ''; ?><span class="open">展开 ▽</span></div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +168,6 @@
                         </div>
                         <?php if ($comments->children) : ?>
                             <div class="joe_cross__panel">
-                                <div class="joe_cross__panel-header"><?php echo $comments->children ? _commentNum($comments) : ''; ?><span class="open">展开 ▽</span></div>
                                 <div class="joe_cross__panel-body comment-list__item-children">
                                     <?php $comments->threadedComments($options); ?>
                                 </div>

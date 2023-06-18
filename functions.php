@@ -986,6 +986,16 @@ function themeConfig($form)
     $JReader_Ranking_Limit->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JReader_Ranking_Limit->multiMode());
 
+    $commentDraw = new Typecho_Widget_Helper_Form_Element_Select(
+        'commentDraw',
+        array('off' => '关闭（默认）', 'on' => '开启'),
+        'off',
+        '是否开启文章评论画图',
+        '介绍：默认关闭画图功能，开启时显示画图板'
+    );
+    $commentDraw->setAttribute('class', 'joe_content joe_post');
+    $form->addInput($commentDraw);
+
     $JBaiduToken = new Typecho_Widget_Helper_Form_Element_Text(
         'JBaiduToken',
         NULL,
