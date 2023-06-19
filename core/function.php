@@ -288,7 +288,7 @@ function _getParentReply($parent)
 	if ($parent !== "0") {
 		$db = Typecho_Db::get();
 		$commentInfo = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ?', $parent));
-		echo '<span>@' . $commentInfo['author'] . '：</span>';
+		echo '<span style="color: var(--routine);padding-right: 8px;">@' . $commentInfo['author'] . '</span>';
 	}
 }
 

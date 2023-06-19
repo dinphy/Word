@@ -4421,10 +4421,11 @@
 								}
 							}
 							.substance {
-								float: right !important;
 								border-radius: 0 0 10px var(--radius-inner) !important;
 								background: #95ec69 !important;
 								color: #303133 !important;
+								margin-left: 3.5rem;
+								margin-right: 0 !important;
 							}
 						}
 					}
@@ -4524,7 +4525,8 @@
 							color: var(--main);
 							word-break: break-word;
 							line-height: 24px;
-							float: left;
+							margin-right: 3.5rem;
+							text-align: justify;
 							.owo_image {
 								height: 2rem;
 							}
@@ -4884,12 +4886,14 @@
 							}
 							.owo_image {
 								height: 2rem;
+								width: auto;
 							}
 							.draw_image {
 								max-width: 100%;
 							}
 							img {
 								height: 9rem;
+								width: 100%;
 							}
 							a {
 								color: var(--theme);
