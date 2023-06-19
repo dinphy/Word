@@ -1147,14 +1147,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	{
 		$('.joe_cross__panel-header .open').on('click', function () {
 			var $panelBody = $(this).closest('.comment-list__item').find('.joe_cross__panel-body');
-			$panelBody.slideToggle();
 
-			$(this).text(function (i, text) {
-				return text === '展开 ▽' ? '收起 △' : '展开 ▽';
-			});
-
-			$('.joe_cross__panel-body').not($panelBody).slideUp();
-			$('.joe_cross__panel-header .open').not(this).text('展开 ▽');
+			if ($panelBody.is(':hidden')) {
+				$('.joe_cross__panel-header .open').text('展开 ▽');
+				$('.joe_cross__panel-body').slideUp();
+				$(this).text('收起 △');
+				$panelBody.slideDown();
+			} else {
+				$(this).text('展开 ▽');
+				$panelBody.slideUp();
+			}
 		});
 	}
 
