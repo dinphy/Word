@@ -221,9 +221,7 @@
                                             </div>
                                             <div class="meta">
                                                 <ul class="items">
-                                                    <li>
-                                                        <?php _getViews($this) ?> 人围观
-                                                    </li>
+                                                    <li><?php _getViews($this) ?> 人围观</li>
                                                 </ul>
                                                 <div class="meta-right">
                                                     <ul class="items">

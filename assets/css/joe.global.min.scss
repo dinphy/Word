@@ -4280,6 +4280,7 @@
 				align-items: center;
 				justify-content: space-between;
 				padding: 5px 10px;
+				position: relative;
 				.owo {
 					.seat {
 						width: 35px;
@@ -4694,6 +4695,7 @@
 				align-items: center;
 				justify-content: space-between;
 				padding: 5px;
+				position: relative;
 				.owo {
 					.seat {
 						width: 35px;
@@ -5056,7 +5058,7 @@
 			background: var(--classC);
 			border-radius: var(--radius-inner);
 			overflow: hidden;
-			margin-top: 15px;
+			margin-top: 5px;
 			.scroll {
 				display: none;
 				max-height: 10rem;

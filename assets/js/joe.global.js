@@ -1147,15 +1147,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	{
 		$('.joe_cross__panel-header .open').on('click', function () {
 			var $panelBody = $(this).closest('.comment-list__item').find('.joe_cross__panel-body');
+			var isHidden = $panelBody.is(':hidden');
 
-			if ($panelBody.is(':hidden')) {
-				$('.joe_cross__panel-header .open').text('展开 ▽');
-				$('.joe_cross__panel-body').slideUp();
+			$('.joe_cross__panel-header .open').text('展开 ▽');
+			$('.joe_cross__panel-body').slideUp();
+
+			if (isHidden) {
 				$(this).text('收起 △');
 				$panelBody.slideDown();
-			} else {
-				$(this).text('展开 ▽');
-				$panelBody.slideUp();
 			}
 		});
 	}
@@ -1268,9 +1267,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	{
 		$('.joe_list').on('click', '.content-more', function (event) {
 			event.preventDefault();
-			var $content = $(this).parent('.content');
-			$content.find('.content-full').slideToggle();
-			$content.find('.abstract').toggle();
+			var content = $(this).parent('.content');
+			content.find('.content-full').slideToggle();
+			content.find('.abstract').slideToggle();
 			$(this).text(function (i, text) {
 				return text === '全文' ? '收起' : '全文';
 			});
