@@ -291,6 +291,9 @@ html {
 
 	@media (max-width: 768px) {
 		.joe {
+			&_main {
+				margin-top: 1rem;
+			}
 			&_head {
 				display: none;
 			}
@@ -324,6 +327,9 @@ html {
 			}
 			&_menu {
 				width: auto;
+				&-logo {
+					display: none;
+				}
 			}
 			&_header {
 				position: sticky;
@@ -333,25 +339,17 @@ html {
 				&.active {
 					background: var(--new-background);
 					box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+					margin: 0 -1rem;
+					padding: 0 1rem;
 				}
 				&__above {
-					.joe_container {
-						justify-content: space-between;
-					}
-					&-right {
-						margin-left: 0;
-						&:last-child {
-							padding-right: 1rem;
-						}
-					}
 					&-sign,
 					&-nav {
 						display: none;
 					}
 					&-logo {
-						display: flex !important;
+						display: flex;
 						height: 55px;
-						margin-right: 0;
 						img {
 							max-height: 45px;
 						}
@@ -740,7 +738,6 @@ html {
 		.joe {
 			&_header {
 				padding: 0 15px;
-				margin: 0;
 				&__above {
 					&-right {
 						&:last-child {
@@ -761,6 +758,7 @@ html {
 					border-radius: 0;
 				}
 				&.active {
+					margin: 0;
 					.joe_header__above-searchicon,
 					.joe_header__above-slideicon {
 						fill: var(--main);

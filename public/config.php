@@ -57,9 +57,9 @@ elseif (strpos($fontUrl, 'svg') !== false) $fontFormat = 'svg';
 
     body::before {
         background: <?php if (_isMobile()) {
-                        echo $this->options->JWallpaper_Background_WAP ? "url(" . $this->options->JWallpaper_Background_WAP . ")" : "#f5f5f5";
+                        echo $this->options->JWallpaper_Background_WAP ? "url(" . $this->options->JWallpaper_Background_WAP . ")" : "#f7f9fc";
                     } else {
-                        echo $this->options->JWallpaper_Background_PC ? "url(" . $this->options->JWallpaper_Background_PC . ")" : "#f5f5f5";
+                        echo $this->options->JWallpaper_Background_PC ? "url(" . $this->options->JWallpaper_Background_PC . ")" : "#f7f9fc";
                     } ?>;
         background-position: center 0;
         background-repeat: no-repeat;
