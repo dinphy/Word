@@ -752,6 +752,19 @@ function themeConfig($form)
     $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
     $form->addInput($JIndex_Notice);
 
+    $IndexListStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'IndexListStatus',
+        array(
+            'default' => '普通模式',
+            'ajax' => 'Ajax模式',
+        ),
+        'default',
+        '首页文章列表加载模式',
+        '介绍：选择一款您所喜欢的模式'
+    );
+    $IndexListStatus->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($IndexListStatus->multiMode());
+
     $IndexListOrder = new Typecho_Widget_Helper_Form_Element_Select(
         'IndexListOrder',
         array(
@@ -762,7 +775,7 @@ function themeConfig($form)
         ),
         'created',
         '首页文章排序方式',
-        '介绍：默认按时间排序，请选择一种您所喜欢的呈现形式'
+        '介绍：文章列表为Ajax模式时生效，默认按时间排序，请选择一种您所喜欢的呈现形式'
     );
     $IndexListOrder->setAttribute('class', 'joe_content joe_index');
     $form->addInput($IndexListOrder->multiMode());

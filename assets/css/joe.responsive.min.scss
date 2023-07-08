@@ -813,9 +813,12 @@ html {
 					border-radius: var(--radius-wrap);
 					border-bottom: none;
 					background: var(--background);
+					.line {
+						left: 0;
+					}
 				}
 			}
-			&_archive {
+			&_adaption {
 				padding: 0 0.5rem;
 			}
 			&_index {

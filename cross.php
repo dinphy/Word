@@ -31,100 +31,97 @@
             <div class="joe_main">
                 <?php $this->need('public/header.php'); ?>
                 <?php $this->need('public/batten.php'); ?>
-                <section class="joe_adaption">
-                    <?php
-                    $this->comments()->to($comments);
-                    $is_login = $this->user->hasLogin();
-                    ?>
-                    <div class="joe_cross" id="comments">
-                        <h3 class="joe_cross__title">
-                            <span><i class="zm zm-pinglun-1"></i> 言之有理</span>
-                            <span><?php $this->commentsNum(); ?> 言，<?php _getViews($this); ?> 阅</span>
-                        </h3>
-                        <div id="<?php $this->respondId(); ?>" class="joe_cross__respond <?php echo $is_login ? 'active' : ''; ?>">
-                            <form method="post" class="joe_cross__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
-                                <div class="body">
-                                    <?php if ($is_login) : ?>
-                                        <img class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($this->authorId ? $this->author->mail : $this->user->mail); ?>" />
+                <?php
+                $this->comments()->to($comments);
+                $is_login = $this->user->hasLogin();
+                ?>
+                <div class="joe_cross" id="comments">
+                    <h3 class="joe_cross__title">
+                        <span><i class="zm zm-pinglun-1"></i> 言之有理</span>
+                        <span><?php $this->commentsNum(); ?> 言，<?php _getViews($this); ?> 阅</span>
+                    </h3>
+                    <div id="<?php $this->respondId(); ?>" class="joe_cross__respond <?php echo $is_login ? 'active' : ''; ?>">
+                        <form method="post" class="joe_cross__respond-form" action="<?php $this->commentUrl() ?>" data-type="text">
+                            <div class="body">
+                                <?php if ($is_login) : ?>
+                                    <img class="avatar lazyload" src="<?php _getAvatarLazyload() ?>" data-src="<?php _getAvatarByMail($this->authorId ? $this->author->mail : $this->user->mail); ?>" />
+                                <?php else : ?>
+                                    <?php if (!empty($this->remember('mail', true))) : ?>
+                                        <img class="avatar lazyload" src="<?php _getAvatarByMail($this->remember('mail', true)); ?>">
                                     <?php else : ?>
-                                        <?php if (!empty($this->remember('mail', true))) : ?>
-                                            <img class="avatar lazyload" src="<?php _getAvatarByMail($this->remember('mail', true)); ?>">
-                                        <?php else : ?>
-                                            <img class="avatar lazyload" src="<?php $this->options->themeUrl('assets/tx.png'); ?>">
-                                        <?php endif; ?>
+                                        <img class="avatar lazyload" src="<?php $this->options->themeUrl('assets/tx.png'); ?>">
                                     <?php endif; ?>
-                                    <textarea class="text joe_owo__target" id="textarea" name="text" value="" rows="3" autocomplete="new-password" placeholder="说点什么吧.."></textarea>
-                                </div>
-                                <div class="foot">
-                                    <div class="owo joe_owo__contain"></div>
-                                    <div class="tool">
-                                        <span title="图片" onclick="document.getElementById('textarea').value+='![描述](地址)' ">
-                                            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                                                <path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z"></path>
-                                                <path d="M110.5 713l153.2 32.3 315.1-225.2 242.8 73.1v34.3H868V159.7H64v700.7h627.6V814H110.5V713z m711.1-506.8v338.5l-251.3-75.6-317 226.6-142.8-30.1V206.2h711.1z"></path>
-                                                <path d="M308.3 510.8c65.9 0 119.6-53.7 119.6-119.6 0-65.9-53.7-119.6-119.6-119.6-65.9 0-119.6 53.7-119.6 119.6 0 65.9 53.7 119.6 119.6 119.6z m0-192.8c40.3 0 73.1 32.8 73.1 73.1s-32.8 73.2-73.1 73.2-73.1-32.8-73.1-73.2S268 318 308.3 318z"></path>
-                                            </svg>
-                                        </span>
-                                        <span title="链接" onclick="document.getElementById('textarea').value+='[](https://)' ">
-                                            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-                                                <path d="M910.496 213.536C804.16 82.208 611.488 61.952 480.128 168.32l-100.768 81.6 50.336 62.176 100.768-81.6a225.984 225.984 0 1 1 284.448 351.264l-107.968 87.424 50.336 62.176 107.968-87.424a305.984 305.984 0 0 0 45.248-430.4zM516.352 823.552a225.984 225.984 0 1 1-284.448-351.264l110.976-89.856-50.336-62.176-110.976 89.856C50.24 516.448 29.984 709.152 136.32 840.48c106.336 131.328 299.04 151.584 430.368 45.248l105.12-85.12-50.336-62.176-105.12 85.12z"></path>
-                                                <path d="M676.16 353.28l51.232 61.44-343.552 286.304-51.2-61.44z"></path>
-                                            </svg>
-                                        </span>
-                                        <span title="私语" class="privacy">
-                                            <svg class="unlock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-                                                <path fill="none" d="M0 0h24v24H0z" />
-                                                <path d="M7 10h13a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 0 1 13.262-3.131l-1.789.894A5 5 0 0 0 7 9v1zm-2 2v8h14v-8H5zm5 3h4v2h-4v-2z" />
-                                            </svg>
-                                            <svg class="lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-                                                <path fill="none" d="M0 0h24v24H0z" />
-                                                <path d="M19 10h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 1 1 14 0v1zM5 12v8h14v-8H5zm6 2h2v4h-2v-4zm6-4V9A5 5 0 0 0 7 9v1h10z" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="submit">
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path d="M1.94631 9.31555C1.42377 9.14137 1.41965 8.86034 1.95706 8.6812L21.0433 2.31913C21.5717 2.14297 21.8748 2.43878 21.7268 2.95706L16.2736 22.0433C16.1226 22.5718 15.8179 22.5901 15.5946 22.0877L12.0002 14.0002L18.0002 6.00017L10.0002 12.0002L1.94631 9.31555Z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <?php if (!$is_login) : ?>
-                                    <div class="head">
-                                        <div class="list">
-                                            <input id="mail" type="text" value="<?php echo $is_login ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
-                                        </div>
-                                        <div class="list">
-                                            <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
-                                            <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
-                                        </div>
-                                    </div>
                                 <?php endif; ?>
-                            </form>
-                        </div>
-                        <?php if ($comments->have()) : ?>
-                            <?php $comments->listComments(); ?>
-                            <?php $comments->pageNav(
-                                '<svg class="icon icon-prev" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M822.272 146.944l-396.8 396.8c-19.456 19.456-51.2 19.456-70.656 0-18.944-19.456-18.944-51.2 0-70.656l396.8-396.8c19.456-19.456 51.2-19.456 70.656 0 18.944 19.456 18.944 45.056 0 70.656z"/><path d="M745.472 940.544l-396.8-396.8c-19.456-19.456-19.456-51.2 0-70.656 19.456-19.456 51.2-19.456 70.656 0l403.456 390.144c19.456 25.6 19.456 51.2 0 76.8-26.112 19.968-51.712 19.968-77.312.512zm-564.224-63.488c0-3.584 0-7.68.512-11.264h-.512v-714.24h.512c-.512-3.584-.512-7.168-.512-11.264 0-43.008 21.504-78.336 48.128-78.336s48.128 34.816 48.128 78.336c0 3.584 0 7.68-.512 11.264h.512v714.24h-.512c.512 3.584.512 7.168.512 11.264 0 43.008-21.504 78.336-48.128 78.336s-48.128-35.328-48.128-78.336z"/></svg>',
-                                '<svg class="icon icon-next" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M822.272 146.944l-396.8 396.8c-19.456 19.456-51.2 19.456-70.656 0-18.944-19.456-18.944-51.2 0-70.656l396.8-396.8c19.456-19.456 51.2-19.456 70.656 0 18.944 19.456 18.944 45.056 0 70.656z"/><path d="M745.472 940.544l-396.8-396.8c-19.456-19.456-19.456-51.2 0-70.656 19.456-19.456 51.2-19.456 70.656 0l403.456 390.144c19.456 25.6 19.456 51.2 0 76.8-26.112 19.968-51.712 19.968-77.312.512zm-564.224-63.488c0-3.584 0-7.68.512-11.264h-.512v-714.24h.512c-.512-3.584-.512-7.168-.512-11.264 0-43.008 21.504-78.336 48.128-78.336s48.128 34.816 48.128 78.336c0 3.584 0 7.68-.512 11.264h.512v714.24h-.512c.512 3.584.512 7.168.512 11.264 0 43.008-21.504 78.336-48.128 78.336s-48.128-35.328-48.128-78.336z"/></svg>',
-                                1,
-                                '...',
-                                array(
-                                    'wrapTag' => 'ul',
-                                    'wrapClass' => 'joe_pagination',
-                                    'itemTag' => 'li',
-                                    'textTag' => 'a',
-                                    'currentClass' => 'active',
-                                    'prevClass' => 'prev',
-                                    'nextClass' => 'next'
-                                )
-                            );
-                            ?>
-                        <?php endif; ?>
+                                <textarea class="text joe_owo__target" id="textarea" name="text" value="" rows="3" autocomplete="new-password" placeholder="说点什么吧.."></textarea>
+                            </div>
+                            <div class="foot">
+                                <div class="owo joe_owo__contain"></div>
+                                <div class="tool">
+                                    <span title="图片" onclick="document.getElementById('textarea').value+='![描述](地址)' ">
+                                        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                            <path d="M960.2 751.5H868v-92.7h-46.4v92.7h-92.2V798h92.2v91.6H868V798h92.2z"></path>
+                                            <path d="M110.5 713l153.2 32.3 315.1-225.2 242.8 73.1v34.3H868V159.7H64v700.7h627.6V814H110.5V713z m711.1-506.8v338.5l-251.3-75.6-317 226.6-142.8-30.1V206.2h711.1z"></path>
+                                            <path d="M308.3 510.8c65.9 0 119.6-53.7 119.6-119.6 0-65.9-53.7-119.6-119.6-119.6-65.9 0-119.6 53.7-119.6 119.6 0 65.9 53.7 119.6 119.6 119.6z m0-192.8c40.3 0 73.1 32.8 73.1 73.1s-32.8 73.2-73.1 73.2-73.1-32.8-73.1-73.2S268 318 308.3 318z"></path>
+                                        </svg>
+                                    </span>
+                                    <span title="链接" onclick="document.getElementById('textarea').value+='[](https://)' ">
+                                        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                                            <path d="M910.496 213.536C804.16 82.208 611.488 61.952 480.128 168.32l-100.768 81.6 50.336 62.176 100.768-81.6a225.984 225.984 0 1 1 284.448 351.264l-107.968 87.424 50.336 62.176 107.968-87.424a305.984 305.984 0 0 0 45.248-430.4zM516.352 823.552a225.984 225.984 0 1 1-284.448-351.264l110.976-89.856-50.336-62.176-110.976 89.856C50.24 516.448 29.984 709.152 136.32 840.48c106.336 131.328 299.04 151.584 430.368 45.248l105.12-85.12-50.336-62.176-105.12 85.12z"></path>
+                                            <path d="M676.16 353.28l51.232 61.44-343.552 286.304-51.2-61.44z"></path>
+                                        </svg>
+                                    </span>
+                                    <span title="私语" class="privacy">
+                                        <svg class="unlock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="none" d="M0 0h24v24H0z" />
+                                            <path d="M7 10h13a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 0 1 13.262-3.131l-1.789.894A5 5 0 0 0 7 9v1zm-2 2v8h14v-8H5zm5 3h4v2h-4v-2z" />
+                                        </svg>
+                                        <svg class="lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="none" d="M0 0h24v24H0z" />
+                                            <path d="M19 10h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1V9a7 7 0 1 1 14 0v1zM5 12v8h14v-8H5zm6 2h2v4h-2v-4zm6-4V9A5 5 0 0 0 7 9v1h10z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="submit">
+                                    <button type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M1.94631 9.31555C1.42377 9.14137 1.41965 8.86034 1.95706 8.6812L21.0433 2.31913C21.5717 2.14297 21.8748 2.43878 21.7268 2.95706L16.2736 22.0433C16.1226 22.5718 15.8179 22.5901 15.5946 22.0877L12.0002 14.0002L18.0002 6.00017L10.0002 12.0002L1.94631 9.31555Z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <?php if (!$is_login) : ?>
+                                <div class="head">
+                                    <div class="list">
+                                        <input id="mail" type="text" value="<?php echo $is_login ? $this->user->mail() : $this->remember('mail') ?>" autocomplete="off" name="mail" placeholder="邮箱:" />
+                                    </div>
+                                    <div class="list">
+                                        <input id="author" type="text" value="<?php echo $is_login ? $this->user->screenName() : $this->remember('author') ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称:" />
+                                        <input type="text" autocomplete="off" name="url" placeholder="网址（非必填）" />
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </form>
                     </div>
-                </section>
-
+                    <?php if ($comments->have()) : ?>
+                        <?php $comments->listComments(); ?>
+                        <?php $comments->pageNav(
+                            '<svg class="icon icon-prev" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M822.272 146.944l-396.8 396.8c-19.456 19.456-51.2 19.456-70.656 0-18.944-19.456-18.944-51.2 0-70.656l396.8-396.8c19.456-19.456 51.2-19.456 70.656 0 18.944 19.456 18.944 45.056 0 70.656z"/><path d="M745.472 940.544l-396.8-396.8c-19.456-19.456-19.456-51.2 0-70.656 19.456-19.456 51.2-19.456 70.656 0l403.456 390.144c19.456 25.6 19.456 51.2 0 76.8-26.112 19.968-51.712 19.968-77.312.512zm-564.224-63.488c0-3.584 0-7.68.512-11.264h-.512v-714.24h.512c-.512-3.584-.512-7.168-.512-11.264 0-43.008 21.504-78.336 48.128-78.336s48.128 34.816 48.128 78.336c0 3.584 0 7.68-.512 11.264h.512v714.24h-.512c.512 3.584.512 7.168.512 11.264 0 43.008-21.504 78.336-48.128 78.336s-48.128-35.328-48.128-78.336z"/></svg>',
+                            '<svg class="icon icon-next" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path d="M822.272 146.944l-396.8 396.8c-19.456 19.456-51.2 19.456-70.656 0-18.944-19.456-18.944-51.2 0-70.656l396.8-396.8c19.456-19.456 51.2-19.456 70.656 0 18.944 19.456 18.944 45.056 0 70.656z"/><path d="M745.472 940.544l-396.8-396.8c-19.456-19.456-19.456-51.2 0-70.656 19.456-19.456 51.2-19.456 70.656 0l403.456 390.144c19.456 25.6 19.456 51.2 0 76.8-26.112 19.968-51.712 19.968-77.312.512zm-564.224-63.488c0-3.584 0-7.68.512-11.264h-.512v-714.24h.512c-.512-3.584-.512-7.168-.512-11.264 0-43.008 21.504-78.336 48.128-78.336s48.128 34.816 48.128 78.336c0 3.584 0 7.68-.512 11.264h.512v714.24h-.512c.512 3.584.512 7.168.512 11.264 0 43.008-21.504 78.336-48.128 78.336s-48.128-35.328-48.128-78.336z"/></svg>',
+                            1,
+                            '...',
+                            array(
+                                'wrapTag' => 'ul',
+                                'wrapClass' => 'joe_pagination',
+                                'itemTag' => 'li',
+                                'textTag' => 'a',
+                                'currentClass' => 'active',
+                                'prevClass' => 'prev',
+                                'nextClass' => 'next'
+                            )
+                        );
+                        ?>
+                    <?php endif; ?>
+                </div>
                 <?php
                 function threadedComments($comments, $options)
                 {
