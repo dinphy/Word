@@ -26,10 +26,9 @@ function themeConfig($form)
                 <div class="logo">Word</div>
                 <ul class="tabs">
                     <li class="item" data-current="joe_notice">版本信息</li>
-                    <li class="item" data-current="joe_global">全局设置</li>
+                    <li class="item" data-current="joe_global">基本设置</li>
                     <li class="item" data-current="joe_index">首页设置</li>
                     <li class="item" data-current="joe_aside">侧栏设置</li>
-                    <li class="item" data-current="joe_post">文章设置</li>
                     <li class="item" data-current="joe_image">图片设置</li>
                     <li class="item" data-current="joe_other">其他设置</li>
                 </ul>
@@ -46,70 +45,19 @@ function themeConfig($form)
             </ol>
         </div>
     <?php
-    $JFavicon = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JFavicon',
-        NULL,
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAaVBMVEUAAAA2Jyc2Jyc2Jyc2JyfWngc2Jyc2Jyc2Jyc2Jyc2Jyc2JydGMiSSbhU2Jyc2JydvUhs3Jyc2KCg2JyeYchRWPyCmexE2Jyc2JyfurwOKZhfEkQs2Jyd4Who2KCg2KCg2Jyf9ugD3tgL5+sE2AAAAIHRSTlMA6gsW9vuGMcTQtEb9+JNp+6lQKPz7+55y/fv7OvrZXtrXQoIAAAGdSURBVEjHxdXrcoIwEAXgBSJXi4oXVLwcfP+HbAyRQzrtLE6n0+8XagjZsyHKr8VZwg/ZVjRZhKjx10kOk4qiBBD56yMs7RkFABOLU8O6yE84a+uvLwYoYlHc2+M4pmrTZFZQI5llZfBkjIlmzZ9EGLWi8Nns187SZaTJDJan3umAXFQlcOi9NbASRWMX9Oi9BaDVHd+Arh+dgfr7cXU+KIB1T6elLcO7B9GDFv3Ejt+bbRh95Bjg3NNj//rBjiiD6FPeOnnEwQ6Lh0UXQMXoGcbqWQRL4EKqyc4tGbebqWNI/skcxXtfKjYibMP2uQ6ujjbAdefsw0anvil3Vz8lBqPiyzY2ybCGm5D9TFwR1+SqOYrFqg8L58qNwaqZ6jRXpppxWzKbmjOFnTv48pgNq8nY9HOwMxqeP+V0GXnmNAboFqMPG8jF/VDZSbdBobo0iFIXvntNOmgBfNDVjku9TD0DeArop4zXqYcxc2WqGte5h8O+qf8QS8e9+JqwKbXMUW1e2kT+zKYo8remXzGgeeIIlbwlzeU9SSP/5RPis0lhQ1CXpwAAAABJRU5ErkJggg==',
-        '网站 Favicon 设置',
-        '介绍：用于设置网站 Favicon，一个好的 Favicon 可以给用户一种很专业的观感 <br />
-         格式：图片 URL地址 或 Base64 地址 <br />
-         其他：免费转换 Favicon 网站 <a target="_blank" href="//tool.lu/favicon">tool.lu/favicon</a>'
-    );
-    $JFavicon->setAttribute('class', 'joe_content joe_image');
-    $form->addInput($JFavicon);
-
-    $JLogo = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JLogo',
-        NULL,
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAC0CAMAAADB7UXXAAAAt1BMVEUAAAA1KiouISk2KSk3KCg3KCgzMDA0Li41Kio2KCg3KCg1Kio0Kys1Kys3KCgzMDA3KCg1Kio1Kys1KiozMDA0LCz5twE3KCg0LS0zMDA3KCg0LCw3KCiIYxhhRh8zMDBVPSGgdRM2KCinehE1LCy/jA1pTB3+ugHYnwg1KytEMSV3Vxs3KCiSaxYzMDDqqwQzMDA1LCzDkAveogbTmwmDYBiwgBA3KCgzMDD/ugD/wwArHyr/vwAQnkgXAAAAN3RSTlMADf5F4/WyPmVusBw1ktLMyHorJPdO+Oum4tlXtvTy7vTtnO6D8vT6/Yr29cHwv/fWXfT19P7z0V9SNQAACnJJREFUeNrtnX1/0jAQxxPa0rK2PBQqMFC04ia6TXHTsI73/7ocCktK2l6SdvLgff+ao+s++5nmfrm7pARBEARBEARBEARBEARBkNdlcmE7w+4iIhD9edd27IslJYhM0GV/cebAlT1ne2U7IMg+7pC9kJAyEn6hYxEki28zgbIx2WICwz5B5GHGiYoVd5jIiCCyPJxF8QTJMjg4JDNMWJY2KeKGZfEIIo0zjk1JPtRm+2MXEZizLENfVciQIAItYERyLlmWHkEEXJZlSoq4YFnQSWagbSmEqIUlG5eJWZbZoF0iT5eJtAiSZSSaQ5cUEziZKQDZg3IlhzEpw+KB+wIf7By8vwHZGUGLFT/5OyhtfK7zoVYvCb2IwPS9MJlbOBwRBPkfoQA4N6rRt4c52AIJQZSsOUhMEBCXwbTx6YbpsjwweaaLx/LBUo0e1GZKXBCklJAVgQldHSKHbcB4U5Up29EoAOONCjHX8fbHpy0/nnn5+raB8UanctO4Wqc71s/wf1w9YbeKTpvAQ/qYy/oB4w2IP2Rbnt6mjwWkb58w3qh2pDW+fFsXCbn+9qWB8aaUgO14+pA+FpJ+fBmSjk+Qkj6zxvs3jyW8ed/AeKPUItD4lJYJmX5qYLxRWWQ/Xa0fS1lfYbwpZgFZH076gPm0QvpOnvWBLdAQ401Rt55gfUosEMabfCxufT7yAVlmgTDe5NIusj6wBWoT5IWWZH0A0h+N/7ZFkgZWEbFkfUDWX3m8iV3XtXJxz9AdtWymgHOvKuQ9lEs/086/HlPh6TZ9VCS9fWL/YeE2YCBypIHjjQoROSemTAk40ohLblbMubaZxwxE9uKwK2fP/FeNQrTNDKZIeJ343xVuW0yVh7XygHyAwra60XQ7hRxV1PeHDACwkUAuDQBObMSrQo5qz2gi+LoNl8+0N2y+sJ8ZAgsbILs7FG96ubup4FuT8xAyEB4ymos/FQyQtvmZ+jQXYUIJSCnRYhHeDSQRx6PF4pgiFbc+Xajlhyd/4PQPrFJXywLR0SrDYEKOi1iloh9qWiAhIZko5OaYkijNlcix6UgvVXoaqS0kyLXWh0NfJVt8SQlMfyXQIUcGX2Q7kZpDekjVMhbwWjrKXAYzXnHm5LjwHcXTJ9qSBQJzaPBQC5lWL8HdET/Ziepe/1i0QOpZ3YlqI3WiOUkeWQUjUF9fiBZI2frcqLf2B3pCuuSouFFf8QaABQKsD2iBbk5ZyIlODiaUmtHAWmyis/1pebpCUlvHEvuSBYKyPo6vN0mfrJBzHjQDvSTRw7qufpU+tw3zUxWyD1gfIwt0/U6wPppGtn+iQo50jzmyRAsER5qJ7tJqdJpCuvpnE14IFijNRYg0U/2I59YlZN/yer2l6ytW9Je9nhdH1be5dvUng8a7t/vcbrhq8GlX34N16xDSXfCU26zZ6wOuLvzO03JBxW2ursHKvPGUSwOYdqFHo6qQUThb7fG9RYtFGGevvQuqWJ9EP1cEY1PjydpcyIhfITIrsA/WWLp04JkXvGy/vsItbK/hLJC5kPPB9hkN48iad8RRGRCZcCdecy7ceWHcOdp6jVaCG8O+6qm5kPRuL8MWfy8ZafxuTX8z+/NrPdMCQ1jvSQyyh4RZ1iCk/10SgvIfkPUZZctndPyiuW+8qnmNEvjcbL6emwpJdzqOsmpx4mzY3M+0T14ubJoWs6d1nsRgsusrhErcsJD8M1+Sd8tM/CQaSHlNHnl800Y+S/9Phu1PYpIU7Znan0nBcApWnGZOsn0sxp4dPdOGn7Z+eG28//nMV4GffxB6+QwM+SU1FJIPJ6/kZwJZ35FghsDCGuxkWtqh3rlPn1kLpH+4d7RnDA9MisJCeoJYxUNyJM+dwl/u8xBPNQO3dtIC7ktLPwBJCyApaigknwop2cI/kgWig7wa2oDHJeOCTai/SQQu2FxSzUP3A1MhA66V7FFzSo9xpoYmR5vE+BAfJ9KzPj/S4hKicWI3MU7szkuEdHNarsJcITv8Lr7x236mWvtjv67VNob4WutsX19IueBNJAZyewaXbCYgXkiJFi2D4hffJAK3WSQEwgIiHiAk16rYA3aESZJfDxARYwtEQeuj2AGd3hqVY9vUWMi+ZHGKVjeUX1+rkMQ6ngaB2LyubZW2svRWHH9/2mzSfCo0Rw59Rdf59AtqWfnFXfmyuvWBhYxXHDnALYVHW7p+TOo/NS5RPITq3fUjwPW7huRQocxJpCskYLpzZe7I19NXOMcw0Lc+sAVaVK4Hw0LSVdkQCyT7479GVxu1VZKxPmh9ZAsED7ULaWllGLXHZUOsL6smjeCaz3qd6Fsf2AJdqEQ6j1QSslk2xAJ5iTiWlo110AaSL4D1AS2QBf/iNqkmpFc2xCw5jzYqjU4UetzhgZHQ/IPwp0Iv/vWbLNciLx/ev+f/PVH+TaWEqLmQdFAyxLjKbp7w4/3raQcsgMHvO2t3JTabjBgX8p3ElcjmG+83CDs6h90dN3/Z3NQeAicba2V/RnJxRk7Y3okZM85I0nHVqWyBYBqKMHWcqLKQkRS35TzaIJDvJD/cm3Li2Dc+ZeqgLEhlIUkoCSNp3JNTQvIOiXjGFTeyQAfEpjUIScX8bZT31DelDRKcjrUdjpuLB24VC3QIYOsD1l84fW5pMo+mm18U82erDOPQi1t/7j9zq72A4WB0iZGQESlT8kWMYCtYqLrjdtyv2Ct5MFwzIft5LSucvx16/rYbaDwhEnFuUnJEK29cOhAhMROSEpmJuFSc3TW/b7+a56oTjOXhGJPKhM4h7I8TEjMhZySXyZ0kzp1HFbsjO0tSB/2J57W2eDs23+n1FjY35B8+bviQy0cBbsjtea+XuSf/JcuI6AkJ1/DpJOkMdmp3wgklZVi7ft3B3Twir48nJtGU+KEYlU2FDIGucDd2I0qU8N048EndwBXt60cFroFjDysLuSSnCU9sbAsNULEBSP5UFvJkT5wVN4ZoHQ1yQeqjebznB2gnNqRj8YEGICd6FSGP6twkEPh4EHh/bEiqIy+QByd8Cpi0N1Zpf6xNaxXyGI9NgoGPB4H3x9b6CPLM4smGGq3K9vW7+qyPtRj1qNTic+KnoAq9Fh9TNesTE2P4zqzZzkD1Tz5kb5nqvhhoSioR7zXQtrYLv5N/K1vAFOJNeluX9aGzlyBtidXoYzpXzpAQOIuBtwZUsz5y81OLEDo67cVhgQW6WueTfq3N+oSZTOHdbFdsPQcEC/TrM+eef/mrPuszX8kMzuC53usyaRTkfVlt1idaSXROPs5IWSAYq/r43y8EnMdjzbNA/+wF20FzwB/q5rGdz/e674WuOetDXW8ehuF8GZBzY6HahoLU0d5in3CeS49Xbm85p7DwanRV2lAQGPcC5PxCA4IgCHIwaNQXiNA8VnilkPMCs0+6uHdYEiaQEKSO9yk65/WGw3/MVEycIbVkeo/oHOZTpMt3eyNVmJzhCzcPAr3EF7vXQwszkPVAbUyJ18PiDN83fhB8hzEHV4f1rBNPuhf5aAjO7f33B+PmrF5/f0CsI3tJIYIgCIIgCIIgCIIgCIIgR8Bv+RdDljqTBi8AAAAASUVORK5CYII=',
-        '网站 Logo 设置',
-        '介绍：用于设置网站 Logo，一个好的 Logo 能为网站带来有效的流量 <br />
-         格式：图片 URL地址 或 Base64 地址 <br />
-         其他：免费制作 logo 网站 <a target="_blank" href="//www.uugai.com">www.uugai.com</a>'
-    );
-    $JLogo->setAttribute('class', 'joe_content joe_image');
-    $form->addInput($JLogo);
-
-    $JCommentStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JCommentStatus',
-        array(
-            'on' => '开启（默认）',
-            'off' => '关闭'
-        ),
-        'on',
-        '开启或关闭全站评论',
-        '介绍：用于一键开启关闭所有页面的评论 <br>
-         注意：此处的权重优先级最高 <br>
-         若关闭此项而文章内开启评论，评论依旧为关闭状态'
-    );
-    $JCommentStatus->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JCommentStatus->multiMode());
-
+    /* 基本设置 */
     $JNavStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavStatus',
         array(
-            'on' => '关闭合并（默认）',
-            'off' => '开启合并'
+            'on' => '展开（默认）',
+            'off' => '合并'
         ),
         'on',
-        '导航分类合并',
-        '介绍：默认为分开显示，导航分类分开显示，合并时显示分类下拉菜单'
+        '分类展开合并',
+        '介绍：导航分类默认为展开显示，合并时显示分类下拉菜单'
     );
     $JNavStatus->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JNavStatus->multiMode());
-
-    $JNavDropdown = new Typecho_Widget_Helper_Form_Element_Select(
-        'JNavDropdown',
-        array(
-            'hover' => '鼠标经过（默认）',
-            'click' => '鼠标点击'
-        ),
-        'hover',
-        '导航分类合并后展开方式',
-        '介绍：默认为鼠标经过显示下拉菜单，可选择鼠标点击显示'
-    );
-    $JNavDropdown->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JNavDropdown->multiMode());
 
     $JNavMaxNum = new Typecho_Widget_Helper_Form_Element_Select(
         'JNavMaxNum',
@@ -123,11 +71,24 @@ function themeConfig($form)
             '7' => '7个',
         ),
         '3',
-        '选择导航栏最大显示的个数',
-        '介绍：用于设置最大多少个后，以更多下拉框显示'
+        '页面展开合并',
+        '介绍：导航页面默认显示3个，超过设置数的合并'
     );
     $JNavMaxNum->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JNavMaxNum->multiMode());
+
+    $JNavDropdown = new Typecho_Widget_Helper_Form_Element_Select(
+        'JNavDropdown',
+        array(
+            'hover' => '鼠标经过（默认）',
+            'click' => '鼠标点击'
+        ),
+        'hover',
+        '下拉菜单显示',
+        '介绍：默认为鼠标经过显示下拉菜单，可选择鼠标点击显示'
+    );
+    $JNavDropdown->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JNavDropdown->multiMode());
 
     $JCursorEffects = new Typecho_Widget_Helper_Form_Element_Select(
         'JCursorEffects',
@@ -147,8 +108,7 @@ function themeConfig($form)
             'cursor11.js' => '效果11',
         ),
         'off',
-        '选择鼠标特效',
-        '介绍：用于开启炫酷的鼠标特效'
+        '选择鼠标特效'
     );
     $JCursorEffects->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JCursorEffects->multiMode());
@@ -234,8 +194,7 @@ function themeConfig($form)
             'slideOutUp' => 'slideOutUp',
         ),
         'off',
-        '选择一款炫酷的列表动画',
-        '介绍：开启后，列表将会显示所选择的炫酷动画'
+        '选择列表动画'
     );
     $JList_Animate->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JList_Animate->multiMode());
@@ -247,24 +206,88 @@ function themeConfig($form)
             'ajax' => '加载更多',
         ),
         'default',
-        '文章列表分页形式',
-        '介绍：选择一款您所喜欢的分页形式'
+        '选择列表分页'
     );
     $JPageStatus->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JPageStatus->multiMode());
+
+    $JFavicon = new Typecho_Widget_Helper_Form_Element_Text(
+        'JFavicon',
+        NULL,
+        NULL,
+        'Favicon 图标',
+        '介绍：Web 浏览器选项卡中网站标题前的小图标，请填写图片 URL地址 或 Base64 地址 <br />
+         制作： <a target="_blank" href="//tool.lu/favicon">tool.lu/favicon</a>'
+    );
+    $JFavicon->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JFavicon);
+
+    $JLogo = new Typecho_Widget_Helper_Form_Element_Text(
+        'JLogo',
+        NULL,
+        NULL,
+        '网站 Logo',
+        '介绍：网站的标志性图标，请填写图片 URL地址 或 Base64 地址 <br />
+         制作： <a target="_blank" href="//www.uugai.com">www.uugai.com</a>'
+    );
+    $JLogo->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JLogo);
+
+    $JDocumentTitle = new Typecho_Widget_Helper_Form_Element_Text(
+        'JDocumentTitle',
+        NULL,
+        NULL,
+        '网页切换标签时显示的标题',
+        '介绍：仅适用于 PC 端，网站标题显示的内容。如果不填写，则默认不开启 <br />
+         注意：严禁加单引号或双引号！！！否则会导致网站出错！！'
+    );
+    $JDocumentTitle->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JDocumentTitle);
+
+    $JBirthDay = new Typecho_Widget_Helper_Form_Element_Text(
+        'JBirthDay',
+        NULL,
+        NULL,
+        '网站成立日期（非必填）',
+        '介绍：用于显示当前站点已经运行了多少时间。<br>
+         注意：填写时务必保证填写正确！例如：2021/1/1 00:00:00 <br>
+         其他：不填写则不显示，若填写错误，则不会显示计时'
+    );
+    $JBirthDay->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JBirthDay);
+
+    $JCustomFont = new Typecho_Widget_Helper_Form_Element_Text(
+        'JCustomFont',
+        NULL,
+        NULL,
+        '自定义网站字体（非必填）',
+        '介绍：用于修改全站字体，填写则使用引入的字体，不填写使用默认字体 <br>
+         格式：字体URL链接（推荐使用woff格式的字体，网页专用字体格式） <br>
+         注意：字体文件一般有几兆，建议使用cdn链接'
+    );
+    $JCustomFont->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JCustomFont);
+
+    $JCustomAvatarSource = new Typecho_Widget_Helper_Form_Element_Text(
+        'JCustomAvatarSource',
+        NULL,
+        NULL,
+        '自定义头像源（非必填）',
+        '介绍：默认为：https://cravatar.cn/avatar/ <br>
+         其他：https://gravatar.helingqi.com/wavatar/ <br>
+         注意：填写时，务必保证最后有一个/字符，否则不起作用！'
+    );
+    $JCustomAvatarSource->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JCustomAvatarSource);
 
     $JCustomNavs = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomNavs',
         NULL,
         NULL,
-        '导航栏自定义链接（非必填）',
-        '介绍：用于自定义导航栏链接 <br />
-         格式：跳转文字 || 跳转链接（中间使用两个竖杠分隔）<br />
-         其他：一行一个，一行代表一个超链接 <br />
-         例如：<br />
-            百度一下 || https://baidu.com <br />
-            腾讯视频 || https://v.qq.com
-         '
+        '自定义链接（非必填）',
+        '介绍：用于自定义导航栏链接,一行一个,中间使用两个竖杠分隔 <br />
+         格式：跳转文字 || 跳转链接 <br />
+         例如：小王先森 || https://xwsir.cn'
     );
     $JCustomNavs->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JCustomNavs);
@@ -272,19 +295,16 @@ function themeConfig($form)
     $JFooter_Tabbar = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFooter_Tabbar',
         NULL,
-        'zm-home2 || 首页 || index.html
-         zm-pinglun3 || 碎语 || cross.html
-         zm-guidang || 归档 || archives.html
-         zm-wo || 关于 || about.html',
+        NULL,
         '底部导航（非必填）',
-        '提示：请参考示例填写，一行一个，为空则不显示<br />
-            格式：图标 || 名称 || 链接 （中间使用 || 分隔）<br />
-            示例：<br />
+        '介绍：请参考示例填写，一行一个，为空则不显示<br />
+         格式：图标 || 名称 || 链接 （中间使用 || 分隔）<br />
+         示例：<br />
             zm-home2 || 首页 || index.html <br />
             zm-pinglun3 || 碎语 || cross.html <br />
             zm-guidang || 归档 || archives.html <br />
             zm-wo || 关于 || about.html <br />
-            更多图标：<a href="https://www.iconfont.cn/" target="_blank">阿里巴巴矢量图标库</a> <br />
+            更多图标：<a href="https://www.iconfont.cn/" target="_blank">iconfont 图标库</a> <br />
             '
     );
     $JFooter_Tabbar->setAttribute('class', 'joe_content joe_global');
@@ -323,17 +343,6 @@ function themeConfig($form)
     );
     $JFooter_Right->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JFooter_Right);
-
-    $JDocumentTitle = new Typecho_Widget_Helper_Form_Element_Text(
-        'JDocumentTitle',
-        NULL,
-        NULL,
-        '网页被隐藏时显示的标题',
-        '介绍：在PC端切换网页标签时，网站标题显示的内容。如果不填写，则默认不开启 <br />
-         注意：严禁加单引号或双引号！！！否则会导致网站出错！！'
-    );
-    $JDocumentTitle->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JDocumentTitle);
 
     $JCustomCSS = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomCSS',
@@ -378,44 +387,98 @@ function themeConfig($form)
     );
     $JCustomBodyEnd->setAttribute('class', 'joe_content joe_global');
     $form->addInput($JCustomBodyEnd);
-
-    $JBirthDay = new Typecho_Widget_Helper_Form_Element_Text(
-        'JBirthDay',
+    /* 首页设置 */
+    $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Text(
+        'JIndex_Top_Image',
         NULL,
-        NULL,
-        '网站成立日期（非必填）',
-        '介绍：用于显示当前站点已经运行了多少时间。<br>
-         注意：填写时务必保证填写正确！例如：2021/1/1 00:00:00 <br>
-         其他：不填写则不显示，若填写错误，则不会显示计时'
+        'https://img.xwsir.cn/YJ35kGah13.webp',
+        '首页顶部壁纸(非必填)',
+        '介绍：用于修改首页顶部背景壁纸，请填写图片地址'
     );
-    $JBirthDay->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JBirthDay);
+    $JIndex_Top_Image->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Top_Image);
 
-    $JCustomFont = new Typecho_Widget_Helper_Form_Element_Text(
-        'JCustomFont',
+    $JIndex_Carousel = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JIndex_Carousel',
         NULL,
-        NULL,
-        '自定义网站字体（非必填）',
-        '介绍：用于修改全站字体，填写则使用引入的字体，不填写使用默认字体 <br>
-         格式：字体URL链接（推荐使用woff格式的字体，网页专用字体格式） <br>
-         注意：字体文件一般有几兆，建议使用cdn链接'
+        'https://img.xwsir.cn/YJ35kGah13.webp || about.html || 夕阳无限好',
+        '首页轮播图',
+        '介绍：请务必填写正确的格式，一行一个 <br />
+         格式：图片地址 || 跳转链接 || 标题 （中间使用两个竖杠分隔）'
     );
-    $JCustomFont->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JCustomFont);
+    $JIndex_Carousel->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Carousel);
 
-    $JCustomAvatarSource = new Typecho_Widget_Helper_Form_Element_Text(
-        'JCustomAvatarSource',
+    $JIndex_Recommend = new Typecho_Widget_Helper_Form_Element_Text(
+        'JIndex_Recommend',
         NULL,
         NULL,
-        '自定义头像源（非必填）',
-        '介绍：用于修改全站头像源地址 <br>
-         例如：https://gravatar.ihuan.me/avatar/ <br>
-         其他：非必填，默认头像源为https://gravatar.helingqi.com/wavatar/ <br>
-         注意：填写时，务必保证最后有一个/字符，否则不起作用！'
+        '首页推荐文章（非必填）',
+        '介绍：请务必填写正确的格式，填写时填 2 个，否则不显示 <br/>
+         格式：文章的id || 文章的id （中间使用两个竖杠分隔）'
     );
-    $JCustomAvatarSource->setAttribute('class', 'joe_content joe_global');
-    $form->addInput($JCustomAvatarSource);
+    $JIndex_Recommend->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Recommend);
 
+    $JIndexSticky = new Typecho_Widget_Helper_Form_Element_Text(
+        'JIndexSticky',
+        NULL,
+        NULL,
+        '首页置顶文章（非必填）',
+        '介绍：请务必填写正确的格式 <br />
+         格式：文章的ID || 文章的ID || 文章的ID （中间使用两个竖杠分隔）'
+    );
+    $JIndexSticky->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndexSticky);
+
+    $JIndex_Hot = new Typecho_Widget_Helper_Form_Element_Select(
+        'JIndex_Hot',
+        array('off' => '关闭（默认）', 'on' => '开启'),
+        'off',
+        '首页热门文章'
+    );
+    $JIndex_Hot->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Hot->multiMode());
+
+    $JIndex_Notice = new Typecho_Widget_Helper_Form_Element_Text(
+        'JIndex_Notice',
+        NULL,
+        NULL,
+        '首页通知文字（非必填）',
+        '介绍：请务必填写正确的格式 <br />
+         格式：通知文字 || 跳转链接（中间使用两个竖杠分隔，限制一个）'
+    );
+    $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($JIndex_Notice);
+
+    $IndexListStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'IndexListStatus',
+        array(
+            'default' => '普通模式',
+            'ajax' => 'Ajax模式',
+        ),
+        'default',
+        '首页文章列表模式',
+        '介绍：选择一款您所喜欢的模式'
+    );
+    $IndexListStatus->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($IndexListStatus->multiMode());
+
+    $IndexListOrder = new Typecho_Widget_Helper_Form_Element_Select(
+        'IndexListOrder',
+        array(
+            'created' => '按时间排序',
+            'views' => '按浏览排序',
+            'commentsNum' => '按评论排序',
+            'agree' => '按点赞排序',
+        ),
+        'created',
+        '首页文章排序方式',
+        '介绍：文章列表为Ajax模式时生效，默认按时间排序，请选择一种您所喜欢的呈现形式'
+    );
+    $IndexListOrder->setAttribute('class', 'joe_content joe_index');
+    $form->addInput($IndexListOrder->multiMode());
+    /* 侧栏设置 */
     $JAside_Switch = new Typecho_Widget_Helper_Form_Element_Select(
         'JAside_Switch',
         array(
@@ -446,70 +509,57 @@ function themeConfig($form)
         'JAside_Author_Nick',
         NULL,
         "Typecho",
-        '博主栏博主昵称 - PC/WAP',
-        '介绍：用于修改博主栏的博主昵称 <br />
-         注意：如果不填写时则显示 *个人设置* 里的昵称'
+        '博主昵称 - PC/WAP',
+        '介绍：不填写则显示 *个人设置* 里的昵称'
     );
     $JAside_Author_Nick->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Nick);
-    /* --------------------------------------- */
+
+    $JAside_Author_Link = new Typecho_Widget_Helper_Form_Element_Text(
+        'JAside_Author_Link',
+        NULL,
+        "https://xwsir.cn",
+        '昵称链接 - PC/WAP',
+        '介绍：用于修改博主昵称点击后的跳转地址'
+    );
+    $JAside_Author_Link->setAttribute('class', 'joe_content joe_aside');
+    $form->addInput($JAside_Author_Link);
+
     $JAside_Author_Avatar = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Avatar',
         NULL,
         NULL,
-        '博主栏博主头像 - PC/WAP',
+        '博主头像 - PC/WAP',
         '介绍：用于修改博主栏的博主头像 <br />
          注意：如果不填写时则显示 *个人设置* 里的头像'
     );
     $JAside_Author_Avatar->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Avatar);
-    /* --------------------------------------- */
+
     $JAside_Author_Image = new Typecho_Widget_Helper_Form_Element_Text(
         'JAside_Author_Image',
         NULL,
-        "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg",
-        '博主栏背景壁纸 - PC',
-        '介绍：用于修改PC端博主栏的背景壁纸 <br/>
-         格式：图片地址 或 Base64地址'
+        NULL,
+        '博主背景 - PC/WAP',
+        '介绍：博主栏和侧边栏壁纸，请填写图片地址 或 Base64地址'
     );
     $JAside_Author_Image->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Image);
-    /* --------------------------------------- */
-    $JAside_Wap_Image = new Typecho_Widget_Helper_Form_Element_Text(
-        'JAside_Wap_Image',
-        NULL,
-        "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/wap_aside_image.jpg",
-        '博主栏背景壁纸 - WAP',
-        '介绍：用于修改WAP端博主栏的背景壁纸 <br/>
-         格式：图片地址 或 Base64地址'
-    );
-    $JAside_Wap_Image->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Wap_Image);
-    /* --------------------------------------- */
-    $JAside_Author_Link = new Typecho_Widget_Helper_Form_Element_Text(
-        'JAside_Author_Link',
-        NULL,
-        "https://xwsir.cn",
-        '博主栏昵称跳转地址 - PC/WAP',
-        '介绍：用于修改博主栏点击博主昵称后的跳转地址'
-    );
-    $JAside_Author_Link->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_Author_Link);
-    /* --------------------------------------- */
+
     $JAside_Author_Motto = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JAside_Author_Motto',
         NULL,
         "有钱终成眷属，没钱亲眼目睹",
-        '博主栏座右铭（一言）- PC/WAP',
+        '座右铭（一言）- PC/WAP',
         '介绍：用于修改博主栏的座右铭（一言） <br />
-         格式：可以填写多行也可以填写一行，填写多行时，每次随机显示其中的某一条，也可以填写API地址 <br />
+         格式：可填写一行或多行，填写多行时，每次随机显示其中的某一条，也可以填写API地址 <br />
          其他：API和自定义的座右铭完全可以一起写（换行填写），不会影响 <br />
          注意：API需要开启跨域权限才能调取，否则会调取失败！<br />
          推荐API：https://api.vvhan.com/api/ian'
     );
     $JAside_Author_Motto->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Author_Motto);
-    /* --------------------------------------- */
+
     $JAside_Rand = new Typecho_Widget_Helper_Form_Element_Select(
         'JAside_Rand',
         array(
@@ -524,12 +574,11 @@ function themeConfig($form)
             '10' => '开启，并显示10条随机文章'
         ),
         'off',
-        '随机文章 - PC',
-        '介绍：用于设置随机文章的显示数量'
+        '随机文章 - PC'
     );
     $JAside_Rand->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Rand->multiMode());
-    /* --------------------------------------- */
+
     $JAside_Timelife_Status = new Typecho_Widget_Helper_Form_Element_Select(
         'JAside_Timelife_Status',
         array(
@@ -537,12 +586,11 @@ function themeConfig($form)
             'on' => '开启'
         ),
         'off',
-        '是否开启人生倒计时模块 - PC',
-        '介绍：用于控制是否显示人生倒计时模块'
+        '倒计时模块 - PC'
     );
     $JAside_Timelife_Status->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Timelife_Status->multiMode());
-    /* --------------------------------------- */
+
     $JAside_Hot_Num = new Typecho_Widget_Helper_Form_Element_Select(
         'JAside_Hot_Num',
         array(
@@ -557,24 +605,34 @@ function themeConfig($form)
             '10' => '显示10条',
         ),
         'off',
-        '是否开启热门文章栏 - PC',
-        '介绍：用于控制是否开启热门文章栏'
+        '热门文章 - PC'
     );
     $JAside_Hot_Num->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JAside_Hot_Num->multiMode());
+
+    $JAside_3DTag = new Typecho_Widget_Helper_Form_Element_Select(
+        'JAside_3DTag',
+        array(
+            'off' => '关闭（默认）',
+            'on' => '开启'
+        ),
+        'off',
+        '3D云标签 - PC'
+    );
+    $JAside_3DTag->setAttribute('class', 'joe_content joe_aside');
+    $form->addInput($JAside_3DTag->multiMode());
 
     $JADContent = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JADContent',
         NULL,
         NULL,
         '侧边栏广告 - PC',
-        '介绍：用于设置侧边栏广告 <br />
-         格式：广告图片 || 跳转链接 （中间使用两个竖杠分隔）<br />
+        '格式：广告图片 || 跳转链接 （中间使用两个竖杠分隔）<br />
          注意：如果您只想显示图片不想跳转，可填写：广告图片 || javascript:void(0)'
     );
     $JADContent->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JADContent);
-    /* --------------------------------------- */
+
     $JCustomAside = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomAside',
         NULL,
@@ -586,21 +644,8 @@ function themeConfig($form)
     );
     $JCustomAside->setAttribute('class', 'joe_content joe_aside');
     $form->addInput($JCustomAside);
-    /* --------------------------------------- */
-    $JAside_3DTag = new Typecho_Widget_Helper_Form_Element_Select(
-        'JAside_3DTag',
-        array(
-            'off' => '关闭（默认）',
-            'on' => '开启'
-        ),
-        'off',
-        '是否开启3D云标签 - PC',
-        '介绍：用于设置侧边栏是否显示3D云标签'
-    );
-    $JAside_3DTag->setAttribute('class', 'joe_content joe_aside');
-    $form->addInput($JAside_3DTag->multiMode());
-
-    $JThumbnail = new Typecho_Widget_Helper_Form_Element_Text(
+    /* 图片设置 */
+    $JThumbnail = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JThumbnail',
         NULL,
         NULL,
@@ -616,10 +661,9 @@ function themeConfig($form)
     $JLazyload = new Typecho_Widget_Helper_Form_Element_Text(
         'JLazyload',
         NULL,
-        "https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/lazyload.jpg",
+        NULL,
         '自定义懒加载图',
-        '介绍：用于修改主题默认懒加载图 <br/>
-         格式：图片地址'
+        '介绍：用于修改主题默认懒加载图，请填写图片地址'
     );
     $JLazyload->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JLazyload);
@@ -627,11 +671,10 @@ function themeConfig($form)
     $JWallpaper_Batten = new Typecho_Widget_Helper_Form_Element_Text(
         'JWallpaper_Batten',
         NULL,
-        NULL,
+        'https://img.xwsir.cn/5stdVmYIws.webp',
         '自定义BATTEN背景图片（非必填）',
         '介绍：自定义BATTEN背景图片，不填写时显示懒加载图片。<br />
-         格式：图片URL地址 或 随机图片api 例如：https://api.btstu.cn/sjbz/?lx=fengjing <br />
-         注意：如果需要显示上方动态壁纸，请不要填写此项，此项优先级最高！'
+         格式：图片URL地址 或 随机图片API'
     );
     $JWallpaper_Batten->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JWallpaper_Batten);
@@ -648,146 +691,31 @@ function themeConfig($form)
             'backdrop6.js' => '效果6'
         ),
         'off',
-        '是否开启动态背景图（仅限PC）',
-        '介绍：用于设置PC端动态背景<br />
-         注意：如果您填写了下方PC端静态壁纸，将优先展示下方静态壁纸！如需显示动态壁纸，请将PC端静态壁纸设置成空'
+        '动态背景图 - PC',
+        '介绍：仅适用于 PC 端的动态背景'
     );
     $JDynamic_Background->setAttribute('class', 'joe_content joe_image');
     $form->addInput($JDynamic_Background->multiMode());
 
-    $JWallpaper_Background_PC = new Typecho_Widget_Helper_Form_Element_Text(
-        'JWallpaper_Background_PC',
+    $JWallpaper_Background = new Typecho_Widget_Helper_Form_Element_Text(
+        'JWallpaper_Background',
         NULL,
         NULL,
-        'PC端网站背景图片（非必填）',
-        '介绍：PC端网站的背景图片，不填写时显示默认的灰色。<br />
+        '静态背景图（非必填） - PC/WAP',
+        '介绍：不填写时显示默认的灰色。<br />
          格式：图片URL地址 或 随机图片api 例如：https://api.btstu.cn/sjbz/?lx=dongman <br />
-         注意：如果需要显示上方动态壁纸，请不要填写此项，此项优先级最高！'
+         注意：此项优先级最高，若要显示上方动态背景图，请不要填写此项！'
     );
-    $JWallpaper_Background_PC->setAttribute('class', 'joe_content joe_image');
-    $form->addInput($JWallpaper_Background_PC);
-
-    $JWallpaper_Background_WAP = new Typecho_Widget_Helper_Form_Element_Text(
-        'JWallpaper_Background_WAP',
-        NULL,
-        NULL,
-        'WAP端网站背景图片（非必填）',
-        '介绍：WAP端网站的背景图片，不填写时显示默认的灰色。<br />
-         格式：图片URL地址 或 随机图片api 例如：https://api.btstu.cn/sjbz/?lx=m_dongman'
-    );
-    $JWallpaper_Background_WAP->setAttribute('class', 'joe_content joe_image');
-    $form->addInput($JWallpaper_Background_WAP);
-
-    $JIndex_Top_Image = new Typecho_Widget_Helper_Form_Element_Text(
-        'JIndex_Top_Image',
-        NULL,
-        'https://pic.imgdb.cn/item/620e24df2ab3f51d9132481f.png',
-        '首页顶部壁纸(非必填)',
-        '介绍：用于修改首页顶部背景壁纸 <br />
-        格式：图片地址，例如：https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/aside_author_image.jpg'
-    );
-    $JIndex_Top_Image->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Top_Image);
-
-    $JIndex_Carousel = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JIndex_Carousel',
-        NULL,
-        'https://pic1.imgdb.cn/item/63355d0e16f2c2beb14b024c.jpg || about.html || 夕阳无限好',
-        '首页轮播图',
-        '介绍：用于显示首页轮播图，请务必填写正确的格式 <br />
-         格式：图片地址 || 跳转链接 || 标题 （中间使用两个竖杠分隔）<br />
-         其他：一行一个，一行代表一个轮播图 <br />
-         例如：<br />
-         https://img1.imgtp.com/2022/05/14/u6k61Mzu.jpeg || about.html || 寻着光的方向<br />
-         https://img1.imgtp.com/2022/05/14/o7kjyw7e.jpeg || about.html || 望向遥遥前方
-         '
-    );
-    $JIndex_Carousel->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Carousel);
-
-    $JIndex_Recommend = new Typecho_Widget_Helper_Form_Element_Text(
-        'JIndex_Recommend',
-        NULL,
-        NULL,
-        '首页推荐文章（非必填，填写时请填写2个，否则不显示！）',
-        '介绍：用于显示推荐文章，请务必填写正确的格式 <br/>
-         格式：文章的id || 文章的id （中间使用两个竖杠分隔）<br />
-         例如：1 || 2 <br />
-         注意：如果填写的不是2个，将不会显示'
-    );
-    $JIndex_Recommend->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Recommend);
-
-    $JIndexSticky = new Typecho_Widget_Helper_Form_Element_Text(
-        'JIndexSticky',
-        NULL,
-        NULL,
-        '首页置顶文章（非必填）',
-        '介绍：请务必填写正确的格式 <br />
-         格式：文章的ID || 文章的ID || 文章的ID （中间使用两个竖杠分隔）<br />
-         例如：1 || 2 || 3'
-    );
-    $JIndexSticky->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndexSticky);
-
-    $JIndex_Hot = new Typecho_Widget_Helper_Form_Element_Select(
-        'JIndex_Hot',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启首页热门文章',
-        '介绍：首页显示浏览量最多的3篇热门文章'
-    );
-    $JIndex_Hot->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Hot->multiMode());
-
-    $JIndex_Notice = new Typecho_Widget_Helper_Form_Element_Text(
-        'JIndex_Notice',
-        NULL,
-        NULL,
-        '首页通知文字（非必填）',
-        '介绍：请务必填写正确的格式 <br />
-         格式：通知文字 || 跳转链接（中间使用两个竖杠分隔，限制一个）<br />
-         例如：欢迎加入Joe官方QQ群 || https://baidu.com'
-    );
-    $JIndex_Notice->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($JIndex_Notice);
-
-    $IndexListStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'IndexListStatus',
-        array(
-            'default' => '普通模式',
-            'ajax' => 'Ajax模式',
-        ),
-        'default',
-        '首页文章列表加载模式',
-        '介绍：选择一款您所喜欢的模式'
-    );
-    $IndexListStatus->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($IndexListStatus->multiMode());
-
-    $IndexListOrder = new Typecho_Widget_Helper_Form_Element_Select(
-        'IndexListOrder',
-        array(
-            'created' => '按时间排序',
-            'views' => '按浏览排序',
-            'commentsNum' => '按评论排序',
-            'agree' => '按点赞排序',
-        ),
-        'created',
-        '首页文章排序方式',
-        '介绍：文章列表为Ajax模式时生效，默认按时间排序，请选择一种您所喜欢的呈现形式'
-    );
-    $IndexListOrder->setAttribute('class', 'joe_content joe_index');
-    $form->addInput($IndexListOrder->multiMode());
-
+    $JWallpaper_Background->setAttribute('class', 'joe_content joe_image');
+    $form->addInput($JWallpaper_Background);
+    /* 其他设置 */
     $JFriendsIndex = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriendsIndex',
         NULL,
-        '小王先森 || https://xwsir.cn/ || https://thirdqq.qlogo.cn/g?b=qq&nk=2027821710&s=100 || 山川异域，风月同天',
+        NULL,
         '首页链接（非必填）',
-        '介绍：用于填写首页友情链接 <br />
-         格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />
-         其他：一行一个，一行代表一个友链'
+        '介绍：首页底部友情链接，请参考格式填写，一行一个 <br />
+         格式：博客名称 || 博客地址 || 博客头像 || 博客简介'
     );
     $JFriendsIndex->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JFriendsIndex);
@@ -795,34 +723,58 @@ function themeConfig($form)
     $JFriends = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriends',
         NULL,
-        'Joe的博客 || https://78.al || https://fastly.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/link.png || Eternity is not a distance but a decision',
-        '内页链接（非必填）',
-        '介绍：用于填写友情链接 <br />
-         注意：您需要先增加友链链接页面（新增独立页面-右侧模板选择友链），该项才会生效 <br />
+        NULL,
+        '友情链接（非必填）',
+        '介绍：友情页面友情链接，请参考格式填写，一行一个 <br />
          格式：博客名称 || 博客地址 || 博客头像 || 博客简介 <br />
-         其他：一行一个，一行代表一个友链'
+         注意：请先创建独立页面-模板选择友链，该项才会生效'
     );
     $JFriends->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JFriends);
+
+    $JCommentStatus = new Typecho_Widget_Helper_Form_Element_Select(
+        'JCommentStatus',
+        array(
+            'on' => '开启（默认）',
+            'off' => '关闭'
+        ),
+        'on',
+        '全站评论开关',
+        '介绍：开启或关闭所有页面的评论 <br>
+         注意：此处的权重优先级最高，若关闭此项，所有评论皆为关闭状态'
+    );
+    $JCommentStatus->setAttribute('class', 'joe_content joe_global');
+    $form->addInput($JCommentStatus->multiMode());
+
+    $commentDraw = new Typecho_Widget_Helper_Form_Element_Select(
+        'commentDraw',
+        array('off' => '关闭（默认）', 'on' => '开启'),
+        'off',
+        '文章评论画图',
+        '介绍：默认关闭画图功能，开启时显示画图板'
+    );
+    $commentDraw->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($commentDraw);
 
     $JSensitiveWords = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JSensitiveWords',
         NULL,
         '你妈死了 || 傻逼 || 操你妈 || 射你妈一脸',
         '评论敏感词（非必填）',
-        '介绍：用于设置评论敏感词汇，如果用户评论包含这些词汇，则将会把评论置为审核状态 <br />
-         例如：你妈死了 || 你妈炸了 || 我是你爹 || 你妈坟头冒烟 （多个使用 || 分隔开）'
+        '介绍：如果用户评论包含这些词汇，则将会把评论置为审核状态（多个使用 || 分隔开）'
     );
     $JSensitiveWords->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JSensitiveWords);
 
     $JLimitOneChinese = new Typecho_Widget_Helper_Form_Element_Select(
         'JLimitOneChinese',
-        array('off' => '关闭（默认）', 'on' => '开启'),
+        array(
+            'off' => '关闭（默认）',
+            'on' => '开启'
+        ),
         'off',
-        '是否开启评论至少包含一个中文',
-        '介绍：开启后如果评论内容未包含一个中文，则将会把评论置为审核状态 <br />
-         其他：用于屏蔽国外机器人刷的全英文垃圾广告信息'
+        '评论至少包含一个中文',
+        '介绍：如果评论内容未包含一个中文，则将会把评论置为审核状态'
     );
     $JLimitOneChinese->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JLimitOneChinese->multiMode());
@@ -831,12 +783,45 @@ function themeConfig($form)
         'JTextLimit',
         NULL,
         NULL,
-        '限制用户评论最大字符',
+        '评论最大字符',
         '介绍：如果用户评论的内容超出字符限制，则将会把评论置为审核状态 <br />
          其他：请输入数字格式，不填写则不限制'
     );
     $JTextLimit->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JTextLimit->multiMode());
+
+    $JBaiduToken = new Typecho_Widget_Helper_Form_Element_Text(
+        'JBaiduToken',
+        NULL,
+        NULL,
+        '百度推送Token',
+        '介绍：填写此处，前台文章页如果未收录，则会自动将当前链接推送给百度加快收录 <br />
+         其他：Token在百度收录平台注册账号获取'
+    );
+    $JBaiduToken->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JBaiduToken);
+
+    $JPrismTheme = new Typecho_Widget_Helper_Form_Element_Select(
+        'JPrismTheme',
+        array(
+            'https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css' => 'prism（默认）',
+            'https://lib.baomitu.com/prism/1.26.0/themes/prism-okaidia.min.css' => 'prism-okaidia',
+            'https://lib.baomitu.com/prism/1.26.0/themes/prism-solarizedlight.min.css' => 'prism-solarizedlight',
+            'https://lib.baomitu.com/prism/1.26.0/themes/prism-tomorrow.min.css' => 'prism-tomorrow',
+            'https://lib.baomitu.com/prism-themes/1.9.0/prism-coldark-cold.min.css' => 'prism-coldark-cold',
+            'https://lib.baomitu.com/prism-themes/1.9.0/prism-coldark-dark.min.css' => 'prism-coldark-dark',
+            'https://lib.baomitu.com/prism-themes/1.9.0/prism-duotone-light.min.css' => 'prism-duotone-light',
+            'https://lib.baomitu.com/prism-themes/1.9.0/prism-duotone-forest.min.css' => 'prism-duotone-forest',
+            'https://lib.baomitu.com/prism-themes/1.9.0/prism-dracula.min.css' => 'prism-dracula',
+            'https://lib.baomitu.com/prism-themes/1.9.0/prism-ghcolors.min.css' => 'prism-ghcolors',
+        ),
+        'https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css',
+        '代码高亮样式',
+        '介绍：用于修改代码块的高亮风格 <br>
+         其他：如果您有其他样式，可通过源代码修改此项，引入您的自定义样式链接'
+    );
+    $JPrismTheme->setAttribute('class', 'joe_content joe_other');
+    $form->addInput($JPrismTheme->multiMode());
 
     $JSiteMap = new Typecho_Widget_Helper_Form_Element_Select(
         'JSiteMap',
@@ -854,27 +839,23 @@ function themeConfig($form)
             '1000' => '显示最新 1000 条链接',
         ),
         'off',
-        '是否开启主题自带SiteMap功能',
-        '介绍：开启后博客将享有SiteMap功能 <br />
-         其他：链接为博客最新实时链接 <br />
+        'SiteMap 功能',
+        '介绍：开启后博客将享有SiteMap功能，链接为博客最新实时链接 <br />
          好处：无需手动生成，无需频繁提交，提交一次即可 <br />
-         开启后SiteMap访问地址：<br />
+         访问地址：<br />
          http(s)://域名/sitemap.xml （开启了伪静态）<br />  
          http(s)://域名/index.php/sitemap.xml （未开启伪静态）
          '
     );
     $JSiteMap->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JSiteMap->multiMode());
-
     /* 评论发信 */
     $JCommentMail = new Typecho_Widget_Helper_Form_Element_Select(
         'JCommentMail',
         array('off' => '关闭（默认）', 'on' => '开启'),
         'off',
-        '是否开启评论邮件通知',
-        '介绍：开启后评论内容将会进行邮箱通知 <br />
-         注意：此项需要您完整无错的填写下方的邮箱设置！！ <br />
-         其他：下方例子以QQ邮箱为例，推荐使用QQ邮箱'
+        '评论邮件通知',
+        '介绍：请完整无错的填写下方的邮箱设置，推荐使用QQ邮箱'
     );
     $JCommentMail->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JCommentMail->multiMode());
@@ -891,7 +872,10 @@ function themeConfig($form)
 
     $JCommentSMTPSecure = new Typecho_Widget_Helper_Form_Element_Select(
         'JCommentSMTPSecure',
-        array('ssl' => 'ssl（默认）', 'tsl' => 'tsl'),
+        array(
+            'ssl' => 'ssl（默认）',
+            'tsl' => 'tsl'
+        ),
         'ssl',
         '加密方式',
         '介绍：用于选择登录鉴权加密方式'
@@ -913,8 +897,7 @@ function themeConfig($form)
         'JCommentMailFromName',
         NULL,
         NULL,
-        '发件人昵称',
-        '例如：帅气的象拔蚌'
+        '发件人昵称'
     );
     $JCommentMailFromName->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JCommentMailFromName->multiMode());
@@ -923,8 +906,7 @@ function themeConfig($form)
         'JCommentMailAccount',
         NULL,
         NULL,
-        '发件人邮箱',
-        '例如：2323333339@qq.com'
+        '发件人邮箱'
     );
     $JCommentMailAccount->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JCommentMailAccount->multiMode());
@@ -935,19 +917,20 @@ function themeConfig($form)
         NULL,
         '邮箱授权码',
         '介绍：这里填写的是邮箱生成的授权码 <br>
-         获取方式（以QQ邮箱为例）：<br>
-         QQ邮箱 > 设置 > 账户 > IMAP/SMTP服务 > 开启 <br>
-         其他：这个可以百度一下开启教程，有图文教程'
+         获取方式：QQ邮箱 > 设置 > 账户 > IMAP/SMTP服务 > 开启'
     );
     $JCommentMailPassword->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JCommentMailPassword->multiMode());
 
     $JReader_Ranking = new Typecho_Widget_Helper_Form_Element_Select(
         'JReader_Ranking',
-        array('off' => '关闭（默认）', 'on' => '开启'),
+        array(
+            'off' => '关闭（默认）', 
+            'on' => '开启'
+        ),
         'off',
-        '是否开启留言读者排行，开启后将在留言页面呈现',
-        '介绍：显示评论相关用户'
+        '读者排行榜',
+        '介绍：开启后将在留言页面呈现，按用户评论数由高到低排序'
     );
     $JReader_Ranking->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JReader_Ranking);
@@ -964,7 +947,7 @@ function themeConfig($form)
             '360' => '最近360天'
         ),
         '180',
-        '留言读者排行时间显示范围（默认为 180 天）'
+        '时间显示范围（默认为 180 天）'
     );
     $JReader_Ranking_Time->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JReader_Ranking_Time->multiMode());
@@ -973,8 +956,7 @@ function themeConfig($form)
         'JReader_Ranking_Mail',
         NULL,
         NULL,
-        '读者排行，排除不上榜的邮箱',
-        '例如：2027821710@qq.com'
+        '排除不上榜邮箱'
     );
     $JReader_Ranking_Mail->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JReader_Ranking_Mail->multiMode());
@@ -994,51 +976,8 @@ function themeConfig($form)
             '500' => '最近 500 个'
         ),
         '30',
-        '最近读者个数显示（默认为 30 个）'
+        '最近读者显示（默认为 30 个）'
     );
     $JReader_Ranking_Limit->setAttribute('class', 'joe_content joe_other');
     $form->addInput($JReader_Ranking_Limit->multiMode());
-
-    $commentDraw = new Typecho_Widget_Helper_Form_Element_Select(
-        'commentDraw',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启文章评论画图',
-        '介绍：默认关闭画图功能，开启时显示画图板'
-    );
-    $commentDraw->setAttribute('class', 'joe_content joe_post');
-    $form->addInput($commentDraw);
-
-    $JBaiduToken = new Typecho_Widget_Helper_Form_Element_Text(
-        'JBaiduToken',
-        NULL,
-        NULL,
-        '百度推送Token',
-        '介绍：填写此处，前台文章页如果未收录，则会自动将当前链接推送给百度加快收录 <br />
-         其他：Token在百度收录平台注册账号获取'
-    );
-    $JBaiduToken->setAttribute('class', 'joe_content joe_post');
-    $form->addInput($JBaiduToken);
-
-    $JPrismTheme = new Typecho_Widget_Helper_Form_Element_Select(
-        'JPrismTheme',
-        array(
-            'https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css' => 'prism（默认）',
-            'https://lib.baomitu.com/prism/1.26.0/themes/prism-okaidia.min.css' => 'prism-okaidia',
-            'https://lib.baomitu.com/prism/1.26.0/themes/prism-solarizedlight.min.css' => 'prism-solarizedlight',
-            'https://lib.baomitu.com/prism/1.26.0/themes/prism-tomorrow.min.css' => 'prism-tomorrow',
-            'https://lib.baomitu.com/prism-themes/1.9.0/prism-coldark-cold.min.css' => 'prism-coldark-cold',
-            'https://lib.baomitu.com/prism-themes/1.9.0/prism-coldark-dark.min.css' => 'prism-coldark-dark',
-            'https://lib.baomitu.com/prism-themes/1.9.0/prism-duotone-light.min.css' => 'prism-duotone-light',
-            'https://lib.baomitu.com/prism-themes/1.9.0/prism-duotone-forest.min.css' => 'prism-duotone-forest',
-            'https://lib.baomitu.com/prism-themes/1.9.0/prism-dracula.min.css' => 'prism-dracula',
-            'https://lib.baomitu.com/prism-themes/1.9.0/prism-ghcolors.min.css' => 'prism-ghcolors',
-        ),
-        'https://lib.baomitu.com/prism/1.26.0/themes/prism.min.css',
-        '选择一款您喜欢的代码高亮样式',
-        '介绍：用于修改代码块的高亮风格 <br>
-         其他：如果您有其他样式，可通过源代码修改此项，引入您的自定义样式链接'
-    );
-    $JPrismTheme->setAttribute('class', 'joe_content joe_post');
-    $form->addInput($JPrismTheme->multiMode());
 } ?>

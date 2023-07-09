@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-<link rel="shortcut icon" href="<?php $this->options->JFavicon() ?>" />
+<link rel="shortcut icon" href="<?php $this->options->JFavicon ? $this->options->JFavicon() : $this->options->themeUrl('assets/img/favicon.ico'); ?>" />
 <title><?php $this->archiveTitle(array('category' => '分类 %s 下的文章', 'search' => '包含关键字 %s 的文章', 'tag' => '标签 %s 下的文章', 'author' => '%s 发布的文章'), '', ' - '); ?><?php $this->options->title(); ?></title>
 <?php if ($this->is('single')) : ?>
 	<meta name="keywords" content="<?php echo $this->fields->keywords ? $this->fields->keywords : htmlspecialchars($this->_keywords); ?>" />

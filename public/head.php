@@ -1,7 +1,7 @@
 <div class="joe_container" style="flex-direction: column;">
     <div class="joe_head">
         <a title="<?php $this->options->title(); ?>" class="joe_menu-logo" href="<?php $this->options->siteUrl(); ?>">
-            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo() ?>" alt="<?php $this->options->title(); ?>" />
+            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo ? $this->options->JLogo() : $this->options->themeUrl('assets/img/logo.png') ?>" alt="<?php $this->options->title(); ?>" />
             <svg class="profile-color-modes" height="45" viewBox="0 0 106 60" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                 <g class="profile-color-modes-illu-group profile-color-modes-illu-red">
                     <path d="M37.5 58.5V57.5C37.5 49.768 43.768 43.5 51.5 43.5V43.5C59.232 43.5 65.5 49.768 65.5 57.5V58.5"></path>

@@ -18,7 +18,7 @@
         THEME_URL: `<?php Helper::options()->themeUrl() ?>`,
         BASE_API: `<?php echo $this->options->rewrite == 0 ? Helper::options()->rootUrl . '/index.php/word/api' : Helper::options()->rootUrl . '/word/api' ?>`,
         DYNAMIC_BACKGROUND: `<?php $this->options->JDynamic_Background() ?>`,
-        WALLPAPER_BACKGROUND_PC: `<?php $this->options->JWallpaper_Background_PC() ?>`,
+        WALLPAPER_BACKGROUND: `<?php $this->options->JWallpaper_Background() ?>`,
         IS_MOBILE: /windows phone|iphone|android/gi.test(window.navigator.userAgent),
         BAIDU_PUSH: <?php echo $this->options->JBaiduToken ? 'true' : 'false' ?>,
         DOCUMENT_TITLE: `<?php $this->options->JDocumentTitle() ?>`,
@@ -56,11 +56,7 @@ elseif (strpos($fontUrl, 'svg') !== false) $fontFormat = 'svg';
     }
 
     body::before {
-        background: <?php if (_isMobile()) {
-                        echo $this->options->JWallpaper_Background_WAP ? "url(" . $this->options->JWallpaper_Background_WAP . ")" : "#f7f9fc";
-                    } else {
-                        echo $this->options->JWallpaper_Background_PC ? "url(" . $this->options->JWallpaper_Background_PC . ")" : "#f7f9fc";
-                    } ?>;
+        background: <?php echo $this->options->JWallpaper_Background ? "url(" . $this->options->JWallpaper_Background . ")" : "#f7f9fc"; ?>;
         background-position: center 0;
         background-repeat: no-repeat;
         background-size: cover;

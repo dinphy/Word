@@ -105,8 +105,9 @@ function _getAgentOS($agent)
 /* 获取全局懒加载图 */
 function _getLazyload($type = true)
 {
-	if ($type) echo Helper::options()->JLazyload;
-	else return Helper::options()->JLazyload;
+	$lazyload = Helper::options()->JLazyload ? Helper::options()->JLazyload : Helper::options()->themeUrl('assets/img/lazyload.jpg');
+	if ($type) echo $lazyload;
+	else return $lazyload;
 }
 
 /* 获取头像懒加载图 */
@@ -175,7 +176,7 @@ function _endCountTime($precision = 3)
 /* 通过邮箱生成头像地址 */
 function _getAvatarByMail($mail, $type = true)
 {
-	$gravatarsUrl = Helper::options()->JCustomAvatarSource ? Helper::options()->JCustomAvatarSource : 'https://gravatar.helingqi.com/wavatar/';
+	$gravatarsUrl = Helper::options()->JCustomAvatarSource ? Helper::options()->JCustomAvatarSource : 'https://cravatar.cn/avatar/';
 	$mailLower = strtolower($mail);
 	$md5MailLower = md5($mailLower);
 	$qqMail = str_replace('@qq.com', '', $mailLower);

@@ -1,7 +1,7 @@
 <header class="joe_header">
     <div class="joe_header__above">
         <a title="<?php $this->options->title(); ?>" class="joe_header__above-logo" href="<?php $this->options->siteUrl(); ?>">
-            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo() ?>" alt="<?php $this->options->title(); ?>" />
+            <img class="lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?php $this->options->JLogo ? $this->options->JLogo() : $this->options->themeUrl('assets/img/logo.png') ?>" alt="<?php $this->options->title(); ?>" />
             <svg class="profile-color-modes" height="45" viewBox="0 0 106 60" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                 <g class="profile-color-modes-illu-group profile-color-modes-illu-red">
                     <path d="M37.5 58.5V57.5C37.5 49.768 43.768 43.5 51.5 43.5V43.5C59.232 43.5 65.5 49.768 65.5 57.5V58.5"></path>
@@ -202,7 +202,7 @@
                 <path d="M14.5135 5.00008L17.1201 2.39348C17.5106 2.00295 18.1438 2.00295 18.5343 2.39348L22.777 6.63612C23.1675 7.02664 23.1675 7.65981 22.777 8.05033L18.9988 11.8285V21.0001C18.9988 21.5524 18.5511 22.0001 17.9988 22.0001H5.9988C5.44652 22.0001 4.9988 21.5524 4.9988 21.0001V11.8285L1.22063 8.05033C0.830103 7.65981 0.830103 7.02664 1.22063 6.63612L5.46327 2.39348C5.85379 2.00295 6.48696 2.00295 6.87748 2.39348L9.48408 5.00008H14.5135ZM15.3419 7.00008H8.65566L6.17037 4.5148L3.34195 7.34323L6.9988 11.0001V20.0001H16.9988V11.0001L20.6557 7.34323L17.8272 4.5148L15.3419 7.00008Z"></path>
             </svg>
         </div>
-        <img width="100%" height="150" class="joe_header__slideout-image" src="<?php $this->options->JAside_Wap_Image() ?>" alt="侧边栏壁纸" />
+        <img width="100%" height="150" class="joe_header__slideout-image" src="<?php $this->options->JAside_Author_Image ? $this->options->JAside_Author_Image() : $this->options->themeUrl('assets/img/aside_author_image.jpg') ?>" alt="侧边栏壁纸" />
         <div class="joe_header__slideout-author">
             <img width="50" height="50" class="avatar lazyload" src="<?php _getAvatarLazyload(); ?>" data-src="<?php $this->options->JAside_Author_Avatar ? $this->options->JAside_Author_Avatar() : _getAvatarByMail($this->authorId ? $this->author->mail : $this->user->mail) ?>" alt="博主昵称" />
             <div class="info">
