@@ -20,7 +20,7 @@
                             <a class="abstract" href="<?php $this->permalink() ?>" title="文章摘要" target="_blank" rel="noopener noreferrer"><?php _getAbstract($this) ?></a>
                             <div class="meta">
                                 <ul class="items">
-                                    <li><?php $this->dateWord(); ?></li>
+                                    <li><?php echo _dateFormat($this->created) ?></li>
                                 </ul>
                                 <div class="meta-right">
                                     <ul class="items">
@@ -83,7 +83,7 @@
                         </a>
                         <div class="meta">
                             <ul class="items">
-                                <li><?php $this->dateWord(); ?></li>
+                                <li><?php echo _dateFormat($this->created) ?></li>
                             </ul>
                             <div class="meta-right">
                                 <ul class="items">
@@ -143,7 +143,7 @@
                         </a>
                         <div class="meta">
                             <ul class="items">
-                                <li><?php $this->dateWord(); ?></li>
+                                <li><?php echo _dateFormat($this->created) ?></li>
                             </ul>
                             <div class="meta-right">
                                 <ul class="items">
@@ -194,7 +194,7 @@
                             </a>
                             <div class="desc">
                                 <div class="title"><a href="<?php $this->permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php $this->title(); ?></a></div>
-                                <div class="time"><?php $this->dateWord(); ?></div>
+                                <div class="time"><?php echo _dateFormat($this->created) ?></div>
                             </div>
                         </div>
                         <div class="content">
@@ -258,7 +258,7 @@
                             <a class="abstract" href="<?php $this->permalink() ?>" title="文章摘要" target="_blank" rel="noopener noreferrer"><?php _getAbstract($this) ?></a>
                             <div class="meta">
                                 <ul class="items">
-                                    <li><?php $this->dateWord(); ?></li>
+                                    <li><?php echo _dateFormat($this->created) ?></li>
                                 </ul>
                                 <div class="meta-right">
                                     <ul class="items">

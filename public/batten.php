@@ -30,7 +30,7 @@
         <div class="information">
             <div class="title"><?php $this->title() ?></div>
             <div class="desctitle">
-                <span class="text"><?php $this->dateWord(); ?></span>
+                <span class="text"><?php echo _dateFormat($this->created) ?></span>
                 <span class="line"></span>
                 <span class="text" id="Joe_Article_Views"><?php _getViews($this); ?> 阅读</span>
                 <?php if ($this->user->hasLogin()) : ?>

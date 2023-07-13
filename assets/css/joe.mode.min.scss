@@ -4,6 +4,7 @@ html {
 	--theme: #409eff;
 	--background: #fff;
 	--new-background: hsl(0deg 0% 100% / 70%);
+	--c-background: #98ce7d;
 	--main: #303133;
 	--routine: #606266;
 	--minor: #909399;
@@ -23,6 +24,7 @@ html[data-night='night'] body {
 	--theme: rgb(201 201 201);
 	--background: #232323;
 	--new-background: hsl(210deg 11% 15% / 70%);
+	--c-background: hsl(100deg 17.12% 41.14%);
 	--main: #999;
 	--routine: #888;
 	--minor: #777;
@@ -43,7 +45,7 @@ html[data-night='night'] {
 		z-index: -500;
 	}
 	.joe_menu-logo img,
-    .joe_header__above-logo img {
+	.joe_header__above-logo img {
 		display: none;
 	}
 	.joe_menu-logo svg,

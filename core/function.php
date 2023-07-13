@@ -179,9 +179,8 @@ function _getAvatarByMail($mail, $type = true)
 	$gravatarsUrl = Helper::options()->JCustomAvatarSource ? Helper::options()->JCustomAvatarSource : 'https://cravatar.cn/avatar/';
 	$mailLower = strtolower($mail);
 	$md5MailLower = md5($mailLower);
-	$qqMail = str_replace('@qq.com', '', $mailLower);
-	if (strstr($mailLower, "qq.com") && is_numeric($qqMail) && strlen($qqMail) < 11 && strlen($qqMail) > 4) {
-		$avatarUrl = 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $qqMail . '&s=100';
+	if (preg_match('/^(\d+)@qq.com$/', $mail, $matches)) {
+		$avatarUrl = 'https://thirdqq.qlogo.cn/g?b=qq&nk=' . $matches[1] . '&s=100';
 	} else {
 		$avatarUrl = $gravatarsUrl . $md5MailLower . '?d=mm';
 	}
@@ -278,13 +277,33 @@ function _getThumbnails($item)
 	return $result;
 }
 
+/* 获取评论者 Class */
+function _getAuthorClass()
+{
+	$user = Typecho_Widget::widget('Widget_User');
+	$db = Typecho_Db::get();
+	$sql = $db->select()->from('table.comments')
+		->where('coid = ?', Typecho_Widget::widget('Widget_Comments_Archive')->coid)
+		->where('mail = ?', Typecho_Widget::widget('Widget_Archive')->remember('mail', true))
+		->limit(1);
+	$result = $db->fetchAll($sql);
+	if ($user->hasLogin()) {
+		$authorClass = 'term-owner';
+	} else if ($result) {
+		$authorClass = 'term-author';
+	} else {
+		$authorClass = 'term-user';
+	}
+	echo $authorClass;
+}
+
 /* 获取父级评论 */
 function _getParentReply($parent)
 {
 	if ($parent !== "0") {
 		$db = Typecho_Db::get();
-		$commentInfo = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ?', $parent));
-		echo '<span style="color: var(--routine);padding-right: 8px;">@' . $commentInfo['author'] . '</span>';
+		$comment = $db->fetchRow($db->select('author')->from('table.comments')->where('coid = ?', $parent));
+		echo '<span class="text">@' . $comment['author'] . ':</span>';
 	}
 }
 
@@ -477,6 +496,8 @@ function _addSupport($coid)
 /* 时间格式化：几小时前、几天前 */
 function _dateFormat($time)
 {
+	date_default_timezone_set('Asia/Shanghai'); // 设置为中国标准时间
+
 	$t = time() - $time;
 	$h = date("H:i", $time);
 	if ($t < 1) {

@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			$modeBtn.find('.icon-2').removeClass('active');
 			$('html').attr('data-night', 'night');
 			localStorage.setItem('data-night', 'night');
-			$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'brightness(0.5)');
+			$('.joe_header__slideout-image,.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'brightness(0.5)');
 			isNightMode = true;
 			localStorage.setItem('isNightMode', 'true');
 		}
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			$modeBtn.find('.icon-2').addClass('active');
 			$('html').removeAttr('data-night');
 			localStorage.removeItem('data-night');
-			$('.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'none');
+			$('.joe_header__slideout-image,.joe_batten img,.joe_detail__article img:not([class]),.joe_batten .author__user-item #hitokoto').css('filter', 'none');
 			isNightMode = false;
 			localStorage.setItem('isNightMode', 'false');
 		}
@@ -1080,6 +1080,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		$('.joe_cross .content img:not(img.owo_image),.joe_list__item.chat .content-full img:not(img.owo_image)').each(function () {
 			$(this).wrap($(`<span style="display: block;cursor: pointer;" data-fancybox="Word" href="${$(this).attr('src')}"></span>`));
+		});
+	}
+
+	/* 输入框自动高度 */
+	{
+		$('#textarea').on('input', function () {
+			$(this).css({
+				height: 'auto',
+				height: this.scrollHeight + 'px'
+			});
 		});
 	}
 
