@@ -4189,7 +4189,8 @@
 			border: 1px solid var(--classA);
 			background: var(--background);
 			.head {
-				margin: 0 5px;
+				display: none;
+				margin: 5px 5px 0;
 				.list {
 					display: flex;
 					align-items: center;
@@ -4221,6 +4222,7 @@
 				.text {
 					padding-left: 10px;
 					width: 100%;
+					height: 1rem;
 					border: none;
 					resize: none;
 					vertical-align: middle;
@@ -4559,12 +4561,12 @@
 							margin-right: 3.5rem;
 							text-align: justify;
 							&::before {
-								content: "";
+								content: '';
 								width: 0;
 								height: 0;
 								border-right: 8px solid var(--background);
-								border-top: 8px solid rgba(0,0,0,0);
-								border-bottom: 5px solid rgba(0,0,0,0);
+								border-top: 8px solid rgba(0, 0, 0, 0);
+								border-bottom: 5px solid rgba(0, 0, 0, 0);
 								position: absolute;
 								right: 100%;
 							}
@@ -4590,7 +4592,6 @@
 								text-align: center;
 							}
 							.text {
-								color: var(--minor);
 								padding-right: 8px;
 							}
 						}
@@ -4692,7 +4693,8 @@
 			border: 1px solid var(--classA);
 			background: var(--background);
 			.head {
-				margin: 0 5px;
+				display: none;
+				margin: 5px 5px 0;
 				.list {
 					display: flex;
 					align-items: center;
@@ -4723,6 +4725,7 @@
 				.text {
 					padding-left: 10px;
 					width: 100%;
+					height: 1rem;
 					border: none;
 					resize: none;
 					vertical-align: middle;
@@ -4917,7 +4920,7 @@
 							color: var(--main);
 							word-break: break-word;
 							padding: 10px;
-							background: var(--classC);
+							background: var(--classD);
 							margin-top: 10px;
 							text-align: justify;
 							line-height: 1.8;
@@ -4931,7 +4934,6 @@
 								text-align: center;
 							}
 							.text {
-								color: var(--minor);
 								padding-right: 8px;
 							}
 							.owo_image {

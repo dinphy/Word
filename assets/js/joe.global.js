@@ -717,7 +717,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				const url = $(".joe_comment__respond-form .head input[name='url']").val();
 				let text = $(".joe_comment__respond-form .body textarea[name='text']").val();
 				if (type === 'text' && text.trim() === '') return Qmsg.info('说点什么吧~');
-				if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) return $('#mail').focus();
+				if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) {
+					$('.joe_comment__respond-form .head').show();
+					return $('#mail').focus();
+				}
 				if (author.trim() === '') return $('#author').focus();
 				if (type === 'draw') {
 					const txt = $('#joe_comment_draw')[0].toDataURL('image/webp', 0.1);
@@ -1045,7 +1048,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				let text = $(".joe_cross__respond-form .body textarea[name='text']").val();
 				if (type === 'text' && text.trim() === '') return Qmsg.info('说点什么吧~');
 				if ($('#mail').length) {
-					if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) return $('#mail').focus();
+					if (!/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(mail)) {
+						$('.joe_cross__respond-form .head').show();
+						return $('#mail').focus();
+					}
 				}
 				if ($('#author').length) {
 					if (author.trim() === '') return $('#author').focus();
