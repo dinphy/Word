@@ -118,12 +118,6 @@ html {
 							grid-template-rows: 125px;
 						}
 					}
-					&.default {
-						.thumbnail {
-							width: 145px;
-							height: 95px;
-						}
-					}
 				}
 			}
 			&_index {
@@ -200,8 +194,18 @@ html {
 				display: none;
 			}
 			&_action {
+				.home,
 				.aside {
 					display: none;
+				}
+			}
+			&_list {
+				&__item {
+					&.default {
+						.thumbnail {
+							width: 155px;
+						}
+					}
 				}
 			}
 			&_detail {
@@ -464,7 +468,6 @@ html {
 					&.none {
 						.abstract {
 							display: -webkit-box;
-							font-size: 14px;
 						}
 					}
 				}
@@ -808,21 +811,17 @@ html {
 			}
 			&_list {
 				&__item {
-					margin: 0.5rem 0;
 					padding: 1rem;
-					border-radius: var(--radius-wrap);
-					border-bottom: none;
 					background: var(--background);
 					.line {
-						left: 0;
+						display: none;
+					}
+					&:last-child {
+						border-radius: 0;
 					}
 				}
 			}
-			&_adaption {
-				padding: 0 0.5rem;
-			}
 			&_index {
-				padding: 0.5rem;
 				&__banner {
 					display: none;
 				}
